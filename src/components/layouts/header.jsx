@@ -6,8 +6,8 @@ import { IoPersonOutline } from "react-icons/io5";
 
 const Header = () => {
     return (
-        <header className='container mx-auto py-5'>
-            <nav className='flex justify-between gap-10 items-center'>
+        <header className=' fixed w-full top-0 right-0 sl:bg-transparent transition-300 z-[80] border-b border-white-80 headerLinear border-none'>
+            <nav className='flex container mx-auto py-5 z-30 justify-between gap-10 items-center'>
                 {/* Logo */}
                 <NavLink to="/">
                     <img src={Logo} alt="Logo" />
