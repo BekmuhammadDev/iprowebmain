@@ -2,18 +2,34 @@
 @tailwind components;
 @tailwind utilities;
 
-*{
+* {
     padding: 0;
     bottom: 0;
     box-sizing: border-box;
 }
 
-body{
+body {
     background-color: #1D1D1D;
 }
 
-a{
+a {
     font-size: 20px;
     font-weight: 600;
     color: white;
+}
+
+/* //////////////////////////////////////// */
+@keyframes marquee {
+    from {
+        transform: translateX(100%);
+    }
+
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+.marquee {
+    display: flex;
+    animation: marquee 100s linear infinite;
 }
