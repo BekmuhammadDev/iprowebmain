@@ -69,70 +69,70 @@ const aboutus = () => {
 
     return (
         <>
-            <section className='hero section'>
-                <div className='flex items-center justify-between container mx-auto'>
-                    <div className='py-[199px]'>
-                        <p className='text-[#FFFFFF] text-2xl font-medium'>Premium Web Design Agency</p>
-                        <h1 className='text-[#0086EE] text-[80px] font-bold uppercase'>Brands growth</h1>
-                        <p className='text-[#FFFFFF] text-xl font-medium '>Custom Websites, Mobile Apps, Branding & Digital <br /> Marketing, other services</p>
-                        <button className='w-[317px] h-[60px] bg-white text-[#0086EE] text-2xl font-bold uppercase mt-9'>Speak with Expert</button>
+            <section className='hero section bg-gray-900 text-white py-16'>
+                <div className='container mx-auto flex flex-col md:flex-row items-center justify-between px-6'>
+                    {/* Text Content */}
+                    <div className='text-center md:text-left md:w-1/2 py-12'>
+                        <p className='text-2xl font-medium'>Premium Web Design Agency</p>
+                        <h1 className='text-[#0086EE] text-5xl md:text-7xl font-bold uppercase mt-4'>Brands Growth</h1>
+                        <p className='text-xl font-medium mt-4'>
+                            Custom Websites, Mobile Apps, Branding & Digital <br className='hidden md:block' />
+                            Marketing, other services
+                        </p>
+                        <button className='w-full md:w-[317px] h-[60px] bg-white text-[#0086EE] text-2xl font-bold uppercase mt-9 rounded-lg shadow-lg'>
+                            Speak with Expert
+                        </button>
                     </div>
 
-                    <div>
-                        <video class="w-full max-w-2xl mx-auto rounded-lg shadow-lg"
-                            controls
-                            src={Video}
-                            autoPlay
-                            loop
-                        >
-
+                    {/* Video Content */}
+                    <div className='w-full md:w-1/2 flex justify-center'>
+                        <video className='w-full max-w-lg rounded-lg shadow-lg' controls autoPlay loop>
+                            <source src={Video} type='video/mp4' />
+                            Your browser does not support the video tag.
                         </video>
-
                     </div>
                 </div>
             </section>
 
+
             <section className="bg-[#16182B] px-10 py-20">
+                <div className='mb-24'>
+                    <Logomarqee />
+                </div>
 
-            <div className='mb-24'>
-                <Logomarqee />
-            </div>
-
-                <div className="flex items-center justify-between gap-10 container mx-auto">
+                <div className="container mx-auto flex flex-col-reverse md:flex-row items-center justify-between gap-10">
                     {/* Matn qismi */}
-                    <div className="w-1/2">
-                        <h1 className="text-white font-black text-[128px] leading-[1.1]">
+                    <div className="w-full md:w-1/2 text-center md:text-left mt-10 md:mt-0">
+                        <h1 className="text-white font-black text-5xl md:text-[128px] leading-[1.1]">
                             WHO ARE <br /> WE?
                         </h1>
-                        <p className="text-white font-normal text-xl mt-4">
+                        <p className="text-white font-normal text-lg md:text-xl mt-4">
                             iPro is a web design company & digital marketing agency focused on growing brands online. We create effective brand strategies, custom web design, development, and digital marketing solutions to generate greater brand engagement and conversions.
                         </p>
                     </div>
 
                     {/* Rasm qismi */}
-                    <div className="w-1/2">
+                    <div className="w-full md:w-1/2 flex justify-center">
                         <img src={Logocloud} alt="Logo Cloud" className="w-full h-auto object-cover" />
                     </div>
                 </div>
 
-                <div className='flex items-center ml-40 gap-6 mt-24 mb-24'>
-
-                    <video class="w-[265px] rounded-lg shadow-lg"
+                <div className='flex flex-col md:flex-row items-center  justify-start md:ml-40 gap-6 mt-16 md:mt-24 mb-16 md:mb-24 px-5'>
+                    <video
+                        className="w-full max-w-xs md:max-w-sm lg:w-[265px] rounded-lg shadow-lg"
                         controls
                         src={Video}
                         autoPlay
                         loop
-                    >
-                    </video>
-
-                    <h1 className='text-white font-bold text-3xl'>See Our Company</h1>
+                    />
+                    <h1 className='text-white font-bold  text-2xl md:text-3xl text-center md:text-left'>See Our Company</h1>
                 </div>
 
                 <div>
                     <Achievements />
                 </div>
-
             </section>
+
 
             <section className='bg-[#16182B]'>
                 <div className='container mx-auto'>
@@ -140,14 +140,15 @@ const aboutus = () => {
                 </div>
             </section>
 
+
             <section>
                 {/* <StarParticles/> */}
                 <div className='container mx-auto'>
 
-                    <h1 className='text-white text-[128px] font-black ml-5'>MEET THE TEAM</h1>
+                    <h1 className='text-white md:text-[128px] text-[48px] font-black ml-5'>MEET THE TEAM</h1>
                     <div className='flex items-center gap-10 ml-5 '>
 
-                        <div >
+                        <div className='relative'>
                             <h1 className='text-white text-2xl font-semibold uppercase'>Backend Developer</h1>
                             <h1 className='text-white text-[96px] font-black uppercase'>Elizabeth</h1>
                             <h1 className='text-white text-xl font-semibold uppercase'>one of the most problem solving <br />  member of our team</h1>
@@ -200,6 +201,7 @@ const aboutus = () => {
                 </div>
             </section>
 
+
             <section className="bg-[#0b0f19] text-white px-5 pt-[81px] py-74 ">
                 <div className="container mx-auto">
                     <h1 className="text-[128px] font-black">Portfolio</h1>
@@ -232,6 +234,7 @@ const aboutus = () => {
                 </div>
             </section>
 
+
             <section className='bg-[#0b0f19] pt-72'>
                 <div className='container mx-auto'>
                     <h1 className='text-white font-black text-[128px]'>SERVICES</h1>
@@ -258,6 +261,7 @@ const aboutus = () => {
 
                 </div>
             </section>
+
 
             <section className='bg-[#0b0f19] pt-[211px]'>
                 <div className='container mx-auto'>
@@ -288,7 +292,7 @@ const aboutus = () => {
                         </div>
 
                         <div className='relative -top-32'>
-                            <ContactWithMap/>
+                            <ContactWithMap />
                         </div>
 
                     </div>
