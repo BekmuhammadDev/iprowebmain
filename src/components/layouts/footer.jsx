@@ -4,19 +4,19 @@ import Logo from "../../assets/icons/Logo.svg"; // Logoni to‘g‘ri yo‘lda j
 
 const Footer = () => {
     return (
-        <footer className="bg-[#0D1117] text-white py-12 h-[267px]">
+        <footer className="bg-[#0D1117] text-white py-12 px-10 h-[267px]">
             <div className="container mx-auto px-6 lg:px-1">
                 {/* Footerning asosiy qismi */}
                 <div className="flex flex-col lg:flex-row justify-between items-center lg:items-start gap-10 lg:gap-0">
 
                     {/* Logo & Copyright */}
-                    <div className="flex flex-col items-center lg:items-start">
+                    <div className=" hidden md:flex flex-col items-center lg:items-start">
                         <img src={Logo} alt="iPro Logo" className="w-[173px] h-12 mb-16" />
                         <p className="text-[20px] font-normal">© 2020-2025 «iPro»</p>
                     </div>
 
                     {/* Contacts */}
-                    <div className="text-center lg:text-left border-l-2 pl-40">
+                    <div className="text-center lg:text-left md:border-l-2 md:pl-40">
                         <h3 className="text-2xl font-bold">Contacts</h3>
                         <p className="text-[20px] font-normal text-[#FFFFFF] mt-2">Google map</p>
                         <p className="text-[20px] font-normal text-[#FFFFFF]">Yandex map</p>
@@ -24,7 +24,7 @@ const Footer = () => {
                     </div>
 
                     {/* Links */}
-                    <div className="text-center lg:text-left border-r-2 pr-40">
+                    <div className="text-center lg:text-left md:border-r-2  md:pr-40">
                         <h3 className="text-2xl font-semibold">Links</h3>
                         <p className="text-[20px] font-normal text-[#FFFFFF] mt-2">About Us</p>
                         <p className="text-[20px] font-normal text-[#FFFFFF]">Services</p>
