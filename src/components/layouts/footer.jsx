@@ -6,7 +6,7 @@ const Footer = () => {
     return (
         <footer className="bg-[#0D1117] text-white py-12 px-10 h-[267px]">
             <div className="container mx-auto px-6 lg:px-1">
-                {/* Footerning asosiy qismi */}
+               
                 <div className="flex flex-col lg:flex-row justify-between items-center lg:items-start gap-10 lg:gap-0">
 
                    
@@ -22,7 +22,7 @@ const Footer = () => {
                         <p className="text-[20px] font-normal mt-2 text-[#FFFFFF]">+998 90 000 00 00</p>
                     </div>
 
-                    {/* Links */}
+            
                     <div className="text-center lg:text-left md:border-r-2  md:pr-40">
                         <h3 className="text-2xl font-semibold">Links</h3>
                         <p className="text-[20px] font-normal text-[#FFFFFF] mt-2">About Us</p>
@@ -30,7 +30,7 @@ const Footer = () => {
                         <p className="text-[20px] font-normal text-[#FFFFFF]">Portfolio</p>
                     </div>
 
-                    {/* Follow Us */}
+                
                     <div className="text-center lg:text-left">
                         <h3 className="text-2xl font-bold">Follow us</h3>
                         <div className="flex justify-center lg:justify-start gap-4 mt-3">
