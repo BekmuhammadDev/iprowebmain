@@ -9,13 +9,12 @@ const Footer = () => {
                 {/* Footerning asosiy qismi */}
                 <div className="flex flex-col lg:flex-row justify-between items-center lg:items-start gap-10 lg:gap-0">
 
-                    {/* Logo & Copyright */}
+                   
                     <div className=" hidden md:flex flex-col items-center lg:items-start">
                         <img src={Logo} alt="iPro Logo" className="w-[173px] h-12 mb-16" />
                         <p className="text-[20px] font-normal">© 2020-2025 «iPro»</p>
                     </div>
 
-                    {/* Contacts */}
                     <div className="text-center lg:text-left md:border-l-2 md:pl-40">
                         <h3 className="text-2xl font-bold">Contacts</h3>
                         <p className="text-[20px] font-normal text-[#FFFFFF] mt-2">Google map</p>
