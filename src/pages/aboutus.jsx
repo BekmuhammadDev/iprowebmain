@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { FaPlus, FaMinus } from "react-icons/fa";
 import Video from "../assets/video/ipro.mp4"
 import Logomarqee from '../components/ui/logomarquee';
@@ -9,6 +9,7 @@ import TestimonialSlider from '../components/ui/scrollcardworkers';
 import CardBg from "../assets/images/cardbg.png"
 import WorkersImg from "../assets/images/workersimg.png"
 import ContactWithMap from '../components/ui/contactwithmap';
+import {useScrollProgress} from "../hook/use-scroll-progress"
 // import StarParticles from '../components/ui/stars';
 
 const teamMembers = [
@@ -61,6 +62,9 @@ const faqs = [
 
 const aboutus = () => {
 
+    const videoRef = useRef(null);
+    const progress = useScrollProgress(videoRef);
+
     const [openIndex, setOpenIndex] = useState(null);
 
     const toggleAccordion = (index) => {
@@ -78,10 +82,14 @@ const aboutus = () => {
         return () => clearInterval(interval);
     }, []);
 
+
+
+
+
     return (
         <>
             <section className='hero section bg-gray-900 text-white md:px-10 py-16'>
-                <div className='container mx-auto flex flex-col md:flex-row items-center justify-between '>
+                <div className='container mx-auto h-[1500px] relative flex flex-col md:flex-row items-center justify-between '>
                     {/* Text Content */}
                     <div className="text-center md:text-left md:w-1/2 px-5 py-12">
                         <p className="md:text-2xl text-lg font-medium">Premium Web Design Agency</p>
@@ -100,7 +108,7 @@ const aboutus = () => {
 
                     {/* Video Content */}
                     <div className='w-full md:w-1/2 flex justify-center'>
-                        <video className='w-full max-w-lg rounded-lg shadow-lg' controls autoPlay loop>
+                        <video ref={videoRef} className='w-full max-w-lg rounded-lg shadow-lg' controls autoPlay loop>
                             <source src={Video} type='video/mp4' />
                             Your browser does not support the video tag.
                         </video>
@@ -135,7 +143,7 @@ const aboutus = () => {
                 </div>
 
 
-                <div className='flex flex-col md:flex-row items-center px-10  justify-start  gap-6 mt-16 md:mt-24 mb-16 md:mb-24'>
+                <div className=' container mx-auto flex flex-col md:flex-row items-center px-10  justify-start  gap-6 mt-16 md:mt-24 mb-16 md:mb-24'>
                     <video
                         className="w-full max-w-xs md:max-w-sm lg:w-[265px] rounded-lg shadow-lg"
                         controls

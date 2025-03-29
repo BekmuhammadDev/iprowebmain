@@ -55,9 +55,9 @@ export default function TestimonialSlider() {
                 <div
                     key={index}
                     data-index={index}
-                    className={`testimonial-card relative mt-20 h-[155px] rounded-md  w-full md:w-[550px] p-2 shadow-lg transition-all duration-700 flex flex-col md:flex-row items-center 
+                    className={`testimonial-card  relative mt-20 h-[155px] md:h-[128px] rounded-md  w-full md:w-[550px] p-2 shadow-lg transition-all duration-700 flex flex-col md:flex-row items-center 
                         ${activeIndex >= index
-                            ? "opacity-100 scale-105 bg-[#0A0F1F] text-white drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]"
+                            ? "opacity-100 scale-105 bg-[#0A0F1F]  text-white drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]"
                             : "opacity-50 scale-95 bg-gray-800 text-gray-300 shadow-md"
                         }
                         
@@ -74,7 +74,11 @@ export default function TestimonialSlider() {
                     <img
                         src={item.img}
                         alt={item.name}
-                        className=" relative bottom-24  md:bottom-0 w-[131px] h-[131px] md:w-[131px] md:h-[133px] rounded-full shadow-lg mb-4 md:mb-0"
+                        className={`relative bottom-24 md:bottom-0 w-[131px] h-[131px] md:w-[131px] md:h-[133px] rounded-full shadow-lg mb-4 md:mb-0 
+                            ${index === 0 ? "left-[-30px]" : ""} 
+                            ${index === 1 ? "left-[30px]" : ""} 
+                            ${index === 2 ? "left-[-30px]" : ""} 
+                            ${index === 3 ? "left-[30px]" : ""}`}
                     />
 
                     {/* Matn qismi */}
