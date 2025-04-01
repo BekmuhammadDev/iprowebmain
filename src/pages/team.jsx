@@ -77,7 +77,7 @@ const team = () => {
     const [visibleJobs, setVisibleJobs] = useState(6); // Show 6 initially
 
     const showMoreJobs = () => {
-        setVisibleJobs((prev) => prev + 6); // Show 3 more jobs per click
+        setVisibleJobs((prev) => prev + 6); // Show 6 more jobs per click
     };
 
     // ////////////////////////////////////////////////
