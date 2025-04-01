@@ -1,73 +1,147 @@
 import React from 'react';
-import { useState, useEffect } from "react";
-import { FaPlus, FaMinus } from "react-icons/fa";
-import Video from "../assets/video/ipro.mp4"
+import { useState, useEffect, useRef } from 'react';
+import { FaPlus, FaMinus } from 'react-icons/fa';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import Video from '../assets/video/ipro.mp4';
 import Logomarqee from '../components/ui/logomarquee';
-import Logocloud from "../assets/images/iPro11.png"
+import Logocloud from '../assets/images/iPro11.png';
 import Achievements from '../components/ui/achivements';
 import TestimonialSlider from '../components/ui/scrollcardworkers';
-import CardBg from "../assets/images/cardbg.png"
-import WorkersImg from "../assets/images/workersimg.png"
+import CardBg from '../assets/images/cardbg.png';
+import WorkersImg from '../assets/images/workersimg.png';
 import ContactWithMap from '../components/ui/contactwithmap';
-// import StarParticles from '../components/ui/stars';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const teamMembers = [
-    { name: "BACKEND", img: "https://picsum.photos/200/300?random=1" },
-    { name: "FRONTEND", img: "https://picsum.photos/200/300?random=2" },
-    { name: "PROJECT", img: "https://picsum.photos/200/300?random=3" },
-    { name: "PRODUCT", img: "https://picsum.photos/200/300?random=4" },
-    { name: "UX&UI", img: "https://picsum.photos/200/300?random=5" },
-    { name: "TARGET", img: "https://picsum.photos/200/300?random=6" },
-    { name: "TARGET", img: "https://picsum.photos/200/300?random=7" },
+    {
+        name: "Elizabeth",
+        role: "Backend Developer",
+        description: "One of the most problem-solving members of our team.",
+        projects: "15+",
+        experience: "7+",
+        workerImg: WorkersImg,
+        img: WorkersImg,
+    },
+    {
+        name: "John",
+        role: "Frontend Developer",
+        description: "Creative front-end developer with strong UI skills.",
+        projects: "20+",
+        experience: "5+",
+        workerImg: WorkersImg,
+        img: WorkersImg,
+    },
+    {
+        name: "Alice",
+        role: "UI/UX Designer",
+        description: "Designs intuitive and user-friendly interfaces.",
+        projects: "30+",
+        experience: "6+",
+        workerImg: WorkersImg,
+        img: WorkersImg,
+    },
+    {
+        name: "Mike",
+        role: "Project Manager",
+        description: "Leads projects to successful completion with a clear vision.",
+        projects: "50+",
+        experience: "10+",
+        workerImg: WorkersImg,
+        img: WorkersImg,
+    },
+
 ];
 
 const portfolioData = [
-    { id: 1, img: "https://picsum.photos/200/300?random=1", title: "China House", style: "col-span-2 h-[243px]" },
-    { id: 2, img: "https://picsum.photos/200/300?random=2", title: "China House", style: " md:h-[243px] h-[198px]" },
-    { id: 3, img: "https://picsum.photos/200/300?random=3", title: "China House", style: " md:h-[488px] h-[198px]" },
-    { id: 4, img: "https://picsum.photos/200/300?random=4", title: "China House", style: "col-span-2 md:h-[500px] h-[243px]" },
-    { id: 5, img: "https://picsum.photos/200/300?random=5", title: "China House", style: "h-[258px]" },
-    { id: 6, img: "https://picsum.photos/200/300?random=6", title: "China House", style: "h-[258px]" },
-    { id: 7, img: "https://picsum.photos/200/300?random=7", title: "China House", style: "h-[258px] hidden md:flex" },
+    {
+        id: 1,
+        img: 'https://picsum.photos/200/300?random=1',
+        title: 'China House',
+        style: 'col-span-2 h-[243px]',
+    },
+    {
+        id: 2,
+        img: 'https://picsum.photos/200/300?random=2',
+        title: 'China House',
+        style: ' md:h-[243px] h-[198px]',
+    },
+    {
+        id: 3,
+        img: 'https://picsum.photos/200/300?random=3',
+        title: 'China House',
+        style: ' md:h-[488px] h-[198px]',
+    },
+    {
+        id: 4,
+        img: 'https://picsum.photos/200/300?random=4',
+        title: 'China House',
+        style: 'col-span-2 md:h-[500px] h-[243px]',
+    },
+    {
+        id: 5,
+        img: 'https://picsum.photos/200/300?random=5',
+        title: 'China House',
+        style: 'h-[258px]',
+    },
+    {
+        id: 6,
+        img: 'https://picsum.photos/200/300?random=6',
+        title: 'China House',
+        style: 'h-[258px]',
+    },
+    {
+        id: 7,
+        img: 'https://picsum.photos/200/300?random=7',
+        title: 'China House',
+        style: 'h-[258px] hidden md:flex',
+    },
 ];
 
 const faqs = [
     {
-        question: "When should I pay for a project?",
-        answer: "After confirming contract need to pay at least 50% of total price, or if you looking optional method, you should contact with experts to make in order."
+        question: 'When should I pay for a project?',
+        answer:
+            'After confirming contract need to pay at least 50% of total price, or if you looking optional method, you should contact with experts to make in order.',
     },
     {
-        question: "How long does a project take?",
-        answer: "Project duration depends on the complexity and requirements, but generally it takes around 2-4 weeks."
-    },
-    {
-        question: "Can I get a refund if I'm not satisfied?",
-        answer: "Yes, we have a refund policy that allows refunds under certain conditions. Please contact us for more details."
-    },
-    {
-        question: "Can I get a refund if I'm not satisfied?",
-        answer: "Yes, we have a refund policy that allows refunds under certain conditions. Please contact us for more details."
-    },
-    {
-        question: "How long does a project take?",
-        answer: "Project duration depends on the complexity and requirements, but generally it takes around 2-4 weeks."
+        question: 'How long does a project take?',
+        answer:
+            'Project duration depends on the complexity and requirements, but generally it takes around 2-4 weeks.',
     },
     {
         question: "Can I get a refund if I'm not satisfied?",
-        answer: "Yes, we have a refund policy that allows refunds under certain conditions. Please contact us for more details."
+        answer:
+            'Yes, we have a refund policy that allows refunds under certain conditions. Please contact us for more details.',
+    },
+    {
+        question: "Can I get a refund if I'm not satisfied?",
+        answer:
+            'Yes, we have a refund policy that allows refunds under certain conditions. Please contact us for more details.',
+    },
+    {
+        question: 'How long does a project take?',
+        answer:
+            'Project duration depends on the complexity and requirements, but generally it takes around 2-4 weeks.',
+    },
+    {
+        question: "Can I get a refund if I'm not satisfied?",
+        answer:
+            'Yes, we have a refund policy that allows refunds under certain conditions. Please contact us for more details.',
     },
 ];
 
-
 const aboutus = () => {
-
+    const sectionRef = useRef(null);
+    const elementRef = useRef(null);
     const [openIndex, setOpenIndex] = useState(null);
 
     const toggleAccordion = (index) => {
         setOpenIndex(openIndex === index ? null : index);
     };
 
-    // ////////////////////////////////////////////////////////
+    // /////////////////////
     const [activeIndex, setActiveIndex] = useState(0);
 
     useEffect(() => {
@@ -78,18 +152,93 @@ const aboutus = () => {
         return () => clearInterval(interval);
     }, []);
 
+    useEffect(() => {
+        const el = elementRef.current;
+
+        // Устанавливаем начальные параметры
+        gsap.set(el, {
+            position: 'fixed',
+            top: '45%',
+            left: '50%',
+            x: '-50%',
+            y: '-50%',
+            maxWidth: 'none',
+            width: '100vw',
+            height: '100vh',
+            scale: 1,
+            opacity: 1,
+        });
+
+        gsap.to(el, {
+            scrollTrigger: {
+                trigger: sectionRef.current,
+                start: 'top-=7.5% top',
+                end: 'top+=25% top',
+                scrub: true,
+            },
+            width: '80vw',
+            height: '80vh',
+            position: 'fixed',
+        });
+
+        gsap.to(el, {
+            scrollTrigger: {
+                trigger: sectionRef.current,
+                start: 'top+=25% top',
+                end: 'top+=50% top',
+                scrub: true,
+            },
+            x: '-5%',
+            y: '0%',
+            top: '20%',
+            width: 'calc(50vw - 2.5rem)',
+            height: '50vh',
+            position: 'fixed',
+        });
+
+        gsap.to(el, {
+            scrollTrigger: {
+                trigger: sectionRef.current,
+                start: 'top+=50% top',
+                end: 'bottom bottom',
+                scrub: 0,
+                onUpdate: (self) => {
+                    if (self.progress >= 1) {
+                        gsap.set(el, { position: 'sticky' });
+                    }
+                },
+            },
+            top: '10%',
+            x: '0%',
+        });
+    }, []);
+
+    const [activeMember, setActiveMember] = useState(teamMembers[0]);
+
+    const handleMemberClick = (member) => {
+        setActiveMember(member);
+    };
+
     return (
         <>
-            <section className='hero section bg-gray-900 text-white md:px-10 py-16'>
-                <div className='container mx-auto flex flex-col md:flex-row items-center justify-between '>
+            <section className="hero section bg-gray-900 text-white md:px-10 py-16">
+                <div
+                    ref={sectionRef}
+                    className="container mx-auto h-[1500px] relative flex flex-col md:flex-row justify-between "
+                >
                     {/* Text Content */}
-                    <div className="text-center md:text-left md:w-1/2 px-5 py-12">
-                        <p className="md:text-2xl text-lg font-medium">Premium Web Design Agency</p>
+                    <div
+                        className={`text-center md:text-left md:w-1/2 px-5 py-12 sticky top-[100px] h-[max-content]`}
+                    >
+                        <p className="md:text-2xl text-lg font-medium">
+                            Premium Web Design Agency
+                        </p>
                         <h1 className="text-[#0086EE] text-[32px] md:text-7xl leading-[1.1] font-bold uppercase mt-4">
                             Brands Growth
                         </h1>
                         <p className="text-sm md:text-xl font-medium mt-4">
-                            Custom Websites, Mobile Apps, Branding & Digital <br className="hidden md:block" />
+                            Custom Websites, Mobile Apps, Branding & Digital{' '}
+                            <br className="hidden md:block" />
                             Marketing, other services
                         </p>
                         <button className="w-full md:w-[317px] h-[56px] md:h-[60px] bg-white text-[#0086EE] text-xl md:text-2xl font-bold uppercase mt-9 md:rounded-lg shadow-lg drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]">
@@ -97,21 +246,28 @@ const aboutus = () => {
                         </button>
                     </div>
 
-
                     {/* Video Content */}
-                    <div className='w-full md:w-1/2 flex justify-center'>
-                        <video className='w-full max-w-lg rounded-lg shadow-lg' controls autoPlay loop>
-                            <source src={Video} type='video/mp4' />
+                    <div
+                        className={
+                            'w-full md:w-1/2 flex justify-center py-12 sticky top-[100px] h-[max-content]'
+                        }
+                    >
+                        <video
+                            ref={elementRef}
+                            className="w-screen h-screen  rounded-lg shadow-lg transition-all duration-500"
+                            controls
+                            autoPlay
+                            loop
+                        >
+                            <source src={Video} type="video/mp4" />
                             Your browser does not support the video tag.
                         </video>
                     </div>
                 </div>
             </section>
 
-
             <section className="bg-[#16182B] md:py-20">
-
-                <div className=' md:mb-24'>
+                <div className=" md:mb-24">
                     <Logomarqee />
                 </div>
 
@@ -122,20 +278,26 @@ const aboutus = () => {
                             WHO ARE <br className="hidden md:flex" /> WE?
                         </h1>
                         <p className="text-white font-normal text-base md:text-xl mt-4">
-                            iPro is a web design company & digital marketing agency focused on growing brands online.
-                            We create effective brand strategies, custom web design, development, and digital marketing
-                            solutions to generate greater brand engagement and conversions.
+                            iPro is a web design company & digital marketing agency focused on
+                            growing brands online. We create effective brand strategies,
+                            custom web design, development, and digital marketing solutions to
+                            generate greater brand engagement and conversions.
                         </p>
                     </div>
 
                     {/* Rasm qismi */}
                     <div className="w-full md:w-1/2 h-auto md:h-[413px] mt-6 md:mt-0 px-8 flex justify-center">
-                        <img src={Logocloud} alt="Logo Cloud" className="w-full max-w-xs md:max-w-full h-auto md:h-auto object-contain md:object-cover" />
+                        <img
+                            src={Logocloud}
+                            alt="Logo Cloud"
+                            className="w-full max-w-xs md:max-w-full h-auto md:h-auto object-contain md:object-cover"
+                        />
                     </div>
+
+
                 </div>
 
-
-                <div className='flex flex-col md:flex-row items-center px-10  justify-start  gap-6 mt-16 md:mt-24 mb-16 md:mb-24'>
+                <div className=" container mx-auto flex flex-col md:flex-row items-center px-10  justify-start  gap-6 mt-16 md:mt-24 mb-16 md:mb-24">
                     <video
                         className="w-full max-w-xs md:max-w-sm lg:w-[265px] rounded-lg shadow-lg"
                         controls
@@ -143,7 +305,9 @@ const aboutus = () => {
                         autoPlay
                         loop
                     />
-                    <h1 className='text-white font-bold  text-2xl md:text-3xl text-center md:text-left'>See Our Company</h1>
+                    <h1 className="text-white font-bold  text-2xl md:text-3xl text-center md:text-left">
+                        See Our Company
+                    </h1>
                 </div>
 
                 <div>
@@ -151,59 +315,82 @@ const aboutus = () => {
                 </div>
             </section>
 
-
-            <section className='bg-[#16182B]'>
-                <div className='container mx-auto'>
+            <section className="bg-[#16182B]">
+                <div className="container mx-auto">
                     <TestimonialSlider />
                 </div>
             </section>
 
-
             <section>
-                {/* <StarParticles/> */}
-                <div className='container mx-auto'>
+                <div className="container mx-auto ">
+                    <h1 className="text-white md:text-[128px] text-[48px] font-black ml-5 leading-[1.1] text-center md:text-left drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]">
+                        MEET THE TEAM
+                    </h1>
 
-                    <h1 className='text-white md:text-[128px] text-[48px] font-black ml-5 leading-[1.1] text-center md:text-left drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]'>MEET THE TEAM</h1>
-                    <div className=' md:flex  md:px-10 items-center gap-10 ml-5 '>
+                    <div className="md:flex md:px-10 items-center justify-between gap-10 ml-5">
 
-                        <div className='relative top-72 md:top-0 backdrop-blur-lg bg-transparent'>
-                            <h1 className='text-white text-base text-center md:text-left md:text-2xl font-semibold uppercase'>Backend Developer</h1>
-                            <h1 className='text-white text-[40px] md:text-[96px] text-center font-black uppercase drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]'>Elizabeth</h1>
-                            <h1 className='text-white text-xs md:text-xl text-center md:text-left font-semibold uppercase'>one of the most problem solving <br />  member of our team</h1>
-                            <div className='flex items-center gap-5 md:gap-12 mt-5 md:mt-36'>
-                                <div className='flex gap-2 md:gap-5 items-center'><h1 className='md:text-xl  text-base uppercase font-semibold text-white'>Projects:</h1><h2 className='md:text-5xl text-4xl text-white font-semibold drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]'>15+</h2></div>
-                                <div className='flex gap-2 md:gap-5 items-center'> <h1 className='md:text-xl text-base uppercase  font-semibold text-white'>Experience:</h1><h2 className='md:text-5xl text-4xl text-white font-semibold drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]'>7+</h2></div>
+                        <div className="relative top-72 md:top-0 backdrop-blur-lg bg-transparent">
+                            <h1 className="text-white text-base text-center md:text-left md:text-2xl font-semibold uppercase">
+                                {activeMember.role}
+                            </h1>
+                            <h1 className="text-white text-[40px] md:text-[96px] text-left font-black uppercase drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]">
+                                {activeMember.name}
+                            </h1>
+                            <h1 className="text-white text-xs md:text-xl text-center md:text-left font-semibold uppercase">
+                                {activeMember.description}
+                            </h1>
+                            <div className="flex items-center gap-5 md:gap-12 mt-5 md:mt-36">
+                                <div className="flex gap-2 md:gap-5 items-center">
+                                    <h1 className="md:text-xl text-base uppercase font-semibold text-white">
+                                        Projects:
+                                    </h1>
+                                    <h2 className="md:text-5xl text-4xl text-white font-semibold drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]">
+                                        {activeMember.projects}
+                                    </h2>
+                                </div>
+                                <div className="flex gap-2 md:gap-5 items-center">
+                                    <h1 className="md:text-xl text-base uppercase font-semibold text-white">
+                                        Experience:
+                                    </h1>
+                                    <h2 className="md:text-5xl text-4xl text-white font-semibold drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]">
+                                        {activeMember.experience}
+                                    </h2>
+                                </div>
                             </div>
                         </div>
 
-                        <div className=" relative -top-16 md:top-32 w-full h-auto">
-                            {/* Orqa fon rasmi (CardBg) */}
+                        <div className="relative -top-16 md:top-32 w-full h-auto">
                             <div className="absolute inset-0 -top-14 -z-10 w-full h-[355px] md:h-auto">
-                                <img src={CardBg} alt="Background" className="w-full h-auto object-contain" />
+                                <img
+                                    src={CardBg}
+                                    alt="Background"
+                                    className="w-full h-auto object-contain"
+                                />
                             </div>
-
-                            {/* Ustki rasm (WorkersImg) */}
                             <div className="relative -z-10 w-full h-[380px] md:h-auto flex justify-center bottom-24">
-                                <img src={WorkersImg} alt="Workers" className="w-auto max-w-full h-auto" />
+                                <img
+                                    src={activeMember.workerImg}
+                                    alt="Worker"
+                                    className="w-auto max-w-full h-auto"
+                                />
                             </div>
                         </div>
-
                     </div>
 
                     <div className="relative backdrop-blur-lg bg-transparent overflow-hidden w-full flex justify-center">
                         <div
-                            className="flex w-max gap-6 transition-transform duration-1000 ease-in-out"
-                            style={{ transform: `translateX(-${(activeIndex % teamMembers.length) * 210}px)` }}
+                            className="carousel-container flex w-max gap-6 transition-transform duration-1000 ease-in-out"
                         >
                             {[...teamMembers, ...teamMembers].map((member, index) => (
                                 <div
                                     key={index}
-                                    className="relative group w-48 h-72 overflow-hidden border-2 border-blue-500 transition-all duration-300 rounded-lg shadow-md bg-[#0A0F1F]"
+                                    className="relative group w-48 h-72 overflow-hidden border-2 border-blue-500 transition-all duration-300 rounded-lg shadow-md cursor-pointer hover:shadow-[0_0_25px_10px_rgba(0,122,255,0.6)]  group bg-[#0A0F1F]"
+                                    onClick={() => handleMemberClick(member)} // Update active member
                                 >
                                     <img
                                         src={member.img}
                                         alt={member.name}
-                                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 cursor-pointer"
                                     />
                                     <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-70 p-3 text-white text-center font-bold">
                                         {member.name}
@@ -213,14 +400,35 @@ const aboutus = () => {
                         </div>
                     </div>
 
+                    <style jsx>{`
+  .carousel-container {
+    animation: carousel 90s linear infinite;
+  }
+
+  .carousel-container:hover {
+    animation-play-state: paused;
+  }
+
+  @keyframes carousel {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+`}</style>
+
+
 
                 </div>
             </section>
 
-
             <section className="bg-[#0b0f19] text-white px-10 pt-[81px] pb-[74px]">
                 <div className="container mx-auto">
-                    <h1 className="text-[48px] md:text-[128px] mb-10 md:mb-0 font-black text-center drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]">Portfolio</h1>
+                    <h1 className="text-[48px] md:text-[128px] mb-10 md:mb-0 font-black text-center drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]">
+                        Portfolio
+                    </h1>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 auto-rows-auto grid-flow-row-dense">
                         {portfolioData.map((item) => (
@@ -247,14 +455,14 @@ const aboutus = () => {
                             </div>
                         ))}
                     </div>
-
                 </div>
             </section>
 
-
-            <section className='bg-[#0b0f19] pt-10 px-10  md:pt-72'>
-                <div className='container mx-auto'>
-                    <h1 className='text-white font-black text-5xl text-center md:text-left md:text-[128px] drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]'>SERVICES</h1>
+            <section className="bg-[#0b0f19] pt-10 px-10  md:pt-72">
+                <div className="container mx-auto">
+                    <h1 className="text-white font-black text-5xl text-center md:text-left md:text-[128px] drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]">
+                        SERVICES
+                    </h1>
                     <div className="flex flex-col md:flex-row justify-center items-center gap-4 bg-[#0b0f19] p-10">
                         {portfolioData.map((item) => (
                             <div
@@ -275,18 +483,14 @@ const aboutus = () => {
                             </div>
                         ))}
                     </div>
-
-
                 </div>
             </section>
 
-
-            <section className='bg-[#0b0f19] md:px-10 pt-[211px]'>
-                <div className='container mx-auto'>
+            <section className="bg-[#0b0f19] md:px-10 pt-[211px]">
+                <div className="container mx-auto">
                     <h1 className=" text-5xl text-center md:text-left md:text-[128px] font-black leading-[0.95] mb-10 text-white drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]">
                         HAVE A <br /> QUESTION?
                     </h1>
-
 
                     <div className="flex flex-col md:flex-row items-start justify-between gap-10 p-4 md:p-5">
                         {/* Chap tomonda - FAQ */}
@@ -306,7 +510,9 @@ const aboutus = () => {
                                             )}
                                         </button>
                                         <div
-                                            className={`overflow-hidden transition-max-height duration-500 ease-in-out ${openIndex === index ? "max-h-40 p-5 text-white bg-[#1d2536]" : "max-h-0"
+                                            className={`overflow-hidden transition-max-height duration-500 ease-in-out ${openIndex === index
+                                                ? 'max-h-40 p-5 text-white bg-[#1d2536]'
+                                                : 'max-h-0'
                                                 }`}
                                         >
                                             {faq.answer}
@@ -321,11 +527,8 @@ const aboutus = () => {
                             <ContactWithMap />
                         </div>
                     </div>
-
                 </div>
             </section>
-
-
         </>
     );
 };
