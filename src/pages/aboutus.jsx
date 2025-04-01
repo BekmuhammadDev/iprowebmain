@@ -286,7 +286,7 @@ const aboutus = () => {
             </section>
 
             <section>
-                {/* <StarParticles/> */}
+              
                 <div className="container mx-auto">
                     <h1 className="text-white md:text-[128px] text-[48px] font-black ml-5 leading-[1.1] text-center md:text-left drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]">
                         MEET THE TEAM
