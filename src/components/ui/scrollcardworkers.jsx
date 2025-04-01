@@ -50,12 +50,12 @@ export default function TestimonialSlider() {
     }, [activeIndex]);
 
     return (
-        <div className="flex flex-col items-center space-y-10 gap-y-28 px-7  md:gap-y-0 py-32 mb-10 md:mb-[338px] bg-[#16182B] overflow-hidden p-4 md:p-40">
+        <div className="flex flex-col items-center  space-y-10 gap-y-28 px-7  md:gap-y-0 py-32 mb-10 md:mb-[338px] bg-[#16182B] overflow-hidden p-4 md:p-40">
             {testimonials.map((item, index) => (
                 <div
                     key={index}
                     data-index={index}
-                    className={`testimonial-card relative mt-20 h-[155px] rounded-md  w-full md:w-[550px] p-2 shadow-lg transition-all duration-700 flex flex-col md:flex-row items-center 
+                    className={`testimonial-card h-[130px] relative mt-20 rounded-md  w-full md:w-[550px] p-2 shadow-lg transition-all duration-700 flex flex-col md:flex-row items-center 
                         ${activeIndex >= index
                             ? "opacity-100 scale-105 bg-[#0A0F1F] text-white drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]"
                             : "opacity-50 scale-95 bg-gray-800 text-gray-300 shadow-md"
