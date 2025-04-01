@@ -111,7 +111,7 @@ const aboutus = () => {
         setOpenIndex(openIndex === index ? null : index);
     };
 
-    // ////////////////////////////////////////////////////////
+    // /////////////////////
     const [activeIndex, setActiveIndex] = useState(0);
 
     useEffect(() => {
