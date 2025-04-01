@@ -2,9 +2,11 @@ import React from 'react';
 import { useState } from 'react';
 import { FaCalendarAlt } from "react-icons/fa";
 import { FaClock } from "react-icons/fa";
+import { motion } from "framer-motion";
 
 import CardBg from '../assets/images/cardbg.png';
 import WorkersImg from '../assets/images/workersimg.png';
+import { FaReact, FaNodeJs, FaHtml5, FaCss3Alt, FaJs } from 'react-icons/fa';
 
 const teamMembers = [
     {
@@ -79,6 +81,8 @@ const team = () => {
     };
 
     // ////////////////////////////////////////////////
+    const [isExpanded, setIsExpanded] = useState(false);
+
 
     return (
         <main>
@@ -89,59 +93,89 @@ const team = () => {
                         MEET THE TEAM
                     </h1>
 
-                    <div className="md:flex md:px-10 items-center justify-between gap-48 ml-5">
-                          {/* Workers info */}
-                        <div className="relative top-72 md:top-0 backdrop-blur-lg bg-transparent">
-                            <h1 className="text-white text-base text-center md:text-left md:text-2xl font-semibold uppercase">
-                                {activeMember.role}
-                            </h1>
+                    <div className="relative md:flex md:px-10 items-center justify-between gap-38 ml-5">
+
+                        {/* Workers info */}
+                        <motion.div
+                            animate={{ x: isExpanded ? (window.innerWidth >= 768 ? "100%" : "0%") : "0%" }}
+                            transition={{ duration: 0.5 }}
+                            className="relative top-80 md:top-0 backdrop-blur-lg bg-transparent w-full md:w-1/2 text-center md:text-left"
+                        >
+
+                            {!isExpanded && (
+                                <h1 className="text-white text-base text-center md:text-left md:text-2xl font-semibold uppercase">
+                                    {activeMember.role}
+                                </h1>
+                            )}
+
                             <h1 className="text-white text-[40px] md:text-[96px] text-center md:text-left font-black uppercase drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]">
                                 {activeMember.name}
                             </h1>
+
                             <h1 className="text-white text-xs md:text-xl text-center md:text-left font-semibold uppercase">
-                                {activeMember.description}
+                                {isExpanded
+                                    ? 'I have spent nearly four years working as a backend developer, where I honed my analytical skills and gained a deep understanding of software processes. This experience ignited my passion for data-driven decision-making, leading me to transition into the world of programming.'
+                                    : activeMember.description}
                             </h1>
-                            <div className="flex items-center gap-5 md:gap-12 mt-5 md:mt-36">
-                                <div className="flex gap-2 md:gap-5 items-center">
-                                    <h1 className="md:text-xl text-base uppercase font-semibold text-white">
-                                        Projects:
-                                    </h1>
-                                    <h2 className="md:text-5xl text-4xl text-white font-semibold drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]">
-                                        {activeMember.projects}
-                                    </h2>
-                                </div>
-                                <div className="flex gap-2 md:gap-5 items-center">
-                                    <h1 className="md:text-xl text-base uppercase font-semibold text-white">
-                                        Experience:
-                                    </h1>
-                                    <h2 className="md:text-5xl text-4xl text-white font-semibold drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]">
-                                        {activeMember.experience}
-                                    </h2>
-                                </div>
-                            </div>
 
-                            <button className=" px-14 py-2 bg-white text-[#0086EE] text-xl md:text-2xl font-bold uppercase mt-14 drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]">
-                                more info
-                            </button>
-                        </div>
+                            <div className="text-center">
+                                {!isExpanded ? (
+                                    <div className="flex items-center gap-5 md:gap-12 mt-5 md:mt-36">
+                                        <div className="flex gap-2 md:gap-5 items-center">
+                                            <h1 className="md:text-xl text-base uppercase font-semibold text-white">
+                                                Projects:
+                                            </h1>
+                                            <h2 className="md:text-5xl text-4xl text-white font-semibold drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]">
+                                                {activeMember.projects}
+                                            </h2>
+                                        </div>
+                                        <div className="flex gap-2 md:gap-5 items-center">
+                                            <h1 className="md:text-xl text-base uppercase font-semibold text-white">
+                                                Experience:
+                                            </h1>
+                                            <h2 className="md:text-5xl text-4xl text-white font-semibold drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]">
+                                                {activeMember.experience}
+                                            </h2>
+                                        </div>
+                                    </div>
+                                ) : (
 
-                           {/* workers img */}
-                        <div className="relative -top-48 md:top-32 w-full h-auto">
-                            <div className="absolute inset-0 -top-14 w-[400px] -z-10 md:w-[700px] h-[355px] md:h-auto">
-                                <img
-                                    src={CardBg}
-                                    alt="Background"
-                                    className='-top-10'
-                              
-                                />
+                                    <div>
+                                        <h1 className='text-white text-2xl font-semibold mt-5'>Using tools</h1>
+                                        <div className="flex justify-center gap-6 mt-10">
+                                            <FaReact className="text-[#61DAFB] text-6xl drop-shadow-lg" />
+                                            <FaNodeJs className="text-[#68A063] text-6xl drop-shadow-lg" />
+                                            <FaHtml5 className="text-[#E34F26] text-6xl drop-shadow-lg" />
+                                            <FaCss3Alt className="text-[#1572B6] text-6xl drop-shadow-lg" />
+                                            <FaJs className="text-[#F7DF1E] text-6xl drop-shadow-lg" />
+                                        </div>
+                                    </div>
+                                )}
+
+                                <button
+                                    onClick={() => setIsExpanded(!isExpanded)}
+                                    className="px-14 py-2 bg-white text-[#0086EE] text-xl md:text-2xl font-bold uppercase mt-14 drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]"
+                                >
+                                    {isExpanded ? 'Less Info' : 'More Info'}
+                                </button>
+
                             </div>
-                            <div className="relative -z-10 w-[400px] h-[380px] md:-right-40 md:h-auto  flex justify-center bottom-24">
-                                <img
-                                    src={activeMember.workerImg}
-                                    alt="Worker"
-                                />
+                        </motion.div>
+
+                        {/* Workers img */}
+                        <motion.div
+                            animate={{ x: isExpanded ? (window.innerWidth >= 768 ? "-100%" : "0%") : "0%" }}
+                            transition={{ duration: 0.5 }}
+                            className="relative -top-48 md:top-32 w-full h-auto md:w-1/2"
+                        >
+                            <div className="absolute inset-0 w-[400px] -z-10 md:w-[700px] h-[355px] md:h-auto">
+                                <img src={CardBg} alt="Background" className="-top-10" />
                             </div>
-                        </div>
+                            <div className="relative -z-10 w-[400px] h-[380px] md:-right-40 md:h-auto flex justify-center bottom-24">
+                                <img src={activeMember.workerImg} alt="Worker" />
+                            </div>
+                        </motion.div>
+
 
                     </div>
 

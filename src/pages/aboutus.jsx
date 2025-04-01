@@ -19,8 +19,7 @@ import ContactWithMap from '../components/ui/contactwithmap';
 gsap.registerPlugin(ScrollTrigger);
 
 const aboutus = () => {
-    const sectionRef = useRef(null);
-    const elementRef = useRef(null);
+
     const [openIndex, setOpenIndex] = useState(null);
 
     const toggleAccordion = (index) => {
@@ -37,8 +36,6 @@ const aboutus = () => {
 
         return () => clearInterval(interval);
     }, []);
-
-    // useEffect(() => {
     //     const el = elementRef.current;
     //     gsap.set(el, {
     //         position: 'fixed',
@@ -105,14 +102,14 @@ const aboutus = () => {
 
     return (
         <>
-            <section className="hero section bg-gray-900 text-white md:px-10 py-16">
+            <section className="bg-gray-900 text-white md:px-10 py-16">
                 <div
-                    // ref={sectionRef}
-                    className="container mx-auto h-[1500px] relative flex flex-col md:flex-row justify-between "
+
+                    className="container mx-auto relative flex flex-col  md:flex-row justify-between "
                 >
                     {/* Text Content */}
                     <div
-                        className={`text-center md:text-left md:w-1/2 px-5 py-12 sticky top-[100px] h-[max-content]`}
+                        className={`text-center md:text-left md:w-1/2 px-5 top-[100px] `}
                     >
                         <p className="md:text-2xl text-lg font-medium">
                             Premium Web Design Agency
@@ -131,18 +128,12 @@ const aboutus = () => {
                     </div>
 
                     {/* Video Content */}
-                    <div
-                        className={
-                            'w-full md:w-1/2 flex justify-center py-12 sticky top-[100px] h-[max-content]'
-                        }
-                    >
+                    <div>
                         <video
-                            ref={elementRef}
-                            className="w-screen h-screen hidden md:flex  rounded-lg shadow-lg transition-all duration-500"
+                            className="w-[800px]"
                             controls
                             autoPlay
-                            loop
-                        >
+                            loop>
                             <source src={Video} type="video/mp4" />
                             Your browser does not support the video tag.
                         </video>
@@ -271,6 +262,7 @@ const aboutus = () => {
                                 <div
                                     key={index}
                                     className="relative group w-48 h-72 overflow-hidden border-2 border-blue-500 transition-all duration-300 rounded-lg shadow-md cursor-pointer hover:shadow-[0_0_25px_10px_rgba(0,122,255,0.6)] bg-[#0A0F1F]"
+                                    onClick={() => handleMemberClick(member)} // <-- Add onClick here
                                 >
                                     <img
                                         src={member.img}
@@ -283,6 +275,7 @@ const aboutus = () => {
                                 </div>
                             ))}
                         </div>
+
 
                         <style jsx>{`
         @keyframes carousel {
