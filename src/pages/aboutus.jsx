@@ -106,8 +106,8 @@ const aboutus = () => {
 
     return (
         <>
-          <Header />
-            <section className="text-white py-16">
+          <Header/>
+            <section className="text-white py-16 mt-20">
                 <div className="container mx-auto md:max-w-none 2xl:max-w-none relative flex flex-col md:flex-row items-center justify-between px-5 md:px-10 lg:px-20">
                     {/* Text Content */}
                     <div className="text-center md:text-left md:w-1/2 space-y-4">

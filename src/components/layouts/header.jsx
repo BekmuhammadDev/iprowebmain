@@ -7,13 +7,20 @@ import { FaEarthAsia } from "react-icons/fa6";
 import { CgMenuRightAlt } from "react-icons/cg";
 import { MdArrowDropUp } from "react-icons/md";
 import { FaUser, FaBriefcase, FaTasks, FaShoppingBag, FaListAlt } from "react-icons/fa";
+import IproRegisterLogo from "../../assets/images/iproLogoRegister.png"
 import profileicon from "../../assets/images/profileicon.png"
+import { IoMdClose } from "react-icons/io";
+import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 
 const Header = () => {
     const [menuOpen, setMenuOpen] = useState(null);
 
     const [isScrolled, setIsScrolled] = useState(false);
     const [openDropdown, setOpenDropdown] = useState(null);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const [showPassword, setShowPassword] = useState(false);
+    const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
     useEffect(() => {
         const handleClickOutside = (event) => {
@@ -49,10 +56,8 @@ const Header = () => {
     }, [menuOpen]);
 
 
-
-
     return (
-        <header className={`w-full py-4 fixed  top-0 h-20 z-50 text-white flex transition-all duration-300 bg-[#0A0F1F]
+        <header className={`w-full py-4 fixed top-0 h-20 z-50 text-white flex transition-all duration-300 bg-[#0A0F1F]
             ${isScrolled ? "backdrop-blur-lg bg-transparent" : "bg-transparent"}`}>
             <nav className='flex container mx-auto md:max-w-none xl:max-w-none px-10  py-5 justify-between items-center'>
 
@@ -122,20 +127,95 @@ const Header = () => {
                         </div>
 
                         {/* User Dropdown */}
-                        <div className='relative dropdown'>
+                        <div className="relative dropdown">
                             <button onClick={() => setOpenDropdown(openDropdown === "user" ? null : "user")}>
-                                <IoPersonOutline fontSize={25} color='white' className="hidden md:block" />
+                                <IoPersonOutline fontSize={25} color="white" className="hidden md:block" />
                             </button>
+
                             {openDropdown === "user" && (
                                 <div className="absolute top-12 -left-14 w-40 text-white rounded-lg shadow-lg">
-                                    <MdArrowDropUp className='absolute -bottom-5 left-10 text-[#16182B] text-[48px]' />
-                                    <div className="py-5 px-3 bg-[#16182B] w-[140px] rounded-xl ">
-                                        <button onClick={() => setOpenDropdown(null)} className="block w-full mb-3 text-center bg-white text-blue-600 font-bold border-b-2 px-5 ">Sign In</button>
-                                        <button onClick={() => setOpenDropdown(null)} className="block w-full border border-blue-600 text-center font-bold px-5">Register</button>
+                                    <MdArrowDropUp className="absolute -bottom-5 left-10 text-[#16182B] text-[48px]" />
+                                    <div className="py-5 px-3 bg-[#16182B] w-[140px] rounded-xl">
+                                        <button
+                                            onClick={() => {
+                                                setOpenDropdown(null);
+                                            }}
+                                            className="block w-full mb-3 text-center bg-white text-blue-600 font-bold border-b-2 px-5"
+                                        >
+                                            Sign In
+                                        </button>
+                                        <button
+                                            onClick={() => {
+                                                setOpenDropdown(null);
+                                                setIsModalOpen(true); // Modalni ochish
+                                            }}
+                                            className="block w-full border border-blue-600 text-center font-bold px-5"
+                                        >
+                                            Register
+                                        </button>
                                     </div>
                                 </div>
                             )}
                         </div>
+                        
+
+                        {/* Modal */}
+                        {isModalOpen && (
+                            <div className="fixed inset-0 flex items-center px-5 justify-center bg-black bg-opacity-90">
+                                <div className='flex rounded-md justify-between bg-[#16182B] items-center sm:px-20'>
+                                    <div className='hidden md:flex'>
+                                        <img src={IproRegisterLogo} alt="" />
+                                    </div>
+                                    <div className=" p-6 rounded-lg w-full sm:w-[400px] relative">
+
+                                        <button
+                                            className="absolute -top-14 -right-5 text-white w-8 h-8 flex items-center justify-center rounded-full shadow-lg"
+                                            onClick={() => setIsModalOpen(false)}
+                                        >
+                                            <IoMdClose fontSize={40} />
+                                        </button>
+                                        <h2 className="text-white text-[40px] font-bold text-center">Register</h2>
+                                        <input className="w-full px-5 h-[49px] my-4 border rounded bg-gray-800 border-[#0086EE] text-white" placeholder="Username" />
+                                        <input className="w-full px-5 h-[49px] my-4 border rounded bg-gray-800 border-[#0086EE] text-white" placeholder="Email Address" />
+                                        {/* Password Input */}
+                                        <div className="relative">
+                                            <input
+                                                className="w-full px-5 h-[49px] my-2 border rounded bg-gray-800 border-[#0086EE] text-white pr-10"
+                                                type={showPassword ? "text" : "password"}
+                                                placeholder="Password"
+                                            />
+                                            <button
+                                                type="button"
+                                                className="absolute top-[10%] right-4 text-gray-400"
+                                                onClick={() => setShowPassword(!showPassword)}
+                                            >
+                                                {showPassword ? <AiOutlineEyeInvisible size={24} /> : <AiOutlineEye size={24} />}
+                                            </button>
+                                        </div>
+
+                                        {/* Confirm Password Input */}
+                                        <div className="relative">
+                                            <input
+                                                className="w-full px-5 h-[49px] my-2 border rounded bg-gray-800 border-[#0086EE] text-white pr-10"
+                                                type={showConfirmPassword ? "text" : "password"}
+                                                placeholder="Confirm password"
+                                            />
+                                            <button
+                                                type="button"
+                                                className="absolute top-[10%] right-4 text-gray-400"
+                                                onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                                            >
+                                                {showConfirmPassword ? <AiOutlineEyeInvisible size={24} /> : <AiOutlineEye size={24} />}
+                                            </button>
+                                        </div>
+                                        <button className="w-full bg-white text-base font-semibold  drop-shadow-[0_5px_15px_rgba(0,112,244,0.8)] text-blue-600 p-2 mt-4 rounded">CONTINUE</button>
+                                        <p className="text-white text-center mt-2">
+                                            Have an account? <span className="text-blue-400 cursor-pointer">Sign In</span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        )}
 
                     </div>
 

@@ -8,9 +8,9 @@ import { TbMoneybag } from "react-icons/tb";
 import { FaClipboardList } from "react-icons/fa";
 import { IoClose, IoEye, IoEyeOff } from "react-icons/io5";
 import { LuLayoutDashboard } from "react-icons/lu";
-// import Request from "./request";
+import Request from "./request";
 import Orders from "./orders";
-// import Layout from "./layout";
+import Layout from "./layout";
 import { FaCamera } from "react-icons/fa";
 import Logouser from "../../assets/icons/userpanellog.svg"
 
@@ -198,7 +198,7 @@ const AdminDashboard = () => {
           {activePage === "layout" && <Layout />}
         </div>
 
-        <div className="absolute top-[400px] right-0 z-[1]">
+        <div className="absolute top-[300px] right-0 z-[1]">
           <img src={Logouser} alt="" />
         </div>
 

@@ -14,7 +14,7 @@ const Orders = () => {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <div className="p-20 relative z-50">
+        <div className="p-10 relative z-50">
             <h2 className="text-3xl font-semibold mb-11">Shopping Cart</h2>
 
             {/* Scrollable container */}

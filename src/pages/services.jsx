@@ -6,7 +6,9 @@ const services = () => {
     return (
         <>
         <Header />
+            <main className='mt-20'>
             <h1 className='text-white'>Services</h1>
+            </main>
             <Footer/>
         </>
     );

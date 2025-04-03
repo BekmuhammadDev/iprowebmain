@@ -6,7 +6,9 @@ const career = () => {
     return (
         <>
          <Header />
-            <h1 className='text-white'>career</h1>
+           <main className='mt-20'>
+           <h1 className='text-white'>career</h1>
+           </main>
             <Footer/>
 
         </>
