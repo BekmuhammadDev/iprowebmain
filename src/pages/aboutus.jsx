@@ -13,6 +13,8 @@ import { teamMembers } from '../mocks/mock';
 import { portfolioData } from '../mocks/mock';
 import { faqs } from '../mocks/mock';
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
+import StarsRightImg from "../assets/images/starsright.png"
+import StarsLeftImg from "../assets/images/starsleft.png"
 
 import ContactWithMap from '../components/ui/contactwithmap';
 
@@ -102,63 +104,48 @@ const aboutus = () => {
 
     return (
         <>
-            <section className="bg-gray-900 text-white md:px-10 py-16">
-                <div
-
-                    className="container mx-auto relative flex flex-col  md:flex-row justify-between "
-                >
+            <section className="text-white py-16">
+                <div className="container mx-auto md:max-w-none 2xl:max-w-none relative flex flex-col md:flex-row items-center justify-between px-5 md:px-10 lg:px-20">
                     {/* Text Content */}
-                    <div
-                        className={`text-center md:text-left md:w-1/2 px-5 top-[100px] `}
-                    >
-                        <p className="md:text-2xl text-lg font-medium">
+                    <div className="text-center md:text-left md:w-1/2 space-y-4">
+                        <p className="lg:text-2xl text-xl font-medium">
                             Premium Web Design Agency
                         </p>
-                        <h1 className="text-[#0086EE] text-[32px] md:text-7xl leading-[1.1] font-bold uppercase mt-4">
+                        <h1 className="text-[#0086EE] text-4xl lg:text-6xl  leading-tight font-bold uppercase">
                             Brands Growth
                         </h1>
-                        <p className="text-sm md:text-xl font-medium mt-4">
-                            Custom Websites, Mobile Apps, Branding & Digital{' '}
-                            <br className="hidden md:block" />
+                        <p className="text-sm lg:text-xl font-medium">
+                            Custom Websites, Mobile Apps, Branding & Digital <br className="hidden md:block" />
                             Marketing, other services
                         </p>
-                        <button className="w-full md:w-[317px] h-[56px] md:h-[60px] bg-white text-[#0086EE] text-xl md:text-2xl font-bold uppercase mt-9 md:rounded-lg shadow-lg drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]">
+                        <button className="w-full sm:w-[250px] md:w-[250px] lg:w-[320px] h-[50px] md:h-[56px] bg-white text-[#0086EE] text-lg md:text-xl font-bold uppercase mt-6 md:mt-9 rounded-lg shadow-lg drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]">
                             Speak with Expert
                         </button>
                     </div>
 
                     {/* Video Content */}
-                    <div>
-                        <video
-                            className="w-[800px]"
-                            controls
-                            autoPlay
-                            loop>
+                    <div className="w-full md:w-1/2 flex justify-center mt-10 md:mt-0">
+                        <video className="w-full max-w-[500px] sm:max-w-[600px] md:max-w-[700px] lg:max-w-[800px] rounded-lg shadow-lg" controls autoPlay loop>
                             <source src={Video} type="video/mp4" />
                             Your browser does not support the video tag.
                         </video>
                     </div>
                 </div>
 
-                <div className=' hidden md:block fixed px-3 z-50 rounded-sm right-0 cursor-pointer top-80 bg-white text-blue-600 w-[190px] h-[70px] drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]'>
-                    <h1 className=' text-center text-2xl font-extrabold'>Got a project?</h1>
-                    <p className='text-xl font-bold flex items-center'>Request quote <MdKeyboardDoubleArrowRight color='' /></p>
-                </div>
-
             </section>
 
-            <section className="bg-[#16182B] md:py-20">
+            <section className="bg-[##16182B] md:py-20">
                 <div className=" md:mb-24">
                     <Logomarqee />
                 </div>
 
-                <div className="container mx-auto flex flex-col-reverse md:flex-row items-center justify-between gap-10">
+                <div className="container mx-auto md:max-w-none  2xl:max-w-none flex flex-col-reverse md:flex-row items-center justify-between gap-10 px-5 md:px-10 lg:px-20">
                     {/* Matn qismi */}
-                    <div className="w-full md:w-1/2 md:px-10 text-center md:text-left mt-6 md:mt-0">
-                        <h1 className="text-white font-black text-4xl md:text-[128px] leading-[1.1] drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]">
+                    <div className="w-full md:w-1/2 text-center md:text-left mt-6 md:mt-0 space-y-4">
+                        <h1 className="text-white font-black text-3xl sm:text-5xl md:text-[65px] xl:text-[128px] leading-tight drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]">
                             WHO ARE <br className="hidden md:flex" /> WE?
                         </h1>
-                        <p className="text-white font-normal text-base md:text-xl mt-4">
+                        <p className="text-white font-normal text-sm sm:text-base md:text-sm lg:text-xl">
                             iPro is a web design company & digital marketing agency focused on
                             growing brands online. We create effective brand strategies,
                             custom web design, development, and digital marketing solutions to
@@ -167,26 +154,24 @@ const aboutus = () => {
                     </div>
 
                     {/* Rasm qismi */}
-                    <div className="w-full md:w-1/2 h-auto md:h-[413px] mt-6 md:mt-0 px-8 flex justify-center">
+                    <div className="w-full mt-20 md:mt-0 md:w-1/2 flex justify-center">
                         <img
                             src={Logocloud}
                             alt="Logo Cloud"
-                            className="w-full max-w-xs md:max-w-full h-auto md:h-auto object-contain md:object-cover"
+                            className="w-full max-w-[300px] sm:max-w-[400px] xl:max-w-[500px] lg:max-w-[600px] h-auto object-contain md:object-cover"
                         />
                     </div>
-
-
                 </div>
 
-                <div className=" container mx-auto flex flex-col md:flex-row items-center px-10  justify-start  gap-6 mt-16 md:mt-24 mb-16 md:mb-24">
+                <div className="container mx-auto sm:max-w-none flex flex-col md:flex-row items-center px-5 md:px-10 lg:px-20 justify-start gap-6 mt-16 md:mt-24 mb-16 md:mb-24">
                     <video
-                        className="w-full max-w-xs md:max-w-sm lg:w-[265px] rounded-lg shadow-lg"
+                        className="w-full max-w-[250px] sm:max-w-[300px] md:max-w-[350px] lg:w-[265px] rounded-lg shadow-lg"
                         controls
                         src={Video}
                         autoPlay
                         loop
                     />
-                    <h1 className="text-white font-bold  text-2xl md:text-3xl text-center md:text-left">
+                    <h1 className="text-white font-bold text-xl sm:text-2xl md:text-3xl text-center md:text-left">
                         See Our Company
                     </h1>
                 </div>
@@ -196,66 +181,77 @@ const aboutus = () => {
                 </div>
             </section>
 
-            <section className="bg-[#16182B]">
-                <div className="container mx-auto">
+            <section>
+                <div className="container mx-auto md:max-w-none 2xl:max-w-none">
                     <TestimonialSlider />
                 </div>
             </section>
 
-            <section>
-                <div className="container mx-auto ">
-                    <h1 className="text-white md:text-[128px] text-[48px] font-black ml-5 leading-[1.1] text-center md:text-left drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]">
+            <section className='bg-[##16182B]'>
+                <div className="container mx-auto sm:max-w-none ">
+                    <h1 className="text-white xl:text-[128px] sm:mb-20 text-[48px] font-black ml-5 leading-[1.1] text-center md:text-left drop-shadow-[0_5px_10px_rgba(0,112,244,0.8)]">
                         MEET THE TEAM
                     </h1>
+                    <div className='relative hidden xl:flex -bottom-[700px]'>
+                        <img className=' absolute right-0' src={StarsRightImg} alt="" />
+                    </div>
 
-                    <div className="md:flex md:px-10 items-center justify-between gap-48 ml-5">
-
-                        <div className="relative top-72 md:top-0 backdrop-blur-lg bg-transparent">
-                            <h1 className="text-white text-base text-center md:text-left md:text-2xl font-semibold uppercase">
+                    <div className="flex xl:px-10 px-5 flex-col md:flex-row items-center gap-10 justify-between xl:ml-5">
+                        {/* Matn qismi */}
+                        <div className="w-full md:w-1/2 relative top-80 z-40 md:top-0  backdrop-blur-lg bg-transparent px-5 sm:px-10">
+                            <h1 className="text-white text-base text-center sm:text-left lg:text-2xl font-semibold uppercase">
                                 {activeMember.role}
                             </h1>
-                            <h1 className="text-white text-[40px] md:text-[96px] text-center md:text-left font-black uppercase drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]">
+                            <h1 className="text-white text-[32px] sm:text-[40px] lg:text-[96px] text-center sm:text-left font-black uppercase drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]">
                                 {activeMember.name}
                             </h1>
-                            <h1 className="text-white text-xs md:text-xl text-center md:text-left font-semibold uppercase">
+                            <h1 className="text-white text-xs sm:text-sm lg:text-2xl text-center sm:text-left font-semibold uppercase">
                                 {activeMember.description}
                             </h1>
-                            <div className="flex items-center gap-5 md:gap-12 mt-5 md:mt-36">
-                                <div className="flex gap-2 md:gap-5 items-center">
-                                    <h1 className="md:text-xl text-base uppercase font-semibold text-white">
-                                        Projects:
-                                    </h1>
-                                    <h2 className="md:text-5xl text-4xl text-white font-semibold drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]">
+
+                            {/* Stats */}
+                            <div className="flex justify-center sm:justify-start gap-5 mt-5 md:mt-36">
+                                <div className="flex gap-3 sm:gap-5 items-center">
+                                    <h1 className="md:text-xl text-base uppercase font-semibold text-white">Projects:</h1>
+                                    <h2 className="text-3xl md:text-5xl text-white font-semibold drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]">
                                         {activeMember.projects}
                                     </h2>
                                 </div>
-                                <div className="flex gap-2 md:gap-5 items-center">
-                                    <h1 className="md:text-xl text-base uppercase font-semibold text-white">
-                                        Experience:
-                                    </h1>
-                                    <h2 className="md:text-5xl text-4xl text-white font-semibold drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]">
+                                <div className="flex gap-3 sm:gap-5 items-center">
+                                    <h1 className="md:text-xl text-base uppercase font-semibold text-white">Experience:</h1>
+                                    <h2 className="text-3xl md:text-5xl text-white font-semibold drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]">
                                         {activeMember.experience}
                                     </h2>
                                 </div>
                             </div>
-
                         </div>
 
-                        <div className="relative -top-16 md:top-32 w-full h-auto">
-                            <div className="absolute inset-0 -top-14 w-[400px] -z-10 md:w-[700px] h-[355px] md:h-auto">
-                                <img
-                                    src={CardBg}
-                                    alt="Background"
-                                />
-                            </div>
-                            <div className="relative -z-10 w-[400px] h-[380px] md:-right-40 md:h-auto  flex justify-center bottom-24">
-                                <img
-                                    src={activeMember.workerImg}
-                                    alt="Worker"
-                                />
+
+                        {/* Rasm qismi */}
+                        <div className="w-full -top-48 md:top-0 px-5 md:w-1/2 relative flex justify-center">
+                            {/* Background Image */}
+                            <div className="relative">
+                                <img src={CardBg} alt="Background" className="w-full h-full object-cover" />
+
+                                {/* Worker Image */}
+                                <div className="absolute md:z-50 inset-0 flex items-center justify-center">
+                                    <img
+                                        src={activeMember.workerImg}
+                                        alt="Worker"
+                                        className="w-auto h-full object-cover"
+                                    />
+                                </div>
                             </div>
                         </div>
+
+
+
+
+
                     </div>
+
+
+
                     <div className="relative backdrop-blur-lg bg-transparent overflow-hidden w-full flex justify-center">
                         <div className="carousel-container flex w-max gap-6">
                             {[...teamMembers, ...teamMembers, ...teamMembers].map((member, index) => (
@@ -305,7 +301,7 @@ const aboutus = () => {
                 </div>
             </section>
 
-            <section className="bg-[#0b0f19] text-white px-10 pt-[81px] pb-[74px]">
+            <section className=" text-white px-10 pt-[81px] pb-[74px]">
                 <div className="container mx-auto">
                     <h1 className="text-[48px] md:text-[128px] mb-10 md:mb-0 font-black text-center drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]">
                         Portfolio
@@ -339,7 +335,10 @@ const aboutus = () => {
                 </div>
             </section>
 
-            <section className="bg-[#0b0f19] pt-10 px-10  md:pt-72">
+            <section className=" pt-10 px-10  md:pt-72">
+                <div className='relative top-[600px]'>
+                    <img className='absolute' src={StarsLeftImg} alt="" />
+                </div>
                 <div className="container mx-auto">
                     <h1 className="text-white font-black text-5xl text-center md:text-left md:text-[128px] drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]">
                         SERVICES
@@ -367,15 +366,18 @@ const aboutus = () => {
                 </div>
             </section>
 
-            <section className="bg-[#0b0f19] md:px-10 pt-[211px] mb-20">
+            <section className=" md:px-10 pt-[211px] mb-20">
+                <div className='relative -z-10 top-[800px]'>
+                    <img className='absolute bottom-0 -right-10' src={StarsRightImg} alt="" />
+                </div>
                 <div className="container mx-auto">
                     <h1 className=" text-5xl text-center md:text-left md:text-[128px] font-black leading-[0.95] mb-10 text-white drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]">
                         HAVE A <br /> QUESTION?
                     </h1>
 
-                    <div className="flex flex-col md:flex-row items-start justify-between gap-10 p-4 md:p-5">
+                    <div className="flex  flex-col lg:flex-row items-start justify-between gap-10 p-4 md:p-5">
                         {/* Chap tomonda - FAQ */}
-                        <div className="bg-[#0b0f19] flex flex-col mt-24 w-full md:w-1/2">
+                        <div className="bg-[#0b0f19] flex flex-col  mt-24 w-full lg:w-1/2">
                             <div className="w-full max-w-2xl">
                                 {faqs.map((faq, index) => (
                                     <div key={index} className="mb-3">
@@ -404,7 +406,7 @@ const aboutus = () => {
                         </div>
 
                         {/* O'ng tomonda - ContactWithMap */}
-                        <div className="relative md:top-24 -top-32 w-full md:w-1/2">
+                        <div className="relative md:top-24 flex md:justify-center -top-32 w-full xl:w-1/2">
                             <ContactWithMap />
                         </div>
                     </div>

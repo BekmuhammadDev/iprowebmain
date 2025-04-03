@@ -36,10 +36,25 @@ const Header = () => {
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
+    useEffect(() => {
+        if (menuOpen) {
+            document.body.style.overflow = "hidden"; // Skrollni bloklash
+        } else {
+            document.body.style.overflow = "auto"; // Skrollni tiklash
+        }
+
+        return () => {
+            document.body.style.overflow = "auto"; // Komponent unmount bo‘lganda tiklash
+        };
+    }, [menuOpen]);
+
+
+
+
     return (
-        <header className={`w-full py-4 fixed px-10 top-0 h-20 z-50 text-white flex transition-all duration-300 bg-[#0A0F1F]
+        <header className={`w-full py-4 fixed  top-0 h-20 z-50 text-white flex transition-all duration-300 bg-[#0A0F1F]
             ${isScrolled ? "backdrop-blur-lg bg-transparent" : "bg-transparent"}`}>
-            <nav className='flex container mx-auto py-5 justify-between items-center'>
+            <nav className='flex container mx-auto md:max-w-none xl:max-w-none px-10  py-5 justify-between items-center'>
 
                 {/* Logo */}
                 <NavLink to="/">
@@ -47,7 +62,7 @@ const Header = () => {
                 </NavLink>
 
                 {/* Desktop Navbar */}
-                <ul className='hidden md:flex gap-10'>
+                <ul className='hidden lg:flex gap-10'>
                     {[
                         { name: "About Us", path: "/" },
                         { name: "Team", path: "/team" },
@@ -125,7 +140,7 @@ const Header = () => {
                     </div>
 
                     {/* Other Icons */}
-                    <button onClick={() => setMenuOpen(!menuOpen)} className="md:hidden text-white text-3xl">
+                    <button onClick={() => setMenuOpen(!menuOpen)} className="lg:hidden text-white text-3xl">
                         {menuOpen ? <IoClose /> : <CgMenuRightAlt />}
                     </button>
                 </div>
@@ -133,10 +148,17 @@ const Header = () => {
             </nav>
 
             {/* Fullscreen Mobile Menu */}
-            <div className={`fixed inset-0 bg-gray-900/80 backdrop-blur-lg h-full text-white flex flex-col transition-transform duration-300 ${menuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+            <div
+                className={`fixed w-full sm:w-96 sm:right-0 bg-gray-900/80 backdrop-blur-lg h-full text-white flex flex-col 
+                    transition-transform duration-300 ${menuOpen ? "translate-x-0" : "translate-x-full"} ${isScrolled ? "backdrop-blur-lg bg-transparent" : "bg-transparent"}`}
+            >
                 <div className="flex justify-between items-center p-5">
                     <div className="items-center gap-3">
-                        <img src={profileicon} alt="Profile" className="w-[110px] h-[110px] rounded-full border-2 border-gray-500" />
+                        <img
+                            src={profileicon}
+                            alt="Profile"
+                            className="w-[110px] h-[110px] rounded-full border-2 border-gray-500"
+                        />
                         <h2 className="text-xl font-bold mt-4">Jane Robertson</h2>
                     </div>
 
@@ -170,9 +192,9 @@ const Header = () => {
                         </NavLink>
                     ))}
                 </ul>
-            </div>
+            </div>;
 
-            
+
         </header>
     );
 };
