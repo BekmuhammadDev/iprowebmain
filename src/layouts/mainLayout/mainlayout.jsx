@@ -6,12 +6,10 @@ import Marquee from "../../components/ui/marque";
 const MainLayout = () => {
     return (
         <div>
-            <Header />
             <main className="mt-20">
                 <Outlet />  {/* Bu joyga sahifalar yuklanadi */}
             </main>
             <Marquee/>
-            <Footer />
         </div>
     );
 };

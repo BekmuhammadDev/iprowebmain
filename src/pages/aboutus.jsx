@@ -17,6 +17,8 @@ import StarsRightImg from "../assets/images/starsright.png"
 import StarsLeftImg from "../assets/images/starsleft.png"
 
 import ContactWithMap from '../components/ui/contactwithmap';
+import Header from '../components/layouts/header';
+import Footer from '../components/layouts/footer';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -104,6 +106,7 @@ const aboutus = () => {
 
     return (
         <>
+          <Header />
             <section className="text-white py-16">
                 <div className="container mx-auto md:max-w-none 2xl:max-w-none relative flex flex-col md:flex-row items-center justify-between px-5 md:px-10 lg:px-20">
                     {/* Text Content */}
@@ -198,7 +201,7 @@ const aboutus = () => {
 
                     <div className="flex xl:px-10 px-5 flex-col md:flex-row items-center gap-10 justify-between xl:ml-5">
                         {/* Matn qismi */}
-                        <div className="w-full md:w-1/2 relative top-80 z-40 md:top-0  backdrop-blur-lg bg-transparent px-5 sm:px-10">
+                        <div className="w-full md:w-1/2 relative top-60 sm:top-[500px] z-40 sm:-z-10  md:top-0  backdrop-blur-lg bg-transparent px-5 sm:px-10">
                             <h1 className="text-white text-base text-center sm:text-left lg:text-2xl font-semibold uppercase">
                                 {activeMember.role}
                             </h1>
@@ -234,7 +237,7 @@ const aboutus = () => {
                                 <img src={CardBg} alt="Background" className="w-full h-full object-cover" />
 
                                 {/* Worker Image */}
-                                <div className="absolute md:z-50 inset-0 flex items-center justify-center">
+                                <div className="absolute md:z-30 inset-0 flex items-center justify-center">
                                     <img
                                         src={activeMember.workerImg}
                                         alt="Worker"
@@ -252,7 +255,7 @@ const aboutus = () => {
 
 
 
-                    <div className="relative backdrop-blur-lg bg-transparent overflow-hidden w-full flex justify-center">
+                    <div className="relative top-10 sm:-top-20 z-30 backdrop-blur-lg bg-transparent overflow-hidden w-full flex justify-center">
                         <div className="carousel-container flex w-max gap-6">
                             {[...teamMembers, ...teamMembers, ...teamMembers].map((member, index) => (
                                 <div
@@ -294,9 +297,6 @@ const aboutus = () => {
         }
       `}</style>
                     </div>
-
-
-
 
                 </div>
             </section>
@@ -368,7 +368,7 @@ const aboutus = () => {
 
             <section className=" md:px-10 pt-[211px] mb-20">
                 <div className='relative -z-10 top-[800px]'>
-                    <img className='absolute bottom-0 -right-10' src={StarsRightImg} alt="" />
+                    <img className='absolute hidden md:flex bottom-0 -right-10' src={StarsRightImg} alt="" />
                 </div>
                 <div className="container mx-auto">
                     <h1 className=" text-5xl text-center md:text-left md:text-[128px] font-black leading-[0.95] mb-10 text-white drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]">
@@ -406,12 +406,14 @@ const aboutus = () => {
                         </div>
 
                         {/* O'ng tomonda - ContactWithMap */}
-                        <div className="relative md:top-24 flex md:justify-center -top-32 w-full xl:w-1/2">
+                        <div className="relative md:top-24 flex md:justify-center  w-full xl:w-1/2">
                             <ContactWithMap />
                         </div>
                     </div>
                 </div>
             </section>
+            <Footer />
+
         </>
     );
 };

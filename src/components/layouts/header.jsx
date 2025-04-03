@@ -176,7 +176,7 @@ const Header = () => {
                         { name: "Services", icon: <FaTasks />, path: "/services" },
                         { name: "Careers", icon: <FaBriefcase />, path: "/careers" },
                         { name: "Orders", icon: <FaShoppingBag />, path: "/orders" },
-                        { name: "My Orders", icon: <FaListAlt />, path: "/myorders" },
+                        { name: "My Orders", icon: <FaListAlt />, path: "/user" },
                     ].map((item, index) => (
                         <NavLink
                             key={index}

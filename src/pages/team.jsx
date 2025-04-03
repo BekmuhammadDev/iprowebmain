@@ -7,6 +7,8 @@ import { motion } from "framer-motion";
 import CardBg from '../assets/images/cardbg.png';
 import WorkersImg from '../assets/images/workersimg.png';
 import { FaReact, FaNodeJs, FaHtml5, FaCss3Alt, FaJs } from 'react-icons/fa';
+import Header from '../components/layouts/header';
+import Footer from '../components/layouts/footer';
 
 const teamMembers = [
     {
@@ -86,6 +88,7 @@ const team = () => {
 
     return (
         <main>
+             <Header />
 
             <section>
                 <div className="container mx-auto ">
@@ -304,6 +307,8 @@ const team = () => {
                     </div>
                 </div>
             </section>
+
+            <Footer/>
 
         </main>
     );
