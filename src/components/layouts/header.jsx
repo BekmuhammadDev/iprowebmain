@@ -11,6 +11,7 @@ import IproRegisterLogo from "../../assets/images/iproLogoRegister.png"
 import profileicon from "../../assets/images/profileicon.png"
 import { IoMdClose } from "react-icons/io";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
+import { FcGoogle } from "react-icons/fc";
 
 const Header = () => {
     const [menuOpen, setMenuOpen] = useState(null);
@@ -18,6 +19,8 @@ const Header = () => {
     const [isScrolled, setIsScrolled] = useState(false);
     const [openDropdown, setOpenDropdown] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isSignInModalOpen, setIsSignInModalOpen] = useState(false);
+
 
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -55,10 +58,88 @@ const Header = () => {
         };
     }, [menuOpen]);
 
+    // //////////////////////////////////////
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
+    const [email, setEmail] = useState('');
+    const [error, setError] = useState('');
+
+
+    const handleRegister = async () => {
+        if (!username || !email || !password || !confirmPassword) {
+            setError('Please fill in all fields!');
+            return;
+        }
+
+        if (password !== confirmPassword) {
+            setError('Passwords do not match!');
+            return;
+        }
+
+        try {
+            const response = await fetch("http://192.168.0.105:8089/auth/registe", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    username,
+                    email,
+                    password
+                })
+            });
+
+            console.log('Response status:', response.status);
+            console.log('Response headers:', response.headers);
+
+            if (!response.ok) {
+                throw new Error("Registration failed: " + response.status);
+            }
+
+            const data = await response.json();
+            console.log("Backenddan javob:", data);
+
+            // localStorage ga token saqlash (agar backend token yuborsa)
+            // localStorage.setItem("token", data.token);
+
+            // Forma tozalash
+            setUsername('');
+            setEmail('');
+            setPassword('');
+            setConfirmPassword('');
+            setError('');
+
+            // Modalni yopish
+            setIsModalOpen(false);
+            alert("Ro‘yxatdan o‘tish muvaffaqiyatli!");
+
+        } catch (err) {
+            console.error("Xatolik:", err);
+            setError("Ro‘yxatdan o‘tishda xatolik: " + err.message);
+        }
+    };
+
+
+    const handleSignIn = async () => {
+        try {
+            const userData = { username, password };
+            const result = await signIn(userData);
+            // Response'dan tokenni saqlash
+            localStorage.setItem("authToken", result.token);
+            // Successdan keyin sahifani yangilash yoki boshqa amalni bajarish
+            console.log('User signed in successfully:', result);
+        } catch (err) {
+            setError('Invalid credentials or server error.');
+        }
+    };
+    //////////////////////////////////////////
+
+    // /////////////////////  header blur  ///////////////////////////////////////
+    // ${isScrolled ? "backdrop-blur-lg bg-transparent" : "bg-transparent"}
 
     return (
-        <header className={`w-full py-4 fixed top-0 h-20 z-50 text-white flex transition-all duration-300 bg-[#0A0F1F]
-            ${isScrolled ? "backdrop-blur-lg bg-transparent" : "bg-transparent"}`}>
+        <header className={`w-full py-4 fixed top-0 h-20 z-50 text-white flex transition-all duration-300 bg-[#0A0F1F]`}>
             <nav className='flex container mx-auto md:max-w-none xl:max-w-none px-10  py-5 justify-between items-center'>
 
                 {/* Logo */}
@@ -69,7 +150,8 @@ const Header = () => {
                 {/* Desktop Navbar */}
                 <ul className='hidden lg:flex gap-10'>
                     {[
-                        { name: "About Us", path: "/" },
+                        { name: "", path: "/" },
+                        { name: "About Us", path: "/aboutus" },
                         { name: "Team", path: "/team" },
                         { name: "Portfolio", path: "/portfolio" },
                         { name: "Services", path: "/services" },
@@ -139,7 +221,9 @@ const Header = () => {
                                         <button
                                             onClick={() => {
                                                 setOpenDropdown(null);
+                                                setIsSignInModalOpen(true);
                                             }}
+
                                             className="block w-full mb-3 text-center bg-white text-blue-600 font-bold border-b-2 px-5"
                                         >
                                             Sign In
@@ -157,14 +241,93 @@ const Header = () => {
                                 </div>
                             )}
                         </div>
-                        
 
-                        {/* Modal */}
+                        {/* Modal Sign In */}
+                        {isSignInModalOpen && (
+                            <div className="fixed inset-0 flex items-center px-5 justify-center bg-black bg-opacity-90 z-50">
+                                <div className="flex rounded-md justify-between bg-[#16182B] items-center sm:px-20">
+                                    <div className="hidden md:flex">
+                                        <img src={IproRegisterLogo} alt="" />
+                                    </div>
+                                    <div className="p-6 rounded-lg w-full sm:w-[400px] relative">
+                                        <button
+                                            className="absolute -top-14 -right-5 text-white w-8 h-8 flex items-center justify-center rounded-full shadow-lg"
+                                            onClick={() => setIsSignInModalOpen(false)}
+                                        >
+                                            <IoMdClose fontSize={40} />
+                                        </button>
+                                        <h2 className="text-white text-[40px] font-bold text-center">Sign In</h2>
+
+                                        <input
+                                            className="w-full px-5 h-[49px] my-4 border rounded bg-gray-800 border-[#0086EE] text-white"
+                                            placeholder="Username"
+                                            value={username}
+                                            onChange={(e) => setUsername(e.target.value)}
+                                        />
+                                        <div className="relative">
+                                            <input
+                                                className="w-full px-5 h-[49px] my-2 border rounded bg-gray-800 border-[#0086EE] text-white pr-10"
+                                                type={showPassword ? "text" : "password"}
+                                                placeholder="Password"
+                                                value={password}
+                                                onChange={(e) => setPassword(e.target.value)}
+                                            />
+                                            <button
+                                                type="button"
+                                                className="absolute top-[10%] right-4 text-gray-400"
+                                                onClick={() => setShowPassword(!showPassword)}
+                                            >
+                                                {showPassword ? <AiOutlineEyeInvisible size={24} /> : <AiOutlineEye size={24} />}
+                                            </button>
+                                        </div>
+
+                                        {/* Forgot Password Link */}
+                                        <div className="text-right text-sm text-blue-400 cursor-pointer mb-4 hover:underline">
+                                            Forgot password?
+                                        </div>
+
+                                        {/* Continue Button */}
+                                        <button className="w-full bg-white text-base font-semibold drop-shadow-[0_5px_15px_rgba(0,112,244,0.8)] text-blue-600 p-2 rounded"
+                                            onClick={handleSignIn}
+                                        >
+                                            CONTINUE
+                                        </button>
+
+                                        {/* Divider with Or */}
+                                        <div className="flex items-center gap-2 my-4">
+                                            <div className="flex-grow h-[1px] bg-gray-600" />
+                                            <span className="text-white text-sm">Or, continue with</span>
+                                            <div className="flex-grow h-[1px] bg-gray-600" />
+                                        </div>
+
+                                        {/* Google Sign In */}
+                                        <button className="w-full flex items-center justify-center gap-2 border text-white border-gray-600 rounded p-2">
+                                            <FcGoogle size={20} /> Continue with Google
+                                        </button>
+
+                                        <p className="text-white text-center mt-2">
+                                            New to iPro?{" "}
+                                            <span
+                                                className="text-blue-400 cursor-pointer"
+                                                onClick={() => {
+                                                    setIsSignInModalOpen(false);
+                                                    setIsModalOpen(true); // Open Register modal
+                                                }}
+                                            >
+                                                Create an account
+                                            </span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        )}
+
+                        {/* Modal register */}
                         {isModalOpen && (
                             <div className="fixed inset-0 flex items-center px-5 justify-center bg-black bg-opacity-90">
                                 <div className='flex rounded-md justify-between bg-[#16182B] items-center sm:px-20'>
                                     <div className='hidden md:flex'>
-                                        <img src={IproRegisterLogo} alt="" />
+                                        <img src={IproRegisterLogo} alt="Register Logo" />
                                     </div>
                                     <div className=" p-6 rounded-lg w-full sm:w-[400px] relative">
 
@@ -175,14 +338,28 @@ const Header = () => {
                                             <IoMdClose fontSize={40} />
                                         </button>
                                         <h2 className="text-white text-[40px] font-bold text-center">Register</h2>
-                                        <input className="w-full px-5 h-[49px] my-4 border rounded bg-gray-800 border-[#0086EE] text-white" placeholder="Username" />
-                                        <input className="w-full px-5 h-[49px] my-4 border rounded bg-gray-800 border-[#0086EE] text-white" placeholder="Email Address" />
+                                        {error && <p className="text-red-500 text-center">{error}</p>}
+                                        <input
+                                            className="w-full px-5 h-[49px] my-4 border rounded bg-gray-800 border-[#0086EE] text-white"
+                                            placeholder="Username"
+                                            value={username}
+                                            onChange={(e) => setUsername(e.target.value)}
+                                        />
+                                        <input
+                                            className="w-full px-5 h-[49px] my-4 border rounded bg-gray-800 border-[#0086EE] text-white"
+                                            placeholder="Email Address"
+                                            type="email"
+                                            value={email}
+                                            onChange={(e) => setEmail(e.target.value)}
+                                        />
                                         {/* Password Input */}
                                         <div className="relative">
                                             <input
                                                 className="w-full px-5 h-[49px] my-2 border rounded bg-gray-800 border-[#0086EE] text-white pr-10"
                                                 type={showPassword ? "text" : "password"}
                                                 placeholder="Password"
+                                                value={password}
+                                                onChange={(e) => setPassword(e.target.value)}
                                             />
                                             <button
                                                 type="button"
@@ -199,6 +376,8 @@ const Header = () => {
                                                 className="w-full px-5 h-[49px] my-2 border rounded bg-gray-800 border-[#0086EE] text-white pr-10"
                                                 type={showConfirmPassword ? "text" : "password"}
                                                 placeholder="Confirm password"
+                                                value={confirmPassword}
+                                                onChange={(e) => setConfirmPassword(e.target.value)}
                                             />
                                             <button
                                                 type="button"
@@ -208,7 +387,13 @@ const Header = () => {
                                                 {showConfirmPassword ? <AiOutlineEyeInvisible size={24} /> : <AiOutlineEye size={24} />}
                                             </button>
                                         </div>
-                                        <button className="w-full bg-white text-base font-semibold  drop-shadow-[0_5px_15px_rgba(0,112,244,0.8)] text-blue-600 p-2 mt-4 rounded">CONTINUE</button>
+
+                                        <button
+                                            className="w-full bg-white text-base font-semibold drop-shadow-[0_5px_15px_rgba(0,112,244,0.8)] text-blue-600 p-2 mt-4 rounded"
+                                            onClick={handleRegister}
+                                        >
+                                            CONTINUE
+                                        </button>
                                         <p className="text-white text-center mt-2">
                                             Have an account? <span className="text-blue-400 cursor-pointer">Sign In</span>
                                         </p>
