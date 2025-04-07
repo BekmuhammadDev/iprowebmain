@@ -10,13 +10,13 @@ const Footer = () => {
                 <div className="flex flex-wrap md:flex-row justify-between items-start gap-10 md:gap-0">
 
                     {/* Logo & Copyright */}
-                    <div className="flex flex-col items-start w-auto md:border-r-2 md:pr-10">
+                    <div className="flex flex-col items-start w-auto ">
                         <img src={Logo} alt="iPro Logo" className="w-[173px] h-12 mb-5" />
                         <p className="text-[20px] font-normal">© 2020-2025 «iPro»</p>
                     </div>
 
                     {/* Contacts */}
-                    <div className="text-left w-auto md:border-r-2 md:pr-10">
+                    <div className="text-left w-auto md:border-l-2 md:pl-20">
                         <h3 className="text-2xl font-bold">Contacts</h3>
                         <p className="text-[20px] font-normal mt-2">Google map</p>
                         <p className="text-[20px] font-normal">Yandex map</p>
@@ -24,7 +24,7 @@ const Footer = () => {
                     </div>
 
                     {/* Links */}
-                    <div className="text-left w-auto md:border-r-2 md:pr-10">
+                    <div className="text-left w-auto md:border-r-2 md:pr-20">
                         <h3 className="text-2xl font-semibold">Links</h3>
                         <p className="text-[20px] font-normal mt-2">About Us</p>
                         <p className="text-[20px] font-normal">Services</p>
