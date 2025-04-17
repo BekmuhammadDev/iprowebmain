@@ -183,81 +183,142 @@ const team = () => {
 
                         </div>
 
-                        <div className="relative backdrop-blur-lg bg-transparent overflow-hidden w-full flex flex-col gap-10 justify-center">
-                            <div
-                                className="carousel-container flex w-max gap-6 transition-transform duration-1000 ease-in-out"
-                            >
-                                {[...teamMembers, ...teamMembers].map((member, index) => (
-                                    <div
-                                        key={index}
-                                        className="relative group w-48 h-72 overflow-hidden border-2 border-blue-500 transition-all duration-300 rounded-lg shadow-md cursor-pointer hover:shadow-[0_0_25px_10px_rgba(0,122,255,0.6)]  group bg-[#0A0F1F]"
-                                        onClick={() => handleMemberClick(member)} // Update active member
-                                    >
-                                        <img
-                                            src={member.img}
-                                            alt={member.name}
-                                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 cursor-pointer"
-                                        />
-                                        <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-70 p-3 text-white text-center font-bold">
-                                            {member.name}
+                        <div className="relative top-20 sm:-top-10 z-30 backdrop-blur-lg bg-transparent overflow-hidden w-full flex justify-center">
+                            <div className="carousel-track">
+                                <div className="carousel-inner">
+                                    {[...teamMembers, ...teamMembers, ...teamMembers].map((member, index) => (
+                                        <div
+                                            key={index}
+                                            className="carousel-card"
+                                            onClick={() => handleMemberClick(member)}
+                                        >
+                                            <img
+                                                src={member.img}
+                                                alt={member.name}
+                                                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 cursor-pointer"
+                                            />
+                                            <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-70 p-3 text-white text-center font-bold">
+                                                {member.name}
+                                            </div>
                                         </div>
-                                    </div>
-                                ))}
+                                    ))}
+                                </div>
                             </div>
-                            {/* pastagi o'ng tarafagaa harakatlansin */}
 
-                            <div
-                                className="carousel-container flex w-max gap-6 transition-transform duration-1000 ease-in-out"
-                            >
-                                {[...teamMembers, ...teamMembers].map((member, index) => (
-                                    <div
-                                        key={index}
-                                        className="relative group w-48 h-72 overflow-hidden border-2 border-blue-500 transition-all duration-300 rounded-lg shadow-md cursor-pointer hover:shadow-[0_0_25px_10px_rgba(0,122,255,0.6)]  group bg-[#0A0F1F]"
-                                        onClick={() => handleMemberClick(member)} // Update active member
-                                    >
-                                        <img
-                                            src={member.img}
-                                            alt={member.name}
-                                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 cursor-pointer"
-                                        />
-                                        <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-70 p-3 text-white text-center font-bold">
-                                            {member.name}
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
+                            <style jsx>{`
+                          .carousel-track {
+                            overflow: hidden;
+                            width: 100%;
+                          }
+                      
+                          .carousel-inner {
+                            display: flex;
+                            width: max-content;
+                            gap: 1.5rem; /* equivalent to Tailwind's gap-6 */
+                            animation: scroll 30s linear infinite;
+                            will-change: transform;
+                          }
+                      
+                          .carousel-track:hover .carousel-inner {
+                            animation-play-state: paused;
+                          }
+                      
+                          .carousel-card {
+                            position: relative;
+                            width: 12rem; /* w-48 */
+                            height: 18rem; /* h-72 */
+                            border: 2px solid #3b82f6; /* blue-500 */
+                            border-radius: 0.5rem;
+                            overflow: hidden;
+                            box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+                            background-color: #0A0F1F;
+                            cursor: pointer;
+                            transition: all 0.3s;
+                          }
+                      
+                          .carousel-card:hover {
+                            box-shadow: 0 0 25px 10px rgba(0, 122, 255, 0.6);
+                          }
+                      
+                          @keyframes scroll {
+                            0% {
+                              transform: translateX(0);
+                            }
+                            100% {
+                              transform: translateX(-33.33%);
+                            }
+                          }
+                        `}</style>
                         </div>
-                        <style jsx>{`
-  .carousel-container {
-    animation: carousel-left 90s linear infinite;
-  }
 
-  .carousel-container:nth-of-type(2) {
-    animation: carousel-right 90s linear infinite;
-  }
+                        <div className="relative top-40 sm:-top-0 z-30 backdrop-blur-lg bg-transparent overflow-hidden w-full flex justify-center">
+                            <div className="carousel-track">
+                                <div className="carousel-inner">
+                                    {[...teamMembers, ...teamMembers, ...teamMembers].map((member, index) => (
+                                        <div
+                                            key={index}
+                                            className="carousel-card"
+                                            onClick={() => handleMemberClick(member)}
+                                        >
+                                            <img
+                                                src={member.img}
+                                                alt={member.name}
+                                                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 cursor-pointer"
+                                            />
+                                            <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-70 p-3 text-white text-center font-bold">
+                                                {member.name}
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
 
-  .carousel-container:hover {
-    animation-play-state: paused;
-  }
+                            <style jsx>{`
+                          .carousel-track {
+                            overflow: hidden;
+                            width: 100%;
+                          }
+                      
+                          .carousel-inner {
+                            display: flex;
+                            width: max-content;
+                            gap: 1.5rem; /* equivalent to Tailwind's gap-6 */
+                            animation: scroll 30s linear infinite;
+                            will-change: transform;
+                          }
+                      
+                          .carousel-track:hover .carousel-inner {
+                            animation-play-state: paused;
+                          }
+                      
+                          .carousel-card {
+                            position: relative;
+                            width: 12rem; /* w-48 */
+                            height: 18rem; /* h-72 */
+                            border: 2px solid #3b82f6; /* blue-500 */
+                            border-radius: 0.5rem;
+                            overflow: hidden;
+                            box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+                            background-color: #0A0F1F;
+                            cursor: pointer;
+                            transition: all 0.3s;
+                          }
+                      
+                          .carousel-card:hover {
+                            box-shadow: 0 0 25px 10px rgba(0, 122, 255, 0.6);
+                          }
+                      
+                          @keyframes scroll {
+                            0% {
+                              transform: translateX(0);
+                            }
+                            100% {
+                              transform: translateX(-33.33%);
+                            }
+                          }
+                        `}</style>
+                        </div>
 
-  @keyframes carousel-left {
-    10% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(-100%);
-    }
-  }
-
-  @keyframes carousel-right {
-    0% {
-      transform: translateX(-100%);
-    }
-    100% {
-      transform: translateX(0);
-    }
-  }
-`}</style>
 
                     </div>
                 </section>

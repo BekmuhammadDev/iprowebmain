@@ -107,7 +107,7 @@ const aboutus = () => {
 
     return (
         <>
-          <Header/>
+            <Header />
             <section className="text-white py-16 mt-20">
                 <div className="container mx-auto md:max-w-none 2xl:max-w-none relative flex flex-col md:flex-row items-center justify-between px-5 md:px-10 lg:px-20">
                     {/* Text Content */}
@@ -235,11 +235,11 @@ const aboutus = () => {
 
                         {/* Rasm qismi */}
                         <div className="w-full -top-48 md:top-0 px-5 md:w-1/2 relative flex justify-center">
-                            {/* Background Image */}
+
                             <div className="relative">
                                 <img src={CardBg} alt="Background" className="w-full h-full object-cover" />
 
-                                {/* Worker Image */}
+
                                 <div className="absolute md:z-30 inset-0 flex items-center justify-center">
                                     <img
                                         src={activeMember.workerImg}
@@ -250,56 +250,78 @@ const aboutus = () => {
                             </div>
                         </div>
 
-
-
-
-
                     </div>
 
 
 
                     <div className="relative top-10 sm:-top-20 z-30 backdrop-blur-lg bg-transparent overflow-hidden w-full flex justify-center">
-                        <div className="carousel-container flex w-max gap-6">
-                            {[...teamMembers, ...teamMembers, ...teamMembers].map((member, index) => (
-                                <div
-                                    key={index}
-                                    className="relative group w-48 h-72 overflow-hidden border-2 border-blue-500 transition-all duration-300 rounded-lg shadow-md cursor-pointer hover:shadow-[0_0_25px_10px_rgba(0,122,255,0.6)] bg-[#0A0F1F]"
-                                    onClick={() => handleMemberClick(member)} // <-- Add onClick here
-                                >
-                                    <img
-                                        src={member.img}
-                                        alt={member.name}
-                                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 cursor-pointer"
-                                    />
-                                    <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-70 p-3 text-white text-center font-bold">
-                                        {member.name}
+                        <div className="carousel-track">
+                            <div className="carousel-inner">
+                                {[...teamMembers, ...teamMembers, ...teamMembers].map((member, index) => (
+                                    <div
+                                        key={index}
+                                        className="carousel-card"
+                                        onClick={() => handleMemberClick(member)}
+                                    >
+                                        <img
+                                            src={member.img}
+                                            alt={member.name}
+                                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 cursor-pointer"
+                                        />
+                                        <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-70 p-3 text-white text-center font-bold">
+                                            {member.name}
+                                        </div>
                                     </div>
-                                </div>
-                            ))}
+                                ))}
+                            </div>
                         </div>
 
-
                         <style jsx>{`
-        @keyframes carousel {
-          from {
-            transform: translateX(0);
-          }
-          to {
-            transform: translateX(-33.33%);
-          }
-        }
+    .carousel-track {
+      overflow: hidden;
+      width: 100%;
+    }
 
-        .carousel-container {
-          display: flex;
-          animation: carousel 20s linear infinite;
-          will-change: transform;
-        }
+    .carousel-inner {
+      display: flex;
+      width: max-content;
+      gap: 1.5rem; /* equivalent to Tailwind's gap-6 */
+      animation: scroll 30s linear infinite;
+      will-change: transform;
+    }
 
-        .carousel-container:hover {
-          animation-play-state: paused;
-        }
-      `}</style>
+    .carousel-track:hover .carousel-inner {
+      animation-play-state: paused;
+    }
+
+    .carousel-card {
+      position: relative;
+      width: 12rem; /* w-48 */
+      height: 18rem; /* h-72 */
+      border: 2px solid #3b82f6; /* blue-500 */
+      border-radius: 0.5rem;
+      overflow: hidden;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+      background-color: #0A0F1F;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .carousel-card:hover {
+      box-shadow: 0 0 25px 10px rgba(0, 122, 255, 0.6);
+    }
+
+    @keyframes scroll {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-33.33%);
+      }
+    }
+  `}</style>
                     </div>
+
 
                 </div>
             </section>
