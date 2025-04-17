@@ -213,13 +213,13 @@ const aboutus = () => {
                     {/* Video Content */}
                     <div
                         className={
-                            'w-full md:w-1/2 flex justify-center py-12 sticky top-[100px] h-[max-content]'
+                            'w-full md:w-full flex justify-center py-12 sticky top-[100px] h-[max-content]'
                         }
                     >
                         <video
                             ref={elementRef}
                             className="w-screen h-screen  rounded-lg shadow-lg transition-all duration-500"
-                            controls
+                            // controls
                             autoPlay
                             loop
                         >
