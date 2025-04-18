@@ -10,7 +10,7 @@ const projectsData = [
     { title: 'Marketing', description: 'Boost your brand with data-driven marketing campaigns.' },
     { title: 'Target', description: 'Laser-focused targeting that brings results.' },
     { title: 'Graphic design', description: 'Creative designs tailored to your brand identity.' },
-  ];
+];
 
 const portfolio = () => {
     return (
@@ -20,13 +20,14 @@ const portfolio = () => {
 
                 <section>
                     <div className='container mx-auto mb-44 px-14'>
-                        <h1 className="text-white md:text-[108px] text-[48px] font-black ml-5 mb-10 text-center md:text-left drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]">
+                        <h1
+                            className="text-white md:text-[108px] text-[48px] font-black ml-5 mb-10 text-center md:text-left drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]">
                             PROJECTS
                         </h1>
 
                         {projectsData.map((project, index) => (
-                            
-                            <div key={index} className="flex items-center justify-between mb-7 flex-col md:flex-row  overflow-hidden rounded-[8px] py-5 bg-[#16182B] px-5 -space-x-16">
+
+                            <div key={index} className="flex items-center  justify-between mb-7 flex-col md:flex-row  overflow-hidden rounded-[8px] py-5 bg-[#16182B] px-5 -space-x-16">
                                 <div className='relative'>
                                     <h1 className='text-4xl font-bold text-white mb-[10px] text-center md:text-left'>{project.title}</h1>
                                     <p className='text-xs xl:text-base font-medium text-white md:mb-10 mb-0 text-center md:text-left'>
@@ -46,7 +47,7 @@ const portfolio = () => {
                                     ))}
                                 </div>
                             </div>
-                       
+
                         ))}
                     </div>
                 </section>
