@@ -90,7 +90,7 @@ const SingleService = () => {
                         <p className="text-gray-300 text-lg text-left max-w-3xl">{service.description}</p>
                     </div>
                     <div className="relative w-full">
-                        {/* BACKGROUND IMAGE */}
+                        {/* BACKGROUND IMAG */}
                         <img
                             src={BgImgService}
                             alt=""
