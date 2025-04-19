@@ -82,41 +82,54 @@ const SingleService = () => {
     return (
         <>
             <Header />
-            <main className='mt-40 px-5 xl:px-14 container mx-auto'>
-
-                <div className='flex items-center gap-6'>
-                    <div>
-                        <h1 className='text-white md:text-[70px] text-[48px] font-black ml-5 mb-10 text-center md:text-left drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]'>{service.title}</h1>
-                        <p className="text-gray-300 text-lg text-left max-w-3xl">{service.description}</p>
+            <main className='mt-32 px-4 sm:px-6 lg:px-20 container mx-auto'>
+                {/* Title & Content */}
+                <div className='flex flex-col-reverse lg:flex-row items-center gap-8 lg:gap-14 relative'>
+                    {/* Text */}
+                    <div className="text-center lg:text-left">
+                        <h1 className='text-white text-4xl sm:text-5xl lg:text-[70px] font-black mb-6 drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]'>
+                            {service.title}
+                        </h1>
+                        <p className="text-gray-300 text-base sm:text-lg max-w-3xl">
+                            {service.description}
+                        </p>
                     </div>
-                    <div className="relative w-full">
-                        {/* BACKGROUND IMAG */}
+
+                    {/* Image */}
+                    <div className='w-full lg:w-1/2 relative'>
                         <img
                             src={BgImgService}
                             alt=""
-                            className="absolute top-0 right-0 w-40 md:w-64 lg:w-80 opacity-20 md:opacity-40 z-0 pointer-events-none select-none"
+                            className='absolute -top-10 md:-right-10 sm:right-0 h-full w-full -z-10'
                         />
-
-                        {/* SERVICE IMAGE */}
                         <img
                             src={service.image}
                             alt={service.title}
-                            className="relative z-10 w-full h-72 object-cover mb-6 max-w-4xl mx-auto"
+                            className="w-full h-full object-cover shadow-lg"
                         />
                     </div>
-
                 </div>
 
-                <h2 className='text-white text-3xl font-bold mt-16 mb-4'>Example Projects</h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
-                    {[...Array(5)].map((_, i) => (
-                        <div key={i} className="bg-[#16182B] rounded-xl shadow-md overflow-hidden hover:scale-105 transition-all cursor-pointer">
-                            <img src={service.image} alt={`Project ${i + 1}`} className="w-full h-40 object-cover" />
-                            <div className="p-3">
-                                <h3 className="text-white font-bold text-base">Project {i + 1}</h3>
-                                <p className="text-white text-sm">Short description...</p>
-                            </div>
 
+                {/* Example Projects */}
+                <h2 className='text-white text-2xl sm:text-3xl font-bold mt-16 mb-6 text-center lg:text-left'>
+                    Example Projects
+                </h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+                    {[...Array(5)].map((_, i) => (
+                        <div
+                            key={i}
+                            className="bg-[#16182B] rounded-xl shadow-md overflow-hidden hover:scale-105 transition-transform cursor-pointer"
+                        >
+                            <img
+                                src={service.image}
+                                alt={`Project ${i + 1}`}
+                                className="w-full h-40 object-cover"
+                            />
+                            <div className="p-4">
+                                <h3 className="text-white font-semibold text-base">Project {i + 1}</h3>
+                                <p className="text-white text-sm mt-1">Short description...</p>
+                            </div>
                         </div>
                     ))}
                 </div>
