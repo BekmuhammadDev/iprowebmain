@@ -8,17 +8,21 @@ import Services from "../pages/services";
 import Careers from "../pages/career";
 import UserProfile from "../pages/userpanel/user"
 import Vacansy from "../pages/vacansy";
+import ProjectPage from "../pages/projectpage"
+import SingleService from "../pages/serviceInfo";
 import NotFound from "../pages/notfound";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element:  <MainLayout />,
+    element: <MainLayout />,
     children: [
       { index: true, element: <Home /> },
       { path: "aboutus", element: <AboutUs /> },
       { path: "team", element: <Team /> },
       { path: "portfolio", element: <Portfolio /> },
+      { path: "/projects/:category", element: <ProjectPage /> },
+      { path:"/service/:slug", element: <SingleService />},
       { path: "services", element: <Services /> },
       { path: "careers", element: <Careers /> },
       { path: "user", element: <UserProfile /> },
