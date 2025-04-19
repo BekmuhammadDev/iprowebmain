@@ -27,21 +27,21 @@ const portfolio = () => {
 
                         {projectsData.map((project, index) => (
 
-                            <div key={index} className="flex items-center  justify-between mb-7 flex-col md:flex-row  overflow-hidden rounded-[8px] py-5 bg-[#16182B] px-5 -space-x-16">
+                            <div key={index} className="flex items-center  justify-between mb-7 flex-col md:flex-row  overflow-hidden rounded-[8px] py-20 md:py-5 bg-[#16182B] px-5 -space-x-16">
                                 <div className='relative'>
-                                    <h1 className='text-4xl font-bold text-white mb-[10px] text-center md:text-left'>{project.title}</h1>
-                                    <p className='text-xs xl:text-base font-medium text-white md:mb-10 mb-0 text-center md:text-left'>
+                                    <h1 className=' text-2xl md:text-4xl font-bold text-white mb-[10px] text-center md:text-left'>{project.title}</h1>
+                                    <p className=' text-[10px] md:text-xs xl:text-base font-medium text-white md:mb-10 mb-0 text-center md:text-left'>
                                         {project.description}<br />Just click the button below to see all projects.
                                     </p>
-                                    <button className='relative md:top-0 rounded-md xl:w-[150px] bg-white text-blue-600 py-2  uppercase text-base w-full font-bold shadow-lg drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)] hover:bg-slate-300'>
+                                    <button className='relative top-44 md:top-0 rounded-md xl:w-[150px] bg-white text-blue-600 py-2  uppercase text-base w-full font-bold shadow-lg drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)] hover:bg-slate-300'>
                                         View projects
                                     </button>
                                 </div>
 
-                                <div className='flex items-center gap-0 overflow-hidden -space-x-36'>
+                                <div className='flex items-center gap-0 overflow-hidden -space-x-20 md:-space-x-36'>
                                     {[1, 2, 3, 4, 5].map((_, i) => (
                                         <div key={i} className="relative w-full md:h-[198px] left-20 shadow-lg rounded-[20px] transition-transform duration-300 cursor-pointer hover:translate-x-6  group">
-                                            <img src={KranPortfolio} className="h-full w-full object-cover rounded-[20px]" alt={`${project.title} ${i}`} />
+                                            <img src={KranPortfolio} className=" md:h-full h-28 w-full object-cover rounded-[20px]" alt={`${project.title} ${i}`} />
                                             <div className="absolute inset-0 bg-gray-900 bg-opacity-50 group-hover:bg-opacity-0 transition-all duration-300 rounded-[20px]"></div>
                                         </div>
                                     ))}
@@ -49,6 +49,7 @@ const portfolio = () => {
                             </div>
 
                         ))}
+                        
                     </div>
                 </section>
 
