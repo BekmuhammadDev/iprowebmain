@@ -95,61 +95,64 @@ const vacansy = () => {
                             <form className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                                 <div>
                                     <label htmlFor="fullName" className="block text-xl text-white font-medium mb-1">Full Name</label>
-                                    <input id="fullName" type="text" placeholder="Full Name" className="border p-2 w-full rounded-md" />
+                                    <input id="fullName" type="text" placeholder="Full Name" className="border p-2 w-full rounded-md" required />
                                 </div>
                                 <div>
-                                    <label htmlFor="phone" className="block text-xl text-white font-medium mb-1">Phone </label>
-                                    <input id="phone" type="text" placeholder="Phone" className="border p-2 w-full rounded-md" />
+                                    <label htmlFor="phone" className="block text-xl text-white font-medium mb-1">Phone</label>
+                                    <input id="phone" type="text" placeholder="Phone" className="border p-2 w-full rounded-md" required />
                                 </div>
                                 <div>
                                     <label htmlFor="address" className="block text-xl text-white font-medium mb-1">Address</label>
-                                    <input id="address" type="text" placeholder="Address" className="border p-2 w-full rounded-md" />
+                                    <input id="address" type="text" placeholder="Address" className="border p-2 w-full rounded-md" required />
                                 </div>
                                 <div>
-                                    <label htmlFor="workTime" className="block text-xl text-white font-medium mb-1"> Work Time</label>
-                                    <input id="workTime" type="text" placeholder=" Work Time" className="border p-2 w-full rounded-md" />
+                                    <label htmlFor="workTime" className="block text-xl text-white font-medium mb-1">Work Time</label>
+                                    <input id="workTime" type="text" placeholder="Work Time" className="border p-2 w-full rounded-md" required />
                                 </div>
                                 <div>
-                                    <label htmlFor="vacancy" className="block text-xl text-white font-medium mb-1">Vacancy type</label>
-                                    <input id="vacancy" type="text" placeholder="Vacancy type" className="border p-2 w-full rounded-md" defaultValue={vacansy.title} />
+                                    <label htmlFor="vacancy" className="block text-xl text-white font-medium mb-1">Vacancy Type</label>
+                                    <input id="vacancy" type="text" placeholder="Vacancy Type" className="border p-2 w-full rounded-md" defaultValue={vacansy.title} required />
                                 </div>
                                 <div>
-                                    <label htmlFor="level" className="block text-xl text-white font-medium mb-1"> Level</label>
-                                    <input id="level" type="text" placeholder="Level" className="border p-2 w-full rounded-md" />
+                                    <label htmlFor="level" className="block text-xl text-white font-medium mb-1">Level</label>
+                                    <input id="level" type="text" placeholder="Level" className="border p-2 w-full rounded-md" required />
                                 </div>
                                 <div>
-                                    <label htmlFor="salary" className="block text-xl text-white font-medium mb-1"> Salary</label>
-                                    <input id="salary" type="text" placeholder=" Salary" className="border p-2 w-full rounded-md" />
+                                    <label htmlFor="salary" className="block text-xl text-white font-medium mb-1">Salary</label>
+                                    <input id="salary" type="text" placeholder="Salary" className="border p-2 w-full rounded-md" required />
                                 </div>
                                 <div>
                                     <label htmlFor="portfolio" className="block text-xl text-white font-medium mb-1">Portfolio Link</label>
-                                    <input id="portfolio" type="text" placeholder="Portfolio Link" className="border p-2 w-full rounded-md" />
+                                    <input id="portfolio" type="text" placeholder="Portfolio Link" className="border p-2 w-full rounded-md" required />
                                 </div>
 
                                 {/* CV Upload */}
                                 <div className="col-span-1 sm:col-span-2">
                                     <label htmlFor="cv" className="block text-xl text-white font-medium mb-2">Upload CV/Resume</label>
-
                                     <div className="relative">
                                         <input
                                             id="cv"
                                             type="file"
                                             className="hidden"
+                                            required
                                         />
                                         <label
                                             htmlFor="cv"
-                                            className="w-full cursor-pointer text-center bg-[#999999] text-white px-6 py-3 flex rounded-md font-semibold transition justify-center gap-3 items-center "
+                                            className="w-full cursor-pointer text-center bg-[#999999] text-white px-6 py-3 flex rounded-md font-semibold transition justify-center gap-3 items-center"
                                         >
-                                            Upload CV/Resume <FaFileDownload/>
+                                            Upload CV/Resume <FaFileDownload />
                                         </label>
                                     </div>
                                 </div>
 
                                 {/* Submit Button */}
                                 <div className="col-span-1 sm:col-span-2 flex w-full mt-4">
-                                    <button type="submit" className="bg-[#fff] text-[#0086EE] w-full px-6 py-2 rounded-md font-semibold drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]">Apply now</button>
+                                    <button type="submit" className="bg-[#fff] text-[#0086EE] w-full px-6 py-2 rounded-md font-semibold drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]">
+                                        Apply now
+                                    </button>
                                 </div>
                             </form>
+
                         </div>
                     </div>
                 )}
@@ -187,7 +190,9 @@ const vacansy = () => {
                                 <li className='text-white text-base sm:text-lg'>Willingness to constantly learn and explore new technologies.</li>
                             </ul>
 
-                            <button className='bg-white mt-10 sm:mt-14 text-[#0086EE] px-6 sm:px-9 py-2 text-base font-bold shadow-lg drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)] w-full sm:w-auto'>
+                            <button
+                                 onClick={() => setShowModal(true)}
+                                className='bg-white mt-10 sm:mt-14 text-[#0086EE] px-6 sm:px-9 py-2 text-base font-bold shadow-lg drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)] w-full sm:w-auto'>
                                 Apply now
                             </button>
                         </div>
