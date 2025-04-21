@@ -6,8 +6,6 @@ import Header from '../components/layouts/header';
 import Footer from '../components/layouts/footer';
 import { useParams } from 'react-router-dom';
 
-
-
     const jobData = {
         'motion-designer': { title: "Motion Designer", schedule: "Monday-Saturday", time: "09:00-18:00" },
         'ui-ux-designer': { title: "UI/UX Designer", schedule: "Monday-Friday", time: "10:00-17:00" },
@@ -20,11 +18,11 @@ import { useParams } from 'react-router-dom';
         'seo-expert': { title: "SEO Expert", schedule: "Monday-Friday", time: "09:00-18:00" },
       };
       
-
-
 const vacansy = () => {
+    
     const { slug } = useParams();
     const vacansy = jobData[slug];
+    console.log(vacansy);
     
 
     if (!vacansy) {
@@ -37,7 +35,6 @@ const vacansy = () => {
         );
       }
 
-      
     return (
         <>
             <Header />

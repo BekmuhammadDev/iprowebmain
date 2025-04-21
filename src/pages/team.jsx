@@ -55,22 +55,17 @@ const teamMembers = [
 const jobListings = [
         
     { slug: 'motion-designer', title: "Motion Designer", schedule: "Monday-Saturday", time: "09:00-18:00" },
-    { slug: 'uI/uX-Designer', title: "UI/UX Designer", schedule: "Monday-Friday", time: "10:00-17:00" },
+    { slug: 'ui-ux-designer', title: "UI/UX Designer", schedule: "Monday-Friday", time: "10:00-17:00" },
     { slug: 'graphic-designer', title: "Graphic Designer", schedule: "Monday-Saturday", time: "08:00-16:00" },
     { slug: 'frontend-developer', title: "Frontend Developer", schedule: "Monday-Friday", time: "09:00-18:00" },
     { slug: 'backend-developer', title: "Backend Developer", schedule: "Monday-Friday", time: "10:00-19:00" },
     { slug: 'project-manager', title: "Project Manager", schedule: "Monday-Saturday", time: "09:00-17:00" },
     { slug: 'data-analyst', title: "Data Analyst", schedule: "Monday-Friday", time: "09:00-17:30" },
     { slug: 'marketing-specialist', title: "Marketing Specialist", schedule: "Monday-Saturday", time: "08:30-17:30" },
-    { slug: 'sEO-expert', title: "SEO Expert", schedule: "Monday-Friday", time: "09:00-18:00" },
+    { slug: 'seo-expert', title: "SEO Expert", schedule: "Monday-Friday", time: "09:00-18:00" },
     { slug: 'data-analyst', title: "Data Analyst", schedule: "Monday-Friday", time: "09:00-17:30" },
-    { slug: 'marketing-specialist', title: "Marketing Specialist", schedule: "Monday-Saturday", time: "08:30-17:30" },
-    { slug: 'sEO-expert', title: "SEO Expert", schedule: "Monday-Friday", time: "09:00-18:00" },
 
 ];
-
-
-
 
 const team = () => {
     const navigate = useNavigate();
@@ -87,14 +82,12 @@ const team = () => {
         setVisibleJobs((prev) => prev + 8); // Show 6 more jobs per click
     };
 
-    
         const handleClick = (slug) => {
             navigate(`/vacansy/${slug}`);
         };
 
     // ////////////////////////////////////////////////
     const [isExpanded, setIsExpanded] = useState(false);
-
 
     return (
         <>
@@ -346,7 +339,7 @@ const team = () => {
                                     <div
                                         key={index}
                                         className="bg-[#11152A] text-white p-6 rounded-lg shadow-lg cursor-pointer h-[150px] w-full hover:shadow-[0_0_25px_10px_rgba(0,122,255,0.6)] transition-all duration-300 group"
-                                        onClick={() => handleClick(team.slug)}
+                                        onClick={() => handleClick(job.slug)}
                                     >
                                         <h2 className="text-2xl font-bold">{job.title}</h2>
                                         <hr className="my-2 border-gray-600" />
