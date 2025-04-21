@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from '../components/layouts/header';
 import Footer from '../components/layouts/footer';
@@ -85,6 +85,10 @@ const Services = () => {
     const handleClick = (slug) => {
         navigate(`/service/${slug}`);
     };
+
+      useEffect(() => {
+            window.scrollTo(0, 0);
+        }, []);
     
     return (
         <>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { FaCalendarAlt } from "react-icons/fa";
 import { FaClock } from "react-icons/fa";
 import { FaTelegramPlane, FaInstagram, FaFacebookF, FaYoutube, FaWhatsapp } from "react-icons/fa";
@@ -26,7 +26,6 @@ const vacansy = () => {
     const vacansy = jobData[slug];
     const [showModal, setShowModal] = useState(false);
 
-
     if (!vacansy) {
         return (
             <>
@@ -37,10 +36,15 @@ const vacansy = () => {
         );
     }
 
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     return (
         <>
             <Header />
             <main>
+
                 <section className='mt-20 sm:mt-28 md:mt-40 container mx-auto'>
                     <div className='px-4 sm:px-8 md:px-12'>
                         <div className='w-full md:px-10 xl:px-16 rounded-md bg-[#16182B]'>
@@ -157,8 +161,6 @@ const vacansy = () => {
                     </div>
                 )}
 
-
-
                 <section className='mt-20'>
                     <div className='container mx-auto px-4 sm:px-6 md:px-10 py-10 sm:py-16 md:py-20'>
 
@@ -191,7 +193,7 @@ const vacansy = () => {
                             </ul>
 
                             <button
-                                 onClick={() => setShowModal(true)}
+                                onClick={() => setShowModal(true)}
                                 className='bg-white mt-10 sm:mt-14 text-[#0086EE] px-6 sm:px-9 py-2 text-base font-bold shadow-lg drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)] w-full sm:w-auto'>
                                 Apply now
                             </button>

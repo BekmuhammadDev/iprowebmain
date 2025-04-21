@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import { FaCalendarAlt } from "react-icons/fa";
 import { FaClock } from "react-icons/fa";
 import { motion } from "framer-motion";
@@ -53,7 +53,7 @@ const teamMembers = [
 ];
 
 const jobListings = [
-        
+
     { slug: 'motion-designer', title: "Motion Designer", schedule: "Monday-Saturday", time: "09:00-18:00" },
     { slug: 'ui-ux-designer', title: "UI/UX Designer", schedule: "Monday-Friday", time: "10:00-17:00" },
     { slug: 'graphic-designer', title: "Graphic Designer", schedule: "Monday-Saturday", time: "08:00-16:00" },
@@ -82,9 +82,13 @@ const team = () => {
         setVisibleJobs((prev) => prev + 8); // Show 6 more jobs per click
     };
 
-        const handleClick = (slug) => {
-            navigate(`/vacansy/${slug}`);
-        };
+    const handleClick = (slug) => {
+        navigate(`/vacansy/${slug}`);
+    };
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
 
     // ////////////////////////////////////////////////
     const [isExpanded, setIsExpanded] = useState(false);

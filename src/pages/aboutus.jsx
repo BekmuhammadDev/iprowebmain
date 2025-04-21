@@ -25,6 +25,11 @@ const aboutus = () => {
         AOS.init({ duration: 2000 });
     }, []);
 
+    useEffect(() => {
+        window.scrollTo(0, 0); // sahifa tepasiga o'tadi
+      }, []);
+    
+
     return (
         <>
             <Header />

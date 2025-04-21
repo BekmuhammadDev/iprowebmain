@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import KranPortfolio from "../assets/images/kranPortfolio.png"
 import Header from '../components/layouts/header';
 import Footer from '../components/layouts/footer';
@@ -23,6 +23,10 @@ const portfolio = () => {
         navigate(`/projects/${category.toLowerCase()}`);
     };
 
+       useEffect(() => {
+                window.scrollTo(0, 0);
+              }, []);
+            
     return (
         <>
             <Header />

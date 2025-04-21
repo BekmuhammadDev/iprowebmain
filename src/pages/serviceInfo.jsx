@@ -1,8 +1,9 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import { useParams } from 'react-router-dom';
 import Header from '../components/layouts/header';
 import Footer from '../components/layouts/footer';
 import BgImgService from "../assets/images/bgimgservice.png"
+import { useEffect } from 'react';
 
 const serviceData = {
     'web-development': {
@@ -70,6 +71,10 @@ const serviceData = {
 const SingleService = () => {
     const { slug } = useParams();
     const service = serviceData[slug];
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
 
     if (!service) {
         return (
