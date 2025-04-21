@@ -105,7 +105,7 @@ const SingleService = () => {
                         <img
                             src={service.image}
                             alt={service.title}
-                            className="w-full h-full object-cover shadow-lg"
+                            className="md:w-full md:h-full object-cover shadow-lg"
                         />
                     </div>
                 </div>
