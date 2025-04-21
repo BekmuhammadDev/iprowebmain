@@ -95,7 +95,7 @@ const SingleService = () => {
                         </p>
                     </div>
 
-                    {/* Image */}
+                    {/* Image  */}
                     <div className='w-full lg:w-1/2 relative'>
                         <img
                             src={BgImgService}

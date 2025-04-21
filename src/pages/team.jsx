@@ -9,6 +9,8 @@ import WorkersImg from '../assets/images/workersimg.png';
 import { FaReact, FaNodeJs, FaHtml5, FaCss3Alt, FaJs } from 'react-icons/fa';
 import Header from '../components/layouts/header';
 import Footer from '../components/layouts/footer';
+import { useNavigate } from 'react-router-dom';
+
 
 const teamMembers = [
     {
@@ -51,18 +53,19 @@ const teamMembers = [
 ];
 
 const jobListings = [
-    { title: "Motion Designer", schedule: "Monday-Saturday", time: "09:00-18:00" },
-    { title: "UI/UX Designer", schedule: "Monday-Friday", time: "10:00-17:00" },
-    { title: "Graphic Designer", schedule: "Monday-Saturday", time: "08:00-16:00" },
-    { title: "Frontend Developer", schedule: "Monday-Friday", time: "09:00-18:00" },
-    { title: "Backend Developer", schedule: "Monday-Friday", time: "10:00-19:00" },
-    { title: "Project Manager", schedule: "Monday-Saturday", time: "09:00-17:00" },
-    { title: "Data Analyst", schedule: "Monday-Friday", time: "09:00-17:30" },
-    { title: "Marketing Specialist", schedule: "Monday-Saturday", time: "08:30-17:30" },
-    { title: "SEO Expert", schedule: "Monday-Friday", time: "09:00-18:00" },
-    { title: "Data Analyst", schedule: "Monday-Friday", time: "09:00-17:30" },
-    { title: "Marketing Specialist", schedule: "Monday-Saturday", time: "08:30-17:30" },
-    { title: "SEO Expert", schedule: "Monday-Friday", time: "09:00-18:00" },
+        
+    { slug: 'motion-designer', title: "Motion Designer", schedule: "Monday-Saturday", time: "09:00-18:00" },
+    { slug: 'uI/uX-Designer', title: "UI/UX Designer", schedule: "Monday-Friday", time: "10:00-17:00" },
+    { slug: 'graphic-designer', title: "Graphic Designer", schedule: "Monday-Saturday", time: "08:00-16:00" },
+    { slug: 'frontend-developer', title: "Frontend Developer", schedule: "Monday-Friday", time: "09:00-18:00" },
+    { slug: 'backend-developer', title: "Backend Developer", schedule: "Monday-Friday", time: "10:00-19:00" },
+    { slug: 'project-manager', title: "Project Manager", schedule: "Monday-Saturday", time: "09:00-17:00" },
+    { slug: 'data-analyst', title: "Data Analyst", schedule: "Monday-Friday", time: "09:00-17:30" },
+    { slug: 'marketing-specialist', title: "Marketing Specialist", schedule: "Monday-Saturday", time: "08:30-17:30" },
+    { slug: 'sEO-expert', title: "SEO Expert", schedule: "Monday-Friday", time: "09:00-18:00" },
+    { slug: 'data-analyst', title: "Data Analyst", schedule: "Monday-Friday", time: "09:00-17:30" },
+    { slug: 'marketing-specialist', title: "Marketing Specialist", schedule: "Monday-Saturday", time: "08:30-17:30" },
+    { slug: 'sEO-expert', title: "SEO Expert", schedule: "Monday-Friday", time: "09:00-18:00" },
 
 ];
 
@@ -70,17 +73,24 @@ const jobListings = [
 
 
 const team = () => {
+    const navigate = useNavigate();
+
     const [activeMember, setActiveMember] = useState(teamMembers[0]);
 
     const handleMemberClick = (member) => {
         setActiveMember(member);
     };
 
-    const [visibleJobs, setVisibleJobs] = useState(8); // Show 6 initially
+    const [visibleJobs, setVisibleJobs] = useState(8);
 
     const showMoreJobs = () => {
         setVisibleJobs((prev) => prev + 8); // Show 6 more jobs per click
     };
+
+    
+        const handleClick = (slug) => {
+            navigate(`/vacansy/${slug}`);
+        };
 
     // ////////////////////////////////////////////////
     const [isExpanded, setIsExpanded] = useState(false);
@@ -91,6 +101,7 @@ const team = () => {
             <Header />
 
             <main className='mt-20'>
+
                 <section>
                     <div className="container mx-auto ">
                         <h1 className="text-white md:text-[128px] text-[48px] font-black ml-5 leading-[1.1] text-center md:text-left drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]">
@@ -335,6 +346,7 @@ const team = () => {
                                     <div
                                         key={index}
                                         className="bg-[#11152A] text-white p-6 rounded-lg shadow-lg cursor-pointer h-[150px] w-full hover:shadow-[0_0_25px_10px_rgba(0,122,255,0.6)] transition-all duration-300 group"
+                                        onClick={() => handleClick(team.slug)}
                                     >
                                         <h2 className="text-2xl font-bold">{job.title}</h2>
                                         <hr className="my-2 border-gray-600" />

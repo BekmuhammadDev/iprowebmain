@@ -4,41 +4,75 @@ import { FaClock } from "react-icons/fa";
 import { FaTelegramPlane, FaInstagram, FaFacebookF, FaYoutube, FaWhatsapp } from "react-icons/fa";
 import Header from '../components/layouts/header';
 import Footer from '../components/layouts/footer';
+import { useParams } from 'react-router-dom';
+
+
+
+    const jobData = {
+        'motion-designer': { title: "Motion Designer", schedule: "Monday-Saturday", time: "09:00-18:00" },
+        'ui-ux-designer': { title: "UI/UX Designer", schedule: "Monday-Friday", time: "10:00-17:00" },
+        'graphic-designer': { title: "Graphic Designer", schedule: "Monday-Saturday", time: "08:00-16:00" },
+        'frontend-developer': { title: "Frontend Developer", schedule: "Monday-Friday", time: "09:00-18:00" },
+        'backend-developer': { title: "Backend Developer", schedule: "Monday-Friday", time: "10:00-19:00" },
+        'project-manager': { title: "Project Manager", schedule: "Monday-Saturday", time: "09:00-17:00" },
+        'data-analyst': { title: "Data Analyst", schedule: "Monday-Friday", time: "09:00-17:30" },
+        'marketing-specialist': { title: "Marketing Specialist", schedule: "Monday-Saturday", time: "08:30-17:30" },
+        'seo-expert': { title: "SEO Expert", schedule: "Monday-Friday", time: "09:00-18:00" },
+      };
+      
+
 
 const vacansy = () => {
+    const { slug } = useParams();
+    const vacansy = jobData[slug];
+    
+
+    if (!vacansy) {
+        return (
+          <>
+            <Header />
+            <div className="text-white text-center mt-40 text-xl">Job not found</div>
+            <Footer />
+          </>
+        );
+      }
+
+      
     return (
         <>
             <Header />
             <main>
                 <section className='mt-40'>
-                    <div className='w-full px-16 bg-[#16182B]'>
-                        <div className='flex justify-between py-5'>
-                            <h1 className='text-white text-xl font-semibold'>Senior Front End Developer</h1>
-                            <button className='bg-white text-[#0086EE] px-9 py-1 text-base font-bold shadow-lg drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]'>Apply now</button>
-                        </div>
-                        <hr />
+                    <div className='px-12'>
+                        <div className='w-full px-16 rounded-md bg-[#16182B]'>
+                            <div className='flex justify-between py-5'>
+                                <h1 className='text-white text-xl font-semibold'>{vacansy.title}</h1>
+                                <button className='bg-white text-[#0086EE] px-9 py-1 text-base font-bold shadow-lg drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]'>Apply now</button>
+                            </div>
+                            <hr />
 
-                        <div className='flex items-center justify-between'>
-                            <div className='flex gap-20 mt-5 py-5'>
-                                <div className='flex gap-5 items-center'>
-                                    <span className="text-xl"><FaCalendarAlt color='white' fontSize={24} /></span>
-                                    <h2 className='text-white text-xs font-normal'>Monday-Saturday</h2>
+                            <div className='flex items-center justify-between'>
+                                <div className='flex gap-20 mt-5 py-5'>
+                                    <div className='flex gap-5 items-center'>
+                                        <span className="text-xl"><FaCalendarAlt color='white' fontSize={24} /></span>
+                                        <h2 className='text-white text-xs font-normal'>{vacansy.schedule}</h2>
+                                    </div>
+                                    <div className='flex gap-5 items-center'>
+                                        <span className="text-xl"><FaClock color='white' fontSize={24} /></span>
+                                        <h2 className='text-white text-xs font-normal'>{vacansy.time}</h2>
+                                    </div>
+
                                 </div>
-                                <div className='flex gap-5 items-center'>
-                                    <span className="text-xl"><FaClock color='white' fontSize={24} /></span>
-                                    <h2 className='text-white text-xs font-normal'> 09:00-18:00</h2>
+
+                                <div className="flex justify-start gap-4 mt-3">
+                                    <FaTelegramPlane className="text-3xl text-white cursor-pointer hover:text-blue-500 transition" />
+                                    <FaInstagram className="text-3xl text-white cursor-pointer hover:text-pink-500 transition" />
+                                    <FaFacebookF className="text-3xl text-white cursor-pointer hover:text-blue-600 transition" />
+                                    <FaYoutube className="text-3xl text-white cursor-pointer hover:text-red-500 transition" />
+                                    <FaWhatsapp className="text-3xl text-white cursor-pointer hover:text-green-500 transition" />
                                 </div>
 
                             </div>
-
-                            <div className="flex justify-start gap-4 mt-3">
-                                <FaTelegramPlane className="text-3xl text-white cursor-pointer hover:text-blue-500 transition" />
-                                <FaInstagram className="text-3xl text-white cursor-pointer hover:text-pink-500 transition" />
-                                <FaFacebookF className="text-3xl text-white cursor-pointer hover:text-blue-600 transition" />
-                                <FaYoutube className="text-3xl text-white cursor-pointer hover:text-red-500 transition" />
-                                <FaWhatsapp className="text-3xl text-white cursor-pointer hover:text-green-500 transition" />
-                            </div>
-
                         </div>
 
                     </div>
