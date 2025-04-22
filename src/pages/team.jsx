@@ -97,11 +97,11 @@ const team = () => {
         <>
             <Header />
 
-            <main className='mt-20'>
+            <main className='mt-40'>
 
                 <section>
                     <div className="container mx-auto ">
-                        <h1 className="text-white md:text-[128px] text-[48px] font-black ml-5 leading-[1.1] text-center md:text-left drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]">
+                        <h1 className="text-white xl:text-[120px] text-[48px] font-black ml-5 leading-[1.1] text-center md:text-left drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]">
                             MEET THE TEAM
                         </h1>
 
@@ -115,16 +115,16 @@ const team = () => {
                             >
 
                                 {!isExpanded && (
-                                    <h1 className="text-white text-base text-center md:text-left md:text-2xl font-semibold uppercase">
+                                    <h1 className="text-white text-base text-center md:text-left xl:text-2xl font-semibold uppercase">
                                         {activeMember.role}
                                     </h1>
                                 )}
 
-                                <h1 className="text-white text-[40px] md:text-[96px] text-center md:text-left font-black uppercase drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]">
+                                <h1 className="text-white text-[40px] xl:text-[96px] text-center md:text-left font-black uppercase drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]">
                                     {activeMember.name}
                                 </h1>
 
-                                <h1 className="text-white text-xs md:text-xl text-center md:text-left font-semibold uppercase">
+                                <h1 className="text-white text-xs xl:text-xl text-center md:text-left font-semibold uppercase">
                                     {isExpanded
                                         ? 'I have spent nearly four years working as a backend developer, where I honed my analytical skills and gained a deep understanding of software processes. This experience ignited my passion for data-driven decision-making, leading me to transition into the world of programming.'
                                         : activeMember.description}
@@ -132,20 +132,20 @@ const team = () => {
 
                                 <div className="text-center">
                                     {!isExpanded ? (
-                                        <div className="flex items-center gap-5 md:gap-12 mt-5 md:mt-36">
-                                            <div className="flex gap-2 md:gap-5 items-center">
+                                        <div className="flex items-center gap-5 xl:gap-12 mt-5 xl:mt-36">
+                                            <div className="flex gap-2 xl:gap-5 items-center">
                                                 <h1 className="md:text-xl text-base uppercase font-semibold text-white">
                                                     Projects:
                                                 </h1>
-                                                <h2 className="md:text-5xl text-4xl text-white font-semibold drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]">
+                                                <h2 className="xl:text-5xl text-4xl text-white font-semibold drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]">
                                                     {activeMember.projects}
                                                 </h2>
                                             </div>
-                                            <div className="flex gap-2 md:gap-5 items-center">
-                                                <h1 className="md:text-xl text-base uppercase font-semibold text-white">
+                                            <div className="flex gap-2 xl:gap-5 items-center">
+                                                <h1 className="xl:text-xl text-base uppercase font-semibold text-white">
                                                     Experience:
                                                 </h1>
-                                                <h2 className="md:text-5xl text-4xl text-white font-semibold drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]">
+                                                <h2 className="xl:text-5xl text-4xl text-white font-semibold drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]">
                                                     {activeMember.experience}
                                                 </h2>
                                             </div>
@@ -166,7 +166,7 @@ const team = () => {
 
                                     <button
                                         onClick={() => setIsExpanded(!isExpanded)}
-                                        className="px-14 py-2 bg-white text-[#0086EE] text-xl md:text-2xl font-bold uppercase mt-14 drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]"
+                                        className="px-14 py-2 bg-white text-[#0086EE] text-xl xl:text-2xl font-bold uppercase mt-14 drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]"
                                     >
                                         {isExpanded ? 'Less Info' : 'More Info'}
                                     </button>
@@ -178,12 +178,12 @@ const team = () => {
                             <motion.div
                                 animate={{ x: isExpanded ? (window.innerWidth >= 768 ? "-100%" : "0%") : "0%" }}
                                 transition={{ duration: 0.5 }}
-                                className="relative -top-48 md:top-32 w-full h-auto md:w-1/2"
+                                className="relative -top-48 md:top-16 xl:top-32 w-full h-auto md:w-1/2"
                             >
-                                <div className="absolute inset-0 w-[400px] -z-10 md:w-[700px] h-[355px] md:h-auto">
+                                <div className="absolute inset-0 w-[400px] -z-10 xl:w-[700px] h-[355px] xl:h-auto">
                                     <img src={CardBg} alt="Background" className="-top-10" />
                                 </div>
-                                <div className="relative -z-10 w-[400px] h-[380px] md:-right-40 md:h-auto flex justify-center bottom-24">
+                                <div className="relative -z-10 w-[380px] h-[380px] xl:-right-40 xl:h-auto flex justify-center bottom-24">
                                     <img src={activeMember.workerImg} alt="Worker" />
                                 </div>
                             </motion.div>
