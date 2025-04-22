@@ -113,15 +113,15 @@ const aboutus = () => {
     };
 
     const handleCardClick = (e) => {
-        e.preventDefault(); 
-      
+        e.preventDefault();
+
         // Scroll qilish
         const element = document.getElementById('question');
         if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
+            element.scrollIntoView({ behavior: 'smooth' });
         }
-      
-      };
+
+    };
 
 
 
@@ -158,7 +158,7 @@ const aboutus = () => {
 
 
                 <NavLink onClick={handleCardClick}>
-                    <button  className='animate-bounce p-5 rounded-[50%] fixed bottom-20 right-5 z-50 bg-white'><FaQuestion color='black' /></button>
+                    <button className='animate-bounce p-5 rounded-[50%] fixed bottom-20 right-5 z-50 bg-white'><FaQuestion color='black' /></button>
                 </NavLink>
 
 
@@ -417,7 +417,7 @@ const aboutus = () => {
                 </div>
             </section>
 
-            <section  className=" md:px-10 pt-[211px] mb-20">
+            <section className=" md:px-10 pt-[211px] mb-20">
                 <div className='relative -z-10 top-[800px]'>
                     <img className='absolute hidden md:flex bottom-0 -right-10' src={StarsRightImg} alt="" />
                 </div>
@@ -443,16 +443,27 @@ const aboutus = () => {
                                                 <FaPlus className="text-blue-400" />
                                             )}
                                         </button>
+
                                         <div
-                                            className={`overflow-hidden transition-max-height duration-500 ease-in-out ${openIndex === index
-                                                ? 'max-h-40 p-5 text-white bg-[#1d2536]'
-                                                : 'max-h-0'
+                                            className={`overflow-hidden transition-max-height duration-500 ease-in-out ${openIndex === index ? 'max-h-40 p-5 text-white bg-[#1d2536]' : 'max-h-0'
                                                 }`}
                                         >
                                             {faq.answer}
+
+                                            {index === 0 && openIndex === 0 && (
+                                                <div className="mt-4 flex gap-4">
+                                                    <button className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg">
+                                                    Texnik muammo
+                                                    </button>
+                                                    <button className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg">
+                                                        Sayt ishlamayabti
+                                                    </button>
+                                                </div>
+                                            )}
                                         </div>
                                     </div>
                                 ))}
+
                             </div>
                         </div>
 
@@ -463,7 +474,7 @@ const aboutus = () => {
                     </div>
                 </div>
             </section>
-            <Footer  />
+            <Footer />
 
         </>
     );
