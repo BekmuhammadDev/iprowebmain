@@ -156,7 +156,7 @@ const aboutus = () => {
                 <div className="container mx-auto md:max-w-none  2xl:max-w-none flex flex-col-reverse md:flex-row items-center justify-between gap-10 px-5 md:px-10 lg:px-20">
                     {/* Matn qismi */}
                     <div className="w-full md:w-1/2 text-center md:text-left mt-6 md:mt-0 space-y-4">
-                        <h1 className="text-white font-black text-3xl sm:text-5xl md:text-[65px] xl:text-[128px] leading-tight drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]">
+                        <h1 className="text-white font-black text-3xl sm:text-5xl md:text-[65px] xl:text-[120px] leading-tight drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]">
                             WHO ARE <br className="hidden md:flex" /> WE?
                         </h1>
                         <p className="text-white font-normal text-sm sm:text-base md:text-sm lg:text-xl">
