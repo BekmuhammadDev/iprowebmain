@@ -22,6 +22,8 @@ import ContactWithMap from '../components/ui/contactwithmap';
 import Header from '../components/layouts/header';
 import Footer from '../components/layouts/footer';
 import { NavLink } from 'react-router-dom';
+import ScrollProgressBar from '../components/progressLine/progressline';
+import VerticalScrollProgress from '../components/vertikalLine/vertikalline';
 // import RegisterForm from '../components/forms/signup/singnup';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -143,6 +145,9 @@ const aboutus = () => {
     return (
         <>
             <Header />
+            <VerticalScrollProgress/>
+            <ScrollProgressBar />
+
             <section className="text-white py-16 mt-20">
                 <div className="container mx-auto md:max-w-none 2xl:max-w-none relative flex flex-col md:flex-row items-center justify-between px-5 md:px-10 lg:px-20">
                     {/* Text Content */}
@@ -467,21 +472,27 @@ const aboutus = () => {
                                             {faq.answer}
 
                                             {index === 0 && openIndex === 0 && (
-                                                <div className="mt-4 flex gap-4">
+                                                <div className="mt-4 flex items-center group relative min-h-[48px]">
+                                                    {/* Texnik muammo tugmasi */}
                                                     <button
-                                                        className="bg-white text-blue-500 px-4 py-2 rounded-lg font-semibold  drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]"
+                                                        className="bg-white text-blue-500 z-10 px-4 py-2 rounded-lg md:font-semibold drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]"
                                                         onClick={() => openModal('Texnik muammo')}
                                                     >
                                                         Texnik muammo
                                                     </button>
-                                                    <button
-                                                        className="bg-blue-500 hover:bg-black border-blue-500 border font-semibold text-white px-4 py-2 rounded-lg"
-                                                        onClick={() => openModal('Sayt ishlamayapti')}
+
+                                                    {/* Sayt ishlamayapti — telefon link */}
+                                                    <a
+                                                        href="tel:+998999999999"
+                                                        className="absolute left-0 opacity-0 text-base -translate-x-10 group-hover:opacity-100 group-hover:translate-x-44 transition-all duration-500 bg-blue-500 hover:bg-black border-blue-500 border font-medium text-white px-2 md:px-4 py-2 top-1 rounded-lg"
                                                     >
-                                                        Sayt ishlamayapti
-                                                    </button>
+                                                        +99899 999 99 99
+                                                    </a>
                                                 </div>
                                             )}
+
+
+
                                         </div>
                                     </div>
                                 ))}

@@ -92,9 +92,9 @@ export const portfolioData = [
 // ////////////////////////////
 export const faqs = [
   {
-    question: 'Siz aynan qanday muammoga duch keldingiz?',
+    question: 'Texnik muammoga duch keldingizmi?',
     answer:
-    `Yordam bera olishimiz uchun, muammoingiz to'liq kiritishingizni so'rab qolgan bo'lar edik! `,
+    `Texnik muammoni batafsil yoritib bering! `,
   },
   {
     question: 'How long does a project take?',
