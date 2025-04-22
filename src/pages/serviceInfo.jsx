@@ -3,7 +3,6 @@ import { useParams } from 'react-router-dom';
 import Header from '../components/layouts/header';
 import Footer from '../components/layouts/footer';
 import BgImgService from "../assets/images/bgimgservice.png"
-import { useEffect } from 'react';
 
 const serviceData = {
     'web-development': {
