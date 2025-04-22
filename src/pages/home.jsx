@@ -15,10 +15,12 @@ import { faqs } from '../mocks/mock';
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 import StarsRightImg from "../assets/images/starsright.png"
 import StarsLeftImg from "../assets/images/starsleft.png"
+import { FaQuestion } from "react-icons/fa";
 
 import ContactWithMap from '../components/ui/contactwithmap';
 import Header from '../components/layouts/header';
 import Footer from '../components/layouts/footer';
+import { NavLink } from 'react-router-dom';
 // import RegisterForm from '../components/forms/signup/singnup';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -34,10 +36,10 @@ const aboutus = () => {
     // /////////////////////
     const [activeIndex, setActiveIndex] = useState(0);
 
-        useEffect(() => {
-            window.scrollTo(0, 0);
-          }, []);
-        
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -110,8 +112,18 @@ const aboutus = () => {
         setActiveMember(member);
     };
 
-    
-    
+    const handleCardClick = (e) => {
+        e.preventDefault(); 
+      
+        // Scroll qilish
+        const element = document.getElementById('question');
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      
+      };
+
+
 
     return (
         <>
@@ -143,6 +155,12 @@ const aboutus = () => {
                         </video>
                     </div>
                 </div>
+
+
+                <NavLink onClick={handleCardClick}>
+                    <button  className='animate-bounce p-5 rounded-[50%] fixed bottom-20 right-5 z-50 bg-white'><FaQuestion color='black' /></button>
+                </NavLink>
+
 
                 {/* <RegisterForm/> */}
 
@@ -399,7 +417,7 @@ const aboutus = () => {
                 </div>
             </section>
 
-            <section className=" md:px-10 pt-[211px] mb-20">
+            <section  className=" md:px-10 pt-[211px] mb-20">
                 <div className='relative -z-10 top-[800px]'>
                     <img className='absolute hidden md:flex bottom-0 -right-10' src={StarsRightImg} alt="" />
                 </div>
@@ -408,7 +426,7 @@ const aboutus = () => {
                         HAVE A <br /> QUESTION?
                     </h1>
 
-                    <div className="flex  flex-col lg:flex-row items-start justify-between gap-10 p-4 md:p-5">
+                    <div id="question" className="flex  flex-col lg:flex-row items-start justify-between gap-10 p-4 md:p-5">
                         {/* Chap tomonda - FAQ */}
                         <div className="bg-[#0b0f19] flex flex-col  mt-24 w-full lg:w-1/2">
                             <div className="w-full max-w-2xl">
@@ -445,7 +463,7 @@ const aboutus = () => {
                     </div>
                 </div>
             </section>
-            <Footer />
+            <Footer  />
 
         </>
     );

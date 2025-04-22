@@ -4,7 +4,7 @@ import Logo from "../../assets/icons/Logo.svg"; // Logoni to‘g‘ri yo‘lda j
 
 const Footer = () => {
     return (
-        <footer className="bg-[#0D1117] text-white py-12 px-10 h-full">
+        <footer  className="bg-[#0D1117] text-white py-12 px-10 h-full">
             <div className="container mx-auto px-6 lg:px-1">
                 {/* Parent flex container */}
                 <div className="flex flex-wrap md:flex-row justify-between items-start gap-10 md:gap-0">
