@@ -16,7 +16,7 @@ export default function VerticalScrollProgress() {
   }, []);
 
   return (
-    <div className="fixed left-[1px] top-1/2 -translate-y-1/2 h-[100vh] w-6 z-50 flex flex-col items-center">
+    <div className="fixed left-[1px] top-1/2 -translate-y-1/2 h-[100vh] w-[2px] z-50 flex flex-col items-center">
       {/* Background Line */}
       <div className="w-[2px] bg-gray-300 h-full rounded-full relative">
         {/* Progress Line */}
