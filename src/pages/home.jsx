@@ -16,6 +16,7 @@ import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 import StarsRightImg from "../assets/images/starsright.png"
 import StarsLeftImg from "../assets/images/starsleft.png"
 import { FaQuestion } from "react-icons/fa";
+import { IoMdClose } from "react-icons/io";
 
 import ContactWithMap from '../components/ui/contactwithmap';
 import Header from '../components/layouts/header';
@@ -27,7 +28,6 @@ gsap.registerPlugin(ScrollTrigger);
 
 const aboutus = () => {
 
-    const [openIndex, setOpenIndex] = useState(null);
 
     const toggleAccordion = (index) => {
         setOpenIndex(openIndex === index ? null : index);
@@ -39,6 +39,21 @@ const aboutus = () => {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
+
+    const [openIndex, setOpenIndex] = useState(null);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [selectedIssue, setSelectedIssue] = useState('');
+
+    const openModal = (issue) => {
+        setSelectedIssue(issue);
+        setIsModalOpen(true);
+    };
+
+    const closeModal = () => {
+        setIsModalOpen(false);
+        setSelectedIssue('');
+    }
+
 
 
     useEffect(() => {
@@ -430,6 +445,7 @@ const aboutus = () => {
                         {/* Chap tomonda - FAQ */}
                         <div className="bg-[#0b0f19] flex flex-col  mt-24 w-full lg:w-1/2">
                             <div className="w-full max-w-2xl">
+
                                 {faqs.map((faq, index) => (
                                     <div key={index} className="mb-3">
                                         <button
@@ -452,17 +468,65 @@ const aboutus = () => {
 
                                             {index === 0 && openIndex === 0 && (
                                                 <div className="mt-4 flex gap-4">
-                                                    <button className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg">
-                                                    Texnik muammo
+                                                    <button
+                                                        className="bg-white text-blue-500 px-4 py-2 rounded-lg font-semibold  drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]"
+                                                        onClick={() => openModal('Texnik muammo')}
+                                                    >
+                                                        Texnik muammo
                                                     </button>
-                                                    <button className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg">
-                                                        Sayt ishlamayabti
+                                                    <button
+                                                        className="bg-blue-500 hover:bg-black border-blue-500 border font-semibold text-white px-4 py-2 rounded-lg"
+                                                        onClick={() => openModal('Sayt ishlamayapti')}
+                                                    >
+                                                        Sayt ishlamayapti
                                                     </button>
                                                 </div>
                                             )}
                                         </div>
                                     </div>
                                 ))}
+
+                                {/* Modal */}
+                                {isModalOpen && (
+                                    <div className="fixed inset-0 z-50 bg-black bg-opacity-90 flex items-center justify-center">
+                                        <div className="bg-[#0b0f19] w-full max-w-lg p-6 rounded-2xl shadow-lg relative">
+                                            <button
+                                                onClick={closeModal}
+                                                className="absolute -top-[450px] right-4 text-3xl text-white"
+                                            >
+                                                <IoMdClose />
+                                            </button>
+
+                                            <h2 className="text-xl font-bold text-white mb-4">
+                                                Muammo: <span className="text-red-500">{selectedIssue}!</span>
+                                            </h2>
+
+                                            <form className="flex flex-col gap-4">
+                                                <input
+                                                    type="text"
+                                                    placeholder="Ismingiz"
+                                                    className="px-4 py-2 rounded-lg bg-[#161b29] text-white placeholder-gray-400"
+                                                />
+                                                <input
+                                                    type="tel"
+                                                    placeholder="Telefon raqamingiz"
+                                                    className="px-4 py-2 rounded-lg bg-[#161b29] text-white placeholder-gray-400"
+                                                />
+                                                <textarea
+                                                    placeholder="Muammo tafsilotlari"
+                                                    rows={4}
+                                                    className="px-4 py-2 rounded-lg bg-[#161b29] text-white placeholder-gray-400 resize-none"
+                                                ></textarea>
+                                                <button
+                                                    type="submit"
+                                                    className="bg-[#fff] text-[#0086EE] w-full px-6 py-2 rounded-md font-semibold drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]"
+                                                >
+                                                    Yuborish
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                )}
 
                             </div>
                         </div>
