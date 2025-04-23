@@ -17,6 +17,7 @@ import StarsRightImg from "../assets/images/starsright.png"
 import StarsLeftImg from "../assets/images/starsleft.png"
 import { FaQuestion } from "react-icons/fa";
 import { IoMdClose } from "react-icons/io";
+import IproIMage from "../assets/images/iproLogoRegister.png"
 
 import ContactWithMap from '../components/ui/contactwithmap';
 import Header from '../components/layouts/header';
@@ -145,7 +146,7 @@ const aboutus = () => {
     return (
         <>
             <Header />
-            <VerticalScrollProgress/>
+            {/* <VerticalScrollProgress/> */}
             <ScrollProgressBar />
 
             <section className="text-white py-16 mt-20">
@@ -500,10 +501,10 @@ const aboutus = () => {
                                 {/* Modal */}
                                 {isModalOpen && (
                                     <div className="fixed inset-0 z-50 bg-black bg-opacity-90 flex items-center justify-center">
-                                        <div className="bg-[#0b0f19] w-full max-w-lg p-6 rounded-2xl shadow-lg relative">
+                                        <div className="bg-[#0b0f19] w-full max-w-2xl p-6 rounded-2xl shadow-lg relative">
                                             <button
                                                 onClick={closeModal}
-                                                className="absolute -top-[450px] right-4 text-3xl text-white"
+                                                className="absolute -top-[850px] md:-top-[450px] right-4 text-3xl text-white"
                                             >
                                                 <IoMdClose />
                                             </button>
@@ -512,29 +513,36 @@ const aboutus = () => {
                                                 Muammo: <span className="text-red-500">{selectedIssue}!</span>
                                             </h2>
 
-                                            <form className="flex flex-col gap-4">
-                                                <input
-                                                    type="text"
-                                                    placeholder="Ismingiz"
-                                                    className="px-4 py-2 rounded-lg bg-[#161b29] text-white placeholder-gray-400"
-                                                />
-                                                <input
-                                                    type="tel"
-                                                    placeholder="Telefon raqamingiz"
-                                                    className="px-4 py-2 rounded-lg bg-[#161b29] text-white placeholder-gray-400"
-                                                />
-                                                <textarea
-                                                    placeholder="Muammo tafsilotlari"
-                                                    rows={4}
-                                                    className="px-4 py-2 rounded-lg bg-[#161b29] text-white placeholder-gray-400 resize-none"
-                                                ></textarea>
-                                                <button
-                                                    type="submit"
-                                                    className="bg-[#fff] text-[#0086EE] w-full px-6 py-2 rounded-md font-semibold drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]"
-                                                >
-                                                    Yuborish
-                                                </button>
-                                            </form>
+                                            <div className=' block md:flex w-full'>
+                                                <div className='max-w-xl md:w-full'>
+                                                    <img src={IproIMage} alt=""  />
+                                                </div>
+                                                <div className='w-full'>
+                                                    <form className="flex flex-col gap-4">
+                                                        <input
+                                                            type="text"
+                                                            placeholder="Ismingiz"
+                                                            className="px-4 py-2 rounded-lg bg-[#161b29] text-white placeholder-gray-400 drop-shadow-[0_5px_5px_rgba(0,112,244,0.8)]"
+                                                        />
+                                                        <input
+                                                            type="tel"
+                                                            placeholder="Telefon raqamingiz"
+                                                            className="px-4 py-2 rounded-lg bg-[#161b29] text-white placeholder-gray-400 drop-shadow-[0_5px_5px_rgba(0,112,244,0.8)]"
+                                                        />
+                                                        <textarea
+                                                            placeholder="Muammo tafsilotlari"
+                                                            rows={4}
+                                                            className="px-4 py-2 rounded-lg bg-[#161b29] text-white placeholder-gray-400 resize-none drop-shadow-[0_5px_5px_rgba(0,112,244,0.8)]"
+                                                        ></textarea>
+                                                        <button
+                                                            type="submit"
+                                                            className="bg-[#fff] text-[#0086EE] w-full px-6 py-2 rounded-md font-semibold drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]"
+                                                        >
+                                                            Yuborish
+                                                        </button>
+                                                    </form>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 )}
