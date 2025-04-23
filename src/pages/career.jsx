@@ -33,10 +33,10 @@ const jobListings = [
 
 const career = () => {
    
-        const initialCount = 8;
+        const initialCount = 6;
         const navigate = useNavigate(); // Qo‘shildi
     
-        const [visibleJobs, setVisibleJobs] = useState(8);
+        const [visibleJobs, setVisibleJobs] = useState(6);
     
         const showMoreJobs = () => {
             setVisibleJobs((prev) => prev + 18);
@@ -70,7 +70,7 @@ const career = () => {
                         </h1>
 
                         <div className="bg-[#0A0F1F] flex flex-col justify-center items-center mt-20 mb-20">
-                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
                                 {jobListings.slice(0, visibleJobs).map((job, index) => (
                                     <div
                                         key={index}
