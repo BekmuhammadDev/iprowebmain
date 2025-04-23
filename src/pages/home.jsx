@@ -504,7 +504,7 @@ const aboutus = () => {
                                         <div className="bg-[#0b0f19] w-full max-w-2xl p-6 rounded-2xl shadow-lg relative">
                                             <button
                                                 onClick={closeModal}
-                                                className="absolute -top-[850px] md:-top-[450px] right-4 text-3xl text-white"
+                                                className="absolute -top-[600px] md:-top-[450px] right-4 text-3xl text-white"
                                             >
                                                 <IoMdClose />
                                             </button>

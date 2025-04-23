@@ -178,7 +178,7 @@ const team = () => {
                             <motion.div
                                 animate={{ x: isExpanded ? (window.innerWidth >= 768 ? "-100%" : "0%") : "0%" }}
                                 transition={{ duration: 0.5 }}
-                                className="relative -top-48 md:top-16 xl:top-32 w-full h-auto md:w-1/2"
+                                className="relative -top-48 md:top-16 xl:top-32 w-full h-full md:w-1/2"
                             >
                                 <div className="absolute inset-0 w-[400px] -z-10 xl:w-[700px] h-[355px] xl:h-auto">
                                     <img src={CardBg} alt="Background" className="-top-10" />
@@ -326,7 +326,6 @@ const team = () => {
                           }
                         `}</style>
                         </div>
-
 
                     </div>
                 </section>
