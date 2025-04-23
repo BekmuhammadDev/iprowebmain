@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState,useEffect } from 'react';
+import { useNavigate } from 'react-router-dom'; // Qo‘shildi
 import { FaCalendarAlt } from "react-icons/fa";
 import { FaClock } from "react-icons/fa";
 import Header from '../components/layouts/header';
@@ -31,26 +32,30 @@ const jobListings = [
 ];
 
 const career = () => {
-    const initialCount = 8;
-
-    const [visibleJobs, setVisibleJobs] = useState(8);
-
-    const showMoreJobs = () => {
-        setVisibleJobs((prev) => prev + 18); // Show 6 more jobs per click
-    };
-
-    const handleClick = (slug) => {
-        navigate(`/vacansy/${slug}`);
-    };
-
-    const resetJobs = () => {
-        setVisibleJobs(initialCount); // `initialCount` - siz boshlang'ichda nechta job ko'rsatayotgan bo'lsangiz
-    };
-
-      useEffect(() => {
+   
+        const initialCount = 8;
+        const navigate = useNavigate(); // Qo‘shildi
+    
+        const [visibleJobs, setVisibleJobs] = useState(8);
+    
+        const showMoreJobs = () => {
+            setVisibleJobs((prev) => prev + 18);
+        };
+    
+        const handleClick = (slug) => {
+            navigate(`/vacansy/${slug}`);
+        };
+    
+        const resetJobs = () => {
+            setVisibleJobs(initialCount);
+        };
+    
+        useEffect(() => {
             window.scrollTo(0, 0);
         }, []);
-
+        
+        // qolgan kod davom etadi...
+    
 
 
 
