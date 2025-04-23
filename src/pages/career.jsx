@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import { FaCalendarAlt } from "react-icons/fa";
 import { FaClock } from "react-icons/fa";
 import Header from '../components/layouts/header';
@@ -46,6 +46,10 @@ const career = () => {
     const resetJobs = () => {
         setVisibleJobs(initialCount); // `initialCount` - siz boshlang'ichda nechta job ko'rsatayotgan bo'lsangiz
     };
+
+      useEffect(() => {
+            window.scrollTo(0, 0);
+        }, []);
 
 
 

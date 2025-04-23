@@ -80,7 +80,7 @@ const team = () => {
 
     const showMoreJobs = () => {
         setVisibleJobs((prev) => prev + 8); // Show 6 more jobs per click
-    };
+    }; 
 
     const handleClick = (slug) => {
         navigate(`/vacansy/${slug}`);
