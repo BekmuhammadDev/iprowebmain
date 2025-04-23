@@ -7,12 +7,12 @@ import StarsRight from "../../assets/images/starsright.png"
 const testimonials = [
     {
         name: "John Doe",
-        text: "Working with the team brought a lot of experience and each project was done perfectly with paying attention...",
+        text: "Working with the team brought a lot of experience and each project was done!",
         img: CardImg,
     },
     {
         name: "Jane Smith",
-        text: "A great experience working with professionals who truly care about quality and delivery...",
+        text: "A great experience working with professionals who truly care about!",
         img: CardImg,
     },
     {
