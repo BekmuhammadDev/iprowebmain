@@ -14,17 +14,14 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
 import { IoHome } from "react-icons/io5";
 import { GrGroup } from "react-icons/gr";
-import IproLogo from "../../assets/images/iproLogoRegister.png"
 
 const Header = () => {
+    
     const [menuOpen, setMenuOpen] = useState(null);
-
     const [isScrolled, setIsScrolled] = useState(false);
     const [openDropdown, setOpenDropdown] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isSignInModalOpen, setIsSignInModalOpen] = useState(false);
-
-
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
@@ -67,7 +64,6 @@ const Header = () => {
     const [confirmPassword, setConfirmPassword] = useState('');
     const [email, setEmail] = useState('');
     const [error, setError] = useState('');
-
 
     const handleRegister = async () => {
         if (!username || !email || !password || !confirmPassword) {
@@ -123,7 +119,6 @@ const Header = () => {
         }
     };
 
-
     const handleSignIn = async () => {
         try {
             const userData = { username, password };
@@ -137,9 +132,6 @@ const Header = () => {
         }
     };
     //////////////////////////////////////////
-
-    // /////////////////////  header blur  ///////////////////////////////////////
-    // ${isScrolled ? "backdrop-blur-lg bg-transparent" : "bg-transparent"}
 
     return (
         <header className={`w-full py-4 fixed top-0 h-20 z-50 text-white flex transition-all duration-300 bg-[#0A0F1F]`}>
@@ -178,18 +170,35 @@ const Header = () => {
                     {/* Globe Icon with Dropdown */}
 
                     <div className='flex items-center md:gap-7 relative'>
+
                         {/* Language Dropdown */}
-                        <div className=" hidden md:flex relative dropdown">
+                        <div className="hidden md:flex relative dropdown">
                             <button onClick={() => setOpenDropdown(openDropdown === "lang" ? null : "lang")}>
-                                <FaEarthAsia fontSize={25} color='white' />
+                                <FaEarthAsia fontSize={25} color="white" />
                             </button>
+
                             {openDropdown === "lang" && (
                                 <div className="absolute top-12 -left-12 w-32 text-white rounded-lg shadow-lg">
-                                    <MdArrowDropUp className='absolute -bottom-5 left-8 text-[#16182B] text-[48px]' />
+                                    <MdArrowDropUp className="absolute -bottom-5 left-8 text-[#16182B] text-[48px]" />
                                     <div className="py-2 px-3 bg-[#16182B] w-[117px] rounded-xl">
-                                        <button onClick={() => setOpenDropdown(null)} className="block w-full text-center border-gray-600 border-b-2 px-4 py-2">English</button>
-                                        <button onClick={() => setOpenDropdown(null)} className="block w-full text-center border-gray-600 border-b-2 px-4 py-2">Русский</button>
-                                        <button onClick={() => setOpenDropdown(null)} className="block w-full text-center px-4 py-2">Uzbek</button>
+                                        <button
+                                            onClick={() => changeLanguage("en")}
+                                            className="block w-full text-center border-gray-600 border-b-2 px-4 py-2"
+                                        >
+                                            English
+                                        </button>
+                                        <button
+                                            onClick={() => changeLanguage("ru")}
+                                            className="block w-full text-center border-gray-600 border-b-2 px-4 py-2"
+                                        >
+                                            Русский
+                                        </button>
+                                        <button
+                                            onClick={() => changeLanguage("uz")}
+                                            className="block w-full text-center px-4 py-2"
+                                        >
+                                            Uzbek
+                                        </button>
                                     </div>
                                 </div>
                             )}
@@ -437,7 +446,7 @@ const Header = () => {
 
                 <ul className="flex flex-col items-start pl-5 mt-6 space-y-2">
                     {[
-                        { name: "Home", icon:<IoHome/>, path: "/" },
+                        { name: "Home", icon: <IoHome />, path: "/" },
                         // { name: "Profile", icon: <FaUser />, path: "/profile" },
                         { name: "About Us", icon: <FaBriefcase />, path: "/aboutus" },
                         { name: "Team", icon: <GrGroup />, path: "/team" },
