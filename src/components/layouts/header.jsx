@@ -6,12 +6,15 @@ import { IoClose, IoPersonOutline } from "react-icons/io5";
 import { FaEarthAsia } from "react-icons/fa6";
 import { CgMenuRightAlt } from "react-icons/cg";
 import { MdArrowDropUp } from "react-icons/md";
-import { FaUser, FaBriefcase, FaTasks, FaShoppingBag, FaListAlt } from "react-icons/fa";
+import { FaBriefcase, FaTasks, FaListAlt } from "react-icons/fa";
 import IproRegisterLogo from "../../assets/images/iproLogoRegister.png"
 import profileicon from "../../assets/images/profileicon.png"
 import { IoMdClose } from "react-icons/io";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
+import { IoHome } from "react-icons/io5";
+import { GrGroup } from "react-icons/gr";
+import IproLogo from "../../assets/images/iproLogoRegister.png"
 
 const Header = () => {
     const [menuOpen, setMenuOpen] = useState(null);
@@ -434,13 +437,14 @@ const Header = () => {
 
                 <ul className="flex flex-col items-start pl-5 mt-6 space-y-2">
                     {[
-                        { name: "Profile", icon: <FaUser />, path: "/profile" },
-                        { name: "About Us", icon: <FaBriefcase />, path: "/" },
-                        { name: "Team", icon: <FaTasks />, path: "/team" },
+                        { name: "Home", icon:<IoHome/>, path: "/" },
+                        // { name: "Profile", icon: <FaUser />, path: "/profile" },
+                        { name: "About Us", icon: <FaBriefcase />, path: "/aboutus" },
+                        { name: "Team", icon: <GrGroup />, path: "/team" },
                         { name: "Portfolio", icon: <FaBriefcase />, path: "/portfolio" },
                         { name: "Services", icon: <FaTasks />, path: "/services" },
                         { name: "Careers", icon: <FaBriefcase />, path: "/careers" },
-                        { name: "Orders", icon: <FaShoppingBag />, path: "/orders" },
+                        // { name: "Orders", icon: <FaShoppingBag />, path: "/orders" },
                         { name: "My Orders", icon: <FaListAlt />, path: "/user" },
                     ].map((item, index) => (
                         <NavLink
