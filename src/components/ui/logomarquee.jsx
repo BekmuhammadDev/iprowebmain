@@ -1,11 +1,10 @@
 import React from "react";
-import MetnLogo from "../../assets/icons/metn.svg";
 import DigitalFingers from "../../assets/icons/metn.svg";
 import MetinLogo from "../../assets/icons/metin.svg"
 import FarkoLogo from "../../assets/icons/farko.svg"
 import ItbilimLogo from "../../assets/icons/itbilim.svg"
 
-const logos = [MetinLogo, FarkoLogo, ItbilimLogo, FarkoLogo,MetinLogo, ItbilimLogo, MetinLogo, FarkoLogo,MetinLogo, FarkoLogo, MetinLogo, DigitalFingers,MetnLogo, DigitalFingers, MetnLogo, DigitalFingers]; // Logotiplar massivi
+const logos = [MetinLogo, FarkoLogo, ItbilimLogo,MetinLogo, FarkoLogo, ItbilimLogo,MetinLogo, FarkoLogo, ItbilimLogo,MetinLogo, FarkoLogo, ItbilimLogo,MetinLogo, FarkoLogo, ItbilimLogo,MetinLogo, FarkoLogo, ItbilimLogo,MetinLogo, FarkoLogo, ItbilimLogo,MetinLogo, FarkoLogo, ItbilimLogo,MetinLogo, FarkoLogo, ItbilimLogo,MetinLogo, FarkoLogo, ItbilimLogo,MetinLogo, FarkoLogo, ItbilimLogo,MetinLogo, FarkoLogo, ItbilimLogo,MetinLogo, FarkoLogo, ItbilimLogo,MetinLogo, FarkoLogo, ItbilimLogo,MetinLogo, FarkoLogo, ItbilimLogo,MetinLogo, FarkoLogo, ItbilimLogo,MetinLogo, FarkoLogo, ItbilimLogo,MetinLogo, FarkoLogo, ItbilimLogo,MetinLogo, FarkoLogo, ItbilimLogo,MetinLogo, FarkoLogo, ItbilimLogo,];
 
 const Logomarqee = () => {
   return (
@@ -23,7 +22,7 @@ const Logomarqee = () => {
       <style jsx>{`
         .marquee {
           display: flex;
-          animation: marquee-scroll 45s linear infinite;
+          animation: marquee-scroll 95s linear infinite;
         }
         @keyframes marquee-scroll {
           from {

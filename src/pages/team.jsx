@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState,useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { FaCalendarAlt } from "react-icons/fa";
 import { FaClock } from "react-icons/fa";
 import { motion } from "framer-motion";
@@ -178,12 +178,16 @@ const team = () => {
                             <motion.div
                                 animate={{ x: isExpanded ? (window.innerWidth >= 768 ? "-100%" : "0%") : "0%" }}
                                 transition={{ duration: 0.5 }}
-                                className="relative -top-48 md:top-16 xl:top-32 w-full h-full md:w-1/2"
+                                className={`relative -top-48 md:top-16 xl:top-32 w-full h-full md:w-1/2 ${isExpanded ? '-top-[330px]' : 'bottom-10 md:bottom-10'}`}
                             >
-                                <div className="absolute inset-0 w-[400px] -z-10 xl:w-[700px] h-[355px] xl:h-auto">
+                                {/* Background image */}
+                                <div className={`absolute inset-0 w-[400px] -z-10 xl:w-[700px] h-[355px] xl:h-auto `}>
                                     <img src={CardBg} alt="Background" className="-top-10" />
                                 </div>
-                                <div className="relative -z-10 w-[380px] h-[380px] xl:-right-40 xl:h-auto flex justify-center bottom-24">
+
+                                {/* Worker image with conditional bottom positioning */}
+                                <div
+                                    className={`relative -z-10 w-[380px] h-[380px] xl:-right-40 xl:h-auto flex justify-center `}>
                                     <img src={activeMember.workerImg} alt="Worker" />
                                 </div>
                             </motion.div>
@@ -191,7 +195,7 @@ const team = () => {
 
                         </div>
 
-                        <div className="relative top-20 sm:-top-10 z-30 backdrop-blur-lg bg-transparent overflow-hidden w-full flex justify-center">
+                        <div className="relative top-20 sm:top-10 z-30 backdrop-blur-lg bg-transparent overflow-hidden w-full flex justify-center">
                             <div className="carousel-track">
                                 <div className="carousel-inner">
                                     {[...teamMembers, ...teamMembers, ...teamMembers].map((member, index) => (
@@ -259,7 +263,7 @@ const team = () => {
                         `}</style>
                         </div>
 
-                        <div className="relative top-40 sm:-top-0 z-30 backdrop-blur-lg bg-transparent overflow-hidden w-full flex justify-center">
+                        <div className="relative top-40 sm:top-20 z-30 backdrop-blur-lg bg-transparent overflow-hidden w-full flex justify-center">
                             <div className="carousel-track">
                                 <div className="carousel-inner">
                                     {[...teamMembers, ...teamMembers, ...teamMembers].map((member, index) => (
@@ -365,7 +369,6 @@ const team = () => {
                                 ))}
                             </div>
 
-                            {/* Show More Button */}
                             {visibleJobs < jobListings.length && (
                                 <button
                                     onClick={showMoreJobs}
