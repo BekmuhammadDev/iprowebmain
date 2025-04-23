@@ -484,7 +484,7 @@ const aboutus = () => {
                                                     {/* Sayt ishlamayapti — telefon link */}
                                                     <a
                                                         href="tel:+998999999999"
-                                                        className="absolute left-0 opacity-0 text-base -translate-x-10 group-hover:opacity-100 group-hover:translate-x-44 transition-all duration-500 bg-blue-500 hover:bg-black border-blue-500 border font-medium text-white px-2 md:px-4 py-2 top-1 rounded-lg"
+                                                        className="absolute left-0 opacity-0 text-base md:-translate-x-10 group-hover:opacity-100 group-hover:translate-x-44 transition-all duration-500 bg-blue-500 hover:bg-black border-blue-500 border font-medium text-white px-2 md:px-4 py-2 top-1 rounded-lg"
                                                     >
                                                         +99899 999 99 99
                                                     </a>
