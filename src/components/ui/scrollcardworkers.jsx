@@ -3,31 +3,39 @@ import CardImg from "../../assets/images/cardimg.png";
 import { FaQuoteLeft } from "react-icons/fa";
 import StarsLeft from "../../assets/images/starsleft.png"
 import StarsRight from "../../assets/images/starsright.png"
+import { useTranslation } from "react-i18next";
+import "../../i18";
 
-const testimonials = [
-    {
-        name: "John Doe",
-        text: "Working with the team brought a lot of experience and each project was done!",
-        img: CardImg,
-    },
-    {
-        name: "Jane Smith",
-        text: "A great experience working with professionals who truly care about!",
-        img: CardImg,
-    },
-    {
-        name: "Michael Johnson",
-        text: "Their expertise helped our project reach new heights, would definitely recommend!",
-        img: CardImg,
-    },
-    {
-        name: "Emily Davis",
-        text: "Top-notch service, everything was done on time and exceeded our expectations!",
-        img: CardImg,
-    },
-];
+
 
 export default function TestimonialSlider() {
+
+    const { t } = useTranslation();
+
+    const testimonials = [
+        {
+            name: "John Doe",
+            text: t("description2"),
+            img: CardImg,
+        },
+        {
+            name: "Jane Smith",
+            text: t("description3"),
+            img: CardImg,
+        },
+        {
+            name: "Michael Johnson",
+            text: t("description4"),
+            img: CardImg,
+        },
+        {
+            name: "Emily Davis",
+            text: t("description5"),
+            img: CardImg,
+        },
+    ];
+
+
     const [activeIndex, setActiveIndex] = useState(0);
 
     useEffect(() => {

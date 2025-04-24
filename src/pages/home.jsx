@@ -26,11 +26,14 @@ import { NavLink } from 'react-router-dom';
 import ScrollProgressBar from '../components/progressLine/progressline';
 import VerticalScrollProgress from '../components/vertikalLine/vertikalline';
 // import RegisterForm from '../components/forms/signup/singnup';
+import { useTranslation } from "react-i18next";
+import "../i18";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const aboutus = () => {
 
+    const { t } = useTranslation();
 
     const toggleAccordion = (index) => {
         setOpenIndex(openIndex === index ? null : index);
@@ -57,8 +60,6 @@ const aboutus = () => {
         setSelectedIssue('');
     }
 
-
-
     useEffect(() => {
         const interval = setInterval(() => {
             setActiveIndex((prevIndex) => (prevIndex + 1) % teamMembers.length);
@@ -66,63 +67,6 @@ const aboutus = () => {
 
         return () => clearInterval(interval);
     }, []);
-    //     const el = elementRef.current;
-    //     gsap.set(el, {
-    //         position: 'fixed',
-    //         top: '45%',
-    //         left: '50%',
-    //         x: '-50%',
-    //         y: '-50%',
-    //         maxWidth: 'none',
-    //         width: '100vw',
-    //         height: '100vh',
-    //         scale: 1,
-    //         opacity: 1,
-    //     });
-
-    //     gsap.to(el, {
-    //         scrollTrigger: {
-    //             trigger: sectionRef.current,
-    //             start: 'top-=7.5% top',
-    //             end: 'top+=25% top',
-    //             scrub: true,
-    //         },
-    //         width: '80vw',
-    //         height: '80vh',
-    //         position: 'fixed',
-    //     });
-
-    //     gsap.to(el, {
-    //         scrollTrigger: {
-    //             trigger: sectionRef.current,
-    //             start: 'top+=25% top',
-    //             end: 'top+=50% top',
-    //             scrub: true,
-    //         },
-    //         x: '-5%',
-    //         y: '0%',
-    //         top: '20%',
-    //         width: 'calc(50vw - 2.5rem)',
-    //         height: '50vh',
-    //         position: 'fixed',
-    //     });
-
-    //     gsap.to(el, {
-    //         scrollTrigger: {
-    //             trigger: sectionRef.current,
-    //             start: 'top+=50% top',
-    //             end: 'bottom bottom',
-    //             scrub: 0,
-    //             onUpdate: (self) => {
-    //                 if (self.progress >= 1) {
-    //                     gsap.set(el, { position: 'sticky' });
-    //                 }
-    //             },
-    //         },
-    //         top: '10%',
-    //         x: '0%',
-    //     });
-    // }, []);
 
     const [activeMember, setActiveMember] = useState(teamMembers[0]);
 
@@ -142,7 +86,6 @@ const aboutus = () => {
     };
 
 
-
     return (
         <>
             <Header />
@@ -154,17 +97,17 @@ const aboutus = () => {
                     {/* Text Content */}
                     <div className="text-center md:text-left md:w-1/2 space-y-4">
                         <p className="lg:text-2xl text-xl font-medium">
-                            Premium Web Design Agency
+                            {t("premium_web_design")}
                         </p>
                         <h1 className="text-[#0086EE] text-4xl lg:text-6xl  leading-tight font-bold uppercase">
-                            Brands Growth
+                           {t("brands_growth")}
                         </h1>
                         <p className="text-sm lg:text-xl font-medium">
-                            Custom Websites, Mobile Apps, Branding & Digital <br className="hidden md:block" />
-                            Marketing, other services
+                            {t("custom_websites")} <br className="hidden md:block" />
+                           {t("marketing_services")}
                         </p>
-                        <button className="w-full sm:w-[250px] md:w-[250px] lg:w-[320px] h-[50px] md:h-[56px] bg-white text-[#0086EE] text-lg md:text-xl font-bold uppercase mt-6 md:mt-9 rounded-lg shadow-lg drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]">
-                            Speak with Expert
+                        <button className="w-full sm:w-[250px] md:w-[250px] lg:w-[320px] h-[50px] bg-white text-[#0086EE] text-base- font-bold uppercase mt-6 md:mt-9 rounded-lg shadow-lg drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]">
+                           {t("speak_expert")}
                         </button>
                     </div>
 
@@ -196,13 +139,10 @@ const aboutus = () => {
                     {/* Matn qismi */}
                     <div className="w-full md:w-1/2 text-center md:text-left mt-6 md:mt-0 space-y-4">
                         <h1 className="text-white font-black text-3xl sm:text-5xl md:text-[65px] xl:text-[120px] leading-tight drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]">
-                            WHO ARE <br className="hidden md:flex" /> WE?
+                            {t("who_are_we")}
                         </h1>
                         <p className="text-white font-normal text-sm sm:text-base md:text-sm lg:text-xl">
-                            iPro is a web design company & digital marketing agency focused on
-                            growing brands online. We create effective brand strategies,
-                            custom web design, development, and digital marketing solutions to
-                            generate greater brand engagement and conversions.
+                            {t("description1")}
                         </p>
                     </div>
 
@@ -225,7 +165,7 @@ const aboutus = () => {
                         loop
                     />
                     <h1 className="text-white font-bold text-xl sm:text-2xl md:text-3xl text-center md:text-left">
-                        See Our Company
+                       {t("see_our_company")}
                     </h1>
                 </div>
 
@@ -243,7 +183,7 @@ const aboutus = () => {
             <section className='bg-[##16182B]'>
                 <div className="container mx-auto sm:max-w-none ">
                     <h1 className="text-white xl:text-[128px] sm:mb-20 text-[48px] font-black ml-5 leading-[1.1] text-center md:text-left drop-shadow-[0_5px_10px_rgba(0,112,244,0.8)]">
-                        MEET THE TEAM
+                       {t("meetyheteam")}
                     </h1>
                     <div className='relative hidden xl:flex -bottom-[700px]'>
                         <img className=' absolute right-0' src={StarsRightImg} alt="" />
@@ -515,7 +455,7 @@ const aboutus = () => {
 
                                             <div className=' block md:flex w-full'>
                                                 <div className='max-w-xl md:w-full'>
-                                                    <img src={IproIMage} alt=""  />
+                                                    <img src={IproIMage} alt="" />
                                                 </div>
                                                 <div className='w-full'>
                                                     <form className="flex flex-col gap-4">

@@ -1,14 +1,21 @@
 import CountUp from "react-countup";
 import { useEffect, useState, useRef } from "react";
+import { useTranslation } from "react-i18next";
+import "../../i18";
 
-const achievementsList = [
-    { metric: "Projects", value: 100, postfix: "+" },
-    { metric: "Partners", value: 50, postfix: "+" },
-    { metric: "Achievements", value: 30 },
-    { metric: "Year", value: 5 },
-];
+
 
 const Achievements = () => {
+
+    const { t } = useTranslation();
+
+    const achievementsList = [
+        { metric: t("Projects"), value: 100, postfix: "+" },
+        { metric: t("Partners"), value: 50, postfix: "+" },
+        { metric: t("achievements"), value: 30 },
+        { metric: t("Year"), value: 5 },
+    ];
+
     const [inView, setInView] = useState(false);
     const ref = useRef(null);
 

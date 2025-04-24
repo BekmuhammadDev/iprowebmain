@@ -14,8 +14,13 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
 import { IoHome } from "react-icons/io5";
 import { GrGroup } from "react-icons/gr";
+import LangDropdown from "../langdropdown/langdropdown"
+import { useTranslation } from "react-i18next";
+import "../../i18";
+
 
 const Header = () => {
+    const { t } = useTranslation();
     
     const [menuOpen, setMenuOpen] = useState(null);
     const [isScrolled, setIsScrolled] = useState(false);
@@ -64,6 +69,7 @@ const Header = () => {
     const [confirmPassword, setConfirmPassword] = useState('');
     const [email, setEmail] = useState('');
     const [error, setError] = useState('');
+
 
     const handleRegister = async () => {
         if (!username || !email || !password || !confirmPassword) {
@@ -146,11 +152,11 @@ const Header = () => {
                 <ul className='hidden lg:flex gap-10'>
                     {[
                         { name: "", path: "/" },
-                        { name: "About Us", path: "/aboutus" },
-                        { name: "Team", path: "/team" },
-                        { name: "Portfolio", path: "/portfolio" },
-                        { name: "Services", path: "/services" },
-                        { name: "Careers", path: "/careers" },
+                        { name: t("about"), path: "/aboutus" },
+                        { name: t("team"), path: "/team" },
+                        { name: t("portfolio"), path: "/portfolio" },
+                        { name: t("services"), path: "/services" },
+                        { name: t("careers"), path: "/careers" },
                     ].map((item, index) => (
                         <NavLink
                             key={index}
@@ -172,37 +178,8 @@ const Header = () => {
                     <div className='flex items-center md:gap-7 relative'>
 
                         {/* Language Dropdown */}
-                        <div className="hidden md:flex relative dropdown">
-                            <button onClick={() => setOpenDropdown(openDropdown === "lang" ? null : "lang")}>
-                                <FaEarthAsia fontSize={25} color="white" />
-                            </button>
 
-                            {openDropdown === "lang" && (
-                                <div className="absolute top-12 -left-12 w-32 text-white rounded-lg shadow-lg">
-                                    <MdArrowDropUp className="absolute -bottom-5 left-8 text-[#16182B] text-[48px]" />
-                                    <div className="py-2 px-3 bg-[#16182B] w-[117px] rounded-xl">
-                                        <button
-                                            onClick={() => changeLanguage("en")}
-                                            className="block w-full text-center border-gray-600 border-b-2 px-4 py-2"
-                                        >
-                                            English
-                                        </button>
-                                        <button
-                                            onClick={() => changeLanguage("ru")}
-                                            className="block w-full text-center border-gray-600 border-b-2 px-4 py-2"
-                                        >
-                                            Русский
-                                        </button>
-                                        <button
-                                            onClick={() => changeLanguage("uz")}
-                                            className="block w-full text-center px-4 py-2"
-                                        >
-                                            Uzbek
-                                        </button>
-                                    </div>
-                                </div>
-                            )}
-                        </div>
+                         <LangDropdown openDropdown={openDropdown} setOpenDropdown={setOpenDropdown} />
 
                         {/* Notifications Dropdown */}
                         <div className='relative dropdown'>
@@ -213,8 +190,8 @@ const Header = () => {
                                 <div className="absolute top-12 -left-20 w-[230px] text-white rounded-lg shadow-lg">
                                     <MdArrowDropUp className='absolute -bottom-5 left-16 text-[#16182B] text-[48px]' />
                                     <div className="py-2 px-3 bg-[#16182B] w-[174px] rounded-xl">
-                                        <button onClick={() => setOpenDropdown(null)} className="block w-full border-b-2 border-gray-600 text-start py-2 text-sm">Your project approved <p className='text-xs text-[#999999]'>5 days ago</p></button>
-                                        <button onClick={() => setOpenDropdown(null)} className="block w-full text-start border-b-2 border-gray-600 py-2 text-sm">Your project rejected <p className='text-xs text-[#999999]'>15 days ago</p></button>
+                                        <button onClick={() => setOpenDropdown(null)} className="block w-full border-b-2 border-gray-600 text-start py-2 text-xs">{t("your_approved")}<p className='text-xs text-[#999999]'>5 days ago</p></button>
+                                        <button onClick={() => setOpenDropdown(null)} className="block w-full text-start border-b-2 border-gray-600 py-2 text-xs">{t("your_rejected")} <p className='text-xs text-[#999999]'>15 days ago</p></button>
                                     </div>
                                 </div>
                             )}
@@ -446,13 +423,13 @@ const Header = () => {
 
                 <ul className="flex flex-col items-start pl-5 mt-6 space-y-2">
                     {[
-                        { name: "Home", icon: <IoHome />, path: "/" },
+                        { name: t("home"), icon: <IoHome />, path: "/" },
                         // { name: "Profile", icon: <FaUser />, path: "/profile" },
-                        { name: "About Us", icon: <FaBriefcase />, path: "/aboutus" },
-                        { name: "Team", icon: <GrGroup />, path: "/team" },
-                        { name: "Portfolio", icon: <FaBriefcase />, path: "/portfolio" },
-                        { name: "Services", icon: <FaTasks />, path: "/services" },
-                        { name: "Careers", icon: <FaBriefcase />, path: "/careers" },
+                        { name:  t("about"), icon: <FaBriefcase />, path: "/aboutus" },
+                        { name: t("team"), icon: <GrGroup />, path: "/team" },
+                        { name: t("portfolio"), icon: <FaBriefcase />, path: "/portfolio" },
+                        { name: t("services"), icon: <FaTasks />, path: "/services" },
+                        { name: t("careers"), icon: <FaBriefcase />, path: "/careers" },
                         // { name: "Orders", icon: <FaShoppingBag />, path: "/orders" },
                         { name: "My Orders", icon: <FaListAlt />, path: "/user" },
                     ].map((item, index) => (
