@@ -12,7 +12,6 @@ import CardBg from '../assets/images/cardbg.png';
 import { teamMembers } from '../mocks/mock';
 import { portfolioData } from '../mocks/mock';
 import { faqs } from '../mocks/mock';
-import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 import StarsRightImg from "../assets/images/starsright.png"
 import StarsLeftImg from "../assets/images/starsleft.png"
 import { FaQuestion } from "react-icons/fa";

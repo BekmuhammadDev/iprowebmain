@@ -10,7 +10,8 @@ import { FaReact, FaNodeJs, FaHtml5, FaCss3Alt, FaJs } from 'react-icons/fa';
 import Header from '../components/layouts/header';
 import Footer from '../components/layouts/footer';
 import { useNavigate } from 'react-router-dom';
-
+import { useTranslation } from "react-i18next";
+import "../i18";
 
 const teamMembers = [
     {
@@ -54,24 +55,23 @@ const teamMembers = [
 
 const jobListings = [
 
-    { slug: 'motion-designer', title: "Motion Designer", schedule: "Monday-Saturday", time: "09:00-18:00" },
-    { slug: 'ui-ux-designer', title: "UI/UX Designer", schedule: "Monday-Friday", time: "10:00-17:00" },
-    { slug: 'graphic-designer', title: "Graphic Designer", schedule: "Monday-Saturday", time: "08:00-16:00" },
-    { slug: 'frontend-developer', title: "Frontend Developer", schedule: "Monday-Friday", time: "09:00-18:00" },
-    { slug: 'backend-developer', title: "Backend Developer", schedule: "Monday-Friday", time: "10:00-19:00" },
-    { slug: 'project-manager', title: "Project Manager", schedule: "Monday-Saturday", time: "09:00-17:00" },
-    { slug: 'data-analyst', title: "Data Analyst", schedule: "Monday-Friday", time: "09:00-17:30" },
-    { slug: 'marketing-specialist', title: "Marketing Specialist", schedule: "Monday-Saturday", time: "08:30-17:30" },
-    { slug: 'seo-expert', title: "SEO Expert", schedule: "Monday-Friday", time: "09:00-18:00" },
-    { slug: 'data-analyst', title: "Data Analyst", schedule: "Monday-Friday", time: "09:00-17:30" },
-    { slug: 'data-analyst', title: "Data Analyst", schedule: "Monday-Friday", time: "09:00-17:30" },
-    { slug: 'marketing-specialist', title: "Marketing Specialist", schedule: "Monday-Saturday", time: "08:30-17:30" },
-    { slug: 'seo-expert', title: "SEO Expert", schedule: "Monday-Friday", time: "09:00-18:00" },
-    { slug: 'data-analyst', title: "Data Analyst", schedule: "Monday-Friday", time: "09:00-17:30" },
+    { slug: 'motion-designer', title: "Motion Designer", schedule: "monday_saturday", time: "09:00-18:00" },
+    { slug: 'ui-ux-designer', title: "UI/UX Designer", schedule: "monday_friday", time: "10:00-17:00" },
+    { slug: 'graphic-designer', title: "Graphic Designer", schedule: "monday_saturday", time: "08:00-16:00" },
+    { slug: 'frontend-developer', title: "Frontend Developer", schedule: "monday_friday", time: "09:00-18:00" },
+    { slug: 'backend-developer', title: "Backend Developer", schedule: "monday_friday", time: "10:00-19:00" },
+    { slug: 'project-manager', title: "Project Manager", schedule: "monday_saturday", time: "09:00-17:00" },
+    { slug: 'marketing-specialist', title: "Marketing Specialist", schedule: "monday_saturday", time: "08:30-17:30" },
+    { slug: 'seo-expert', title: "SEO Expert", schedule: "monday_friday", time: "09:00-18:00" },
+    { slug: 'data-analyst', title: "Data Analyst", schedule: "monday_friday", time: "09:00-17:30" },
+    { slug: 'marketing-specialist', title: "Marketing Specialist", schedule: "monday_saturday", time: "08:30-17:30" },
+    { slug: 'seo-expert', title: "SEO Expert", schedule: "monday_friday", time: "09:00-18:00" },
 
 ];
 
 const team = () => {
+        const { t } = useTranslation();
+    
     const navigate = useNavigate();
 
     const [activeMember, setActiveMember] = useState(teamMembers[0]);
@@ -107,7 +107,7 @@ const team = () => {
                     <div className="container mx-auto ">
                         
                         <h1 className="text-white xl:text-[120px] text-[48px] font-black ml-5 leading-[1.1] text-center md:text-left drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]">
-                            MEET THE TEAM
+                           {t("meetyheteam")}
                         </h1>
 
                         <div className="relative md:flex md:px-10 items-center justify-between gap-38 ml-5">
@@ -121,18 +121,18 @@ const team = () => {
 
                                 {!isExpanded && (
                                     <h1 className="text-white text-base text-center md:text-left xl:text-2xl font-semibold uppercase">
-                                        {activeMember.role}
+                                        {t(activeMember.role)}
                                     </h1>
                                 )}
 
                                 <h1 className="text-white text-[40px] xl:text-[96px] text-center md:text-left font-black uppercase drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]">
-                                    {activeMember.name}
+                                    {t(activeMember.name)}
                                 </h1>
 
                                 <h1 className="text-white text-xs xl:text-xl text-center md:text-left font-semibold uppercase">
                                     {isExpanded
-                                        ? 'I have spent nearly four years working as a backend developer, where I honed my analytical skills and gained a deep understanding of software processes. This experience ignited my passion for data-driven decision-making, leading me to transition into the world of programming.'
-                                        : activeMember.description}
+                                        ? t("experienceses")
+                                        : t(activeMember.description)}
                                 </h1>
 
                                 <div className="text-center">
@@ -140,25 +140,25 @@ const team = () => {
                                         <div className="flex items-center gap-5 xl:gap-12 mt-5 xl:mt-36">
                                             <div className="flex gap-2 xl:gap-5 items-center">
                                                 <h1 className="md:text-xl text-base uppercase font-semibold text-white">
-                                                    Projects:
+                                                    {t("projects")}:
                                                 </h1>
                                                 <h2 className="xl:text-5xl text-4xl text-white font-semibold drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]">
-                                                    {activeMember.projects}
+                                                    {t(activeMember.projects)}
                                                 </h2>
                                             </div>
                                             <div className="flex gap-2 xl:gap-5 items-center">
                                                 <h1 className="xl:text-xl text-base uppercase font-semibold text-white">
-                                                    Experience:
+                                                    {t("experience")}:
                                                 </h1>
                                                 <h2 className="xl:text-5xl text-4xl text-white font-semibold drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]">
-                                                    {activeMember.experience}
+                                                    {t(activeMember.experience)}
                                                 </h2>
                                             </div>
                                         </div>
                                     ) : (
 
                                         <div>
-                                            <h1 className='text-white text-2xl font-semibold mt-5'>Using tools</h1>
+                                            <h1 className='text-white text-2xl font-semibold mt-5'>{t("using_tools")}</h1>
                                             <div className="flex justify-center gap-6 mt-10">
                                                 <FaReact className="text-[#61DAFB] text-6xl drop-shadow-lg" />
                                                 <FaNodeJs className="text-[#68A063] text-6xl drop-shadow-lg" />
@@ -173,7 +173,7 @@ const team = () => {
                                         onClick={() => setIsExpanded(!isExpanded)}
                                         className="px-14 py-2 bg-white text-[#0086EE] text-xl xl:text-2xl font-bold uppercase mt-14 drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]"
                                     >
-                                        {isExpanded ? 'Less Info' : 'More Info'}
+                                        {isExpanded ? t('less_info') : t('more_info')}
                                     </button>
 
                                 </div>
@@ -342,7 +342,7 @@ const team = () => {
                 <section>
                     <div className="container mx-auto mt-52">
                         <h1 className="text-white md:text-[128px] text-[48px] font-black px-10 leading-[1.1] text-center md:text-left drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]">
-                            VACANCIES
+                           {t("vacansy")}
                         </h1>
 
                         <div className="bg-[#0A0F1F] flex flex-col justify-center items-center mt-20 mb-20">
@@ -358,7 +358,7 @@ const team = () => {
                                         <div className="flex gap-14 items-center">
                                             <div className="flex items-center gap-2">
                                                 <span className="text-xl"><FaCalendarAlt color='white' fontSize={24} /></span>
-                                                <p className="text-base font-normal">{job.schedule}</p>
+                                                <p className="text-base font-normal">{t(job.schedule)}</p>
                                             </div>
                                             <div className="flex items-center gap-2 mt-2">
                                                 <span className="text-xl"><FaClock color='white' fontSize={24} /></span>
@@ -367,7 +367,7 @@ const team = () => {
                                         </div>
                                         <div className="flex justify-center">
                                             <button className="mt-5 px-8 py-1 text-center font-bold bg-white text-blue-600 shadow-[0_0_25px_10px_rgba(0,122,255,0.6)]">
-                                                APPLY NOW
+                                               {t("applynow")}
                                             </button>
                                         </div>
                                     </div>
@@ -379,7 +379,7 @@ const team = () => {
                                     onClick={showMoreJobs}
                                     className="mt-14 px-6 py-2 bg-white text-blue-600 font-bold  rounded-md border border-blue-700 shadow-[0_0_25px_10px_rgba(0,122,255,0.6)] transition-all duration-300"
                                 >
-                                    Show More
+                                   {t("show_more")}
                                 </button>
                             )}
                         </div>

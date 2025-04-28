@@ -17,9 +17,13 @@ import OfficeIMG from "../assets/images/officeimg.png"
 import OfficeIMgBig from "../assets/images/officeimgBig.png"
 import officeimgY from "../assets/images/officeimgY.png"
 import officeimgX from "../assets/images/officeImgX.png"
+import { useTranslation } from "react-i18next";
+import "../i18";
 
 
 const aboutus = () => {
+
+    const { t } = useTranslation();
 
     useEffect(() => {
         AOS.init({ duration: 2000 });
@@ -28,7 +32,6 @@ const aboutus = () => {
     useEffect(() => {
         window.scrollTo(0, 0); // sahifa tepasiga o'tadi
     }, []);
-
 
     return (
         <>
@@ -81,15 +84,10 @@ const aboutus = () => {
                         {/* Text Section - bottom on small, left on large */}
                         <div className="w-full lg:w-1/2 mt-5 lg:mt-10">
                             <h1 className="text-white text-center md:text-left font-black text-3xl sm:text-5xl md:text-[65px] xl:text-[96px] leading-tight mb-6 drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]">
-                                About Us
+                                {t("about")}
                             </h1>
                             <p className="text-white text-center md:text-left font-normal text-base sm:text-lg md:text-xl leading-relaxed">
-                                Lorem ipsum dolor sit amet consectetur. Cras donec id facilisi elit nulla elit non amet.
-                                Urna volutpat venenatis cras aliquam nunc. Cras ornare ultrices leo ac nibh adipiscing tellus
-                                dictum id. Habitasse nulla orci dignissim non pulvinar. Egestas at posuere tincidunt suscipit
-                                duis. Diam sit ac varius bibendum duis vestibulum odio mauris donec. Elit tristique porta et
-                                lorem quam ullamcorper sit. Mi tempor placerat molestie viverra lectus amet adipiscing auctor.
-                                Convallis sed cras leo sapien. Nisi scelerisque convallis sagittis eu.
+                              {t("descriptionabout")}
                             </p>
                         </div>
                     </div>
@@ -100,7 +98,6 @@ const aboutus = () => {
                         <Achievements />
                     </div>
                 </section>
-
 
                 <section className='container mx-auto px-4 sm:px-6 lg:px-10'>
                     {/* Title Section */}
@@ -118,7 +115,7 @@ const aboutus = () => {
                             data-aos-easing="linear"
                             data-aos-duration="1500"
                         >
-                            New office in Tashkent
+                          {t("new_office")}
                         </h1>
                     </div>
 
@@ -172,7 +169,6 @@ const aboutus = () => {
                     </div>
                 </section>
 
-
                 <section className="container mx-auto px-4 sm:px-6 lg:px-10">
                     {/* Title Section */}
                     <div className="flex flex-col lg:flex-row justify-between items-center text-white mt-40 mb-10 gap-6 text-center lg:text-left">
@@ -182,7 +178,7 @@ const aboutus = () => {
                             data-aos-easing="linear"
                             data-aos-duration="1500"
                         >
-                            Expanding Team
+                            {t("expanding_team")}
                         </h1>
                         <img
                             src={aboutus2}
@@ -243,7 +239,6 @@ const aboutus = () => {
                     </div>
                 </section>
 
-
                 <section className="container mx-auto px-4 sm:px-6 lg:px-10">
                     {/* Title Section */}
                     <div className="flex flex-col lg:flex-row justify-between items-center text-white mt-40 mb-10 gap-6 text-center lg:text-left">
@@ -260,7 +255,7 @@ const aboutus = () => {
                             data-aos-easing="linear"
                             data-aos-duration="1500"
                         >
-                            New office in Tashkent
+                           {t("new_office")}
                         </h1>
                     </div>
 
@@ -314,7 +309,6 @@ const aboutus = () => {
                     </div>
                 </section>
 
-
                 <section className="container mx-auto px-4 sm:px-6 lg:px-10">
                     {/* Title Section */}
                     <div className="flex flex-col lg:flex-row justify-between items-center text-white mt-40 mb-10 gap-6 text-center lg:text-left">
@@ -324,7 +318,7 @@ const aboutus = () => {
                             data-aos-easing="linear"
                             data-aos-duration="1500"
                         >
-                            Expanding Team
+                            {t("expanding_team")}
                         </h1>
                         <img
                             src={aboutus4}
@@ -385,7 +379,6 @@ const aboutus = () => {
                     </div>
                 </section>
 
-
                 <section className="container mx-auto px-4 sm:px-6 lg:px-10 mb-80">
                     {/* Title Section */}
                     <div className="flex flex-col lg:flex-row justify-between items-center text-white mt-40 mb-10 gap-6 text-center lg:text-left">
@@ -402,7 +395,7 @@ const aboutus = () => {
                             data-aos-easing="linear"
                             data-aos-duration="1500"
                         >
-                            New office in Tashkent
+                          {t("new_office")}
                         </h1>
                     </div>
 
@@ -456,7 +449,6 @@ const aboutus = () => {
                         </div>
                     </div>
                 </section>
-
 
             </main>
             <Footer />
