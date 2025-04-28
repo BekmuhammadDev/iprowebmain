@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { FaPlus, FaMinus } from 'react-icons/fa';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -100,14 +100,14 @@ const aboutus = () => {
                             {t("premium_web_design")}
                         </p>
                         <h1 className="text-[#0086EE] text-4xl lg:text-6xl  leading-tight font-bold uppercase">
-                           {t("brands_growth")}
+                            {t("brands_growth")}
                         </h1>
                         <p className="text-sm lg:text-xl font-medium">
                             {t("custom_websites")} <br className="hidden md:block" />
-                           {t("marketing_services")}
+                            {t("marketing_services")}
                         </p>
                         <button className="w-full sm:w-[250px] md:w-[250px] lg:w-[320px] h-[50px] bg-white text-[#0086EE] text-base- font-bold uppercase mt-6 md:mt-9 rounded-lg shadow-lg drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]">
-                           {t("speak_expert")}
+                            {t("speak_expert")}
                         </button>
                     </div>
 
@@ -165,7 +165,7 @@ const aboutus = () => {
                         loop
                     />
                     <h1 className="text-white font-bold text-xl sm:text-2xl md:text-3xl text-center md:text-left">
-                       {t("see_our_company")}
+                        {t("see_our_company")}
                     </h1>
                 </div>
 
@@ -183,7 +183,7 @@ const aboutus = () => {
             <section className='bg-[##16182B]'>
                 <div className="container mx-auto sm:max-w-none ">
                     <h1 className="text-white xl:text-[128px] sm:mb-20 text-[48px] font-black ml-5 leading-[1.1] text-center md:text-left drop-shadow-[0_5px_10px_rgba(0,112,244,0.8)]">
-                       {t("meetyheteam")}
+                        {t("meetyheteam")}
                     </h1>
                     <div className='relative hidden xl:flex -bottom-[700px]'>
                         <img className=' absolute right-0' src={StarsRightImg} alt="" />
@@ -193,27 +193,27 @@ const aboutus = () => {
                         {/* Matn qismi */}
                         <div className="w-full md:w-1/2 relative top-60 sm:top-[500px] z-40 sm:-z-10  md:top-0  backdrop-blur-lg bg-transparent px-5 sm:px-10">
                             <h1 className="text-white text-base text-center sm:text-left lg:text-2xl font-semibold uppercase">
-                                {activeMember.role}
+                                {t(activeMember.role)}
                             </h1>
                             <h1 className="text-white text-[32px] sm:text-[40px] lg:text-[96px] text-center sm:text-left font-black uppercase drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]">
-                                {activeMember.name}
+                                {t(activeMember.name)}
                             </h1>
                             <h1 className="text-white text-xs sm:text-sm lg:text-2xl text-center sm:text-left font-semibold uppercase">
-                                {activeMember.description}
+                                {t(activeMember.description)}
                             </h1>
 
                             {/* Stats */}
                             <div className="flex justify-center sm:justify-start gap-5 mt-5 md:mt-36">
                                 <div className="flex gap-3 sm:gap-5 items-center">
-                                    <h1 className="md:text-xl text-base uppercase font-semibold text-white">Projects:</h1>
+                                    <h1 className="md:text-xl text-base uppercase font-semibold text-white">{t("projects")}:</h1>
                                     <h2 className="text-3xl md:text-5xl text-white font-semibold drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]">
-                                        {activeMember.projects}
+                                        {t(activeMember.projects)}
                                     </h2>
                                 </div>
                                 <div className="flex gap-3 sm:gap-5 items-center">
-                                    <h1 className="md:text-xl text-base uppercase font-semibold text-white">Experience:</h1>
+                                    <h1 className="md:text-xl text-base uppercase font-semibold text-white">{t("experience")}:</h1>
                                     <h2 className="text-3xl md:text-5xl text-white font-semibold drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]">
-                                        {activeMember.experience}
+                                        {t(activeMember.experience)}
                                     </h2>
                                 </div>
                             </div>
@@ -315,8 +315,8 @@ const aboutus = () => {
 
             <section className=" text-white px-10 pt-[81px] pb-[74px]">
                 <div className="container mx-auto">
-                    <h1 className="text-[48px] md:text-[128px] mb-10 md:mb-0 font-black text-center drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]">
-                        Portfolio
+                    <h1 className="text-[48px] md:text-[128px] uppercase mb-10 md:mb-0 font-black text-center drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]">
+                        {t("portfolio")}
                     </h1>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 auto-rows-auto grid-flow-row-dense">
@@ -353,7 +353,7 @@ const aboutus = () => {
                 </div>
                 <div className="container mx-auto">
                     <h1 className="text-white font-black text-5xl text-center md:text-left md:text-[128px] drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]">
-                        SERVICES
+                        {t("services")}
                     </h1>
                     <div className="flex flex-col md:flex-row justify-center items-center gap-4 bg-[#0b0f19] p-10">
                         {portfolioData.map((item) => (
@@ -384,7 +384,7 @@ const aboutus = () => {
                 </div>
                 <div className="container mx-auto">
                     <h1 className=" text-5xl text-center md:text-left md:text-[128px] font-black leading-[0.95] mb-10 text-white drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]">
-                        HAVE A <br /> QUESTION?
+                        {t("have_a_question")}
                     </h1>
 
                     <div id="question" className="flex  flex-col lg:flex-row items-start justify-between gap-10 p-4 md:p-5">
@@ -398,7 +398,7 @@ const aboutus = () => {
                                             onClick={() => toggleAccordion(index)}
                                             className="w-full flex justify-between items-center p-5 bg-[#161b29] text-white font-semibold text-base md:text-lg rounded-lg"
                                         >
-                                            {faq.question}
+                                            {t(faq.question)}
                                             {openIndex === index ? (
                                                 <FaMinus className="text-blue-400" />
                                             ) : (
@@ -410,7 +410,7 @@ const aboutus = () => {
                                             className={`overflow-hidden transition-max-height duration-500 ease-in-out ${openIndex === index ? 'max-h-40 p-5 text-white bg-[#1d2536]' : 'max-h-0'
                                                 }`}
                                         >
-                                            {faq.answer}
+                                            {t(faq.answer)}
 
                                             {index === 0 && openIndex === 0 && (
                                                 <div className="mt-4 flex items-center group relative min-h-[48px]">
@@ -419,7 +419,7 @@ const aboutus = () => {
                                                         className="bg-white text-blue-500 z-10 px-4 py-2 rounded-lg md:font-semibold drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]"
                                                         onClick={() => openModal('Texnik muammo')}
                                                     >
-                                                        Texnik muammo
+                                                        {t("technical_issue")}
                                                     </button>
 
                                                     {/* Sayt ishlamayapti — telefon link */}
@@ -450,7 +450,7 @@ const aboutus = () => {
                                             </button>
 
                                             <h2 className="text-xl font-bold text-white mb-4">
-                                                Muammo: <span className="text-red-500">{selectedIssue}!</span>
+                                                {t("issue")}: <span className="text-red-500">{selectedIssue}!</span>
                                             </h2>
 
                                             <div className=' block md:flex w-full'>
@@ -461,16 +461,16 @@ const aboutus = () => {
                                                     <form className="flex flex-col gap-4">
                                                         <input
                                                             type="text"
-                                                            placeholder="Ismingiz"
+                                                            placeholder={t("your_name")}
                                                             className="px-4 py-2 rounded-lg bg-[#161b29] text-white placeholder-gray-400 drop-shadow-[0_5px_5px_rgba(0,112,244,0.8)]"
                                                         />
                                                         <input
                                                             type="tel"
-                                                            placeholder="Telefon raqamingiz"
+                                                            placeholder={t("phone_number")}
                                                             className="px-4 py-2 rounded-lg bg-[#161b29] text-white placeholder-gray-400 drop-shadow-[0_5px_5px_rgba(0,112,244,0.8)]"
                                                         />
                                                         <textarea
-                                                            placeholder="Muammo tafsilotlari"
+                                                            placeholder={t("problem_details")}
                                                             rows={4}
                                                             className="px-4 py-2 rounded-lg bg-[#161b29] text-white placeholder-gray-400 resize-none drop-shadow-[0_5px_5px_rgba(0,112,244,0.8)]"
                                                         ></textarea>
@@ -478,7 +478,7 @@ const aboutus = () => {
                                                             type="submit"
                                                             className="bg-[#fff] text-[#0086EE] w-full px-6 py-2 rounded-md font-semibold drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]"
                                                         >
-                                                            Yuborish
+                                                            {t("submit")}
                                                         </button>
                                                     </form>
                                                 </div>

@@ -8,8 +8,8 @@ import WorkersMan2 from "../assets/images/workersman2.png"
 export const teamMembers = [
   {
     name: "Elizabeth",
-    role: "Backend Developer",
-    description: "One of the most problem-solving members of our team.",
+    role: "elizabeth_title",
+    description: "elizabeth_description",
     projects: "15+",
     experience: "7+",
     workerImg: WorkersImg,
@@ -17,8 +17,8 @@ export const teamMembers = [
   },
   {
     name: "John",
-    role: "Frontend Developer",
-    description: "Creative front-end developer with strong UI skills.",
+    role: "john_title",
+    description: "john_description",
     projects: "20+",
     experience: "5+",
     workerImg: Workersman,
@@ -26,8 +26,8 @@ export const teamMembers = [
   },
   {
     name: "Alice",
-    role: "UI/UX Designer",
-    description: "Designs intuitive and user-friendly interfaces.",
+    role: "alice_title",
+    description: "alice_description",
     projects: "30+",
     experience: "6+",
     workerImg: WorkersImg,
@@ -35,8 +35,8 @@ export const teamMembers = [
   },
   {
     name: "Mike",
-    role: "Project Manager",
-    description: "Leads projects to successful completion with a clear vision.",
+    role: "mike_title",
+    description: "mike_description",
     projects: "50+",
     experience: "10+",
     workerImg: WorkersMan2,
@@ -94,37 +94,37 @@ export const faqs = [
   {
     question: 'Texnik muammoga duch keldingizmi?',
     answer:
-    `Texnik muammoni batafsil yoritib bering! `,
+    `technical_issue_details `,
   },
   {
-    question: 'How long does a project take?',
+    question: 'project_duration',
     answer:
-      'Project duration depends on the complexity and requirements, but generally it takes around 2-4 weeks.',
+      'project_duration_details',
   },
   {
-    question: "Can I get a refund if I'm not satisfied?",
+    question: "refund_policy",
     answer:
-      'Yes, we have a refund policy that allows refunds under certain conditions. Please contact us for more details.',
+      'refund_policy_details',
   },
   {
-    question: "Can I get a refund if I'm not satisfied?",
+    question: "refund_policy",
     answer:
-      'Yes, we have a refund policy that allows refunds under certain conditions. Please contact us for more details.',
+      'refund_policy_details',
   },
   {
-    question: 'How long does a project take?',
+    question: 'project_duration',
     answer:
-      'Project duration depends on the complexity and requirements, but generally it takes around 2-4 weeks.',
+      'project_duration_details',
   },
   {
-    question: "Can I get a refund if I'm not satisfied?",
+    question: "refund_policy",
     answer:
-      'Yes, we have a refund policy that allows refunds under certain conditions. Please contact us for more details.',
+      'refund_policy_details',
   },
   {
-    question: "Can I get a refund if I'm not satisfied?",
+    question: "refund_policy",
     answer:
-      'Yes, we have a refund policy that allows refunds under certain conditions. Please contact us for more details.',
+      'refund_policy_details',
   },
 ];
 // ///////////////////////////
