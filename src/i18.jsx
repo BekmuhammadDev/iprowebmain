@@ -7,6 +7,7 @@ i18n
     resources: {
       uz: {
         translation: {
+          technicalissue_detail:"Texnik muammoga duch keldingizmi?",
           technical_issue_details: "Texnik muammoni batafsil yoritib bering!",
           project_duration: "Loyihaning davomiyligi qancha?",
           project_duration_details: "Loyihaning davomiyligi murakkablik va talablar asosida o'zgaradi, lekin odatda 2-4 hafta davom etadi.",
@@ -168,6 +169,7 @@ i18n
       },
       en: {
         translation: {
+          technicalissue_detail:"Are you experiencing a technical problem?",
           technical_issue_details: "Please provide details about the technical issue!",
           project_duration: "How long does a project take?",
           project_duration_details: "Project duration depends on the complexity and requirements, but generally it takes around 2-4 weeks.",
@@ -327,6 +329,7 @@ i18n
       },
       ru: {
         translation: {
+          technicalissue_detail:"У вас возникли технические проблемы?",
           technical_issue_details: "Пожалуйста, подробно опишите техническую проблему!",
           project_duration: "Сколько времени занимает проект?",
           project_duration_details: "Продолжительность проекта зависит от сложности и требований, но обычно занимает около 2-4 недель.",

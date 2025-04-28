@@ -92,9 +92,9 @@ export const portfolioData = [
 // ////////////////////////////
 export const faqs = [
   {
-    question: 'Texnik muammoga duch keldingizmi?',
+    question: 'technical_issue_details',
     answer:
-    `technical_issue_details `,
+     'technical_issue_details',
   },
   {
     question: 'project_duration',
