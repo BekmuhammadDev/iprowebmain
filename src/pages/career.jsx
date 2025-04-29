@@ -28,7 +28,7 @@ const career = () => {
     const { t } = useTranslation();
 
     const initialCount = 6;
-    const navigate = useNavigate(); // Qo‘shildi
+    const navigate = useNavigate(); 
 
     const [visibleJobs, setVisibleJobs] = useState(6);
 
@@ -47,11 +47,6 @@ const career = () => {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
-
-    // qolgan kod davom etadi...
-
-
-
 
     return (
         <>
