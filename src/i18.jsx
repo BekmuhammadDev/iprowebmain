@@ -7,6 +7,9 @@ i18n
     resources: {
       uz: {
         translation: {
+          yandex_map:"Yandex Xarita",
+          google_map:"Google Xarita",
+          follow_us:"Bizni kuzating",
           show_less:"Yopish",
           web_apps: "Biz javob beruvchi, tez va kengaytiriladigan veb ilovalar yaratamiz",
           mobile_apps: "Android va iOS platformalari uchun zamonaviy ilovalar",
@@ -214,6 +217,9 @@ i18n
       },
       en: {
         translation: {
+          yandex_map:"Yandex map",
+          google_map:"Google map",
+          follow_us:"Follow Us",
           show_less:"Show Less",
           web_apps: "We create responsive, fast, and scalable web apps",
           mobile_apps: "Modern apps for Android & iOS platforms.",
@@ -418,6 +424,9 @@ i18n
       },
       ru: {
         translation: {
+          yandex_map:"Яндекс карта",
+          google_map:"Карта Google",
+          follow_us:"подписаться",
           show_less:"Закрывать",
           web_apps: "Мы создаем адаптивные, быстрые и масштабируемые веб-приложения",
           mobile_apps: "Современные приложения для Android и iOS платформ",
