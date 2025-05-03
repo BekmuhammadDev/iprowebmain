@@ -17,11 +17,15 @@ import { GrGroup } from "react-icons/gr";
 import LangDropdown from "../langdropdown/langdropdown"
 import { useTranslation } from "react-i18next";
 import "../../i18";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
+AOS.init();
 
 
 const Header = () => {
     const { t } = useTranslation();
-    
+
     const [menuOpen, setMenuOpen] = useState(null);
     const [isScrolled, setIsScrolled] = useState(false);
     const [openDropdown, setOpenDropdown] = useState(null);
@@ -62,6 +66,14 @@ const Header = () => {
             document.body.style.overflow = "auto"; // Komponent unmount bo‘lganda tiklash
         };
     }, [menuOpen]);
+
+    useEffect(() => {
+        AOS.init({
+            duration: 1000,
+            once: true,
+        });
+    }, []);
+
 
     // //////////////////////////////////////
     const [username, setUsername] = useState('');
@@ -179,7 +191,7 @@ const Header = () => {
 
                         {/* Language Dropdown */}
 
-                         <LangDropdown openDropdown={openDropdown} setOpenDropdown={setOpenDropdown} />
+                        <LangDropdown openDropdown={openDropdown} setOpenDropdown={setOpenDropdown} />
 
                         {/* Notifications Dropdown */}
                         <div className='relative dropdown'>
@@ -425,7 +437,7 @@ const Header = () => {
                     {[
                         { name: t("home"), icon: <IoHome />, path: "/" },
                         // { name: "Profile", icon: <FaUser />, path: "/profile" },
-                        { name:  t("about"), icon: <FaBriefcase />, path: "/aboutus" },
+                        { name: t("about"), icon: <FaBriefcase />, path: "/aboutus" },
                         { name: t("team"), icon: <GrGroup />, path: "/team" },
                         { name: t("portfolio"), icon: <FaBriefcase />, path: "/portfolio" },
                         { name: t("services"), icon: <FaTasks />, path: "/services" },
