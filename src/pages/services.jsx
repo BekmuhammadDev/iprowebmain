@@ -4,6 +4,8 @@ import Header from '../components/layouts/header';
 import Footer from '../components/layouts/footer';
 import { useTranslation } from "react-i18next";
 import "../i18";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const servicesList = [
     {
@@ -95,13 +97,20 @@ const Services = () => {
         window.scrollTo(0, 0);
     }, []);
 
+    useEffect(() => {
+        AOS.init({ duration: 2000 });
+    }, []);
+
     return (
         <>
             <Header />
-            <main className='mt-20 px-5 xl:px-14 container mx-auto'>
+            <main className="mt-20 px-5 xl:px-14 container mx-auto">
                 <h1
-                    className="text-white md:text-[108px] text-[48px] font-black ml-5 uppercase mb-10 text-center md:text-left drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]">
-                   {t("services")}
+                    data-aos="fade-up"
+                    data-aos-duration="1500"
+                    className="text-white md:text-[108px] text-[48px] font-black ml-5 uppercase mb-10 text-center md:text-left drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]"
+                >
+                    {t("services")}
                 </h1>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
@@ -109,6 +118,9 @@ const Services = () => {
                         <div
                             key={index}
                             onClick={() => handleClick(service.slug)}
+                            data-aos="fade-up"
+                            data-aos-duration="1500"
+                            data-aos-delay={`${index * 200}`} // Delay each item sequentially
                             className="bg-[#16182B] rounded-xl shadow-lg overflow-hidden cursor-pointer hover:scale-105 transition-all"
                         >
                             <img src={service.image} alt={t(service.title)} className="w-full h-40 object-cover" />
@@ -120,6 +132,7 @@ const Services = () => {
                     ))}
                 </div>
             </main>
+
             <Footer />
         </>
     );

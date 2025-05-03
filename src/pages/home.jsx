@@ -161,6 +161,7 @@ const aboutus = () => {
                     <div
                         className="w-full md:w-1/2 text-center md:text-left mt-6 md:mt-0 space-y-4"
                         data-aos="fade-right"
+                         data-aos-duration="1200"
                     >
                         <h1 className="text-white font-black text-3xl sm:text-5xl md:text-[65px] xl:text-[120px] leading-tight drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]">
                             {t("who_are_we")}

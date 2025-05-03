@@ -7,6 +7,8 @@ import Header from '../components/layouts/header';
 import Footer from '../components/layouts/footer';
 import { useTranslation } from "react-i18next";
 import "../i18";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const jobListings = [
 
@@ -28,7 +30,7 @@ const career = () => {
     const { t } = useTranslation();
 
     const initialCount = 6;
-    const navigate = useNavigate(); 
+    const navigate = useNavigate();
 
     const [visibleJobs, setVisibleJobs] = useState(6);
 
@@ -48,14 +50,22 @@ const career = () => {
         window.scrollTo(0, 0);
     }, []);
 
+    useEffect(() => {
+        AOS.init({ duration: 2000 });
+    }, []);
+
+
     return (
         <>
             <Header />
             <main className='mt-20'>
                 <section>
                     <div className="container mx-auto mt-52">
-                        
-                        <h1 className="text-white md:text-[128px] text-[48px] font-black px-10 leading-[1.1] text-center md:text-left drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]">
+                        <h1
+                            data-aos="fade-up"
+                            data-aos-duration="1500"
+                            className="text-white md:text-[128px] text-[48px] font-black px-10 leading-[1.1] text-center md:text-left drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]"
+                        >
                             {t("vacansy")}
                         </h1>
 
@@ -64,6 +74,9 @@ const career = () => {
                                 {jobListings.slice(0, visibleJobs).map((job, index) => (
                                     <div
                                         key={index}
+                                        data-aos="fade-up"
+                                        data-aos-duration="1500"
+                                        data-aos-delay={`${index * 200}`} // Sequential delay for each job card
                                         className="bg-[#11152A] text-white p-6 rounded-lg shadow-lg cursor-pointer h-[150px] w-full hover:shadow-[0_0_25px_10px_rgba(0,122,255,0.6)] transition-all duration-300 group"
                                         onClick={() => handleClick(job.slug)}
                                     >
@@ -71,12 +84,12 @@ const career = () => {
                                         <hr className="my-2 border-gray-600" />
                                         <div className="flex gap-14 items-center">
                                             <div className="flex items-center gap-2">
-                                                <span className="text-xl"><FaCalendarAlt color='white' fontSize={24} /></span>
+                                                <span className="text-xl"><FaCalendarAlt color="white" fontSize={24} /></span>
                                                 <p className="text-base font-normal">{t(job.schedule)}</p>
                                             </div>
                                             <div className="flex items-center gap-2 mt-2">
-                                                <span className="text-xl"><FaClock color='white' fontSize={24} /></span>
-                                                <p className="text-sm font-normal">{t(job.time)}</p>
+                                                <span className="text-xl"><FaClock color="white" fontSize={24} /></span>
+                                                <p className="text-sm font-normal">{job.time}</p>
                                             </div>
                                         </div>
                                         <div className="flex justify-center">
@@ -88,7 +101,7 @@ const career = () => {
                                 ))}
                             </div>
 
-                            {/* Show More Button */}
+                            {/* Show More / Show Less Button */}
                             {visibleJobs < jobListings.length ? (
                                 <button
                                     onClick={showMoreJobs}
@@ -104,7 +117,6 @@ const career = () => {
                                     {t("show_less")}
                                 </button>
                             )}
-
                         </div>
                     </div>
                 </section>

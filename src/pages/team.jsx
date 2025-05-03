@@ -12,6 +12,8 @@ import Footer from '../components/layouts/footer';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from "react-i18next";
 import "../i18";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const teamMembers = [
     {
@@ -70,8 +72,8 @@ const jobListings = [
 ];
 
 const team = () => {
-        const { t } = useTranslation();
-    
+    const { t } = useTranslation();
+
     const navigate = useNavigate();
 
     const [activeMember, setActiveMember] = useState(teamMembers[0]);
@@ -84,7 +86,7 @@ const team = () => {
 
     const showMoreJobs = () => {
         setVisibleJobs((prev) => prev + 8); // Show 6 more jobs per click
-    }; 
+    };
 
     const handleClick = (slug) => {
         navigate(`/vacansy/${slug}`);
@@ -93,6 +95,11 @@ const team = () => {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
+
+    useEffect(() => {
+        AOS.init({ duration: 2000 });
+    }, []);
+
 
     // ////////////////////////////////////////////////
     const [isExpanded, setIsExpanded] = useState(false);
@@ -104,10 +111,14 @@ const team = () => {
             <main className='mt-40'>
 
                 <section>
-                    <div className="container mx-auto ">
-                        
+                    <div className="container mx-auto "
+                        data-aos="fade-up"
+                        data-aos-duration="1500"
+                        data-aos-delay="0"
+                    >
+
                         <h1 className="text-white xl:text-[120px] text-[48px] font-black ml-5 leading-[1.1] text-center md:text-left drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]">
-                           {t("meetyheteam")}
+                            {t("meetyheteam")}
                         </h1>
 
                         <div className="relative md:flex md:px-10 items-center justify-between gap-38 ml-5">
@@ -341,15 +352,27 @@ const team = () => {
 
                 <section>
                     <div className="container mx-auto mt-52">
-                        <h1 className="text-white md:text-[128px] text-[48px] font-black px-10 leading-[1.1] text-center md:text-left drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]">
-                           {t("vacansy")}
+                        <h1
+                            data-aos="fade-up"
+                            data-aos-duration="1500"
+                            className="text-white md:text-[128px] text-[48px] font-black px-10 leading-[1.1] text-center md:text-left drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]"
+                        >
+                            {t("vacansy")}
                         </h1>
 
-                        <div className="bg-[#0A0F1F] flex flex-col justify-center items-center mt-20 mb-20">
+                        <div
+                            data-aos="fade-up"
+                            data-aos-duration="1500"
+                            data-aos-delay="500"
+                            className="bg-[#0A0F1F] flex flex-col justify-center items-center mt-20 mb-20"
+                        >
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
                                 {jobListings.slice(0, visibleJobs).map((job, index) => (
                                     <div
                                         key={index}
+                                        data-aos="fade-up"
+                                        data-aos-duration="1500"
+                                        data-aos-delay={`${index * 200}`}
                                         className="bg-[#11152A] text-white p-6 rounded-lg shadow-lg cursor-pointer h-[150px] w-full hover:shadow-[0_0_25px_10px_rgba(0,122,255,0.6)] transition-all duration-300 group"
                                         onClick={() => handleClick(job.slug)}
                                     >
@@ -367,7 +390,7 @@ const team = () => {
                                         </div>
                                         <div className="flex justify-center">
                                             <button className="mt-5 px-8 py-1 text-center font-bold bg-white text-blue-600 shadow-[0_0_25px_10px_rgba(0,122,255,0.6)]">
-                                               {t("applynow")}
+                                                {t("applynow")}
                                             </button>
                                         </div>
                                     </div>
@@ -376,15 +399,19 @@ const team = () => {
 
                             {visibleJobs < jobListings.length && (
                                 <button
+                                    data-aos="fade-up"
+                                    data-aos-duration="1500"
+                                    data-aos-delay="2000"
                                     onClick={showMoreJobs}
-                                    className="mt-14 px-6 py-2 bg-white text-blue-600 font-bold  rounded-md border border-blue-700 shadow-[0_0_25px_10px_rgba(0,122,255,0.6)] transition-all duration-300"
+                                    className="mt-14 px-6 py-2 bg-white text-blue-600 font-bold rounded-md border border-blue-700 shadow-[0_0_25px_10px_rgba(0,122,255,0.6)] transition-all duration-300"
                                 >
-                                   {t("show_more")}
+                                    {t("show_more")}
                                 </button>
                             )}
                         </div>
                     </div>
                 </section>
+
             </main>
 
             <Footer />
