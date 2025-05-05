@@ -102,7 +102,68 @@ const aboutus = () => {
             {/* <VerticalScrollProgress/> */}
             <ScrollProgressBar />
 
-            <Primary t={t} handleCardClick={handleCardClick} Video={Video}/>
+            <section className="text-white py-16 mt-20 overflow-hidden">
+                <div className="container mx-auto md:max-w-none 2xl:max-w-none relative flex flex-col md:flex-row items-center justify-between px-5 md:px-10 lg:px-20">
+                    {/* Text Content */}
+                    <div
+                        className="text-center md:text-left md:w-1/2 space-y-4"
+                        data-aos="fade-right"
+                        data-aos-duration="1200"
+                    >
+                        <p className="lg:text-2xl text-xl font-medium">
+                            {t("premium_web_design")}
+                        </p>
+                        <h1 className="text-[#0086EE] text-4xl lg:text-6xl leading-tight font-bold uppercase">
+                            {t("brands_growth")}
+                        </h1>
+                        <p className="text-sm lg:text-xl font-medium">
+                            {t("custom_websites")} <br className="hidden md:block" />
+                            {t("marketing_services")}
+                        </p>
+
+                        <div className="relative w-full max-w-[400px] h-[50px] overflow-hidden border border-white rounded-lg font-lato">
+                            <span className="absolute inset-0 flex items-center justify-center font-bold text-white hover:text-black text-[20px] pointer-events-none z-20">
+                                {t("speak_expert")}
+                            </span>
+                            <button
+                                type="button"
+                                name="Hover"
+                                className="w-full h-full flex items-center justify-center font-bold text-black text-[20px] bg-white z-10 border-none hover:text-white transition-colors duration-300 custom-mask-button"
+                            >
+                                {t("speak_expert")}
+                            </button>
+                        </div>
+
+
+
+
+
+
+                    </div>
+
+                    {/* Video Content */}
+                    <div
+                        className="w-full md:w-1/2 flex justify-center mt-10 md:mt-0"
+                        data-aos="zoom-in"
+                    >
+                        <video
+                            className="w-full max-w-[500px] sm:max-w-[600px] md:max-w-[700px] lg:max-w-[800px] rounded-lg shadow-lg"
+                            controls
+                            autoPlay
+                            loop
+                        >
+                            <source src={Video} type="video/mp4" />
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+
+                <NavLink onClick={handleCardClick}>
+                    <button className="animate-bounce p-5 rounded-[50%] fixed bottom-20 right-5 z-50 bg-white">
+                        <FaQuestion color="black" />
+                    </button>
+                </NavLink>
+            </section>
 
             <section className="bg-[#16182B] md:py-20 overflow-hidden">
                 <div className="md:mb-24" data-aos="fade-up" data-aos-duration="1200">
@@ -114,7 +175,7 @@ const aboutus = () => {
                     <div
                         className="w-full md:w-1/2 text-center md:text-left mt-6 md:mt-0 space-y-4"
                         data-aos="fade-right"
-                         data-aos-duration="1200"
+                        data-aos-duration="1200"
                     >
                         <h1 className="text-white font-black text-3xl sm:text-5xl md:text-[65px] xl:text-[120px] leading-tight drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]">
                             {t("who_are_we")}
