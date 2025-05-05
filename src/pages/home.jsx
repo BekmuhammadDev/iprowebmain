@@ -14,14 +14,12 @@ import { portfolioData } from '../mocks/mock';
 import { faqs } from '../mocks/mock';
 import StarsRightImg from "../assets/images/starsright.png"
 import StarsLeftImg from "../assets/images/starsleft.png"
-import { FaQuestion } from "react-icons/fa";
 import { IoMdClose } from "react-icons/io";
 import IproIMage from "../assets/images/iproLogoRegister.png"
 
 import ContactWithMap from '../components/ui/contactwithmap';
 import Header from '../components/layouts/header';
 import Footer from '../components/layouts/footer';
-import { NavLink } from 'react-router-dom';
 import ScrollProgressBar from '../components/progressLine/progressline';
 import VerticalScrollProgress from '../components/vertikalLine/vertikalline';
 // import RegisterForm from '../components/forms/signup/singnup';
@@ -29,6 +27,7 @@ import { useTranslation } from "react-i18next";
 import "../i18";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import Primary from './primary';
 
 gsap.registerPlugin(ScrollTrigger);
 
