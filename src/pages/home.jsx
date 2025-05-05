@@ -96,7 +96,6 @@ const aboutus = () => {
 
     };
 
-
     return (
         <>
             <Header />
