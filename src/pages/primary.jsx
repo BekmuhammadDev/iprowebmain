@@ -227,14 +227,14 @@ const Primary = ({ t, handleCardClick, Video }) => {
           {t("custom_websites")}<br />{t("marketing_services")}
         </p>
 
-        <div className="relative w-full max-w-[400px] h-[50px] overflow-hidden border border-white rounded-lg font-lato">
-          <span className="absolute inset-0 flex items-center justify-center font-bold text-white hover:text-black text-[20px] pointer-events-none z-20">
+        <div className="relative w-full max-w-[400px] h-[50px] overflow-hidden border border-blue-500 rounded-lg font-lato">
+          <span className="absolute inset-0 flex  items-center justify-center font-bold text-blue-400 hover:text-black text-[20px] pointer-events-none -z-10">
             {t("speak_expert")}
           </span>
           <button
             type="button"
             name="Hover"
-            className="w-full h-full flex items-center justify-center font-bold text-black text-[20px] bg-white z-10 border-none hover:text-white transition-colors duration-300 custom-mask-button"
+            className="w-full h-full flex items-center justify-center font-bold text-[#0086EE] text-[20px] bg-white z-10 border-none hover:text-white transition-colors duration-300 custom-mask-button"
           >
             {t("speak_expert")}
           </button>
