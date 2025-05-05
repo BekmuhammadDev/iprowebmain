@@ -174,13 +174,17 @@ const Header = () => {
                         <NavLink
                             key={index}
                             to={item.path}
-                            className={({ isActive }) =>
-                                `transition duration-300 ease-in-out text-white text-lg font-semibold 
-                 hover:text-blue-400 hover:[text-shadow:0px_0px_5px_#3b82f6, 0px_0px_10px_#3b82f6, 0px_0px_20px_#3b82f6]`
-                            }
+                            className="relative transition duration-300 ease-in-out text-white text-lg font-semibold group"
                         >
                             {item.name}
+
+                            {/* Underline effect */}
+                            <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-blue-500 transition-all duration-300 group-hover:w-full"></span>
                         </NavLink>
+
+
+
+
                     ))}
                 </ul>
 

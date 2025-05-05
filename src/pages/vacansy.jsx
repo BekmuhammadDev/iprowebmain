@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FaCalendarAlt } from "react-icons/fa";
 import { FaClock } from "react-icons/fa";
 import { FaTelegramPlane, FaInstagram, FaFacebookF, FaYoutube, FaWhatsapp } from "react-icons/fa";
@@ -7,6 +7,8 @@ import { FaFileDownload } from "react-icons/fa";
 import Header from '../components/layouts/header';
 import Footer from '../components/layouts/footer';
 import { useParams } from 'react-router-dom';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const jobData = {
     'motion-designer': { title: "Motion Designer", schedule: "Monday-Saturday", time: "09:00-18:00" },
@@ -40,15 +42,24 @@ const vacansy = () => {
         window.scrollTo(0, 0);
     }, []);
 
+    useEffect(() => {
+        AOS.init({
+            duration: 1000,
+            once: true,
+        });
+    }, []);
+
+
     return (
         <>
             <Header />
-            <main>
+            <main className='overflow-hidden'>
 
-                <section className='mt-20 sm:mt-28 md:mt-40 container mx-auto'>
+                <section className='mt-20 sm:mt-28 md:mt-40 container mx-auto' data-aos="fade-up" duration={500}>
                     <div className='px-4 sm:px-8 md:px-12'>
-                        <div className='w-full md:px-10 xl:px-16 rounded-md bg-[#16182B]'>
-                            <div className='flex flex-col md:flex-row justify-between py-5 gap-4'>
+                        <div className='w-full md:px-10 xl:px-16 rounded-md bg-[#16182B]' data-aos="zoom-in" data-aos-delay="100">
+
+                            <div className='flex flex-col md:flex-row justify-between py-5 gap-4' data-aos="fade-right" data-aos-delay="200">
                                 <h1 className='text-white text-xl font-semibold'>{vacansy.title}</h1>
                                 <button
                                     onClick={() => setShowModal(true)}
@@ -57,33 +68,36 @@ const vacansy = () => {
                                     Apply now
                                 </button>
                             </div>
+
                             <hr />
 
-                            <div className='flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4'>
+                            <div className='flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4' data-aos="fade-up" data-aos-delay="300">
+
                                 <div className='flex flex-col sm:flex-row gap-6 mt-5 py-5'>
-                                    <div className='flex gap-3 items-center'>
+                                    <div className='flex gap-3 items-center' data-aos="fade-right" data-aos-delay="400">
                                         <FaCalendarAlt className='text-white text-xl' />
                                         <h2 className='text-white text-xs font-normal'>{vacansy.schedule}</h2>
                                     </div>
-                                    <div className='flex gap-3 items-center'>
+                                    <div className='flex gap-3 items-center' data-aos="fade-right" data-aos-delay="500">
                                         <FaClock className='text-white text-xl' />
                                         <h2 className='text-white text-xs font-normal'>{vacansy.time}</h2>
                                     </div>
                                 </div>
 
-                                <div className="flex justify-start gap-4 mt-3">
+                                <div className="flex justify-start gap-4 mt-3" data-aos="zoom-in-up" data-aos-delay="600">
                                     <FaTelegramPlane className="text-2xl sm:text-3xl text-white cursor-pointer hover:text-blue-500 transition" />
                                     <FaInstagram className="text-2xl sm:text-3xl text-white cursor-pointer hover:text-pink-500 transition" />
                                     <FaFacebookF className="text-2xl sm:text-3xl text-white cursor-pointer hover:text-blue-600 transition" />
                                     <FaYoutube className="text-2xl sm:text-3xl text-white cursor-pointer hover:text-red-500 transition" />
                                     <FaWhatsapp className="text-2xl sm:text-3xl text-white cursor-pointer hover:text-green-500 transition" />
                                 </div>
+
                             </div>
                         </div>
                     </div>
                 </section>
 
-                {/* MODAL */}
+
                 {showModal && (
                     <div className="fixed inset-0 bg-black bg-opacity-80 z-50 flex items-center justify-center p-4">
                         <div className="bg-[#16182B] w-full max-w-4xl rounded-lg p-6 relative">
@@ -161,11 +175,11 @@ const vacansy = () => {
                     </div>
                 )}
 
-                <section className='mt-20'>
+                <section className='mt-20' data-aos="fade-up" data-aos-duration="1000">
                     <div className='container mx-auto px-4 sm:px-6 md:px-10 py-10 sm:py-16 md:py-20'>
 
                         {/* Requirements */}
-                        <div>
+                        <div data-aos="fade-right" data-aos-delay="100" data-aos-duration="800">
                             <h1 className='text-white text-lg sm:text-xl font-semibold mb-4'>Requirements</h1>
                             <ul className='list-disc ml-5 sm:ml-6 space-y-2'>
                                 <li className='text-white text-base sm:text-lg'>Support and improvement of existing projects, as well as the introduction of new functionality;</li>
@@ -174,7 +188,7 @@ const vacansy = () => {
                         </div>
 
                         {/* Tasks */}
-                        <div className='mt-10'>
+                        <div className='mt-10' data-aos="fade-left" data-aos-delay="200" data-aos-duration="800">
                             <h1 className='text-white text-lg sm:text-xl font-semibold mb-4'>Tasks</h1>
                             <ul className='list-disc ml-5 sm:ml-6 space-y-2'>
                                 <li className='text-white text-base sm:text-lg'>Knowledge of the application structure of PWA(Progressive Web App), SPA(Single Page Application), SSR(Server-Side Rendering), MF(Mutual Funds);</li>
@@ -194,13 +208,18 @@ const vacansy = () => {
 
                             <button
                                 onClick={() => setShowModal(true)}
-                                className='bg-white mt-10 sm:mt-14 text-[#0086EE] px-6 sm:px-9 py-2 text-base font-bold shadow-lg drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)] w-full sm:w-auto'>
+                                className='bg-white mt-10 sm:mt-14 text-[#0086EE] px-6 sm:px-9 py-2 text-base font-bold shadow-lg drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)] w-full sm:w-auto'
+                                data-aos="zoom-in"
+                                data-aos-delay="400"
+                                data-aos-duration="700"
+                            >
                                 Apply now
                             </button>
                         </div>
 
                     </div>
                 </section>
+
 
             </main>
             <Footer />

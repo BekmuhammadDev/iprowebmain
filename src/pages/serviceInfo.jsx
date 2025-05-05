@@ -1,4 +1,4 @@
-import React,{useEffect} from 'react';
+import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Header from '../components/layouts/header';
 import Footer from '../components/layouts/footer';
@@ -86,11 +86,10 @@ const SingleService = () => {
     return (
         <>
             <Header />
-            <main className='mt-32 px-4 sm:px-6 lg:px-20 container mx-auto'>
-                {/* Title & Content */}
+            <main className='mt-32 mb-20 px-4 sm:px-6 lg:px-20 container mx-auto'>
                 <div className='flex flex-col-reverse lg:flex-row items-center gap-8 lg:gap-14 relative'>
                     {/* Text */}
-                    <div className="text-center lg:text-left">
+                    <div className="text-center lg:text-left" data-aos="fade-right">
                         <h1 className='text-white text-4xl sm:text-5xl lg:text-[70px] font-black mb-6 drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]'>
                             {service.title}
                         </h1>
@@ -100,7 +99,7 @@ const SingleService = () => {
                     </div>
 
                     {/* Image  */}
-                    <div className='w-full lg:w-1/2 relative'>
+                    <div className='w-full lg:w-1/2 relative' data-aos="fade-left">
                         <img
                             src={BgImgService}
                             alt=""
@@ -114,16 +113,17 @@ const SingleService = () => {
                     </div>
                 </div>
 
-
-                {/* Example Projects */}
-                <h2 className='text-white text-2xl sm:text-3xl font-bold mt-16 mb-6 text-center lg:text-left'>
+                <h2 className='text-white text-2xl sm:text-3xl font-bold mt-16 mb-6 text-center lg:text-left' data-aos="fade-up">
                     Example Projects
                 </h2>
+
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
                     {[...Array(5)].map((_, i) => (
                         <div
                             key={i}
                             className="bg-[#16182B] rounded-xl shadow-md overflow-hidden hover:scale-105 transition-transform cursor-pointer"
+                            data-aos="zoom-in"
+                            data-aos-delay={i * 100}
                         >
                             <img
                                 src={service.image}
@@ -138,6 +138,7 @@ const SingleService = () => {
                     ))}
                 </div>
             </main>
+
             <Footer />
         </>
     );

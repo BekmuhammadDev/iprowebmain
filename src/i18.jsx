@@ -492,7 +492,7 @@ i18n
           portfolio: "Портфолио",
           services: "Услуги",
           have_a_question: "Есть вопрос?",
-          technical_issue: "Техническая проблема",
+          technical_issue: "Техник проблема",
           issue: "Проблема",
           projects: "Проекты",
           experience: "Опыт",

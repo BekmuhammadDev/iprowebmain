@@ -81,8 +81,6 @@ const portfolio = () => {
                                         <div
                                             key={i}
                                             onClick={() => handleNavigate(t(project.title))}
-                                            data-aos="fade-up"
-                                            data-aos-duration="1500"
                                             data-aos-delay={`${(index + i) * 200}`}
                                             className="relative w-full md:h-[198px] left-20 shadow-lg rounded-[20px] transition-transform duration-300 cursor-pointer hover:translate-x-6 group"
                                         >
