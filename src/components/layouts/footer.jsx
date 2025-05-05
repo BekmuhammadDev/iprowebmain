@@ -3,6 +3,8 @@ import { FaTelegramPlane, FaInstagram, FaFacebookF, FaYoutube, FaWhatsapp } from
 import Logo from "../../assets/icons/Logo.svg";
 import { useTranslation } from "react-i18next";
 import "../../i18";
+import { NavLink } from "react-router-dom";
+
 
 const Footer = () => {
 
@@ -29,12 +31,30 @@ const Footer = () => {
                     </div>
 
                     {/* Links */}
-                    <div className="text-left w-auto md:border-r-2 md:pr-20">
-                        <h3 className="text-2xl font-semibold">{t("links")}</h3>
-                        <p className="text-[20px] font-normal mt-2">{t("about")}</p>
-                        <p className="text-[20px] font-normal">{t("services")}</p>
-                        <p className="text-[20px] font-normal">{t("portfolio")}</p>
-                    </div>
+                    <ul className='hidden lg:flex flex-col'>
+                    <h3 className="text-2xl font-semibold">{t("links")}</h3>
+                        {[
+                            { name: "", path: "/" },
+                            { name: t("about"), path: "/aboutus" },
+                            { name: t("team"), path: "/team" },
+                            { name: t("portfolio"), path: "/portfolio" },
+                            { name: t("services"), path: "/services" },
+                            { name: t("careers"), path: "/careers" },
+                        ].map((item, index) => (
+                            
+                            <NavLink
+                                key={index}
+                                to={item.path}
+                                className="relative transition duration-300 ease-in-out text-white hover:text-blue-500 text-lg font-semibold group"
+                            >
+                                {item.name}
+
+                                {/* Underline effect */}
+                                <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-blue-500 transition-all duration-300 group-hover:w-full"></span>
+                            </NavLink>
+
+                        ))}
+                    </ul>
 
                     {/* Social Media (Follow Us) */}
                     <div className="text-left w-auto">

@@ -174,16 +174,13 @@ const Header = () => {
                         <NavLink
                             key={index}
                             to={item.path}
-                            className="relative transition duration-300 ease-in-out text-white text-lg font-semibold group"
+                            className="relative transition duration-300 ease-in-out text-white hover:text-blue-500 text-lg font-semibold group"
                         >
                             {item.name}
 
                             {/* Underline effect */}
                             <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-blue-500 transition-all duration-300 group-hover:w-full"></span>
                         </NavLink>
-
-
-
 
                     ))}
                 </ul>
@@ -201,11 +198,11 @@ const Header = () => {
                         {/* Notifications Dropdown */}
                         <div className='relative dropdown'>
                             <button onClick={() => setOpenDropdown(openDropdown === "notif" ? null : "notif")}>
-                                <FaBell fontSize={25} color='white' />
+                                <FaBell fontSize={25} className='text-white'/>
                             </button>
                             {openDropdown === "notif" && (
-                                <div className="absolute top-12 -left-20 w-[230px] text-white rounded-lg shadow-lg">
-                                    <MdArrowDropUp className='absolute -bottom-5 left-16 text-[#16182B] text-[48px]' />
+                                <div className="absolute top-12  -left-20 border w-[230px] text-white rounded-lg shadow-lg">
+                                    <MdArrowDropUp className='absolute -bottom-5 left-16 text-[#16182B] text-[48px] ' />
                                     <div className="py-2 px-3 bg-[#16182B] w-[174px] rounded-xl">
                                         <button onClick={() => setOpenDropdown(null)} className="block w-full border-b-2 border-gray-600 text-start py-2 text-xs">{t("your_approved")}<p className='text-xs text-[#999999]'>5 days ago</p></button>
                                         <button onClick={() => setOpenDropdown(null)} className="block w-full text-start border-b-2 border-gray-600 py-2 text-xs">{t("your_rejected")} <p className='text-xs text-[#999999]'>15 days ago</p></button>

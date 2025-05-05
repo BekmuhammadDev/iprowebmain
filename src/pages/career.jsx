@@ -64,10 +64,11 @@ const career = () => {
                         <h1
                             data-aos="fade-up"
                             data-aos-duration="1500"
-                            className="text-white md:text-[128px] text-[48px] font-black px-10 leading-[1.1] text-center md:text-left drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]"
+                            className="text-white text-[32px] sm:text-[48px] md:text-[72px] lg:text-[96px] xl:text-[128px] font-black px-4 sm:px-8 md:px-10 leading-tight text-center md:text-left drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]"
                         >
                             {t("vacansy")}
                         </h1>
+
 
                         <div className="bg-[#0A0F1F] flex flex-col justify-center items-center mt-20 mb-20">
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
