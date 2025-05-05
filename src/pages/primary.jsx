@@ -226,9 +226,20 @@ const Primary = ({ t, handleCardClick, Video }) => {
         <p className="text-sm lg:text-xl font-medium mb-6">
           {t("custom_websites")}<br />{t("marketing_services")}
         </p>
-        <button className="w-full max-w-[320px] h-[50px] bg-white text-[#0086EE] font-bold uppercase rounded-lg shadow-lg hover:shadow-[0_5px_20px_rgba(0,112,244,0.8)] transition-all">
-          {t("speak_expert")}
-        </button>
+
+        <div className="relative w-full max-w-[400px] h-[50px] overflow-hidden border border-white rounded-lg font-lato">
+          <span className="absolute inset-0 flex items-center justify-center font-bold text-white hover:text-black text-[20px] pointer-events-none z-20">
+            {t("speak_expert")}
+          </span>
+          <button
+            type="button"
+            name="Hover"
+            className="w-full h-full flex items-center justify-center font-bold text-black text-[20px] bg-white z-10 border-none hover:text-white transition-colors duration-300 custom-mask-button"
+          >
+            {t("speak_expert")}
+          </button>
+        </div>
+
       </div>
 
       <div ref={leftImgRef} className="opacity-0">
@@ -252,11 +263,7 @@ const Primary = ({ t, handleCardClick, Video }) => {
         <p>Front end</p>
       </div>
 
-      <NavLink onClick={handleCardClick}>
-        <button className="animate-pulse fixed bottom-10 right-10 z-50 p-4 bg-white rounded-full shadow-xl">
-          <FaQuestion size={24} color="#0086EE" />
-        </button>
-      </NavLink>
+
     </section>
   );
 };

@@ -16,13 +16,14 @@ import StarsRightImg from "../assets/images/starsright.png"
 import StarsLeftImg from "../assets/images/starsleft.png"
 import { IoMdClose } from "react-icons/io";
 import IproIMage from "../assets/images/iproLogoRegister.png"
+import { NavLink } from 'react-router-dom';
+import { FaQuestion } from "react-icons/fa";
 
 import ContactWithMap from '../components/ui/contactwithmap';
 import Header from '../components/layouts/header';
 import Footer from '../components/layouts/footer';
 import ScrollProgressBar from '../components/progressLine/progressline';
 import VerticalScrollProgress from '../components/vertikalLine/vertikalline';
-// import RegisterForm from '../components/forms/signup/singnup';
 import { useTranslation } from "react-i18next";
 import "../i18";
 import AOS from 'aos';
@@ -102,69 +103,7 @@ const aboutus = () => {
             <Header />
             {/* <VerticalScrollProgress/> */}
             <ScrollProgressBar />
-
-            <section className="text-white py-16 mt-20 overflow-hidden">
-                <div className="container mx-auto md:max-w-none 2xl:max-w-none relative flex flex-col md:flex-row items-center justify-between px-5 md:px-10 lg:px-20">
-                    {/* Text Content */}
-                    <div
-                        className="text-center md:text-left md:w-1/2 space-y-4"
-                        data-aos="fade-right"
-                        data-aos-duration="1200"
-                    >
-                        <p className="lg:text-2xl text-xl font-medium">
-                            {t("premium_web_design")}
-                        </p>
-                        <h1 className="text-[#0086EE] text-4xl lg:text-6xl leading-tight font-bold uppercase">
-                            {t("brands_growth")}
-                        </h1>
-                        <p className="text-sm lg:text-xl font-medium">
-                            {t("custom_websites")} <br className="hidden md:block" />
-                            {t("marketing_services")}
-                        </p>
-
-                        <div className="relative w-full max-w-[400px] h-[50px] overflow-hidden border border-white rounded-lg font-lato">
-                            <span className="absolute inset-0 flex items-center justify-center font-bold text-white hover:text-black text-[20px] pointer-events-none z-20">
-                                {t("speak_expert")}
-                            </span>
-                            <button
-                                type="button"
-                                name="Hover"
-                                className="w-full h-full flex items-center justify-center font-bold text-black text-[20px] bg-white z-10 border-none hover:text-white transition-colors duration-300 custom-mask-button"
-                            >
-                                {t("speak_expert")}
-                            </button>
-                        </div>
-
-
-
-
-
-
-                    </div>
-
-                    {/* Video Content */}
-                    <div
-                        className="w-full md:w-1/2 flex justify-center mt-10 md:mt-0"
-                        data-aos="zoom-in"
-                    >
-                        <video
-                            className="w-full max-w-[500px] sm:max-w-[600px] md:max-w-[700px] lg:max-w-[800px] rounded-lg shadow-lg"
-                            controls
-                            autoPlay
-                            loop
-                        >
-                            <source src={Video} type="video/mp4" />
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
-                </div>
-
-                <NavLink onClick={handleCardClick}>
-                    <button className="animate-bounce p-5 rounded-[50%] fixed bottom-20 right-5 z-50 bg-white">
-                        <FaQuestion color="black" />
-                    </button>
-                </NavLink>
-            </section>
+            <Primary t={t} handleCardClick={handleCardClick} Video={Video} />
 
             <section className="bg-[#16182B] md:py-20 overflow-hidden">
                 <div className="md:mb-24" data-aos="fade-up" data-aos-duration="1200">
