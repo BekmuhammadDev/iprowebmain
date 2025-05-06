@@ -5,6 +5,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const Primary = ({ t, Video }) => {
+
   const containerRef = useRef(null);
   const videoRef = useRef(null);
   const contentRef = useRef(null);
@@ -23,7 +24,7 @@ const Primary = ({ t, Video }) => {
     const bottomImg = bottomImgRef.current;
     const bottomRightImg = bottomRightImgRef.current;
     const container = containerRef.current;
-  
+
     if (
       !video || !content || !leftImg || !rightImg ||
       !topImg || !bottomImg || !bottomRightImg || !container
@@ -31,12 +32,13 @@ const Primary = ({ t, Video }) => {
       console.warn("Refs are missing");
       return;
     }
-  
+
     // Refs boshlang‘ich holatga keltiriladi
     gsap.set(video, { objectFit: "cover", zIndex: 50 });
     gsap.set(content, { opacity: 0, x: -100, zIndex: 50 });
     gsap.set([leftImg, rightImg, topImg, bottomImg, bottomRightImg], { opacity: 0 });
-  
+    const mm = ScrollTrigger.matchMedia();
+
     // ScrollTrigger media query bilan
     ScrollTrigger.matchMedia({
       // Katta ekranlar
@@ -48,7 +50,7 @@ const Primary = ({ t, Video }) => {
           width: "100vw",
           height: "100vh",
         });
-  
+
         gsap.set(content, {
           position: "fixed",
           top: "50%",
@@ -56,7 +58,7 @@ const Primary = ({ t, Video }) => {
           transform: "translateY(-50%)",
           width: "35%",
         });
-  
+
         gsap.set(leftImg, {
           x: -50,
           position: "fixed",
@@ -66,7 +68,7 @@ const Primary = ({ t, Video }) => {
           width: "15vw",
           zIndex: 20,
         });
-  
+
         gsap.set(rightImg, {
           x: 50,
           position: "fixed",
@@ -76,7 +78,7 @@ const Primary = ({ t, Video }) => {
           width: "9vw",
           zIndex: 20,
         });
-  
+
         gsap.set(topImg, {
           y: -50,
           position: "fixed",
@@ -86,7 +88,7 @@ const Primary = ({ t, Video }) => {
           width: "15vw",
           zIndex: 20,
         });
-  
+
         gsap.set(bottomImg, {
           y: 50,
           position: "fixed",
@@ -96,7 +98,7 @@ const Primary = ({ t, Video }) => {
           width: "15vw",
           zIndex: 20,
         });
-  
+
         gsap.set(bottomRightImg, {
           y: 50,
           position: "fixed",
@@ -106,7 +108,7 @@ const Primary = ({ t, Video }) => {
           width: "15vw",
           zIndex: 20,
         });
-  
+
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: container,
@@ -117,7 +119,7 @@ const Primary = ({ t, Video }) => {
             invalidateOnRefresh: true, // MUHIM: qayta hisoblashda kerak
           },
         });
-  
+
         tl.to(video, {
           width: "30vw",
           height: "50vh",
@@ -129,7 +131,7 @@ const Primary = ({ t, Video }) => {
           zIndex: 10,
           duration: 2,
         });
-  
+
         tl.to(content, { opacity: 1, x: 0, duration: 1.5, delay: 1 }, "<");
         tl.to(leftImg, { opacity: 1, x: 0, duration: 1 }, "<0.2");
         tl.to(rightImg, { opacity: 1, x: 0, duration: 1 }, "<0.2");
@@ -137,16 +139,16 @@ const Primary = ({ t, Video }) => {
         tl.to(bottomImg, { opacity: 1, y: 0, duration: 1 }, "<0.2");
         tl.to(bottomRightImg, { opacity: 1, y: 0, duration: 1 }, "<0.2");
       },
-  
+
       // Kichik ekranlar
       "(max-width: 1199px)": () => {
         gsap.set(video, {
           position: "relative",
           width: "100%",
-          height: "auto",
+          height: "100vh",
           zIndex: 0,
         });
-  
+
         gsap.set(content, {
           opacity: 1,
           x: 0,
@@ -156,7 +158,7 @@ const Primary = ({ t, Video }) => {
           transform: "none",
           zIndex: 0,
         });
-  
+
         [leftImg, rightImg, topImg, bottomImg, bottomRightImg].forEach((img) => {
           gsap.set(img, {
             opacity: 1,
@@ -169,24 +171,18 @@ const Primary = ({ t, Video }) => {
         });
       },
     });
-  
+
     // Tozalash
     return () => {
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
       ScrollTrigger.clearMatchMedia();
     };
   }, []);
-  
-  
-  
-  
-  
-  
 
-  
 
   return (
     <section ref={containerRef} className="relative min-h-[100vh] bg-black text-white">
+
       <video ref={videoRef} className="pointer-events-none" autoPlay muted loop playsInline>
         <source src={Video} type="video/mp4" />
       </video>
@@ -214,26 +210,27 @@ const Primary = ({ t, Video }) => {
         </div>
       </div>
 
-      {/* Images */}
-      <div ref={leftImgRef} className="opacity-0">
-        <img src="https://e7.pngegg.com/pngimages/178/595/png-clipart-user-profile-computer-icons-login-user-avatars-monochrome-black.png" alt="Left" className="rounded-lg shadow-xl border-2 border-white/20 w-[100px]" />
-        <p>HR</p>
-      </div>
-      <div ref={rightImgRef} className="opacity-0">
-        <img src="https://e7.pngegg.com/pngimages/178/595/png-clipart-user-profile-computer-icons-login-user-avatars-monochrome-black.png" alt="Right" className="rounded-lg shadow-xl border-2 border-white/20 w-[100px]" />
-        <p>Mobile</p>
-      </div>
-      <div ref={topImgRef} className="opacity-0">
-        <img src="https://e7.pngegg.com/pngimages/178/595/png-clipart-user-profile-computer-icons-login-user-avatars-monochrome-black.png" alt="Top" className="rounded-lg shadow-xl border-2 border-white/20 w-[100px]" />
-        <p>UI/UX</p>
-      </div>
-      <div ref={bottomImgRef} className="opacity-0">
-        <img src="https://e7.pngegg.com/pngimages/178/595/png-clipart-user-profile-computer-icons-login-user-avatars-monochrome-black.png" alt="Bottom" className="rounded-lg shadow-xl border-2 border-white/20 w-[100px]" />
-        <p>Backend</p>
-      </div>
-      <div ref={bottomRightImgRef} className="opacity-0">
-        <img src="https://e7.pngegg.com/pngimages/178/595/png-clipart-user-profile-computer-icons-login-user-avatars-monochrome-black.png" alt="Bottom Right" className="rounded-lg shadow-xl border-2 border-white/20 w-[100px]" />
-        <p>Front end</p>
+      <div>
+        <div ref={leftImgRef} className="opacity-0">
+          <img src="https://e7.pngegg.com/pngimages/178/595/png-clipart-user-profile-computer-icons-login-user-avatars-monochrome-black.png" alt="Left" className="rounded-lg shadow-xl border-2 border-white/20 w-[100px]" />
+          <p>HR</p>
+        </div>
+        <div ref={rightImgRef} className="opacity-0">
+          <img src="https://e7.pngegg.com/pngimages/178/595/png-clipart-user-profile-computer-icons-login-user-avatars-monochrome-black.png" alt="Right" className="rounded-lg shadow-xl border-2 border-white/20 w-[100px]" />
+          <p>Mobile</p>
+        </div>
+        <div ref={topImgRef} className="opacity-0">
+          <img src="https://e7.pngegg.com/pngimages/178/595/png-clipart-user-profile-computer-icons-login-user-avatars-monochrome-black.png" alt="Top" className="rounded-lg shadow-xl border-2 border-white/20 w-[100px]" />
+          <p>UI/UX</p>
+        </div>
+        <div ref={bottomImgRef} className="opacity-0">
+          <img src="https://e7.pngegg.com/pngimages/178/595/png-clipart-user-profile-computer-icons-login-user-avatars-monochrome-black.png" alt="Bottom" className="rounded-lg shadow-xl border-2 border-white/20 w-[100px]" />
+          <p>Backend</p>
+        </div>
+        <div ref={bottomRightImgRef} className="opacity-0">
+          <img src="https://e7.pngegg.com/pngimages/178/595/png-clipart-user-profile-computer-icons-login-user-avatars-monochrome-black.png" alt="Bottom Right" className="rounded-lg shadow-xl border-2 border-white/20 w-[100px]" />
+          <p>Front end</p>
+        </div>
       </div>
     </section>
   );
