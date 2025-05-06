@@ -14,6 +14,7 @@ export const teamMembers = [
     experience: "7+",
     workerImg: WorkersImg,
     img: WorkersImg,
+    hoverImg: 'https://picsum.photos/200/300?grayscale',
   },
   {
     name: "John",
@@ -23,6 +24,7 @@ export const teamMembers = [
     experience: "5+",
     workerImg: Workersman,
     img: Workersman,
+    hoverImg: 'https://picsum.photos/200/300?random=2&grayscale',
   },
   {
     name: "Alice",
@@ -32,6 +34,7 @@ export const teamMembers = [
     experience: "6+",
     workerImg: WorkersImg,
     img: WorkersImg,
+    hoverImg: 'https://picsum.photos/200/300?random=2&grayscale',
   },
   {
     name: "Mike",
@@ -41,6 +44,7 @@ export const teamMembers = [
     experience: "10+",
     workerImg: WorkersMan2,
     img: WorkersMan2,
+    hoverImg: 'https://picsum.photos/200/300?random=2&grayscale',
   },
 
 ];
@@ -94,7 +98,7 @@ export const faqs = [
   {
     question: 'technical_issue_details',
     answer:
-     'technical_issue_details',
+      'technical_issue_details',
   },
   {
     question: 'project_duration',
