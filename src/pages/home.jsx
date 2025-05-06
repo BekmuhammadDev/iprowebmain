@@ -61,6 +61,7 @@ const aboutus = () => {
     const [openIndex, setOpenIndex] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedIssue, setSelectedIssue] = useState('');
+    const [hoveredIndex, setHoveredIndex] = useState(null);
 
     const openModal = (issue) => {
         setSelectedIssue(issue);
@@ -230,8 +231,8 @@ const aboutus = () => {
                             data-aos-duration="1400"
                         >
                             <div className="relative">
-                                <img src={CardBg} alt="Background" className="w-full h-full object-cover" />
-                                <div className="absolute md:z-30 inset-0 flex items-center justify-center">
+                                <img src={CardBg} alt="Background" className="w-full h-full z-50 object-cover" />
+                                <div className="absolute -z-30 inset-0 flex items-center justify-center">
                                     <img
                                         src={activeMember.workerImg}
                                         alt="Worker"
@@ -243,11 +244,7 @@ const aboutus = () => {
                     </div>
 
                     {/* Carousel qismi */}
-                    <div
-                        className="relative top-10 sm:-top-20 z-30 backdrop-blur-lg bg-transparent overflow-hidden w-full flex justify-center"
-                        data-aos="fade-up"
-                        data-aos-duration="1600"
-                    >
+                    <div className="relative top-10 sm:-top-20 z-30 backdrop-blur-lg bg-transparent overflow-hidden w-full flex justify-center">
                         <div className="carousel-track">
                             <div className="carousel-inner">
                                 {[...teamMembers, ...teamMembers, ...teamMembers].map((member, index) => (
@@ -255,59 +252,59 @@ const aboutus = () => {
                                         key={index}
                                         className="carousel-card"
                                         onClick={() => handleMemberClick(member)}
+                                        onMouseEnter={() => setHoveredIndex(index)} // Set hover state
+                                        onMouseLeave={() => setHoveredIndex(null)} // Reset hover state
                                     >
                                         <img
-                                            src={member.img}
+                                            src={hoveredIndex === index ? member.hoverImg : member.img} // Change image on hover
                                             alt={member.name}
                                             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 cursor-pointer"
                                         />
-                                        <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-70 p-3 text-white text-center font-bold">
+                                        <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-70 p-3 text-white text-center font-bold hover:font-extrabold">
                                             {member.name}
                                         </div>
                                     </div>
                                 ))}
                             </div>
                         </div>
+
                         <style jsx>{`
-            .carousel-track {
-              overflow: hidden;
-              width: 100%;
-            }
-            .carousel-inner {
-              display: flex;
-              width: max-content;
-              gap: 1.5rem;
-              animation: scroll 30s linear infinite;
-              will-change: transform;
-            }
-            .carousel-track:hover .carousel-inner {
-              animation-play-state: paused;
-            }
-            .carousel-card {
-              position: relative;
-              width: 12rem;
-              height: 18rem;
-              border: 2px solid #3b82f6;
-              border-radius: 0.5rem;
-              overflow: hidden;
-              box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
-              background-color: #0A0F1F;
-              cursor: pointer;
-              transition: all 0.3s;
-            }
-            .carousel-card:hover {
-              box-shadow: 0 0 25px 10px rgba(0, 122, 255, 0.6);
-            }
-            @keyframes scroll {
-              0% {
-                transform: translateX(0);
-              }
-              100% {
-                transform: translateX(-33.33%);
-              }
-            }
-          `}</style>
+        .carousel-track {
+          overflow: hidden;
+          width: 100%;
+        }
+        .carousel-inner {
+          display: flex;
+          width: max-content;
+          gap: 1.5rem;
+          animation: scroll 30s linear infinite;
+          will-change: transform;
+        }
+        .carousel-track:hover .carousel-inner {
+          animation-play-state: paused;
+        }
+        .carousel-card {
+          position: relative;
+          width: 12rem;
+          height: 18rem;
+          border-radius: 0.5rem;
+          overflow: hidden;
+          box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+          background-color: #0A0F1F;
+          cursor: pointer;
+          transition: all 0.3s;
+        }
+        @keyframes scroll {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-33.33%);
+          }
+        }
+      `}</style>
                     </div>
+                    
                 </div>
             </section>
 
@@ -386,7 +383,7 @@ const aboutus = () => {
                                 />
 
                                 {/* Overlay Effekt */}
-                                <div className="absolute inset-0 flex flex-col items-center justify-end bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500 p-5">
+                                <div className="absolute inset-0 flex flex-col items-center justify-end bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out p-5">
                                     <p className="text-white text-lg font-bold">{item.title}</p>
                                 </div>
                             </div>
