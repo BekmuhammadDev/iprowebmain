@@ -382,7 +382,7 @@ const aboutus = () => {
                                     className="w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
                                 />
 
-                                {/* Overlay Effekt */}
+                                {/* Overlay Effek */}
                                 <div className="absolute inset-0 flex flex-col items-center justify-end bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out p-5">
                                     <p className="text-white text-lg font-bold">{item.title}</p>
                                 </div>
