@@ -1,12 +1,10 @@
 import React, { useEffect, useRef } from 'react';
-import { NavLink } from 'react-router-dom';
-import { FaQuestion } from "react-icons/fa";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const Primary = ({ t, handleCardClick, Video }) => {
+const Primary = ({ t, Video }) => {
   const containerRef = useRef(null);
   const videoRef = useRef(null);
   const contentRef = useRef(null);
@@ -24,197 +22,172 @@ const Primary = ({ t, handleCardClick, Video }) => {
     const topImg = topImgRef.current;
     const bottomImg = bottomImgRef.current;
     const bottomRightImg = bottomRightImgRef.current;
-
-    // Dastlabki holat
-    gsap.set(video, {
-      position: "fixed",
-      top: 0,
-      left: 0,
-      width: "100vw",     // 100% o‘rniga 100vw
-      height: "100vh",
-      objectFit: "cover",
-      zIndex: 50,
-    });
-
-    gsap.set(content, {
-      opacity: 0,
-      x: -100,  // Chapdan chiqish
-      position: "fixed",
-      top: "60%",
-      left: "10%",
-      transform: "translateY(-50%)",
-      zIndex: 50,
-      width: "35%",
-    });
-
-    gsap.set(leftImg, {
-      opacity: 0,
-      x: -50,
-      position: "fixed",
-      top: "50%",
-      left: "calc(65% - 15vw - 10px)",
-      transform: "translateY(-50%)",
-      zIndex: 20,
-      width: "15vw",
-    });
-
-    gsap.set(rightImg, {
-      opacity: 0,
-      x: 50,
-      position: "fixed",
-      top: "50%",
-      left: "calc(58% + 30vw + 10px)",
-      transform: "translateY(-50%)",
-      zIndex: 20,
-      width: "9vw",
-    });
-
-    gsap.set(topImg, {
-      opacity: 0,
-      y: -50,
-      position: "fixed",
-      top: "88px",
-      left: "70%",
-      transform: "translateX(-50%)",
-      zIndex: 20,
-      width: "15vw",
-    });
-
-    gsap.set(bottomImg, {
-      opacity: 0,
-      y: 50,
-      position: "fixed",
-      top: "calc(25% + 25vh + 10px)",
-      left: "60%",
-      transform: "translateX(-50%)",
-      zIndex: 20,
-      width: "15vw",
-    });
-
-    gsap.set(bottomRightImg, {
-      opacity: 0,
-      y: 50,
-      position: "fixed",
-      top: "calc(33% + 25vh + 10px)",
-      left: "90%",
-      transform: "translateX(-50%)",
-      zIndex: 20,
-      width: "15vw",
-    });
-
-    if (window.innerWidth <= 700) {
-      // Ekran 700px yoki kichik — animatsiya 1s ichida ko‘rsatiladi
-      const tl = gsap.timeline();
-
-      tl.to(video, {
-        width: "90vw",
-        height: "40vh",
-        top: "10%",
-        left: "5%",
-        position: "fixed",
-        objectFit: "contain",
-        zIndex: 10,
-        duration: 1,
-        ease: "power2.out",
-      });
-
-      tl.to(content, {
-        opacity: 1,
-        x: 0,  // O'ngga qarab harakatlanadi
-        duration: 1,
-        ease: "power2.out",
-        delay: 1, // 1 sekund kechikish qo'shiladi
-      }, "<");
-
-      tl.to([leftImg, rightImg, topImg, bottomImg, bottomRightImg], {
-        opacity: 1,
-        x: 0,
-        y: 0,
-        duration: 1,
-        stagger: 0.1,
-        ease: "power2.out",
-      }, "<");
-    } else {
-      // Katta ekranlar uchun scrollTrigger bilan animatsiya
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top top",
-          end: "+=1000",
-          scrub: 1,
-          pin: true,
-        },
-      });
-
-      tl.to(video, {
-        width: "30vw",
-        height: "50vh",
-        top: "25%",
-        left: "60%",
-        xPercent: -10,
-        yPercent: -10,
-        position: "fixed",
-        objectFit: "contain",
-        zIndex: 10,
-        duration: 2,
-      });
-
-      tl.to(content, {
-        opacity: 1,
-        x: 0,
-        duration: 1.5,
-        delay: 1, // 1 sekund kechikish
-      }, "<");
-
-      tl.to(leftImg, {
-        opacity: 1,
-        x: 0,
-        duration: 1,
-        ease: "power2.out",
-      }, "<0.2");
-
-      tl.to(rightImg, {
-        opacity: 1,
-        x: 0,
-        duration: 1,
-        ease: "power2.out",
-      }, "<0.2");
-
-      tl.to(topImg, {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        ease: "power2.out",
-      }, "<0.2");
-
-      tl.to(bottomImg, {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        ease: "power2.out",
-      }, "<0.2");
-
-      tl.to(bottomRightImg, {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        ease: "power2.out",
-      }, "<0.2");
+    const container = containerRef.current;
+  
+    if (
+      !video || !content || !leftImg || !rightImg ||
+      !topImg || !bottomImg || !bottomRightImg || !container
+    ) {
+      console.warn("Refs are missing");
+      return;
     }
-
-    return () => ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+  
+    // Refs boshlang‘ich holatga keltiriladi
+    gsap.set(video, { objectFit: "cover", zIndex: 50 });
+    gsap.set(content, { opacity: 0, x: -100, zIndex: 50 });
+    gsap.set([leftImg, rightImg, topImg, bottomImg, bottomRightImg], { opacity: 0 });
+  
+    // ScrollTrigger media query bilan
+    ScrollTrigger.matchMedia({
+      // Katta ekranlar
+      "(min-width: 1200px)": () => {
+        gsap.set(video, {
+          position: "fixed",
+          top: 0,
+          left: 0,
+          width: "100vw",
+          height: "100vh",
+        });
+  
+        gsap.set(content, {
+          position: "fixed",
+          top: "50%",
+          left: "10%",
+          transform: "translateY(-50%)",
+          width: "35%",
+        });
+  
+        gsap.set(leftImg, {
+          x: -50,
+          position: "fixed",
+          top: "50%",
+          left: "calc(65% - 15vw - 10px)",
+          transform: "translateY(-50%)",
+          width: "15vw",
+          zIndex: 20,
+        });
+  
+        gsap.set(rightImg, {
+          x: 50,
+          position: "fixed",
+          top: "50%",
+          left: "calc(58% + 30vw + 10px)",
+          transform: "translateY(-50%)",
+          width: "9vw",
+          zIndex: 20,
+        });
+  
+        gsap.set(topImg, {
+          y: -50,
+          position: "fixed",
+          top: "88px",
+          left: "70%",
+          transform: "translateX(-50%)",
+          width: "15vw",
+          zIndex: 20,
+        });
+  
+        gsap.set(bottomImg, {
+          y: 50,
+          position: "fixed",
+          top: "calc(25% + 25vh + 10px)",
+          left: "60%",
+          transform: "translateX(-50%)",
+          width: "15vw",
+          zIndex: 20,
+        });
+  
+        gsap.set(bottomRightImg, {
+          y: 50,
+          position: "fixed",
+          top: "calc(33% + 25vh + 10px)",
+          left: "90%",
+          transform: "translateX(-50%)",
+          width: "15vw",
+          zIndex: 20,
+        });
+  
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: container,
+            start: "top top",
+            end: "+=1000",
+            scrub: 1,
+            pin: true,
+            invalidateOnRefresh: true, // MUHIM: qayta hisoblashda kerak
+          },
+        });
+  
+        tl.to(video, {
+          width: "30vw",
+          height: "50vh",
+          top: "25%",
+          left: "60%",
+          xPercent: -10,
+          yPercent: -10,
+          objectFit: "contain",
+          zIndex: 10,
+          duration: 2,
+        });
+  
+        tl.to(content, { opacity: 1, x: 0, duration: 1.5, delay: 1 }, "<");
+        tl.to(leftImg, { opacity: 1, x: 0, duration: 1 }, "<0.2");
+        tl.to(rightImg, { opacity: 1, x: 0, duration: 1 }, "<0.2");
+        tl.to(topImg, { opacity: 1, y: 0, duration: 1 }, "<0.2");
+        tl.to(bottomImg, { opacity: 1, y: 0, duration: 1 }, "<0.2");
+        tl.to(bottomRightImg, { opacity: 1, y: 0, duration: 1 }, "<0.2");
+      },
+  
+      // Kichik ekranlar
+      "(max-width: 1199px)": () => {
+        gsap.set(video, {
+          position: "relative",
+          width: "100%",
+          height: "auto",
+          zIndex: 0,
+        });
+  
+        gsap.set(content, {
+          opacity: 1,
+          x: 0,
+          position: "relative",
+          width: "90%",
+          margin: "20px auto",
+          transform: "none",
+          zIndex: 0,
+        });
+  
+        [leftImg, rightImg, topImg, bottomImg, bottomRightImg].forEach((img) => {
+          gsap.set(img, {
+            opacity: 1,
+            position: "relative",
+            width: "100%",
+            margin: "10px 0",
+            transform: "none",
+            zIndex: 0,
+          });
+        });
+      },
+    });
+  
+    // Tozalash
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+      ScrollTrigger.clearMatchMedia();
+    };
   }, []);
+  
+  
+  
+  
+  
+  
+
+  
 
   return (
     <section ref={containerRef} className="relative min-h-[100vh] bg-black text-white">
-      <video
-        ref={videoRef}
-        className="pointer-events-none"
-        autoPlay
-        muted
-        loop
-        playsInline
-      >
+      <video ref={videoRef} className="pointer-events-none" autoPlay muted loop playsInline>
         <source src={Video} type="video/mp4" />
       </video>
 
@@ -239,9 +212,9 @@ const Primary = ({ t, handleCardClick, Video }) => {
             {t("speak_expert")}
           </button>
         </div>
-
       </div>
 
+      {/* Images */}
       <div ref={leftImgRef} className="opacity-0">
         <img src="https://e7.pngegg.com/pngimages/178/595/png-clipart-user-profile-computer-icons-login-user-avatars-monochrome-black.png" alt="Left" className="rounded-lg shadow-xl border-2 border-white/20 w-[100px]" />
         <p>HR</p>
@@ -262,8 +235,6 @@ const Primary = ({ t, handleCardClick, Video }) => {
         <img src="https://e7.pngegg.com/pngimages/178/595/png-clipart-user-profile-computer-icons-login-user-avatars-monochrome-black.png" alt="Bottom Right" className="rounded-lg shadow-xl border-2 border-white/20 w-[100px]" />
         <p>Front end</p>
       </div>
-
-
     </section>
   );
 };
