@@ -3,7 +3,6 @@ import { NavLink } from "react-router-dom";
 import Logo from "../../assets/icons/Logo.svg";
 import { FaBell } from "react-icons/fa";
 import { IoClose, IoPersonOutline } from "react-icons/io5";
-import { FaEarthAsia } from "react-icons/fa6";
 import { CgMenuRightAlt } from "react-icons/cg";
 import { MdArrowDropUp } from "react-icons/md";
 import { FaBriefcase, FaTasks, FaListAlt } from "react-icons/fa";
@@ -152,7 +151,7 @@ const Header = () => {
     //////////////////////////////////////////
 
     return (
-        <header className={`w-full py-4 fixed top-0 h-20 z-50 text-white flex transition-all duration-300 bg-[#0A0F1F]`}>
+        <header className={`w-full py-4 fixed top-0 h-20 z-30 text-white flex transition-all duration-300 bg-[#0A0F1F]`}>
             <nav data-aos="flip-up"
                 data-aos-duration="1200" className='flex container mx-auto md:max-w-none xl:max-w-none px-10  py-5 justify-between items-center'>
 
@@ -198,7 +197,7 @@ const Header = () => {
                         {/* Notifications Dropdown */}
                         <div className='relative dropdown'>
                             <button onClick={() => setOpenDropdown(openDropdown === "notif" ? null : "notif")}>
-                                <FaBell fontSize={25} className='text-white'/>
+                                <FaBell fontSize={25} className='text-white' />
                             </button>
                             {openDropdown === "notif" && (
                                 <div className="absolute top-12  -left-20 border w-[230px] text-white rounded-lg shadow-lg">
@@ -247,7 +246,7 @@ const Header = () => {
 
                         {/* Modal Sign In */}
                         {isSignInModalOpen && (
-                            <div className="fixed inset-0 flex items-center px-5 justify-center bg-black bg-opacity-90 z-50">
+                            <div className="fixed inset-0 flex items-center h-[100vh] px-5 justify-center bg-black bg-opacity-50 z-50">
                                 <div className="flex rounded-md justify-between bg-[#16182B] items-center sm:px-20">
                                     <div className="hidden md:flex">
                                         <img src={IproRegisterLogo} alt="" />
@@ -327,7 +326,7 @@ const Header = () => {
 
                         {/* Modal register */}
                         {isModalOpen && (
-                            <div className="fixed inset-0 flex items-center px-5 justify-center bg-black bg-opacity-90">
+                            <div className="fixed inset-0 flex items-center h-[100vh] px-5 justify-center bg-black bg-opacity-50">
                                 <div className='flex rounded-md justify-between bg-[#16182B] items-center sm:px-20'>
                                     <div className='hidden md:flex'>
                                         <img src={IproRegisterLogo} alt="Register Logo" />
