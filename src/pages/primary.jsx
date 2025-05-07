@@ -33,12 +33,7 @@ const Primary = ({ t, Video }) => {
 
     window.scrollTo(0, 0);
 
-<<<<<<< HEAD
-    ScrollTrigger.matchMedia({
-      // Katta ekranlar
-=======
     const mm = ScrollTrigger.matchMedia({
->>>>>>> da57b28d98af53f2cb720ef1182603e9712f1c4b
       "(min-width: 1200px)": () => {
         gsap.set([video, content], { zIndex: 50 });
         gsap.set([leftImg, rightImg, topImg, bottomImg, bottomRightImg], { opacity: 0 });
