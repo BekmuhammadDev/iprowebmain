@@ -5,8 +5,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const Primary = ({ t, Video }) => {
-
-  const containerRef = useRef(null);
   const videoRef = useRef(null);
   const contentRef = useRef(null);
   const leftImgRef = useRef(null);
@@ -14,6 +12,7 @@ const Primary = ({ t, Video }) => {
   const topImgRef = useRef(null);
   const bottomImgRef = useRef(null);
   const bottomRightImgRef = useRef(null);
+  const containerRef = useRef(null);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -29,25 +28,28 @@ const Primary = ({ t, Video }) => {
       !video || !content || !leftImg || !rightImg ||
       !topImg || !bottomImg || !bottomRightImg || !container
     ) {
-      console.warn("Refs are missing");
       return;
     }
 
-    // Refs boshlang‘ich holatga keltiriladi
-    gsap.set(video, { objectFit: "cover", zIndex: 50 });
-    gsap.set(content, { opacity: 0, x: -100, zIndex: 50 });
-    gsap.set([leftImg, rightImg, topImg, bottomImg, bottomRightImg], { opacity: 0 });
-    const mm = ScrollTrigger.matchMedia();
+    window.scrollTo(0, 0);
 
+<<<<<<< HEAD
     ScrollTrigger.matchMedia({
       // Katta ekranlar
+=======
+    const mm = ScrollTrigger.matchMedia({
+>>>>>>> da57b28d98af53f2cb720ef1182603e9712f1c4b
       "(min-width: 1200px)": () => {
+        gsap.set([video, content], { zIndex: 50 });
+        gsap.set([leftImg, rightImg, topImg, bottomImg, bottomRightImg], { opacity: 0 });
+
         gsap.set(video, {
           position: "fixed",
           top: 0,
           left: 0,
           width: "100vw",
           height: "100vh",
+          objectFit: "cover",
         });
 
         gsap.set(content, {
@@ -56,9 +58,15 @@ const Primary = ({ t, Video }) => {
           left: "10%",
           transform: "translateY(-50%)",
           width: "35%",
+          opacity: 0,
+          x: -100,
         });
 
-        gsap.set(leftImg, {
+        const setImage = (el, styles) => {
+          if (el) gsap.set(el, styles);
+        };
+
+        setImage(leftImg, {
           x: -50,
           position: "fixed",
           top: "50%",
@@ -68,7 +76,7 @@ const Primary = ({ t, Video }) => {
           zIndex: 20,
         });
 
-        gsap.set(rightImg, {
+        setImage(rightImg, {
           x: 50,
           position: "fixed",
           top: "50%",
@@ -78,7 +86,7 @@ const Primary = ({ t, Video }) => {
           zIndex: 20,
         });
 
-        gsap.set(topImg, {
+        setImage(topImg, {
           y: -50,
           position: "fixed",
           top: "88px",
@@ -88,7 +96,7 @@ const Primary = ({ t, Video }) => {
           zIndex: 20,
         });
 
-        gsap.set(bottomImg, {
+        setImage(bottomImg, {
           y: 50,
           position: "fixed",
           top: "calc(25% + 25vh + 10px)",
@@ -98,7 +106,7 @@ const Primary = ({ t, Video }) => {
           zIndex: 20,
         });
 
-        gsap.set(bottomRightImg, {
+        setImage(bottomRightImg, {
           y: 50,
           position: "fixed",
           top: "calc(33% + 25vh + 10px)",
@@ -115,7 +123,7 @@ const Primary = ({ t, Video }) => {
             end: "+=1000",
             scrub: 1,
             pin: true,
-            invalidateOnRefresh: true, // MUHIM: qayta hisoblashda kerak
+            invalidateOnRefresh: true,
           },
         });
 
@@ -137,9 +145,17 @@ const Primary = ({ t, Video }) => {
         tl.to(topImg, { opacity: 1, y: 0, duration: 1 }, "<0.2");
         tl.to(bottomImg, { opacity: 1, y: 0, duration: 1 }, "<0.2");
         tl.to(bottomRightImg, { opacity: 1, y: 0, duration: 1 }, "<0.2");
+
+        return () => {
+          ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+          [video, content, leftImg, rightImg, topImg, bottomImg, bottomRightImg].forEach((el) => {
+            if (el && el.parentNode) {
+              gsap.set(el, { clearProps: "all" });
+            }
+          });
+        };
       },
 
-      // Kichik ekranlar
       "(max-width: 1199px)": () => {
         gsap.set(video, {
           position: "relative",
@@ -159,25 +175,29 @@ const Primary = ({ t, Video }) => {
         });
 
         [leftImg, rightImg, topImg, bottomImg, bottomRightImg].forEach((img) => {
-          gsap.set(img, {
-            opacity: 1,
-            position: "relative",
-            width: "100%",
-            margin: "10px 0",
-            transform: "none",
-            zIndex: 0,
-          });
+          if (img) {
+            gsap.set(img, {
+              opacity: 1,
+              position: "relative",
+              width: "100%",
+              margin: "10px 0",
+              transform: "none",
+              zIndex: 0,
+            });
+          }
         });
+
+        return () => {
+          ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+        };
       },
     });
 
-    // Tozalash
     return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
       ScrollTrigger.clearMatchMedia();
     };
   }, []);
-
+  
 
   return (
     <section ref={containerRef} className="relative min-h-[100vh] bg-black text-white">

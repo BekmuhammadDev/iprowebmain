@@ -18,6 +18,7 @@ import { useTranslation } from "react-i18next";
 import "../../i18";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import Login from './login';
 
 AOS.init();
 
@@ -246,82 +247,9 @@ const Header = () => {
 
                         {/* Modal Sign In */}
                         {isSignInModalOpen && (
-                            <div className="fixed inset-0 flex items-center h-[100vh] px-5 justify-center bg-black bg-opacity-50 z-50">
-                                <div className="flex rounded-md justify-between bg-[#16182B] items-center sm:px-20">
-                                    <div className="hidden md:flex">
-                                        <img src={IproRegisterLogo} alt="" />
-                                    </div>
-                                    <div className="p-6 rounded-lg w-full sm:w-[400px] relative">
-                                        <button
-                                            className="absolute -top-14 -right-5 text-white w-8 h-8 flex items-center justify-center rounded-full shadow-lg"
-                                            onClick={() => setIsSignInModalOpen(false)}
-                                        >
-                                            <IoMdClose fontSize={40} />
-                                        </button>
-                                        <h2 className="text-white text-[40px] font-bold text-center">Sign In</h2>
-
-                                        <input
-                                            className="w-full px-5 h-[49px] my-4 border rounded bg-gray-800 border-[#0086EE] text-white"
-                                            placeholder="Username"
-                                            value={username}
-                                            onChange={(e) => setUsername(e.target.value)}
-                                        />
-                                        <div className="relative">
-                                            <input
-                                                className="w-full px-5 h-[49px] my-2 border rounded bg-gray-800 border-[#0086EE] text-white pr-10"
-                                                type={showPassword ? "text" : "password"}
-                                                placeholder="Password"
-                                                value={password}
-                                                onChange={(e) => setPassword(e.target.value)}
-                                            />
-                                            <button
-                                                type="button"
-                                                className="absolute top-[10%] right-4 text-gray-400"
-                                                onClick={() => setShowPassword(!showPassword)}
-                                            >
-                                                {showPassword ? <AiOutlineEyeInvisible size={24} /> : <AiOutlineEye size={24} />}
-                                            </button>
-                                        </div>
-
-                                        {/* Forgot Password Link */}
-                                        <div className="text-right text-sm text-blue-400 cursor-pointer mb-4 hover:underline">
-                                            Forgot password?
-                                        </div>
-
-                                        {/* Continue Button */}
-                                        <button className="w-full bg-white text-base font-semibold drop-shadow-[0_5px_15px_rgba(0,112,244,0.8)] text-blue-600 p-2 rounded"
-                                            onClick={handleSignIn}
-                                        >
-                                            CONTINUE
-                                        </button>
-
-                                        {/* Divider with Or */}
-                                        <div className="flex items-center gap-2 my-4">
-                                            <div className="flex-grow h-[1px] bg-gray-600" />
-                                            <span className="text-white text-sm">Or, continue with</span>
-                                            <div className="flex-grow h-[1px] bg-gray-600" />
-                                        </div>
-
-                                        {/* Google Sign In */}
-                                        <button className="w-full flex items-center justify-center gap-2 border text-white border-gray-600 rounded p-2">
-                                            <FcGoogle size={20} /> Continue with Google
-                                        </button>
-
-                                        <p className="text-white text-center mt-2">
-                                            New to iPro?{" "}
-                                            <span
-                                                className="text-blue-400 cursor-pointer"
-                                                onClick={() => {
-                                                    setIsSignInModalOpen(false);
-                                                    setIsModalOpen(true); // Open Register modal
-                                                }}
-                                            >
-                                                Create an account
-                                            </span>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
+  handleSignIn,
+  handleSignIn,
+                           <Login IproRegisterLogo={IproRegisterLogo} setIsSignInModalOpen={setIsSignInModalOpen}  showPassword={showPassword} setShowPassword={setShowPassword} handleSignIn={handleSignIn} setIsModalOpen={setIsModalOpen}/>
                         )}
 
                         {/* Modal register */}
