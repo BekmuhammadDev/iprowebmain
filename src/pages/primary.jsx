@@ -39,7 +39,6 @@ const Primary = ({ t, Video }) => {
     gsap.set([leftImg, rightImg, topImg, bottomImg, bottomRightImg], { opacity: 0 });
     const mm = ScrollTrigger.matchMedia();
 
-    // ScrollTrigger media query bilan
     ScrollTrigger.matchMedia({
       // Katta ekranlar
       "(min-width: 1200px)": () => {
