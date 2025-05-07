@@ -5,6 +5,11 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const Primary = ({ t, Video }) => {
+<<<<<<< HEAD
+=======
+
+  const containerRef = useRef(null);
+>>>>>>> 6031dc6405e972e176b8fb0efd90fadfe071a37f
   const videoRef = useRef(null);
   const contentRef = useRef(null);
   const leftImgRef = useRef(null);
@@ -57,11 +62,15 @@ const Primary = ({ t, Video }) => {
           x: -100,
         });
 
+<<<<<<< HEAD
         const setImage = (el, styles) => {
           if (el) gsap.set(el, styles);
         };
 
         setImage(leftImg, {
+=======
+        gsap.set(leftImg, {
+>>>>>>> 6031dc6405e972e176b8fb0efd90fadfe071a37f
           x: -50,
           position: "fixed",
           top: "50%",
@@ -71,7 +80,11 @@ const Primary = ({ t, Video }) => {
           zIndex: 20,
         });
 
+<<<<<<< HEAD
         setImage(rightImg, {
+=======
+        gsap.set(rightImg, {
+>>>>>>> 6031dc6405e972e176b8fb0efd90fadfe071a37f
           x: 50,
           position: "fixed",
           top: "50%",
@@ -81,7 +94,11 @@ const Primary = ({ t, Video }) => {
           zIndex: 20,
         });
 
+<<<<<<< HEAD
         setImage(topImg, {
+=======
+        gsap.set(topImg, {
+>>>>>>> 6031dc6405e972e176b8fb0efd90fadfe071a37f
           y: -50,
           position: "fixed",
           top: "88px",
@@ -91,7 +108,11 @@ const Primary = ({ t, Video }) => {
           zIndex: 20,
         });
 
+<<<<<<< HEAD
         setImage(bottomImg, {
+=======
+        gsap.set(bottomImg, {
+>>>>>>> 6031dc6405e972e176b8fb0efd90fadfe071a37f
           y: 50,
           position: "fixed",
           top: "calc(25% + 25vh + 10px)",
@@ -101,7 +122,11 @@ const Primary = ({ t, Video }) => {
           zIndex: 20,
         });
 
+<<<<<<< HEAD
         setImage(bottomRightImg, {
+=======
+        gsap.set(bottomRightImg, {
+>>>>>>> 6031dc6405e972e176b8fb0efd90fadfe071a37f
           y: 50,
           position: "fixed",
           top: "calc(33% + 25vh + 10px)",
@@ -151,11 +176,15 @@ const Primary = ({ t, Video }) => {
         };
       },
 
+<<<<<<< HEAD
+=======
+      // Kichik ekranlar
+>>>>>>> 6031dc6405e972e176b8fb0efd90fadfe071a37f
       "(max-width: 1199px)": () => {
         gsap.set(video, {
           position: "relative",
           width: "100%",
-          height: "auto",
+          height: "100vh",
           zIndex: 0,
         });
 
@@ -188,14 +217,23 @@ const Primary = ({ t, Video }) => {
       },
     });
 
+<<<<<<< HEAD
+=======
+    // Tozalash
+>>>>>>> 6031dc6405e972e176b8fb0efd90fadfe071a37f
     return () => {
       ScrollTrigger.clearMatchMedia();
     };
   }, []);
+<<<<<<< HEAD
   
+=======
+
+>>>>>>> 6031dc6405e972e176b8fb0efd90fadfe071a37f
 
   return (
     <section ref={containerRef} className="relative min-h-[100vh] bg-black text-white">
+
       <video ref={videoRef} className="pointer-events-none" autoPlay muted loop playsInline>
         <source src={Video} type="video/mp4" />
       </video>
@@ -223,26 +261,27 @@ const Primary = ({ t, Video }) => {
         </div>
       </div>
 
-      {/* Images */}
-      <div ref={leftImgRef} className="opacity-0">
-        <img src="https://e7.pngegg.com/pngimages/178/595/png-clipart-user-profile-computer-icons-login-user-avatars-monochrome-black.png" alt="Left" className="rounded-lg shadow-xl border-2 border-white/20 w-[100px]" />
-        <p>HR</p>
-      </div>
-      <div ref={rightImgRef} className="opacity-0">
-        <img src="https://e7.pngegg.com/pngimages/178/595/png-clipart-user-profile-computer-icons-login-user-avatars-monochrome-black.png" alt="Right" className="rounded-lg shadow-xl border-2 border-white/20 w-[100px]" />
-        <p>Mobile</p>
-      </div>
-      <div ref={topImgRef} className="opacity-0">
-        <img src="https://e7.pngegg.com/pngimages/178/595/png-clipart-user-profile-computer-icons-login-user-avatars-monochrome-black.png" alt="Top" className="rounded-lg shadow-xl border-2 border-white/20 w-[100px]" />
-        <p>UI/UX</p>
-      </div>
-      <div ref={bottomImgRef} className="opacity-0">
-        <img src="https://e7.pngegg.com/pngimages/178/595/png-clipart-user-profile-computer-icons-login-user-avatars-monochrome-black.png" alt="Bottom" className="rounded-lg shadow-xl border-2 border-white/20 w-[100px]" />
-        <p>Backend</p>
-      </div>
-      <div ref={bottomRightImgRef} className="opacity-0">
-        <img src="https://e7.pngegg.com/pngimages/178/595/png-clipart-user-profile-computer-icons-login-user-avatars-monochrome-black.png" alt="Bottom Right" className="rounded-lg shadow-xl border-2 border-white/20 w-[100px]" />
-        <p>Front end</p>
+      <div>
+        <div ref={leftImgRef} className="opacity-0">
+          <img src="https://e7.pngegg.com/pngimages/178/595/png-clipart-user-profile-computer-icons-login-user-avatars-monochrome-black.png" alt="Left" className="rounded-lg shadow-xl border-2 border-white/20 w-[100px]" />
+          <p>HR</p>
+        </div>
+        <div ref={rightImgRef} className="opacity-0">
+          <img src="https://e7.pngegg.com/pngimages/178/595/png-clipart-user-profile-computer-icons-login-user-avatars-monochrome-black.png" alt="Right" className="rounded-lg shadow-xl border-2 border-white/20 w-[100px]" />
+          <p>Mobile</p>
+        </div>
+        <div ref={topImgRef} className="opacity-0">
+          <img src="https://e7.pngegg.com/pngimages/178/595/png-clipart-user-profile-computer-icons-login-user-avatars-monochrome-black.png" alt="Top" className="rounded-lg shadow-xl border-2 border-white/20 w-[100px]" />
+          <p>UI/UX</p>
+        </div>
+        <div ref={bottomImgRef} className="opacity-0">
+          <img src="https://e7.pngegg.com/pngimages/178/595/png-clipart-user-profile-computer-icons-login-user-avatars-monochrome-black.png" alt="Bottom" className="rounded-lg shadow-xl border-2 border-white/20 w-[100px]" />
+          <p>Backend</p>
+        </div>
+        <div ref={bottomRightImgRef} className="opacity-0">
+          <img src="https://e7.pngegg.com/pngimages/178/595/png-clipart-user-profile-computer-icons-login-user-avatars-monochrome-black.png" alt="Bottom Right" className="rounded-lg shadow-xl border-2 border-white/20 w-[100px]" />
+          <p>Front end</p>
+        </div>
       </div>
     </section>
   );
