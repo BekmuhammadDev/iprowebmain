@@ -5,11 +5,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const Primary = ({ t, Video }) => {
-<<<<<<< HEAD
-=======
-
-  const containerRef = useRef(null);
->>>>>>> 6031dc6405e972e176b8fb0efd90fadfe071a37f
   const videoRef = useRef(null);
   const contentRef = useRef(null);
   const leftImgRef = useRef(null);
@@ -62,15 +57,11 @@ const Primary = ({ t, Video }) => {
           x: -100,
         });
 
-<<<<<<< HEAD
         const setImage = (el, styles) => {
           if (el) gsap.set(el, styles);
         };
 
         setImage(leftImg, {
-=======
-        gsap.set(leftImg, {
->>>>>>> 6031dc6405e972e176b8fb0efd90fadfe071a37f
           x: -50,
           position: "fixed",
           top: "50%",
@@ -80,11 +71,7 @@ const Primary = ({ t, Video }) => {
           zIndex: 20,
         });
 
-<<<<<<< HEAD
         setImage(rightImg, {
-=======
-        gsap.set(rightImg, {
->>>>>>> 6031dc6405e972e176b8fb0efd90fadfe071a37f
           x: 50,
           position: "fixed",
           top: "50%",
@@ -94,11 +81,7 @@ const Primary = ({ t, Video }) => {
           zIndex: 20,
         });
 
-<<<<<<< HEAD
         setImage(topImg, {
-=======
-        gsap.set(topImg, {
->>>>>>> 6031dc6405e972e176b8fb0efd90fadfe071a37f
           y: -50,
           position: "fixed",
           top: "88px",
@@ -108,11 +91,7 @@ const Primary = ({ t, Video }) => {
           zIndex: 20,
         });
 
-<<<<<<< HEAD
         setImage(bottomImg, {
-=======
-        gsap.set(bottomImg, {
->>>>>>> 6031dc6405e972e176b8fb0efd90fadfe071a37f
           y: 50,
           position: "fixed",
           top: "calc(25% + 25vh + 10px)",
@@ -122,11 +101,7 @@ const Primary = ({ t, Video }) => {
           zIndex: 20,
         });
 
-<<<<<<< HEAD
         setImage(bottomRightImg, {
-=======
-        gsap.set(bottomRightImg, {
->>>>>>> 6031dc6405e972e176b8fb0efd90fadfe071a37f
           y: 50,
           position: "fixed",
           top: "calc(33% + 25vh + 10px)",
@@ -176,10 +151,6 @@ const Primary = ({ t, Video }) => {
         };
       },
 
-<<<<<<< HEAD
-=======
-      // Kichik ekranlar
->>>>>>> 6031dc6405e972e176b8fb0efd90fadfe071a37f
       "(max-width: 1199px)": () => {
         gsap.set(video, {
           position: "relative",
@@ -217,19 +188,11 @@ const Primary = ({ t, Video }) => {
       },
     });
 
-<<<<<<< HEAD
-=======
-    // Tozalash
->>>>>>> 6031dc6405e972e176b8fb0efd90fadfe071a37f
     return () => {
       ScrollTrigger.clearMatchMedia();
     };
   }, []);
-<<<<<<< HEAD
   
-=======
-
->>>>>>> 6031dc6405e972e176b8fb0efd90fadfe071a37f
 
   return (
     <section ref={containerRef} className="relative min-h-[100vh] bg-black text-white">
