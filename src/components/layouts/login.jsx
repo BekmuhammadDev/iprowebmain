@@ -45,7 +45,7 @@ const Login = ({
 
       if ([200, 201, 204].includes(res.status)) {
         setIsSignInModalOpen(false);
-        window.location.reload()
+       
         navigate("/user")
       }
     } catch (err) {

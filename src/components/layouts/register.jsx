@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 
 const Register = ({ IproRegisterLogo, setIsModalOpen, error ,isSignInModalOpen,setIsSignInModalOpen}) => {
   const navigate =useNavigate()
+  const [user,setUser]=useState(null)
   const [fullName, setFullName] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -69,7 +70,6 @@ const Register = ({ IproRegisterLogo, setIsModalOpen, error ,isSignInModalOpen,s
       if ([200, 201, 204].includes(res.status)) {
         alert("Ro'yxatdan muvaffaqiyatli o'tildi");
         setIsModalOpen(false);
-        window.location.reload()
         localStorage.setItem("token", res?.data?.data);
         navigate("/user")
       }
@@ -83,7 +83,7 @@ const Register = ({ IproRegisterLogo, setIsModalOpen, error ,isSignInModalOpen,s
     } finally {
       setLoading(false);
     }
-  };
+  };  
 
   return (
     <div className="fixed inset-0 flex items-center h-[100vh] px-5 justify-center bg-black bg-opacity-50">
