@@ -16,7 +16,7 @@ const Login = ({
   const [password, setPassword] = useState("");
   const [usernameError, setUsernameError] = useState("");
   const [passwordError, setPasswordError] = useState("");
-
+  
   const login = async () => {
     if (!username || !password) {
       if (!username) setUsernameError("Username kiritilmadi");

@@ -4,7 +4,7 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import { IoMdClose } from 'react-icons/io';
 import { useNavigate } from 'react-router-dom';
 
-const Register = ({ IproRegisterLogo, setIsModalOpen, error }) => {
+const Register = ({ IproRegisterLogo, setIsModalOpen, error ,isSignInModalOpen,setIsSignInModalOpen}) => {
   const navigate =useNavigate()
   const [fullName, setFullName] = useState('');
   const [username, setUsername] = useState('');
@@ -22,6 +22,10 @@ const Register = ({ IproRegisterLogo, setIsModalOpen, error }) => {
     username: '',
     password: '',
   });
+
+  const toggleLogin=()=>{
+    return setIsSignInModalOpen(!isSignInModalOpen), setIsModalOpen(false)
+  }
 
   useEffect(() => {
     const length = password.length >= 8;
@@ -168,7 +172,7 @@ const Register = ({ IproRegisterLogo, setIsModalOpen, error }) => {
           </button>
 
           <p className="text-white text-center mt-2">
-            Have an account? <span className="text-blue-400 cursor-pointer" >Sign In</span>
+            Have an account? <span className="text-blue-400 cursor-pointer" onClick={toggleLogin}>Sign In</span>
           </p>
         </div>
       </div>

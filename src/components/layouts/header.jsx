@@ -197,7 +197,7 @@
 
                             {/* Modal register */}
                             {isModalOpen && (
-                            <Register IproRegisterLogo={IproRegisterLogo} setIsModalOpen={setIsModalOpen} error={error} />
+                            <Register IproRegisterLogo={IproRegisterLogo} setIsModalOpen={setIsModalOpen} error={error} isSignInModalOpen={isSignInModalOpen} setIsSignInModalOpen={setIsSignInModalOpen} />
                             )}
 
                         </div>
