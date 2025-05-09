@@ -247,14 +247,14 @@ const Header = () => {
 
                         {/* Modal Sign In */}
                         {isSignInModalOpen && (
-  handleSignIn,
-  handleSignIn,
-                           <Login IproRegisterLogo={IproRegisterLogo} setIsSignInModalOpen={setIsSignInModalOpen}  showPassword={showPassword} setShowPassword={setShowPassword} handleSignIn={handleSignIn} setIsModalOpen={setIsModalOpen}/>
+                            handleSignIn,
+                            handleSignIn,
+                            <Login IproRegisterLogo={IproRegisterLogo} setIsSignInModalOpen={setIsSignInModalOpen} showPassword={showPassword} setShowPassword={setShowPassword} handleSignIn={handleSignIn} setIsModalOpen={setIsModalOpen} />
                         )}
 
                         {/* Modal register */}
                         {isModalOpen && (
-                            <div className="fixed inset-0 flex items-center h-[100vh] px-5 justify-center bg-black bg-opacity-50">
+                            <div className="fixed inset-0 flex items-center h-[100vh] px-5 justify-center bg-black bg-opacity-100">
                                 <div className='flex rounded-md justify-between bg-[#16182B] items-center sm:px-20'>
                                     <div className='hidden md:flex'>
                                         <img src={IproRegisterLogo} alt="Register Logo" />

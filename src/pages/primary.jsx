@@ -142,57 +142,59 @@ const Primary = ({ t, Video }) => {
         tl.to(bottomRightImg, { opacity: 1, y: 0, duration: 1 }, "<0.2");
 
         return () => {
-          ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-          [video, content, leftImg, rightImg, topImg, bottomImg, bottomRightImg].forEach((el) => {
-            if (el && el.parentNode) {
-              gsap.set(el, { clearProps: "all" });
-            }
-          });
+          ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+          gsap.killTweensOf([
+            video, content, leftImg, rightImg, topImg, bottomImg, bottomRightImg
+          ]);
+          gsap.set([
+            video, content, leftImg, rightImg, topImg, bottomImg, bottomRightImg
+          ], { clearProps: "all" });
         };
+
       },
 
-      "(max-width: 1199px)": () => {
-        gsap.set(video, {
-          position: "relative",
-          width: "100%",
-          height: "100vh",
-          zIndex: 0,
-        });
+      // "(max-width: 1199px)": () => {
+      //   gsap.set(video, {
+      //     position: "relative",
+      //     width: "100%",
+      //     height: "100vh",
+      //     zIndex: 0,
+      //   });
 
-        gsap.set(content, {
-          opacity: 1,
-          x: 0,
-          position: "relative",
-          width: "90%",
-          margin: "20px auto",
-          transform: "none",
-          zIndex: 0,
-        });
+      //   gsap.set(content, {
+      //     opacity: 1,
+      //     x: 0,
+      //     position: "relative",
+      //     width: "90%",
+      //     margin: "20px auto",
+      //     transform: "none",
+      //     zIndex: 0,
+      //   });
 
-        [leftImg, rightImg, topImg, bottomImg, bottomRightImg].forEach((img) => {
-          if (img) {
-            gsap.set(img, {
-              opacity: 1,
-              position: "relative",
-              width: "100%",
-              margin: "10px 0",
-              transform: "none",
-              zIndex: 0,
-            });
-          }
-        });
+      //   [leftImg, rightImg, topImg, bottomImg, bottomRightImg].forEach((img) => {
+      //     if (img) {
+      //       gsap.set(img, {
+      //         opacity: 1,
+      //         position: "relative",
+      //         width: "100%",
+      //         margin: "10px 0",
+      //         transform: "none",
+      //         zIndex: 0,
+      //       });
+      //     }
+      //   });
 
-        return () => {
-          ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-        };
-      },
+      //   return () => {
+      //     ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+      //   };
+      // },
     });
 
     return () => {
       ScrollTrigger.clearMatchMedia();
     };
   }, []);
-  
+
 
   return (
     <section ref={containerRef} className="relative min-h-[100vh] bg-black text-white">
