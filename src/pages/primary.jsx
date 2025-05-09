@@ -197,7 +197,7 @@ const Primary = ({ t, Video }) => {
 
 
   return (
-    <section ref={containerRef} className="relative min-h-[100vh] bg-black text-white">
+    <section ref={containerRef} className="relative  xl:min-h-[100vh] bg-black text-white">
 
       <video ref={videoRef} className="pointer-events-none" autoPlay muted loop playsInline>
         <source src={Video} type="video/mp4" />
@@ -226,7 +226,7 @@ const Primary = ({ t, Video }) => {
         </div>
       </div>
 
-      <div>
+      <div className='hidden xl:flex'>
         <div ref={leftImgRef} className="opacity-0">
           <img src="https://e7.pngegg.com/pngimages/178/595/png-clipart-user-profile-computer-icons-login-user-avatars-monochrome-black.png" alt="Left" className="rounded-lg shadow-xl border-2 border-white/20 w-[100px]" />
           <p>HR</p>
