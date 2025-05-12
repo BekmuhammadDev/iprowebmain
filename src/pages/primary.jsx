@@ -1,6 +1,6 @@
-import { useEffect, useRef } from 'react';
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useEffect, useRef } from 'react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -27,14 +27,13 @@ const Primary = ({ t, Video }) => {
     if (
       !video || !content || !leftImg || !rightImg ||
       !topImg || !bottomImg || !bottomRightImg || !container
-    ) {
-      return;
-    }
+    ) return;
 
     window.scrollTo(0, 0);
 
-    const mm = ScrollTrigger.matchMedia({
-      "(min-width: 1200px)": () => {
+    const ctx = gsap.context(() => {
+      // Match media shart emas — o‘rniga media queryni JS orqali tekshiramiz
+      if (window.innerWidth >= 1200) {
         gsap.set([video, content], { zIndex: 50 });
         gsap.set([leftImg, rightImg, topImg, bottomImg, bottomRightImg], { opacity: 0 });
 
@@ -57,9 +56,7 @@ const Primary = ({ t, Video }) => {
           x: -100,
         });
 
-        const setImage = (el, styles) => {
-          if (el) gsap.set(el, styles);
-        };
+        const setImage = (el, styles) => el && gsap.set(el, styles);
 
         setImage(leftImg, {
           x: -50,
@@ -140,60 +137,15 @@ const Primary = ({ t, Video }) => {
         tl.to(topImg, { opacity: 1, y: 0, duration: 1 }, "<0.2");
         tl.to(bottomImg, { opacity: 1, y: 0, duration: 1 }, "<0.2");
         tl.to(bottomRightImg, { opacity: 1, y: 0, duration: 1 }, "<0.2");
-
-        return () => {
-          ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-          gsap.killTweensOf([
-            video, content, leftImg, rightImg, topImg, bottomImg, bottomRightImg
-          ]);
-          gsap.set([
-            video, content, leftImg, rightImg, topImg, bottomImg, bottomRightImg
-          ], { clearProps: "all" });
-        };
-
-      },
-
-      // "(max-width: 1199px)": () => {
-      //   gsap.set(video, {
-      //     position: "relative",
-      //     width: "100%",
-      //     height: "100vh",
-      //     zIndex: 0,
-      //   });
-
-      //   gsap.set(content, {
-      //     opacity: 1,
-      //     x: 0,
-      //     position: "relative",
-      //     width: "90%",
-      //     margin: "20px auto",
-      //     transform: "none",
-      //     zIndex: 0,
-      //   });
-
-      //   [leftImg, rightImg, topImg, bottomImg, bottomRightImg].forEach((img) => {
-      //     if (img) {
-      //       gsap.set(img, {
-      //         opacity: 1,
-      //         position: "relative",
-      //         width: "100%",
-      //         margin: "10px 0",
-      //         transform: "none",
-      //         zIndex: 0,
-      //       });
-      //     }
-      //   });
-
-      //   return () => {
-      //     ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-      //   };
-      // },
-    });
+      }
+    }, containerRef); // kontekstni containerRef ga bog‘lang
 
     return () => {
-      ScrollTrigger.clearMatchMedia();
+      ctx.revert(); // DOM tiklanadi
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     };
   }, []);
+
 
 
   return (

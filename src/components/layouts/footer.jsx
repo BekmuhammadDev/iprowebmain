@@ -3,7 +3,7 @@ import { FaTelegramPlane, FaInstagram, FaFacebookF, FaYoutube, FaWhatsapp } from
 import Logo from "../../assets/icons/Logo.svg";
 import { useTranslation } from "react-i18next";
 import "../../i18";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 
 const Footer = () => {
@@ -32,7 +32,7 @@ const Footer = () => {
 
                     {/* Links */}
                     <ul className='hidden lg:flex flex-col'>
-                    <h3 className="text-2xl font-semibold">{t("links")}</h3>
+                        <h3 className="text-2xl font-semibold">{t("links")}</h3>
                         {[
                             { name: "", path: "/" },
                             { name: t("about"), path: "/aboutus" },
@@ -41,7 +41,7 @@ const Footer = () => {
                             { name: t("services"), path: "/services" },
                             { name: t("careers"), path: "/careers" },
                         ].map((item, index) => (
-                            
+
                             <NavLink
                                 key={index}
                                 to={item.path}
@@ -60,11 +60,18 @@ const Footer = () => {
                     <div className="text-left w-auto">
                         <h3 className="text-2xl font-bold">{t("follow_us")}</h3>
                         <div className="flex justify-start gap-4 mt-3">
-                            <FaTelegramPlane className="text-3xl cursor-pointer hover:text-blue-500 transition" />
-                            <FaInstagram className="text-3xl cursor-pointer hover:text-pink-500 transition" />
-                            <FaFacebookF className="text-3xl cursor-pointer hover:text-blue-600 transition" />
-                            <FaYoutube className="text-3xl cursor-pointer hover:text-red-500 transition" />
-                            <FaWhatsapp className="text-3xl cursor-pointer hover:text-green-500 transition" />
+                            <Link to="http://t.me/iPRO_group">
+                                <FaTelegramPlane className="text-3xl cursor-pointer hover:text-blue-500 transition" />
+                            </Link>
+                            <Link to="https://www.instagram.com/iprogroupuz/#">
+                                <FaInstagram className="text-3xl cursor-pointer hover:text-pink-500 transition" />
+                            </Link>
+                            <Link to="https://www.facebook.com/share/16EFV1KTV8/">
+                                <FaFacebookF className="text-3xl cursor-pointer hover:text-blue-600 transition" />
+                            </Link>
+                            <Link to="https://www.youtube.com/@iprouz">
+                                <FaYoutube className="text-3xl cursor-pointer hover:text-red-500 transition" />
+                            </Link>
                         </div>
                     </div>
                 </div>
