@@ -241,13 +241,13 @@ const team = () => {
             <main className='mt-40'>
 
                 <section>
-                    <div className="container mx-auto "
+                    <div className=" "
                         data-aos="fade-up"
                         data-aos-duration="1500"
                         data-aos-delay="0"
                     >
 
-                        <h1 className="text-white xl:text-[100px] text-[48px] font-black ml-5 leading-[1.1] text-center md:text-left drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]">
+                        <h1 className="text-white xl:text-[70px] text-[48px] font-black ml-5 leading-[1.1] text-center md:text-left drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]">
                             {t("meetyheteam")}
                         </h1>
 
@@ -340,7 +340,7 @@ const team = () => {
 
                         </div>
 
-                        <div className="relative top-40 border border-blue-500  border-l-0 sm:-top-10 z-30 backdrop-blur-lg bg-transparent overflow-hidden w-full flex justify-center px-4">
+                        <div className="relative top-40 border border-blue-500  border-l-0 border-r-0 sm:-top-10 z-30 backdrop-blur-lg bg-transparent overflow-hidden w-full flex justify-center ">
                             <Swiper
                                 spaceBetween={14}
                                 slidesPerView={"auto"}

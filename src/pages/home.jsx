@@ -298,7 +298,7 @@ const aboutus = () => {
                 </div>
             </section>
 
-            <section className="pt-10 px-10 md:pt-72 overflow-hidden">
+            <section className="pt-10 px-10 md:pt-20 overflow-hidden">
                 <div className="relative top-[600px]">
                     <img className="absolute" src={StarsLeftImg} alt="" />
                 </div>
@@ -341,7 +341,7 @@ const aboutus = () => {
                 </div>
             </section>
 
-            <section className="md:px-10 pt-[211px] mb-20 overflow-hidden">
+            <section className="md:px-10 pt-[90px] mb-10 overflow-hidden">
                 <div className="relative -z-10 top-[800px]">
                     <img className="absolute hidden md:flex bottom-0 -right-10" src={StarsRightImg} alt="" />
                 </div>
