@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -228,23 +228,23 @@ const Primary = ({ t, Video }) => {
 
       <div className='hidden xl:flex'>
         <div ref={leftImgRef} className="opacity-0">
-          <img src="https://e7.pngegg.com/pngimages/178/595/png-clipart-user-profile-computer-icons-login-user-avatars-monochrome-black.png" alt="Left" className="rounded-lg shadow-xl border-2 border-white/20 w-[100px]" />
+          <img src="https://picsum.photos/id/1/200/300" alt="Left" className="rounded-lg shadow-xl border-2 border-white/20 w-[100px]" />
           <p>HR</p>
         </div>
         <div ref={rightImgRef} className="opacity-0">
-          <img src="https://e7.pngegg.com/pngimages/178/595/png-clipart-user-profile-computer-icons-login-user-avatars-monochrome-black.png" alt="Right" className="rounded-lg shadow-xl border-2 border-white/20 w-[100px]" />
+          <img src="https://picsum.photos/id/2/200/300" alt="Right" className="rounded-lg shadow-xl border-2 border-white/20 w-[100px]" />
           <p>Mobile</p>
         </div>
         <div ref={topImgRef} className="opacity-0">
-          <img src="https://e7.pngegg.com/pngimages/178/595/png-clipart-user-profile-computer-icons-login-user-avatars-monochrome-black.png" alt="Top" className="rounded-lg shadow-xl border-2 border-white/20 w-[100px]" />
+          <img src="https://picsum.photos/id/3/200/300" alt="Top" className="rounded-lg shadow-xl border-2 border-white/20 w-[100px]" />
           <p>UI/UX</p>
         </div>
         <div ref={bottomImgRef} className="opacity-0">
-          <img src="https://e7.pngegg.com/pngimages/178/595/png-clipart-user-profile-computer-icons-login-user-avatars-monochrome-black.png" alt="Bottom" className="rounded-lg shadow-xl border-2 border-white/20 w-[100px]" />
+          <img src="https://picsum.photos/id/4/200/300" alt="Bottom" className="rounded-lg shadow-xl border-2 border-white/20 w-[100px]" />
           <p>Backend</p>
         </div>
         <div ref={bottomRightImgRef} className="opacity-0">
-          <img src="https://e7.pngegg.com/pngimages/178/595/png-clipart-user-profile-computer-icons-login-user-avatars-monochrome-black.png" alt="Bottom Right" className="rounded-lg shadow-xl border-2 border-white/20 w-[100px]" />
+          <img src="https://picsum.photos/id/5/200/300" alt="Bottom Right" className="rounded-lg shadow-xl border-2 border-white/20 w-[100px]" />
           <p>Front end</p>
         </div>
       </div>
