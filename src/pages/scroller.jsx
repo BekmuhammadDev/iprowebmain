@@ -38,7 +38,7 @@ const Scroller = ({ t, Logocloud, Video }) => {
         <div className="box w-screen h-full flex items-center justify-center bg-[#0d1117]">
           <div className="container mx-auto md:max-w-none 2xl:max-w-none flex flex-col-reverse md:flex-row items-center justify-between gap-10 px-5 md:px-10 lg:px-20">
             <div className="w-full md:w-1/2 text-center md:text-left mt-6 md:mt-0 space-y-4">
-              <h1 className="text-white font-black text-3xl sm:text-5xl md:text-[65px] xl:text-[120px] leading-tight drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]">
+              <h1 className="text-white font-black text-3xl sm:text-5xl md:text-[65px] xl:text-[100px] leading-tight drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]">
                 {t("who_are_we")}
               </h1>
               <p className="text-white font-normal text-sm sm:text-base md:text-sm lg:text-xl">
@@ -56,10 +56,10 @@ const Scroller = ({ t, Logocloud, Video }) => {
         </div>
 
         {/* Box 2 */}
-        <div className="box w-screen h-full flex items-center justify-center bg-[#161b22]">
+        <div className="box w-screen h-full flex items-center justify-center bg-[#0d1117]">
         <div className="container mx-auto md:max-w-none 2xl:max-w-none flex flex-col-reverse md:flex-row items-center justify-between gap-10 px-5 md:px-10 lg:px-20">
             <div className="w-full md:w-1/2 text-center md:text-left mt-6 md:mt-0 space-y-4">
-              <h1 className="text-white font-black text-3xl sm:text-5xl md:text-[65px] xl:text-[120px] leading-tight drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]">
+              <h1 className="text-white font-black text-3xl sm:text-5xl md:text-[65px] xl:text-[100px] leading-tight drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]">
                 {t("who_are_we")}
               </h1>
               <p className="text-white font-normal text-sm sm:text-base md:text-sm lg:text-xl">
@@ -77,10 +77,10 @@ const Scroller = ({ t, Logocloud, Video }) => {
         </div>
 
         {/* Box 3 */}
-        <div className="box w-screen h-full flex items-center justify-center bg-[#1f2937]">
+        <div className="box w-screen h-full flex items-center justify-center bg-[#0d1117]">
         <div className="container mx-auto md:max-w-none 2xl:max-w-none flex flex-col-reverse md:flex-row items-center justify-between gap-10 px-5 md:px-10 lg:px-20">
             <div className="w-full md:w-1/2 text-center md:text-left mt-6 md:mt-0 space-y-4">
-              <h1 className="text-white font-black text-3xl sm:text-5xl md:text-[65px] xl:text-[120px] leading-tight drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]">
+              <h1 className="text-white font-black text-3xl sm:text-5xl md:text-[65px] xl:text-[100px] leading-tight drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]">
                 {t("who_are_we")}
               </h1>
               <p className="text-white font-normal text-sm sm:text-base md:text-sm lg:text-xl">

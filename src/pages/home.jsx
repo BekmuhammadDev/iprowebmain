@@ -121,7 +121,7 @@ const aboutus = () => {
             <section className="bg-[#16182B] overflow-hidden">
                 <div className="container mx-auto sm:max-w-none">
                     <h1
-                        className="text-white xl:text-[128px] sm:mb-20 text-[48px] font-black ml-5 leading-[1.1] text-center md:text-left drop-shadow-[0_5px_10px_rgba(0,112,244,0.8)]"
+                        className="text-white xl:text-[80px]  py-20 text-[48px] font-black ml-5 leading-[1.1] text-center md:text-left drop-shadow-[0_5px_10px_rgba(0,112,244,0.8)]"
                         data-aos="fade-down"
                         data-aos-duration="1200"
                     >
@@ -149,7 +149,7 @@ const aboutus = () => {
                             <h1 className="text-white text-base text-center sm:text-left lg:text-2xl font-semibold uppercase">
                                 {t(activeMember.role)}
                             </h1>
-                            <h1 className="text-white text-[32px] sm:text-[40px] lg:text-[96px] text-center sm:text-left font-black uppercase drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]">
+                            <h1 className="text-white text-[32px] sm:text-[40px] lg:text-[56px] text-center sm:text-left font-black uppercase drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]">
                                 {t(activeMember.name)}
                             </h1>
                             <h1 className="text-white text-xs sm:text-sm lg:text-2xl text-center sm:text-left font-semibold uppercase">
@@ -260,7 +260,7 @@ const aboutus = () => {
             <section className="text-white px-10 pt-[81px] pb-[74px] overflow-hidden">
                 <div className="container mx-auto">
                     <h1
-                        className="text-[48px] md:text-[128px] uppercase mb-10 md:mb-0 font-black text-center drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]"
+                        className="text-[48px] md:text-[100px] uppercase mb-10 md:mb-0 font-black text-center drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]"
                         data-aos="fade-up"
                         data-aos-duration="1200"
                     >
@@ -304,7 +304,7 @@ const aboutus = () => {
                 </div>
                 <div className="container mx-auto">
                     <h1
-                        className="text-white font-black text-5xl text-center md:text-left md:text-[128px] drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]"
+                        className="text-white font-black text-5xl text-center md:text-left md:text-[100px] drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]"
                         data-aos="fade-up"
                         data-aos-duration="1200"
                     >
@@ -347,7 +347,7 @@ const aboutus = () => {
                 </div>
                 <div className="container mx-auto">
                     <h1
-                        className="text-5xl text-center md:text-left md:text-[128px] font-black leading-[0.95] mb-10 text-white drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]"
+                        className="text-5xl text-center md:text-left md:text-[80px] font-black leading-[0.95] mb-10 text-white drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]"
                         data-aos="fade-up"
                     >
                         {t("have_a_question")}
