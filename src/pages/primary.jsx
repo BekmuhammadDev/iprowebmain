@@ -15,136 +15,138 @@ const Primary = ({ t, Video }) => {
   const containerRef = useRef(null);
 
   useEffect(() => {
-    const video = videoRef.current;
-    const content = contentRef.current;
-    const leftImg = leftImgRef.current;
-    const rightImg = rightImgRef.current;
-    const topImg = topImgRef.current;
-    const bottomImg = bottomImgRef.current;
-    const bottomRightImg = bottomRightImgRef.current;
-    const container = containerRef.current;
+  const video = videoRef.current;
+  const content = contentRef.current;
+  const leftImg = leftImgRef.current;
+  const rightImg = rightImgRef.current;
+  const topImg = topImgRef.current;
+  const bottomImg = bottomImgRef.current;
+  const bottomRightImg = bottomRightImgRef.current;
+  const container = containerRef.current;
 
-    if (
-      !video || !content || !leftImg || !rightImg ||
-      !topImg || !bottomImg || !bottomRightImg || !container
-    ) return;
+  if (
+    !video || !content || !leftImg || !rightImg ||
+    !topImg || !bottomImg || !bottomRightImg || !container
+  ) return;
 
-    window.scrollTo(0, 0);
+  window.scrollTo(0, 0);
 
-    const ctx = gsap.context(() => {
-      // Match media shart emas — o‘rniga media queryni JS orqali tekshiramiz
-      if (window.innerWidth >= 1200) {
-        gsap.set([video, content], { zIndex: 50 });
-        gsap.set([leftImg, rightImg, topImg, bottomImg, bottomRightImg], { opacity: 0 });
+  let tl;
 
-        gsap.set(video, {
-          position: "fixed",
-          top: 0,
-          left: 0,
-          width: "100vw",
-          height: "100vh",
-          objectFit: "cover",
-        });
+  const ctx = gsap.context(() => {
+    // Match media shart emas — o‘rniga media queryni JS orqali tekshiramiz
+    if (window.innerWidth >= 1200) {
+      gsap.set([video, content], { zIndex: 50 });
+      gsap.set([leftImg, rightImg, topImg, bottomImg, bottomRightImg], { opacity: 0 });
 
-        gsap.set(content, {
-          position: "fixed",
-          top: "50%",
-          left: "10%",
-          transform: "translateY(-50%)",
-          width: "35%",
-          opacity: 0,
-          x: -100,
-        });
+      gsap.set(video, {
+        position: "fixed",
+        top: 0,
+        left: 0,
+        width: "100vw",
+        height: "100vh",
+        objectFit: "cover",
+      });
 
-        const setImage = (el, styles) => el && gsap.set(el, styles);
+      gsap.set(content, {
+        position: "fixed",
+        top: "50%",
+        left: "10%",
+        transform: "translateY(-50%)",
+        width: "35%",
+        opacity: 0,
+        x: -100,
+      });
 
-        setImage(leftImg, {
-          x: -50,
-          position: "fixed",
-          top: "50%",
-          left: "calc(65% - 15vw - 10px)",
-          transform: "translateY(-50%)",
-          width: "15vw",
-          zIndex: 20,
-        });
+      const setImage = (el, styles) => el && gsap.set(el, styles);
 
-        setImage(rightImg, {
-          x: 50,
-          position: "fixed",
-          top: "50%",
-          left: "calc(58% + 30vw + 10px)",
-          transform: "translateY(-50%)",
-          width: "9vw",
-          zIndex: 20,
-        });
+      setImage(leftImg, {
+        x: -50,
+        position: "fixed",
+        top: "50%",
+        left: "calc(65% - 15vw - 10px)",
+        transform: "translateY(-50%)",
+        width: "15vw",
+        zIndex: 20,
+      });
 
-        setImage(topImg, {
-          y: -50,
-          position: "fixed",
-          top: "88px",
-          left: "70%",
-          transform: "translateX(-50%)",
-          width: "15vw",
-          zIndex: 20,
-        });
+      setImage(rightImg, {
+        x: 50,
+        position: "fixed",
+        top: "50%",
+        left: "calc(58% + 30vw + 10px)",
+        transform: "translateY(-50%)",
+        width: "9vw",
+        zIndex: 20,
+      });
 
-        setImage(bottomImg, {
-          y: 50,
-          position: "fixed",
-          top: "calc(25% + 25vh + 10px)",
-          left: "60%",
-          transform: "translateX(-50%)",
-          width: "15vw",
-          zIndex: 20,
-        });
+      setImage(topImg, {
+        y: -50,
+        position: "fixed",
+        top: "88px",
+        left: "70%",
+        transform: "translateX(-50%)",
+        width: "15vw",
+        zIndex: 20,
+      });
 
-        setImage(bottomRightImg, {
-          y: 50,
-          position: "fixed",
-          top: "calc(33% + 25vh + 10px)",
-          left: "90%",
-          transform: "translateX(-50%)",
-          width: "15vw",
-          zIndex: 20,
-        });
+      setImage(bottomImg, {
+        y: 50,
+        position: "fixed",
+        top: "calc(25% + 25vh + 10px)",
+        left: "60%",
+        transform: "translateX(-50%)",
+        width: "15vw",
+        zIndex: 20,
+      });
 
-        const tl = gsap.timeline({
-          scrollTrigger: {
-            trigger: container,
-            start: "top top",
-            end: "+=1000",
-            scrub: 1,
-            pin: true,
-            invalidateOnRefresh: true,
-          },
-        });
+      setImage(bottomRightImg, {
+        y: 50,
+        position: "fixed",
+        top: "calc(33% + 25vh + 10px)",
+        left: "90%",
+        transform: "translateX(-50%)",
+        width: "15vw",
+        zIndex: 20,
+      });
 
-        tl.to(video, {
-          width: "30vw",
-          height: "50vh",
-          top: "25%",
-          left: "60%",
-          xPercent: -10,
-          yPercent: -10,
-          objectFit: "contain",
-          zIndex: 10,
-          duration: 2,
-        });
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: container,
+          start: "top top",
+          end: "+=1000",
+          scrub: 1,
+          pin: true,
+          invalidateOnRefresh: true,
+        },
+      });
 
-        tl.to(content, { opacity: 1, x: 0, duration: 1.5, delay: 1 }, "<");
-        tl.to(leftImg, { opacity: 1, x: 0, duration: 1 }, "<0.2");
-        tl.to(rightImg, { opacity: 1, x: 0, duration: 1 }, "<0.2");
-        tl.to(topImg, { opacity: 1, y: 0, duration: 1 }, "<0.2");
-        tl.to(bottomImg, { opacity: 1, y: 0, duration: 1 }, "<0.2");
-        tl.to(bottomRightImg, { opacity: 1, y: 0, duration: 1 }, "<0.2");
-      }
-    }, containerRef); // kontekstni containerRef ga bog‘lang
+      tl.to(video, {
+        width: "30vw",
+        height: "50vh",
+        top: "25%",
+        left: "60%",
+        xPercent: -10,
+        yPercent: -10,
+        objectFit: "contain",
+        zIndex: 10,
+        duration: 2,
+      });
 
-    return () => {
-      ctx.revert(); // DOM tiklanadi
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-    };
-  }, []);
+      tl.to(content, { opacity: 1, x: 0, duration: 1.5, delay: 1 }, "<");
+      tl.to(leftImg, { opacity: 1, x: 0, duration: 1 }, "<0.2");
+      tl.to(rightImg, { opacity: 1, x: 0, duration: 1 }, "<0.2");
+      tl.to(topImg, { opacity: 1, y: 0, duration: 1 }, "<0.2");
+      tl.to(bottomImg, { opacity: 1, y: 0, duration: 1 }, "<0.2");
+      tl.to(bottomRightImg, { opacity: 1, y: 0, duration: 1 }, "<0.2");
+    }
+  }, containerRef); // kontekstni containerRef ga bog‘lang
+
+  return () => {
+    ctx.revert(); // DOM tiklanadi
+    ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+  };
+}, []);
 
 
 

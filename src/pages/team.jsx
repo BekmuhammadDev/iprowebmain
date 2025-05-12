@@ -1,4 +1,3 @@
-import React from 'react';
 import { useState, useEffect } from 'react';
 import { FaCalendarAlt } from "react-icons/fa";
 import { FaClock } from "react-icons/fa";
@@ -14,8 +13,95 @@ import { useTranslation } from "react-i18next";
 import "../i18";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/free-mode";
+import { FreeMode } from "swiper/modules";
+import WorkersMan from "../assets/images/workersman.png"
+import WorkersMan2 from "../assets/images/workersman2.png"
 
 const teamMembers = [
+    {
+        name: "Bekmuhammad",
+        role: "Frontend Developer",
+        description: "One of the most problem-solving members of our team.One of the most problem-solving members of our team.",
+        projects: "15+",
+        experience: "7+",
+        workerImg: WorkersMan2,
+        hoverImg: WorkersMan,
+        img: WorkersMan2,
+    },
+    {
+        name: "E'zoza",
+        role: "Beckend Developer",
+        description: "Creative front-end developer with strong UI skills.",
+        projects: "20+",
+        experience: "5+",
+        workerImg: WorkersImg,
+        hoverImg: WorkersMan,
+        img: WorkersImg,
+    },
+    {
+        name: "Javohir",
+        role: "Java Developer",
+        description: "Designs intuitive and user-friendly interfaces.",
+        projects: "30+",
+        experience: "6+",
+        workerImg: WorkersMan2,
+        hoverImg: WorkersMan,
+        img: WorkersMan2,
+    },
+    {
+        name: "Fahriya",
+        role: "SMM Manager",
+        description: "Leads projects to successful completion with a clear vision.",
+        projects: "50+",
+        experience: "10+",
+        workerImg: WorkersImg,
+        hoverImg: WorkersMan,
+        img: WorkersImg,
+    },
+    {
+        name: "Azizbek",
+        role: "Frontend Developer",
+        description: "One of the most problem-solving members of our team.",
+        projects: "15+",
+        experience: "7+",
+        workerImg: WorkersMan2,
+        hoverImg: WorkersMan,
+        img: WorkersMan2,
+    },
+    {
+        name: "Zebo",
+        role: "UI/UX Designer",
+        description: "Designs intuitive and user-friendly interfaces.",
+        projects: "30+",
+        experience: "6+",
+        workerImg: WorkersImg,
+        hoverImg: WorkersMan,
+        img: WorkersImg,
+    },
+    {
+        name: "Asadulloh",
+        role: "Python Developer",
+        description: "Creative front-end developer with strong UI skills.",
+        projects: "20+",
+        experience: "5+",
+        workerImg: WorkersMan2,
+        hoverImg: WorkersMan,
+        img: WorkersMan2,
+    },
+
+    {
+        name: "Mike",
+        role: "Project Manager",
+        description: "Leads projects to successful completion with a clear vision.",
+        projects: "50+",
+        experience: "10+",
+        workerImg: WorkersImg,
+        hoverImg: WorkersMan,
+        img: WorkersImg,
+    },
     {
         name: "Elizabeth",
         role: "Backend Developer",
@@ -23,6 +109,7 @@ const teamMembers = [
         projects: "15+",
         experience: "7+",
         workerImg: WorkersImg,
+        hoverImg: WorkersMan,
         img: WorkersImg,
     },
     {
@@ -32,6 +119,7 @@ const teamMembers = [
         projects: "20+",
         experience: "5+",
         workerImg: WorkersImg,
+        hoverImg: WorkersMan,
         img: WorkersImg,
     },
     {
@@ -41,6 +129,7 @@ const teamMembers = [
         projects: "30+",
         experience: "6+",
         workerImg: WorkersImg,
+        hoverImg: WorkersMan,
         img: WorkersImg,
     },
     {
@@ -50,6 +139,47 @@ const teamMembers = [
         projects: "50+",
         experience: "10+",
         workerImg: WorkersImg,
+        hoverImg: WorkersMan,
+        img: WorkersImg,
+    },
+    {
+        name: "Elizabeth",
+        role: "Backend Developer",
+        description: "One of the most problem-solving members of our team.",
+        projects: "15+",
+        experience: "7+",
+        workerImg: WorkersImg,
+        hoverImg: WorkersMan,
+        img: WorkersImg,
+    },
+    {
+        name: "John",
+        role: "Frontend Developer",
+        description: "Creative front-end developer with strong UI skills.",
+        projects: "20+",
+        experience: "5+",
+        workerImg: WorkersImg,
+        hoverImg: WorkersMan,
+        img: WorkersImg,
+    },
+    {
+        name: "Alice",
+        role: "UI/UX Designer",
+        description: "Designs intuitive and user-friendly interfaces.",
+        projects: "30+",
+        experience: "6+",
+        workerImg: WorkersImg,
+        hoverImg: WorkersMan,
+        img: WorkersImg,
+    },
+    {
+        name: "Mike",
+        role: "Project Manager",
+        description: "Leads projects to successful completion with a clear vision.",
+        projects: "50+",
+        experience: "10+",
+        workerImg: WorkersImg,
+        hoverImg: WorkersMan,
         img: WorkersImg,
     },
 
@@ -117,7 +247,7 @@ const team = () => {
                         data-aos-delay="0"
                     >
 
-                        <h1 className="text-white xl:text-[120px] text-[48px] font-black ml-5 leading-[1.1] text-center md:text-left drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]">
+                        <h1 className="text-white xl:text-[100px] text-[48px] font-black ml-5 leading-[1.1] text-center md:text-left drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]">
                             {t("meetyheteam")}
                         </h1>
 
@@ -127,7 +257,7 @@ const team = () => {
                             <motion.div
                                 animate={{ x: isExpanded ? (window.innerWidth >= 768 ? "100%" : "0%") : "0%" }}
                                 transition={{ duration: 0.5 }}
-                                className="relative top-80 md:top-0 backdrop-blur-lg bg-transparent w-full md:w-1/2 text-center md:text-left"
+                                className="relative top-96 md:top-0 backdrop-blur-lg bg-transparent w-full md:w-1/2 text-center md:text-left"
                             >
 
                                 {!isExpanded && (
@@ -136,7 +266,7 @@ const team = () => {
                                     </h1>
                                 )}
 
-                                <h1 className="text-white text-[40px] xl:text-[96px] text-center md:text-left font-black uppercase drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]">
+                                <h1 className="text-white text-[40px] xl:text-[56px] text-center md:text-left font-black uppercase drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]">
                                     {t(activeMember.name)}
                                 </h1>
 
@@ -194,7 +324,7 @@ const team = () => {
                             <motion.div
                                 animate={{ x: isExpanded ? (window.innerWidth >= 768 ? "-100%" : "0%") : "0%" }}
                                 transition={{ duration: 0.5 }}
-                                className={`relative -top-60 md:top-16 xl:top-32 w-full h-full md:w-1/2 ${isExpanded ? '-top-[400px]' : 'bottom-10 md:bottom-10'}`}
+                                className={`relative -top-60 md:top-16 xl:top-10 w-full h-full md:w-1/2 ${isExpanded ? '-top-[400px]' : 'bottom-10 md:bottom-10'}`}
                             >
                                 {/* Background image */}
                                 <div className={`absolute inset-0 w-[400px] -z-10 xl:w-[700px] h-[355px] xl:h-auto `}>
@@ -208,145 +338,54 @@ const team = () => {
                                 </div>
                             </motion.div>
 
-
                         </div>
 
-                        <div className="relative top-20 sm:top-10 z-30 backdrop-blur-lg bg-transparent overflow-hidden w-full flex justify-center">
-                            <div className="carousel-track">
-                                <div className="carousel-inner">
-                                    {[...teamMembers, ...teamMembers, ...teamMembers].map((member, index) => (
-                                        <div
-                                            key={index}
-                                            className="carousel-card"
-                                            onClick={() => handleMemberClick(member)}
-                                        >
-                                            <img
-                                                src={member.img}
-                                                alt={member.name}
-                                                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 cursor-pointer"
-                                            />
-                                            <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-70 p-3 text-white text-center font-bold">
-                                                {member.name}
+                        <div className="relative top-40 border border-blue-500  border-l-0 sm:-top-10 z-30 backdrop-blur-lg bg-transparent overflow-hidden w-full flex justify-center px-4">
+                            <Swiper
+                                spaceBetween={14}
+                                slidesPerView={"auto"}
+                                freeMode={true}
+                                grabCursor={true}
+                                modules={[FreeMode]}
+                                className="w-full"
+                            >
+                                {teamMembers.map((member, index) => (
+                                    <SwiperSlide
+                                        key={index}
+                                        style={{ width: "12rem" }}
+                                        className="relative group h-80 rounded-lg overflow-hidden cursor-grab"
+                                        onClick={() => handleMemberClick(member)}
+                                    >
+                                        {/* Default image */}
+                                        <img
+                                            src={member.img}
+                                            alt={member.name}
+                                            className="w-full h-full object-cover transition-opacity duration-500 group-hover:opacity-0 absolute inset-0 z-0"
+                                        />
+                                        {/* Hover image */}
+                                        <img
+                                            src={member.hoverImg}
+                                            alt={member.name}
+                                            className="w-full h-full object-cover transition-opacity duration-500 opacity-0 group-hover:opacity-100 absolute inset-0 z-10"
+                                        />
+
+                                        {/* Bottom name */}
+                                        <div className="absolute bottom-0 left-0 right-0  bg-black bg-opacity-30 p-2 text-white text-center font-bold z-20">
+                                            {member.name}
+                                        </div>
+
+                                        {/* Overlay info */}
+                                        <div className="absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center text-white text-center px-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-30">
+                                            <div>
+                                                <h3 className="text-lg font-semibold">{member.name}</h3>
+                                                <hr />
+                                                <p className="text-sm mt-1">{member.role}</p>
                                             </div>
                                         </div>
-                                    ))}
-                                </div>
-                            </div>
-
-                            <style jsx>{`
-                          .carousel-track {
-                            overflow: hidden;
-                            width: 100%;
-                          }
-                      
-                          .carousel-inner {
-                            display: flex;
-                            width: max-content;
-                            gap: 1.5rem; /* equivalent to Tailwind's gap-6 */
-                            animation: scroll 30s linear infinite;
-                            will-change: transform;
-                          }
-                      
-                          .carousel-track:hover .carousel-inner {
-                            animation-play-state: paused;
-                          }
-                      
-                          .carousel-card {
-                            position: relative;
-                            width: 12rem; /* w-48 */
-                            height: 18rem; /* h-72 */
-                            border: 2px solid #3b82f6; /* blue-500 */
-                            border-radius: 0.5rem;
-                            overflow: hidden;
-                            box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
-                            background-color: #0A0F1F;
-                            cursor: pointer;
-                            transition: all 0.3s;
-                          }
-                      
-                          .carousel-card:hover {
-                            box-shadow: 0 0 25px 10px rgba(0, 122, 255, 0.6);
-                          }
-                      
-                          @keyframes scroll {
-                            0% {
-                              transform: translateX(0);
-                            }
-                            100% {
-                              transform: translateX(-33.33%);
-                            }
-                          }
-                        `}</style>
+                                    </SwiperSlide>
+                                ))}
+                            </Swiper>
                         </div>
-
-                        <div className="relative top-40 sm:top-20 z-30 backdrop-blur-lg bg-transparent overflow-hidden w-full flex justify-center">
-                            <div className="carousel-track">
-                                <div className="carousel-inner">
-                                    {[...teamMembers, ...teamMembers, ...teamMembers].map((member, index) => (
-                                        <div
-                                            key={index}
-                                            className="carousel-card"
-                                            onClick={() => handleMemberClick(member)}
-                                        >
-                                            <img
-                                                src={member.img}
-                                                alt={member.name}
-                                                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 cursor-pointer"
-                                            />
-                                            <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-70 p-3 text-white text-center font-bold">
-                                                {member.name}
-                                            </div>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-
-                            <style jsx>{`
-                          .carousel-track {
-                            overflow: hidden;
-                            width: 100%;
-                          }
-                      
-                          .carousel-inner {
-                            display: flex;
-                            width: max-content;
-                            gap: 1.5rem; /* equivalent to Tailwind's gap-6 */
-                            animation: scroll 30s linear infinite;
-                            will-change: transform;
-                          }
-                      
-                          .carousel-track:hover .carousel-inner {
-                            animation-play-state: paused;
-                          }
-                      
-                          .carousel-card {
-                            position: relative;
-                            width: 12rem; /* w-48 */
-                            height: 18rem; /* h-72 */
-                            border: 2px solid #3b82f6; /* blue-500 */
-                            border-radius: 0.5rem;
-                            overflow: hidden;
-                            box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
-                            background-color: #0A0F1F;
-                            cursor: pointer;
-                            transition: all 0.3s;
-                          }
-                      
-                          .carousel-card:hover {
-                            box-shadow: 0 0 25px 10px rgba(0, 122, 255, 0.6);
-                          }
-                      
-                          @keyframes scroll {
-                            0% {
-                              transform: translateX(0);
-                            }
-                            100% {
-                              transform: translateX(-33.33%);
-                            }
-                          }
-                        `}</style>
-                        </div>
-
                     </div>
                 </section>
 
@@ -355,7 +394,7 @@ const team = () => {
                         <h1
                             data-aos="fade-up"
                             data-aos-duration="1500"
-                            className="text-white md:text-[128px] text-[48px] font-black px-10 leading-[1.1] text-center md:text-left drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]"
+                            className="text-white md:text-[100px] text-[48px] font-black px-10 leading-[1.1] text-center md:text-left drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]"
                         >
                             {t("vacansy")}
                         </h1>
