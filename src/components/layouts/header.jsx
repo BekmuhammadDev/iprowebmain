@@ -94,7 +94,7 @@
         return (
            <>
            <TestModeBanner/>
-            <header className={`w-full py-4 fixed top-0 h-20 z-30 text-white flex transition-all duration-300 bg-[#0A0F1F]`}>
+            <header className={`w-full py-4 fixed top-0 h-20 z-40 text-white flex transition-all duration-300 bg-[#0A0F1F]`}>
                 <nav data-aos="flip-up"
                     data-aos-duration="1200" className='flex container mx-auto md:max-w-none xl:max-w-none px-10  py-5 justify-between items-center'>
 
