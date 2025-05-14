@@ -20,10 +20,8 @@
     import 'aos/dist/aos.css';
     import Login from './login';
     import Register from './register';
-
+    import TestModeBanner from "../ui/testmodebanner"
     AOS.init();
-
-
     const Header = () => {
         const { t } = useTranslation();
 
@@ -74,13 +72,10 @@
             });
         }, []);
 
-
         // //////////////////////////////////////
         const [username, setUsername] = useState('');
         const [password, setPassword] = useState('');
         const [error, setError] = useState('');
-
-
 
         const handleSignIn = async () => {
             try {
@@ -97,7 +92,9 @@
         //////////////////////////////////////////
 
         return (
-            <header className={`w-full py-4 fixed top-0 h-20 z-30 text-white flex transition-all duration-300 bg-[#0A0F1F]`}>
+           <>
+           <TestModeBanner/>
+            <header className={`w-full py-4 fixed top-0 h-20 z-40 text-white flex transition-all duration-300 bg-[#0A0F1F]`}>
                 <nav data-aos="flip-up"
                     data-aos-duration="1200" className='flex container mx-auto md:max-w-none xl:max-w-none px-10  py-5 justify-between items-center'>
 
@@ -260,6 +257,7 @@
 
 
             </header>
+           </>
         );
     };
 

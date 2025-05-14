@@ -3,7 +3,7 @@ import { FaTelegramPlane, FaInstagram, FaFacebookF, FaYoutube, FaWhatsapp } from
 import Logo from "../../assets/icons/Logo.svg";
 import { useTranslation } from "react-i18next";
 import "../../i18";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 
 const Footer = () => {
@@ -19,20 +19,20 @@ const Footer = () => {
                     {/* Logo & Copyright */}
                     <div className="flex flex-col items-start w-auto ">
                         <img src={Logo} alt="iPro Logo" className="w-[173px] h-12 mb-5" />
-                        <p className="text-[20px] font-normal">© 2020-2025 «iPro»</p>
+                        <p className="text-[15px] font-normal">© 2020-2025 «iPro»</p>
                     </div>
 
                     {/* Contacts */}
                     <div className="text-left w-auto md:border-l-2 md:pl-20">
-                        <h3 className="text-2xl font-bold">{t("contact")}</h3>
-                        <p className="text-[20px] font-normal mt-2">{t("google_map")}</p>
-                        <p className="text-[20px] font-normal">{t("yandex_map")}</p>
-                        <p className="text-[20px] font-normal mt-2">+998 90 000 00 00</p>
+                        <h3 className="text-xl font-bold">{t("contact")}</h3>
+                        <p className="text-[15px] font-normal mt-2">{t("google_map")}</p>
+                        <p className="text-[15px] font-normal">{t("yandex_map")}</p>
+                        <p className="text-[15px] font-normal mt-2">+998 90 000 00 00</p>
                     </div>
 
                     {/* Links */}
                     <ul className='hidden lg:flex flex-col'>
-                    <h3 className="text-2xl font-semibold">{t("links")}</h3>
+                        <h3 className="text-xl font-semibold">{t("links")}</h3>
                         {[
                             { name: "", path: "/" },
                             { name: t("about"), path: "/aboutus" },
@@ -41,11 +41,11 @@ const Footer = () => {
                             { name: t("services"), path: "/services" },
                             { name: t("careers"), path: "/careers" },
                         ].map((item, index) => (
-                            
+
                             <NavLink
                                 key={index}
                                 to={item.path}
-                                className="relative transition duration-300 ease-in-out text-white hover:text-blue-500 text-lg font-semibold group"
+                                className="relative transition duration-300 ease-in-out text-white hover:text-blue-500 text-base font-semibold group"
                             >
                                 {item.name}
 
@@ -58,13 +58,20 @@ const Footer = () => {
 
                     {/* Social Media (Follow Us) */}
                     <div className="text-left w-auto">
-                        <h3 className="text-2xl font-bold">{t("follow_us")}</h3>
+                        <h3 className="text-xl font-bold">{t("follow_us")}</h3>
                         <div className="flex justify-start gap-4 mt-3">
-                            <FaTelegramPlane className="text-3xl cursor-pointer hover:text-blue-500 transition" />
-                            <FaInstagram className="text-3xl cursor-pointer hover:text-pink-500 transition" />
-                            <FaFacebookF className="text-3xl cursor-pointer hover:text-blue-600 transition" />
-                            <FaYoutube className="text-3xl cursor-pointer hover:text-red-500 transition" />
-                            <FaWhatsapp className="text-3xl cursor-pointer hover:text-green-500 transition" />
+                            <Link to="http://t.me/iPRO_group">
+                                <FaTelegramPlane className="text-3xl cursor-pointer hover:text-blue-500 transition" />
+                            </Link>
+                            <Link to="https://www.instagram.com/iprogroupuz/#">
+                                <FaInstagram className="text-3xl cursor-pointer hover:text-pink-500 transition" />
+                            </Link>
+                            <Link to="https://www.facebook.com/share/16EFV1KTV8/">
+                                <FaFacebookF className="text-3xl cursor-pointer hover:text-blue-600 transition" />
+                            </Link>
+                            <Link to="https://www.youtube.com/@iprouz">
+                                <FaYoutube className="text-3xl cursor-pointer hover:text-red-500 transition" />
+                            </Link>
                         </div>
                     </div>
                 </div>

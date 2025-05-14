@@ -1,10 +1,29 @@
-import React from "react";
-import DigitalFingers from "../../assets/icons/metn.svg";
-import MetinLogo from "../../assets/icons/metin.svg"
-import FarkoLogo from "../../assets/icons/farko.svg"
-import ItbilimLogo from "../../assets/icons/itbilim.svg"
 
-const logos = [MetinLogo, FarkoLogo, ItbilimLogo,MetinLogo, FarkoLogo, ItbilimLogo,MetinLogo, FarkoLogo, ItbilimLogo,MetinLogo, FarkoLogo, ItbilimLogo,MetinLogo, FarkoLogo, ItbilimLogo,MetinLogo, FarkoLogo, ItbilimLogo,MetinLogo, FarkoLogo, ItbilimLogo,MetinLogo, FarkoLogo, ItbilimLogo,MetinLogo, FarkoLogo, ItbilimLogo,MetinLogo, FarkoLogo, ItbilimLogo,MetinLogo, FarkoLogo, ItbilimLogo,MetinLogo, FarkoLogo, ItbilimLogo,MetinLogo, FarkoLogo, ItbilimLogo,MetinLogo, FarkoLogo, ItbilimLogo,MetinLogo, FarkoLogo, ItbilimLogo,MetinLogo, FarkoLogo, ItbilimLogo,MetinLogo, FarkoLogo, ItbilimLogo,MetinLogo, FarkoLogo, ItbilimLogo,MetinLogo, FarkoLogo, ItbilimLogo,MetinLogo, FarkoLogo, ItbilimLogo,];
+import AkiltoysLogo from "../../assets/icons/Akil toys.png"
+import AsrorsLogo from "../../assets/icons/asrorov's academy.png"
+import AvtodriveLogo from "../../assets/icons/Avto Drive.png"
+import BarakaLogo from "../../assets/icons/barakalogo.png"
+import ConsultLogo from "../../assets/icons/Consult Visa.png"
+import DfaLogo from "../../assets/icons/DFA.png"
+import FarkoLogo from "../../assets/icons/Farko mebel.png"
+import HafiztourLogo from "../../assets/icons/Hafiz Tour.png"
+import intelegentLogo from "../../assets/icons/Inteligent edu.png"
+import ItBilimLogo from "../../assets/icons/IT bilim.png"
+import KvantLogo from "../../assets/icons/KVANT.png"
+import LifelineLogo from "../../assets/icons/LifeLine.png"
+import MetinLogo from "../../assets/icons/metin.png"
+import OptikaLogo from "../../assets/icons/Optika brand.png"
+import QshostelLogo from "../../assets/icons/QS hostel.png"
+import RopicLogo from "../../assets/icons/ropico.png"
+import ShifokorLogo from "../../assets/icons/shifokor 1.png"
+import ShoxinternationalLogo from "../../assets/icons/shoxinternatiol.png"
+import SmartassistLogo from "../../assets/icons/smartassistment.png"
+import SpectexLogo from "../../assets/icons/spectex.png"
+import ToshkentLogo from "../../assets/icons/toshkentpp.png"
+import ViuLogo from "../../assets/icons/VIU.png"
+
+
+const logos = [AkiltoysLogo, AsrorsLogo, AvtodriveLogo,BarakaLogo, ConsultLogo, DfaLogo,HafiztourLogo, FarkoLogo, intelegentLogo,ItBilimLogo, KvantLogo, LifelineLogo,MetinLogo, OptikaLogo, QshostelLogo,RopicLogo, ShifokorLogo, ShoxinternationalLogo,SmartassistLogo, SpectexLogo, ToshkentLogo,ViuLogo,AkiltoysLogo, AsrorsLogo, AvtodriveLogo,BarakaLogo, ConsultLogo, DfaLogo,HafiztourLogo, FarkoLogo, intelegentLogo,ItBilimLogo, KvantLogo, LifelineLogo,MetinLogo, OptikaLogo, QshostelLogo,RopicLogo, ShifokorLogo, ShoxinternationalLogo,SmartassistLogo, SpectexLogo, ToshkentLogo,ViuLogo, ];
 
 const Logomarqee = () => {
   return (

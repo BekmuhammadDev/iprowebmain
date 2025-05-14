@@ -23,13 +23,13 @@ import ContactWithMap from '../components/ui/contactwithmap';
 import Header from '../components/layouts/header';
 import Footer from '../components/layouts/footer';
 import ScrollProgressBar from '../components/progressLine/progressline';
-import VerticalScrollProgress from '../components/vertikalLine/vertikalline';
 import { useTranslation } from "react-i18next";
 import "../i18";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import Primary from './primary';
 import Scroller from './scroller';
+
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -101,14 +101,16 @@ const aboutus = () => {
 
     return (
         <>
+        
             <Header />
-            {/* <VerticalScrollProgress/> */}
+
             <ScrollProgressBar />
+
             <Primary t={t} handleCardClick={handleCardClick} Video={Video} />
 
             <Scroller t={t} Video={Video} Logocloud={Logocloud}/>
 
-            <section className="py-16 bg-[#0F111C] overflow-hidden">    
+            <section className="py-16 bg-[#0A0F1F] overflow-hidden">    
                 <div
                     className="container mx-auto md:max-w-none 2xl:max-w-none"
                     data-aos="flip-up"
@@ -121,7 +123,7 @@ const aboutus = () => {
             <section className="bg-[#16182B] overflow-hidden">
                 <div className="container mx-auto sm:max-w-none">
                     <h1
-                        className="text-white xl:text-[128px] sm:mb-20 text-[48px] font-black ml-5 leading-[1.1] text-center md:text-left drop-shadow-[0_5px_10px_rgba(0,112,244,0.8)]"
+                        className="text-white xl:text-[80px]  py-20 text-[48px] font-black ml-5 leading-[1.1] text-center md:text-left drop-shadow-[0_5px_10px_rgba(0,112,244,0.8)]"
                         data-aos="fade-down"
                         data-aos-duration="1200"
                     >
@@ -149,7 +151,7 @@ const aboutus = () => {
                             <h1 className="text-white text-base text-center sm:text-left lg:text-2xl font-semibold uppercase">
                                 {t(activeMember.role)}
                             </h1>
-                            <h1 className="text-white text-[32px] sm:text-[40px] lg:text-[96px] text-center sm:text-left font-black uppercase drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]">
+                            <h1 className="text-white text-[32px] sm:text-[40px] lg:text-[56px] text-center sm:text-left font-black uppercase drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]">
                                 {t(activeMember.name)}
                             </h1>
                             <h1 className="text-white text-xs sm:text-sm lg:text-2xl text-center sm:text-left font-semibold uppercase">
@@ -260,7 +262,7 @@ const aboutus = () => {
             <section className="text-white px-10 pt-[81px] pb-[74px] overflow-hidden">
                 <div className="container mx-auto">
                     <h1
-                        className="text-[48px] md:text-[128px] uppercase mb-10 md:mb-0 font-black text-center drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]"
+                        className="text-[48px] md:text-[100px] uppercase mb-10 md:mb-0 font-black text-center drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]"
                         data-aos="fade-up"
                         data-aos-duration="1200"
                     >
@@ -298,13 +300,13 @@ const aboutus = () => {
                 </div>
             </section>
 
-            <section className="pt-10 px-10 md:pt-72 overflow-hidden">
+            <section className="pt-10 px-10 md:pt-20 overflow-hidden">
                 <div className="relative top-[600px]">
                     <img className="absolute" src={StarsLeftImg} alt="" />
                 </div>
                 <div className="container mx-auto">
                     <h1
-                        className="text-white font-black text-5xl text-center md:text-left md:text-[128px] drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]"
+                        className="text-white font-black text-5xl text-center md:text-left md:text-[100px] drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]"
                         data-aos="fade-up"
                         data-aos-duration="1200"
                     >
@@ -341,13 +343,13 @@ const aboutus = () => {
                 </div>
             </section>
 
-            <section className="md:px-10 pt-[211px] mb-20 overflow-hidden">
+            <section className="md:px-10 pt-[90px] mb-10 overflow-hidden">
                 <div className="relative -z-10 top-[800px]">
                     <img className="absolute hidden md:flex bottom-0 -right-10" src={StarsRightImg} alt="" />
                 </div>
                 <div className="container mx-auto">
                     <h1
-                        className="text-5xl text-center md:text-left md:text-[128px] font-black leading-[0.95] mb-10 text-white drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]"
+                        className="text-5xl text-center md:text-left md:text-[80px] font-black leading-[0.95] mb-10 text-white drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]"
                         data-aos="fade-up"
                     >
                         {t("have_a_question")}
