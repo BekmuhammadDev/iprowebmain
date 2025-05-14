@@ -34,9 +34,6 @@ const MainLayout = () => {
 
     return (
         <div>
-            <div className="fixed top-24 right-2 z-50 bg-blue-500 h-8  text-white px-3 py-1 rounded shadow-lg text-sm font-semibold">
-                Sayt test rejimida
-            </div>
             <main>
                 <Outlet />
             </main>

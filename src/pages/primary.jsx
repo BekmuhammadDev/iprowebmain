@@ -151,7 +151,7 @@ const Primary = ({ t, Video }) => {
 
 
   return (
-    <section ref={containerRef} className="relative  xl:min-h-[100vh] bg-black text-white">
+    <section ref={containerRef} className="relative  xl:min-h-[100vh] bg-[#0A0F1F] text-white">
 
       <video ref={videoRef} className="pointer-events-none" autoPlay muted loop playsInline>
         <source src={Video} type="video/mp4" />

@@ -23,13 +23,13 @@ import ContactWithMap from '../components/ui/contactwithmap';
 import Header from '../components/layouts/header';
 import Footer from '../components/layouts/footer';
 import ScrollProgressBar from '../components/progressLine/progressline';
-import VerticalScrollProgress from '../components/vertikalLine/vertikalline';
 import { useTranslation } from "react-i18next";
 import "../i18";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import Primary from './primary';
 import Scroller from './scroller';
+
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -101,14 +101,16 @@ const aboutus = () => {
 
     return (
         <>
+        
             <Header />
-            {/* <VerticalScrollProgress/> */}
+
             <ScrollProgressBar />
+
             <Primary t={t} handleCardClick={handleCardClick} Video={Video} />
 
             <Scroller t={t} Video={Video} Logocloud={Logocloud}/>
 
-            <section className="py-16 bg-[#0F111C] overflow-hidden">    
+            <section className="py-16 bg-[#0A0F1F] overflow-hidden">    
                 <div
                     className="container mx-auto md:max-w-none 2xl:max-w-none"
                     data-aos="flip-up"
