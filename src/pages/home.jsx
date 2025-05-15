@@ -307,47 +307,49 @@ const aboutus = () => {
             </section>
 
             <section className="pt-10 px-10 md:pt-20 overflow-hidden">
-                <div className="relative top-[600px]">
-                    <img className="absolute" src={StarsLeftImg} alt="" />
-                </div>
-                <div className="container mx-auto">
-                    <h1
-                        className="text-white font-black text-5xl text-center md:text-left md:text-[100px] drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]"
-                        data-aos="fade-up"
-                        data-aos-duration="1200"
-                    >
-                        {t("services")}
-                    </h1>
+  <div className="relative top-[600px]">
+    <img className="absolute" src={StarsLeftImg} alt="" />
+  </div>
 
-                    <div
-                        className="flex flex-col md:flex-row justify-center items-center gap-4 bg-[#0b0f19] p-10"
-                        data-aos="fade-up"
-                        data-aos-delay="200"
-                    >
-                        {portfolioData.map((item, index) => (
-                            <div
-                                key={item.id}
-                                className="relative flex flex-col h-[105px] md:h-[300px] w-full md:flex-[0.2] overflow-hidden rounded-lg cursor-pointer transition-all duration-500 ease-in-out group hover:flex-[0.8] md:hover:h-[300px] sm:hover:h-auto"
-                                data-aos="zoom-in"
-                                data-aos-delay={index * 100}
-                                data-aos-duration="1000"
-                            >
-                                {/* Rasm */}
-                                <img
-                                    src={item.img} 
-                                    alt={item.title}
-                                    className="w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
-                                />
+  <div className="container mx-auto">
+    <h1
+      className="text-white font-black text-5xl text-center md:text-left md:text-[100px] drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]"
+      data-aos="fade-up"
+      data-aos-duration="1200"
+    >
+      {t("services")}
+    </h1>
 
-                                {/* Overlay Effek */}
-                                <div className="absolute inset-0 flex flex-col items-center justify-end bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out p-5">
-                                    <p className="text-white text-lg font-bold">{item.title}</p>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
+    <div
+      className="flex flex-col md:flex-row justify-center items-center gap-4 bg-[#0b0f19] p-10"
+      data-aos="fade-up"
+      data-aos-delay="200"
+    >
+      {portfolioData.map((item, index) => (
+        <div
+          key={item.id}
+          className="relative flex flex-col h-[105px] md:h-[300px] w-full md:flex-[0.2] overflow-hidden rounded-lg cursor-pointer transition-all duration-700 ease-in-out group hover:flex-[0.8] md:hover:h-[300px] sm:hover:h-auto"
+          data-aos="zoom-in"
+          data-aos-delay={index * 100}
+          data-aos-duration="1000"
+        >
+          {/* Rasm */}
+          <img
+            src={item.img}
+            alt={item.title}
+            className="w-full h-full object-cover transition-transform duration-700 ease-in-out group-hover:scale-[1.02]"
+          />
+
+          {/* Overlay Effekti */}
+          <div className="absolute inset-0 flex flex-col items-center justify-end bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out p-5">
+            <p className="text-white text-lg font-bold">{item.title}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
 
             <section className="md:px-10 pt-[90px] mb-10 overflow-hidden">
                 <div className="relative -z-10 top-[800px]">

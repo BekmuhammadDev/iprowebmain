@@ -19,7 +19,6 @@ const Footer = () => {
                     {/* Logo & Copyright */}
                     <div className="flex flex-col items-start w-auto ">
                         <img src={Logo} alt="iPro Logo" className="w-[173px] h-12 mb-5" />
-                        <p className="text-[15px] font-normal">© 2020-2025 «iPro»</p>
                     </div>
 
                     {/* Contacts */}
@@ -75,6 +74,9 @@ const Footer = () => {
                         </div>
                     </div>
                 </div>
+            </div>
+            <div className="w-full">
+                <p className="text-[14px] mt-2 font-normal text-center">© 2020-2025 «iPro»</p>
             </div>
         </footer>
 
