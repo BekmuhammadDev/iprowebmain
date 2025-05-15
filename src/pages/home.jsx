@@ -204,63 +204,52 @@ const aboutus = () => {
     </div>
 
     {/* Carousel qismi */}
-    <div className="relative top-10 sm:-top-20 z-30 backdrop-blur-lg bg-transparent overflow-hidden w-full flex justify-center">
-      <div className="carousel-track">
-        <div className="carousel-inner">
-          {[...teamMembers, ...teamMembers, ...teamMembers].map(
-            (member, index) => (
-              <div
-                key={index}
-                className="carousel-card group"
-                onClick={() => handleMemberClick(member)}
-              >
-                {/* Hover orqali rasm almashadi */}
-                <img
-                  src={member.img}
-                  alt={member.name}
-                  className="w-full h-full object-cover absolute inset-0 transition-opacity duration-300 opacity-100 group-hover:opacity-0"
-                />
-                <img
-                  src={member.hoverImg}
-                  alt={member.name}
-                  className="w-full h-full object-cover absolute inset-0 transition-opacity duration-300 opacity-0 group-hover:opacity-100"
-                />
-                <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-70 p-3 text-white text-center font-bold hover:font-extrabold z-10">
-                  {member.name}
-                </div>
-              </div>
-            )
-          )}
+    <div className="relative z-30 w-full overflow-hidden bg-transparent backdrop-blur-lg top-10 sm:-top-20 flex justify-center">
+  <div className="w-full overflow-hidden">
+    <div
+      className="flex gap-6 animate-scroll whitespace-nowrap will-change-transform hover:[animation-play-state:paused]"
+    >
+      {[...teamMembers, ...teamMembers, ...teamMembers].map((member, index) => (
+        <div
+          key={index}
+          className="relative w-48 h-72 rounded-lg overflow-hidden bg-[#0a0f1f] cursor-pointer group shadow-lg shrink-0"
+          onClick={() => handleMemberClick(member)}
+        >
+          {/* Asosiy rasm */}
+          <img
+            src={member.img}
+            alt={member.name}
+            className="absolute inset-0 w-full h-full object-cover transition-opacity duration-300 opacity-100 group-hover:opacity-0"
+          />
+          {/* Hover qilinganda o‘zgaradigan rasm */}
+          <img
+            src={member.hoverImg}
+            alt={member.name}
+            className="absolute inset-0 w-full h-full object-cover transition-opacity duration-300 opacity-0 group-hover:opacity-100"
+          />
+          {/* Pastki qismdagi ism qismi */}
+          <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-70 p-3 text-white text-center font-bold group-hover:font-extrabold z-10">
+            {member.name}
+          </div>
         </div>
-      </div>
-
-      <style jsx>{`
-        .carousel-track {
-          overflow: hidden;
-          width: 100%;
-        }
-        .carousel-inner {
-          display: flex;
-          width: max-content;
-          gap: 1.5rem;
-          animation: scroll 30s linear infinite;
-          will-change: transform;
-        }
-        .carousel-track:hover .carousel-inner {
-          animation-play-state: paused;
-        }
-        .carousel-card {
-          position: relative;
-          width: 12rem;
-          height: 18rem;
-          border-radius: 0.5rem;
-          overflow: hidden;
-          box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
-          background-color: #0a0f1f;
-          cursor: pointer;
-        }
-      `}</style>
+      ))}
     </div>
+  </div>
+
+  {/* Tailwind uchun animatsiya qo‘shish */}
+  <style>
+    {`
+      @keyframes scroll {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-33.333%); }
+      }
+      .animate-scroll {
+        animation: scroll 30s linear infinite;
+      }
+    `}
+  </style>
+</div>
+
   </div>
 </section>
 
