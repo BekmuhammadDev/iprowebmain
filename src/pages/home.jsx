@@ -110,9 +110,9 @@ const aboutus = () => {
 
             <Scroller t={t} Video={Video} Logocloud={Logocloud}/>
 
-            <section className="py-16 bg-[#0A0F1F] overflow-hidden">    
+            <section className=" overflow-hidden">    
                 <div
-                    className="container mx-auto md:max-w-none 2xl:max-w-none"
+                    className=" container mx-auto md:max-w-none 2xl:max-w-none"
                     data-aos="flip-up"
                     data-aos-duration="1200"
                 >
@@ -121,105 +121,120 @@ const aboutus = () => {
             </section>
 
             <section className="bg-[#16182B] overflow-hidden">
-                <div className="container mx-auto sm:max-w-none">
-                    <h1
-                        className="text-white xl:text-[80px]  py-20 text-[48px] font-black ml-5 leading-[1.1] text-center md:text-left drop-shadow-[0_5px_10px_rgba(0,112,244,0.8)]"
-                        data-aos="fade-down"
-                        data-aos-duration="1200"
-                    >
-                        {t("meetyheteam")}
-                    </h1>
+  <div className="container mx-auto sm:max-w-none">
+    <h1
+      className="text-white px-[70px] xl:text-[80px]  py-20 text-[48px] font-black ml-5 leading-[1.1] text-center md:text-left drop-shadow-[0_5px_10px_rgba(0,112,244,0.8)]"
+      data-aos="fade-down"
+      data-aos-duration="1200"
+    >
+      {t("meetyheteam")}
+    </h1>
 
-                    <div
-                        className="relative hidden xl:flex -bottom-[700px]"
-                        data-aos="fade-left"
-                        data-aos-duration="1000"
-                    >
-                        <img className="absolute right-0" src={StarsRightImg} alt="" />
-                    </div>
+    <div
+      className="relative hidden xl:flex -bottom-[700px]"
+      data-aos="fade-left"
+      data-aos-duration="1000"
+    >
+      <img className="absolute right-0" src={StarsRightImg} alt="" />
+    </div>
 
-                    <div
-                        className="flex xl:px-10 px-5 flex-col md:flex-row items-center gap-10 justify-between xl:ml-5"
-                        data-aos="fade-up"
-                        data-aos-duration="1200"
-                    >
-                        {/* Matn qismi */}
-                        <div className="w-full md:w-1/2 relative top-60 sm:top-[500px] z-40 sm:-z-10 md:top-0 backdrop-blur-lg bg-transparent px-5 sm:px-10"
-                            data-aos="fade-right"
-                            data-aos-duration="1300"
-                        >
-                            <h1 className="text-white text-base text-center sm:text-left lg:text-2xl font-semibold uppercase">
-                                {t(activeMember.role)}
-                            </h1>
-                            <h1 className="text-white text-[32px] sm:text-[40px] lg:text-[56px] text-center sm:text-left font-black uppercase drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]">
-                                {t(activeMember.name)}
-                            </h1>
-                            <h1 className="text-white text-xs sm:text-sm lg:text-2xl text-center sm:text-left font-semibold uppercase">
-                                {t(activeMember.description)}
-                            </h1>
+    <div
+      className="flex xl:px-10 px-5 flex-col md:flex-row items-center gap-10 justify-between xl:ml-5"
+      data-aos="fade-up"
+      data-aos-duration="1200"
+    >
+      {/* Matn qismi */}
+      <div
+        className="w-full md:w-1/2 relative top-60 sm:top-[500px] z-40 sm:-z-10 md:top-0 backdrop-blur-lg bg-transparent px-5 sm:px-10"
+        data-aos="fade-right"
+        data-aos-duration="1300"
+      >
+        <h1 className="text-white text-base text-center sm:text-left lg:text-2xl font-semibold uppercase">
+          {t(activeMember.role)}
+        </h1>
+        <h1 className="text-white text-[32px] sm:text-[40px] lg:text-[56px] text-center sm:text-left font-black uppercase drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]">
+          {t(activeMember.name)}
+        </h1>
+        <h1 className="text-white text-xs sm:text-sm lg:text-2xl text-center sm:text-left font-semibold uppercase">
+          {t(activeMember.description)}
+        </h1>
 
-                            {/* Stats */}
-                            <div className="flex justify-center sm:justify-start gap-5 mt-5 md:mt-36">
-                                <div className="flex gap-3 sm:gap-5 items-center">
-                                    <h1 className="md:text-xl text-base uppercase font-semibold text-white">{t("projects")}:</h1>
-                                    <h2 className="text-3xl md:text-5xl text-white font-semibold drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]">
-                                        {t(activeMember.projects)}
-                                    </h2>
-                                </div>
-                                <div className="flex gap-3 sm:gap-5 items-center">
-                                    <h1 className="md:text-xl text-base uppercase font-semibold text-white">{t("experience")}:</h1>
-                                    <h2 className="text-3xl md:text-5xl text-white font-semibold drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]">
-                                        {t(activeMember.experience)}
-                                    </h2>
-                                </div>
-                            </div>
-                        </div>
+        {/* Stats */}
+        <div className="flex justify-center sm:justify-start gap-5 mt-5 md:mt-36">
+          <div className="flex gap-3 sm:gap-5 items-center">
+            <h1 className="md:text-xl text-base uppercase font-semibold text-white">
+              {t("projects")}:
+            </h1>
+            <h2 className="text-3xl md:text-5xl text-white font-semibold drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]">
+              {t(activeMember.projects)}
+            </h2>
+          </div>
+          <div className="flex gap-3 sm:gap-5 items-center">
+            <h1 className="md:text-xl text-base uppercase font-semibold text-white">
+              {t("experience")}:
+            </h1>
+            <h2 className="text-3xl md:text-5xl text-white font-semibold drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]">
+              {t(activeMember.experience)}
+            </h2>
+          </div>
+        </div>
+      </div>
 
-                        {/* Rasm qismi */}
-                        <div
-                            className="w-full -top-48 md:top-0 px-5 md:w-1/2 relative flex justify-center"
-                            data-aos="zoom-in-up"
-                            data-aos-duration="1400"
-                        >
-                            <div className="relative">
-                                <img src={CardBg} alt="Background" className="w-full h-full z-50 object-cover" />
-                                <div className="absolute -z-30 inset-0 flex items-center justify-center">
-                                    <img
-                                        src={activeMember.workerImg}
-                                        alt="Worker"
-                                        className="w-auto h-full object-cover"
-                                    />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+      {/* Rasm qismi */}
+      <div
+        className="w-full -top-48 md:top-0 px-5 md:w-1/2 relative flex justify-center"
+        data-aos="zoom-in-up"
+        data-aos-duration="1400"
+      >
+        <div className="relative">
+          <img
+            src={CardBg}
+            alt="Background"
+            className="w-full h-full z-50 object-cover"
+          />
+          <div className="absolute -z-30 inset-0 flex items-center justify-center">
+            <img
+              src={activeMember.workerImg}
+              alt="Worker"
+              className="w-auto h-full object-cover"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
 
-                    {/* Carousel qismi */}
-                    <div className="relative top-10 sm:-top-20 z-30 backdrop-blur-lg bg-transparent overflow-hidden w-full flex justify-center">
-                        <div className="carousel-track">
-                            <div className="carousel-inner">
-                                {[...teamMembers, ...teamMembers, ...teamMembers].map((member, index) => (
-                                    <div
-                                        key={index}
-                                        className="carousel-card"
-                                        onClick={() => handleMemberClick(member)}
-                                        onMouseEnter={() => setHoveredIndex(index)} // Set hover state
-                                        onMouseLeave={() => setHoveredIndex(null)} // Reset hover state
-                                    >
-                                        <img
-                                            src={hoveredIndex === index ? member.hoverImg : member.img} // Change image on hover
-                                            alt={member.name}
-                                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 cursor-pointer"
-                                        />
-                                        <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-70 p-3 text-white text-center font-bold hover:font-extrabold">
-                                            {member.name}
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
+    {/* Carousel qismi */}
+    <div className="relative top-10 sm:-top-20 z-30 backdrop-blur-lg bg-transparent overflow-hidden w-full flex justify-center">
+      <div className="carousel-track">
+        <div className="carousel-inner">
+          {[...teamMembers, ...teamMembers, ...teamMembers].map(
+            (member, index) => (
+              <div
+                key={index}
+                className="carousel-card group"
+                onClick={() => handleMemberClick(member)}
+              >
+                {/* Hover orqali rasm almashadi */}
+                <img
+                  src={member.img}
+                  alt={member.name}
+                  className="w-full h-full object-cover absolute inset-0 transition-opacity duration-300 opacity-100 group-hover:opacity-0"
+                />
+                <img
+                  src={member.hoverImg}
+                  alt={member.name}
+                  className="w-full h-full object-cover absolute inset-0 transition-opacity duration-300 opacity-0 group-hover:opacity-100"
+                />
+                <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-70 p-3 text-white text-center font-bold hover:font-extrabold z-10">
+                  {member.name}
+                </div>
+              </div>
+            )
+          )}
+        </div>
+      </div>
 
-                        <style jsx>{`
+      <style jsx>{`
         .carousel-track {
           overflow: hidden;
           width: 100%;
@@ -241,23 +256,14 @@ const aboutus = () => {
           border-radius: 0.5rem;
           overflow: hidden;
           box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
-          background-color: #0A0F1F;
+          background-color: #0a0f1f;
           cursor: pointer;
-          transition: all 0.3s;
-        }
-        @keyframes scroll {
-          0% {
-            transform: translateX(0);
-          }
-          100% {
-            transform: translateX(-33.33%);
-          }
         }
       `}</style>
-                    </div>
-                    
-                </div>
-            </section>
+    </div>
+  </div>
+</section>
+
 
             <section className="text-white px-10 pt-[81px] pb-[74px] overflow-hidden">
                 <div className="container mx-auto">
@@ -328,7 +334,7 @@ const aboutus = () => {
                             >
                                 {/* Rasm */}
                                 <img
-                                    src={item.img}
+                                    src={item.img} 
                                     alt={item.title}
                                     className="w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
                                 />

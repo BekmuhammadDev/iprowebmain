@@ -60,7 +60,7 @@ export default function TestimonialSlider() {
     }, [activeIndex]);
 
     return (
-        <div className="overflow-hidden">
+        <div className="overflow-hidden h-[1050px]">
             <div className=" hidden md:flex relative ">
                 <img className="absolute -right-20 top-0" src={StarsRight} alt="#" />
             </div>

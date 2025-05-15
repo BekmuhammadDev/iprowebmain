@@ -27,7 +27,7 @@ const logos = [AkiltoysLogo, AsrorsLogo, AvtodriveLogo,BarakaLogo, ConsultLogo, 
 
 const Logomarqee = () => {
   return (
-    <section className=" py-4 relative overflow-hidden ">
+    <section className="  relative overflow-hidden ">
       <div className="relative w-full flex items-center">
         <div className="marquee flex whitespace-nowrap gap-20">
           {/* Logotiplar ketma-ket 2 marta yoziladi, cheksiz effekt uchun */}
