@@ -23,7 +23,7 @@ const Scroller = ({ t, Logocloud, Video }) => {
       ease: "none",
       scrollTrigger: {
         trigger: sectionRef.current,
-        pin: true,
+        pin: true,  
         scrub: 1,
         end: () => "+=" + containerRef.current.offsetWidth,
       },

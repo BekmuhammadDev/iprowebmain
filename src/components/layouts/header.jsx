@@ -23,6 +23,7 @@
     import TestModeBanner from "../ui/testmodebanner"
     AOS.init();
     const Header = () => {
+        const token =localStorage.getItem("token")
         const { t } = useTranslation();
 
         const [menuOpen, setMenuOpen] = useState(null);
@@ -163,26 +164,42 @@
                                     <div className="absolute top-12 -left-14 w-40 text-white rounded-lg shadow-lg">
                                         <MdArrowDropUp className="absolute -bottom-5 left-10 text-[#16182B] text-[48px]" />
                                         <div className="py-5 px-3 bg-[#16182B] w-[140px] rounded-xl">
-                                            <button
-                                                onClick={() => {
-                                                    setOpenDropdown(null);
-                                                    setIsSignInModalOpen(true);
-                                                }}
+  {(token && token !== "null" && token !== "undefined") ? (
+    <>
+      <button
+        onClick={() => {
+          setOpenDropdown(null);
+          // Bu yerda kabinetga yo'naltirish funksiyasi yoki modal ochilishi bo'lishi mumkin
+        }}
+        className="block w-full text-center bg-white text-blue-600 font-bold border-b-2 px-5"
+      >
+        Cabinet
+      </button>
+    </>
+  ) : (
+    <>
+      <button
+        onClick={() => {
+          setOpenDropdown(null);
+          setIsSignInModalOpen(true);
+        }}
+        className="block w-full mb-3 text-center bg-white text-blue-600 font-bold border-b-2 px-5"
+      >
+        Sign In
+      </button>
+      <button
+        onClick={() => {
+          setOpenDropdown(null);
+          setIsModalOpen(true); // Modalni ochish
+        }}
+        className="block w-full border border-blue-600 text-center font-bold px-5"
+      >
+        Register
+      </button>
+    </>
+  )}
+</div>
 
-                                                className="block w-full mb-3 text-center bg-white text-blue-600 font-bold border-b-2 px-5"
-                                            >
-                                                Sign In
-                                            </button>
-                                            <button
-                                                onClick={() => {
-                                                    setOpenDropdown(null);
-                                                    setIsModalOpen(true); // Modalni ochish
-                                                }}
-                                                className="block w-full border border-blue-600 text-center font-bold px-5"
-                                            >
-                                                Register
-                                            </button>
-                                        </div>
                                     </div>
                                 )}
                             </div>
