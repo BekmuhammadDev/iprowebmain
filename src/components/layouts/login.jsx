@@ -11,56 +11,57 @@ const Login = ({
   setShowPassword,
   setIsModalOpen,
 }) => {
-  const navigate =useNavigate()
+  const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [usernameError, setUsernameError] = useState("");
   const [passwordError, setPasswordError] = useState("");
-  
-  const login = async () => {
-    if (!username || !password) {
-      if (!username) setUsernameError("Username kiritilmadi");
-      if (!password) setPasswordError("Parol kiritilmadi");
+
+const login = async () => {
+  if (!username || !password) {
+    if (!username) setUsernameError("Email kiritilmadi");
+    if (!password) setPasswordError("Parol kiritilmadi");
+    return;
+  }
+
+  setUsernameError("");
+  setPasswordError("");
+
+  try {
+    const data = { username, password };
+    const res = await axios.post(
+      "https://ipro.javohir-dev.uz/api/auth/login",
+      data,
+      {
+        headers: { "Content-Type": "application/json" },
+      }
+    );
+
+    if ([200, 201, 204].includes(res.status)) {
+        const token = res?.data?.data?.resToken?.body;  // tokenni olamiz
+      // Tokenni localStorage ga saqlash (token joyini backendga qarab tekshiring)
+      localStorage.setItem("token", token);
+
+      setIsSignInModalOpen(false);
+      navigate("/user");
+    }
+  } catch (err) {
+    const message = err.response?.data?.message || err.message;
+
+    if (message.includes("OAuth")) {
+      alert("Bu email OAuth orqali ro'yxatdan o'tgan. Iltimos, Google bilan davom eting.");
+      window.location.href = "https://ipro.javohir-dev.uz/oauth2/authorization/google";
       return;
     }
 
-    setUsernameError("");
-    setPasswordError("");
-
-    try {
-      const data = { username, password };
-      console.log("Yuborilmoqda:", data);
-
-      const res = await axios.post(
-        "https://ipro.javohir-dev.uz/api/auth/login",
-        data,
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-
-      console.log(res.data);
-
-      if ([200, 201, 204].includes(res.status)) {
-        setIsSignInModalOpen(false);
-       
-        navigate("/user")
-      }
-    } catch (err) {
-      console.error("Xatolik:", err.response?.data || err.message);
-
-      if (err.response?.status === 401) {
-        alert("Login yoki parol noto‘g‘ri!");
-      } else {
-        alert(
-          "Login muvaffaqiyatsiz: " +
-            (err.response?.data?.message || err.message)
-        );
-      }
+    if (err.response?.status === 401) {
+      alert("Login yoki parol noto‘g‘ri!");
+    } else {
+      alert("Login muvaffaqiyatsiz: " + message);
     }
-  };
+  }
+};
+
 
   return (
     <div className="fixed inset-0 flex items-center h-[100vh] px-5 justify-center bg-black bg-opacity-50 z-50">
@@ -75,14 +76,11 @@ const Login = ({
           >
             <IoMdClose fontSize={28} />
           </button>
-          <h2 className="text-white text-[40px] font-bold text-center">
-            Sign In
-          </h2>
-
+          <h2 className="text-white text-[40px] font-bold text-center">Sign In</h2>
 
           <input
             className="w-full px-5 h-[49px] my-4 border rounded bg-gray-800 border-[#0086EE] text-white"
-            placeholder="Username"
+            placeholder="Email"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
           />
@@ -92,21 +90,17 @@ const Login = ({
             <input
               className="w-full px-5 h-[49px] my-2 border rounded bg-gray-800 border-[#0086EE] text-white pr-10"
               type={showPassword ? "text" : "password"}
-              placeholder="Password"
+              placeholder="Parol"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-          {passwordError && <p className="text-red-500 mt-[-5px]">{passwordError}</p>}
+            {passwordError && <p className="text-red-500 mt-[-5px]">{passwordError}</p>}
             <button
               type="button"
               className="absolute top-[10%] right-4 text-gray-400"
               onClick={() => setShowPassword(!showPassword)}
             >
-              {showPassword ? (
-                <AiOutlineEyeInvisible size={24} />
-              ) : (
-                <AiOutlineEye size={24} />
-              )}
+              {showPassword ? <AiOutlineEyeInvisible size={24} /> : <AiOutlineEye size={24} />}
             </button>
           </div>
 
@@ -129,7 +123,7 @@ const Login = ({
 
           <button
             className="w-full flex items-center justify-center gap-2 bg-white text-black font-semibold p-2 mt-4 rounded drop-shadow-[0_5px_15px_rgba(0,112,244,0.8)] hover:bg-gray-100 transition"
-            onClick={() => window.location.href = "https://ipro.javohir-dev.uz/oauth2/authorization/google"}
+            onClick={() => (window.location.href = "https://ipro.javohir-dev.uz/oauth2/authorization/google")}
           >
             <img
               src="https://developers.google.com/identity/images/g-logo.png"
@@ -158,4 +152,3 @@ const Login = ({
 };
 
 export default Login;
-
