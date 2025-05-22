@@ -139,7 +139,7 @@
                             <LangDropdown openDropdown={openDropdown} setOpenDropdown={setOpenDropdown} />
 
                             {/* Notifications Dropdown */}
-                            <div className='relative dropdown'>
+                            {/* <div className='relative dropdown'>
                                 <button onClick={() => setOpenDropdown(openDropdown === "notif" ? null : "notif")}>
                                     <FaBell fontSize={25} className='text-white' />
                                 </button>
@@ -152,10 +152,10 @@
                                         </div>
                                     </div>
                                 )}
-                            </div>
+                            </div> */}
 
                             {/* User Dropdown */}
-                            <div className="relative dropdown">
+                            {/* <div className="relative dropdown">
                                 <button onClick={() => setOpenDropdown(openDropdown === "user" ? null : "user")}>
                                     <IoPersonOutline fontSize={25} color="white" className="hidden md:block" />
                                 </button>
@@ -197,7 +197,7 @@
 
                                     </div>
                                 )}
-                            </div>
+                            </div> */}
 
                             {/* Modal Sign In */}
                             {isSignInModalOpen && (
@@ -225,14 +225,14 @@
                         transition-transform duration-300 ${menuOpen ? "translate-x-0" : "translate-x-full"} ${isScrolled ? "backdrop-blur-lg bg-transparent" : "bg-transparent"}`}
                 >
                     <div className="flex justify-between items-center p-5">
-                        <div className="items-center gap-3">
+                        {/* <div className="items-center gap-3">
                             <img
                                 src={profileicon}
                                 alt="Profile"
                                 className="w-[110px] h-[110px] rounded-full border-2 border-gray-500"
                             />
                             <h2 className="text-xl font-bold mt-4">Jane Robertson</h2>
-                        </div>
+                        </div> */}
 
                         <button onClick={() => setMenuOpen(false)} className="text-3xl">
                             <IoClose />
@@ -249,7 +249,7 @@
                             { name: t("services"), icon: <FaTasks />, path: "/services" },
                             { name: t("careers"), icon: <FaBriefcase />, path: "/careers" },
                             // { name: "Orders", icon: <FaShoppingBag />, path: "/orders" },
-                            { name: "My Orders", icon: <FaListAlt />, path: "/user" },
+                            // { name: "My Orders", icon: <FaListAlt />, path: "/user" },
                         ].map((item, index) => (
                             <NavLink
                                 key={index}
