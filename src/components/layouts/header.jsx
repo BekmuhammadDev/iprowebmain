@@ -9,10 +9,14 @@
     import IproRegisterLogo from "../../assets/images/iproLogoRegister.png"
     import profileicon from "../../assets/images/profileicon.png"
     import { IoMdClose } from "react-icons/io";
+    import {
+  FaUser, FaShoppingBag, FaSignOutAlt,
+} from "react-icons/fa";
+import { GrGroup } from "react-icons/gr";
+import { IoHome } from "react-icons/io5";
+import { MdLanguage } from "react-icons/md";
     import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
     import { FcGoogle } from "react-icons/fc";
-    import { IoHome } from "react-icons/io5";
-    import { GrGroup } from "react-icons/gr";
     import LangDropdown from "../langdropdown/langdropdown"
     import { useTranslation } from "react-i18next";
     import "../../i18";
@@ -21,6 +25,8 @@
     import Login from './login';
     import Register from './register';
     import TestModeBanner from "../ui/testmodebanner"
+import axios from 'axios';
+import { h1 } from 'framer-motion/client';
     AOS.init();
     const Header = () => {
         const token =localStorage.getItem("token")
@@ -32,6 +38,7 @@
         const [isModalOpen, setIsModalOpen] = useState(false);
         const [isSignInModalOpen, setIsSignInModalOpen] = useState(false);
         const [showPassword, setShowPassword] = useState(false);
+        const [user, setUser] = useState(null);
 
         useEffect(() => {
             const handleClickOutside = (event) => {
@@ -91,6 +98,66 @@
             }
         };
         //////////////////////////////////////////
+const handleSignOut = async () => {
+  try {
+    if (!token) {
+      console.error("Token topilmadi.");
+      return;
+    }
+
+    const response = await axios.post(
+      "https://ipro.javohir-dev.uz/api/auth/logout",
+      {}, // POST body bo'sh
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+
+    // Agar muvaffaqiyatli bo‘lsa
+    if (response.status === 200) {
+      localStorage.removeItem("token");
+      window.location.href = "/"; // yoki navigate("/login")
+    }
+  } catch (error) {
+    console.error("Logoutda xatolik:", error.response?.status || error.message);
+  }
+};
+  const [open, setOpen] = useState(false);
+  const [selected, setSelected] = useState("Language");
+
+  const handleSelect = (lang) => {
+    setSelected(lang);
+    setOpen(false);
+    // Agar tilni saqlamoqchi bo‘lsangiz, bu yerga logika yozing
+  };
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const token = localStorage.getItem("token"); // tokenni localStorage'dan olamiz
+        if (!token) return;
+
+        const response = await axios.get("https://ipro.javohir-dev.uz/api/auth/getMe", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        setUser(response.data); // foydalanuvchi malumotlarini saqlash
+      } catch (error) {
+        console.error("Foydalanuvchini olishda xatolik:", error);
+      }
+    };
+
+    fetchUser();
+  }, []);
+
+  const truncateName = (name, maxLength = 7) => {
+    if (!name) return "Loading...";
+    return name.length > maxLength ? name.slice(0, maxLength) + "..." : name;
+  };
 
         return (
            <>
@@ -139,7 +206,7 @@
                             <LangDropdown openDropdown={openDropdown} setOpenDropdown={setOpenDropdown} />
 
                             {/* Notifications Dropdown */}
-                            {/* <div className='relative dropdown'>
+                            <div className='relative dropdown'>
                                 <button onClick={() => setOpenDropdown(openDropdown === "notif" ? null : "notif")}>
                                     <FaBell fontSize={25} className='text-white' />
                                 </button>
@@ -152,10 +219,10 @@
                                         </div>
                                     </div>
                                 )}
-                            </div> */}
+                            </div> 
 
                             {/* User Dropdown */}
-                            {/* <div className="relative dropdown">
+                             <div className="relative dropdown">
                                 <button onClick={() => setOpenDropdown(openDropdown === "user" ? null : "user")}>
                                     <IoPersonOutline fontSize={25} color="white" className="hidden md:block" />
                                 </button>
@@ -165,12 +232,26 @@
                                         <MdArrowDropUp className="absolute -bottom-5 left-10 text-[#16182B] text-[48px]" />
                                         <div className="py-5 px-3 bg-[#16182B] w-[140px] rounded-xl">
       {token ? (
+         <div className="relative">
+      {/* Uchburchak */}
+
+        <h2 className="font-bold text-lg mb-2">Hi, {truncateName(user?.fullName || "Loading...")}</h2>
+        <hr className="border-gray-500 my-2" />
         <button
-          onClick={()=>navigate("/user")}
-          className="block w-full text-center bg-white text-blue-600 font-bold border-b-2 px-5"
+          onClick={() => navigate("/user")}
+          className="block w-full text-left text-white text-lg py-1 hover:underline"
         >
-          Cabinet
+          My Profile
         </button>
+       
+        <hr className="border-gray-500 my-2" />
+        <button
+        onClick={handleSignOut}
+          className="block w-full text-left text-red-500 text-lg font-semibold hover:underline"
+        >
+          Sign Out
+        </button>
+      </div>
       ) : (
         <>
           <button
@@ -197,7 +278,7 @@
 
                                     </div>
                                 )}
-                            </div> */}
+                            </div>
 
                             {/* Modal Sign In */}
                             {isSignInModalOpen && (
@@ -220,52 +301,101 @@
                 </nav>
 
                 {/* Fullscreen Mobile Menu */}
-                <div
-                    className={`fixed w-full sm:w-96 sm:right-0 bg-gray-900/80 backdrop-blur-lg h-full text-white flex flex-col 
-                        transition-transform duration-300 ${menuOpen ? "translate-x-0" : "translate-x-full"} ${isScrolled ? "backdrop-blur-lg bg-transparent" : "bg-transparent"}`}
-                >
-                    <div className="flex justify-between items-center p-5">
-                        {/* <div className="items-center gap-3">
-                            <img
-                                src={profileicon}
-                                alt="Profile"
-                                className="w-[110px] h-[110px] rounded-full border-2 border-gray-500"
-                            />
-                            <h2 className="text-xl font-bold mt-4">Jane Robertson</h2>
-                        </div> */}
+                 <div className={`fixed w-full sm:w-96 sm:right-0 bg-[#0d1128] text-white h-full z-50 transition-transform duration-300 ${menuOpen ? "translate-x-0" : "translate-x-full"}`}>
+      <div className="p-6 flex justify-between items-start">
+        <div className="flex flex-col items-center text-center">
+          <img
+            src={profileicon}
+            alt="Profile"
+            className="w-[110px] h-[110px] rounded-full border-2 border-gray-500"
+          />
+          {!token?"":
+          <h2 className="text-lg font-bold mt-4">Hi, {truncateName(user?.fullName || "")}</h2>
+          }
+        </div>
+        <button
+          onClick={() => setMenuOpen(false)}
+          className="text-3xl text-white"
+        >
+          <IoClose />
+        </button>
+      </div>
 
-                        <button onClick={() => setMenuOpen(false)} className="text-3xl">
-                            <IoClose />
-                        </button>
-                    </div>
-
-                    <ul className="flex flex-col items-start pl-5 mt-6 space-y-2">
-                        {[
-                            { name: t("home"), icon: <IoHome />, path: "/" },
-                            // { name: "Profile", icon: <FaUser />, path: "/profile" },
-                            { name: t("about"), icon: <FaBriefcase />, path: "/aboutus" },
-                            { name: t("team"), icon: <GrGroup />, path: "/team" },
-                            { name: t("portfolio"), icon: <FaBriefcase />, path: "/portfolio" },
-                            { name: t("services"), icon: <FaTasks />, path: "/services" },
-                            { name: t("careers"), icon: <FaBriefcase />, path: "/careers" },
-                            // { name: "Orders", icon: <FaShoppingBag />, path: "/orders" },
-                            // { name: "My Orders", icon: <FaListAlt />, path: "/user" },
-                        ].map((item, index) => (
-                            <NavLink
-                                key={index}
-                                to={item.path}
-                                className="flex items-center gap-3 text-xl relative group transition w-full py-3"
-                                onClick={() => setMenuOpen(false)}
-                            >
-                                {item.icon}
-                                {item.name}
-
-                                <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-blue-400 transition-all duration-300 group-hover:w-full"></span>
-                                <span className="absolute top-0 left-0 w-0 h-[2px] bg-blue-400 transition-all duration-300 group-hover:w-full"></span>
-                            </NavLink>
-                        ))}
-                    </ul>
-                </div>
+      <ul className="mt-4 px-6 space-y-2 text-[17px] font-medium">
+       {!token ?  <h1>regisetr</h1>  :  <li>
+          <NavLink to="/user" className="flex items-center gap-3 py-2 hover:text-blue-400" onClick={() => setMenuOpen(false)}>
+            <FaUser /> Profile
+          </NavLink>
+        </li> }
+        <li>
+          <NavLink to="/aboutus" className="flex items-center gap-3 py-2 hover:text-blue-400" onClick={() => setMenuOpen(false)}>
+            <FaBriefcase /> About Us
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/team" className="flex items-center gap-3 py-2 hover:text-blue-400" onClick={() => setMenuOpen(false)}>
+            <GrGroup /> Team
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/portfolio" className="flex items-center gap-3 py-2 hover:text-blue-400" onClick={() => setMenuOpen(false)}>
+            <FaBriefcase /> Portfolio
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/services" className="flex items-center gap-3 py-2 hover:text-blue-400" onClick={() => setMenuOpen(false)}>
+            <FaTasks /> Services
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/careers" className="flex items-center gap-3 py-2 hover:text-blue-400" onClick={() => setMenuOpen(false)}>
+            <FaBriefcase /> Careers
+          </NavLink>
+        </li>
+        <li>
+          <div className="relative">
+          
+      <div
+        className="flex ml-[-2px] items-center gap-3 py-2 hover:text-blue-400 cursor-pointer"
+        onClick={() => setOpen(!open)}
+      >
+        <MdLanguage size={26}/> <h3 className='text-xl'>{selected}</h3>
+      </div>
+      {open && (
+        <ul className="absolute bg-white text-black mt-2 rounded shadow-md w-40 z-10">
+          <li
+            onClick={() => handleSelect("Uzbek")}
+            className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+          >
+            Uzbek
+          </li>
+          <li
+            onClick={() => handleSelect("English")}
+            className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+          >
+            English
+          </li>
+          <li
+            onClick={() => handleSelect("Russian")}
+            className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+          >
+            Russian
+          </li>
+        </ul>
+      )}
+    </div>
+        </li>
+         
+       {!token?"":  <li>
+          <button
+            onClick={handleSignOut}
+            className="flex items-center gap-3 py-2 text-red-500 hover:underline"
+          >
+            <FaSignOutAlt /> Sign Out
+          </button>
+        </li> }
+      </ul>
+    </div>
 
 
             </header>
