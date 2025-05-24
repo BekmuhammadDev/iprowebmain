@@ -1,27 +1,27 @@
 import { useState } from "react";
-import { FaUserCircle, FaShoppingCart } from "react-icons/fa";
+import { FaUserCircle, FaShoppingCart, FaClipboardList, FaCamera } from "react-icons/fa";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { NavLink } from "react-router-dom";
 import logo from "../../assets/icons/Logo.svg";
 import { IoMdNotificationsOutline } from "react-icons/io";
 import { TbMoneybag } from "react-icons/tb";
-import { FaClipboardList } from "react-icons/fa";
-import { IoClose, IoEye, IoEyeOff } from "react-icons/io5";
 import { LuLayoutDashboard } from "react-icons/lu";
+import { IoClose, IoEye, IoEyeOff } from "react-icons/io5";
 import Request from "./request";
 import Orders from "./orders";
 import Layout from "./layout";
-import { FaCamera } from "react-icons/fa";
-import Logouser from "../../assets/icons/userpanellog.svg"
+import Logouser from "../../assets/icons/userpanellog.svg";
+import { HiMenuAlt3 } from "react-icons/hi";
 
 const AdminDashboard = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [showRepeatPassword, setShowRepeatPassword] = useState(false);
-
   const [profilePic, setProfilePic] = useState(null);
   const [hover, setHover] = useState(false);
+  const [activePage, setActivePage] = useState("orders");
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const handleImageUpload = (event) => {
     const file = event.target.files[0];
@@ -31,181 +31,202 @@ const AdminDashboard = () => {
     }
   };
 
-  // Hozir qaysi sahifa ochilganligini saqlaydi
-  const [activePage, setActivePage] = useState("orders"); // Boshlang'ich holat Orders
-
   return (
-    <div className="flex h-screen text-white sticky">
+    <div className="flex h-screen text-white">
       {/* Sidebar */}
-      <div className="w-[365px] h-full bg-[#292d32] p-6 text-white">
-        <NavLink to={"/"} >
-          <img src={logo} alt="Logo" className="text-xl font-bold mb-14 mt-10 ml-10" />
+      <div
+        className={`fixed z-50 md:static top-0 left-0 h-full bg-[#292d32] w-72 p-6 transition-transform duration-300 ${
+          sidebarOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"
+        }`}
+      >
+        <NavLink to={"/"}>
+          <img src={logo} alt="Logo" className="text-xl font-bold mb-14 mt-10 ml-4" />
         </NavLink>
-        <p className="text-2xl font-semibold mb-4 ml-10">John Doe</p>
-        <ul className="ml-10">
+        <p className="text-2xl font-semibold mb-4 ml-4">John Doe</p>
+        <ul className="ml-4 space-y-2">
           <button
-            className={`flex items-center gap-2 p-2 rounded-lg w-full ${activePage === "orders" ? "text-blue-500" : "hover:bg-gray-700"}`}
-            onClick={() => setActivePage("orders")}
+            className={`flex items-center gap-2 p-2 rounded-lg w-full ${
+              activePage === "orders" ? "text-blue-500" : "hover:bg-gray-700"
+            }`}
+            onClick={() => {
+              setActivePage("orders");
+              setSidebarOpen(false);
+            }}
           >
             <FaShoppingCart /> Orders
           </button>
 
           <button
-            className={`flex items-center gap-2 p-2 rounded-lg w-full ${activePage === "requests" ? "text-blue-500" : "hover:bg-gray-700"}`}
-            onClick={() => setActivePage("requests")}
+            className={`flex items-center gap-2 p-2 rounded-lg w-full ${
+              activePage === "requests" ? "text-blue-500" : "hover:bg-gray-700"
+            }`}
+            onClick={() => {
+              setActivePage("requests");
+              setSidebarOpen(false);
+            }}
           >
             <FaClipboardList /> My requests
           </button>
 
           <button
-            className={`flex items-center gap-2 p-2 rounded-lg w-full ${activePage === "layout" ? "text-blue-500" : "hover:bg-gray-700"}`}
-            onClick={() => setActivePage("layout")}
+            className={`flex items-center gap-2 p-2 rounded-lg w-full ${
+              activePage === "layout" ? "text-blue-500" : "hover:bg-gray-700"
+            }`}
+            onClick={() => {
+              setActivePage("layout");
+              setSidebarOpen(false);
+            }}
           >
             <LuLayoutDashboard /> Layout
           </button>
-
         </ul>
       </div>
 
       {/* Main Content */}
-      <div className="w-auto flex-1 bg-[#323232] h-full text-white">
-        {/* Sticky Navbar */}
-        <div className=" top-0 bg-[#292d32] p-4 shadow-md flex justify-end items-center z-10 gap-10">
-          <div className="flex justify-center items-center space-x-4">
-            <IoMdNotificationsOutline className="w-[40px] h-[40px] border border-white rounded-full p-2 cursor-pointer" />
-            <TbMoneybag className="w-[40px] h-[40px] border border-white rounded-full p-2 cursor-pointer" />
-          </div>
-          <div className="relative gap-4 flex">
-            <button className="flex items-center space-x-2 focus:outline-none" onClick={() => setDropdownOpen(!dropdownOpen)}>
-              John Doe <IoMdArrowDropdown />
+      <div className="flex-1 bg-[#323232] overflow-y-auto">
+        {/* Top Navbar */}
+        <div className="flex justify-between items-center p-4 bg-[#292d32] sticky top-0 z-30 shadow-md">
+  {/* Menu Icon on Mobile */}
+  <button
+    className="text-white text-2xl md:hidden"
+    onClick={() => setSidebarOpen(!sidebarOpen)}
+  >
+    <HiMenuAlt3 />
+  </button>
+
+  {/* O'ngga tekislash uchun butun navbar tarkibini reverse qildim */}
+  <div className="flex items-center gap-4 ml-auto">
+    {/* Profile */}
+    <div className="relative flex items-center gap-2">
+      <button
+        className="flex items-center space-x-2"
+        onClick={() => setDropdownOpen(!dropdownOpen)}
+      >
+        {/* John Doe matni o‘ngga tekislangan */}
+        <span className="block text-right">John Doe</span>
+        <IoMdArrowDropdown />
+      </button>
+
+      <div
+        className="relative w-10 h-10 rounded-full overflow-hidden cursor-pointer"
+        onMouseEnter={() => setHover(true)}
+        onMouseLeave={() => setHover(false)}
+      >
+        {profilePic ? (
+          <img src={profilePic} alt="Profile" className="w-full h-full object-cover" />
+        ) : (
+          <FaUserCircle className="w-full h-full text-gray-400" />
+        )}
+        {hover && (
+          <label className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center cursor-pointer">
+            <FaCamera className="text-white text-lg" />
+            <input type="file" className="hidden" accept="image/*" onChange={handleImageUpload} />
+          </label>
+        )}
+      </div>
+
+      {/* Dropdown */}
+      {dropdownOpen && (
+        <div className="absolute top-12 right-0 bg-[#292d32] w-40 rounded-md shadow-md z-50">
+          <button
+            onClick={() => {
+              setDropdownOpen(false);
+              setModalOpen(true);
+            }}
+            className="w-full text-left px-4 py-2 hover:bg-gray-700"
+          >
+            Edit profile
+          </button>
+          <hr className="border-white" />
+          <NavLink to={"/"}>
+            <button className="w-full text-left px-4 py-2 hover:bg-gray-700">
+              Sign out
             </button>
-            <div
-              className="relative w-12 h-12 rounded-full overflow-hidden cursor-pointer"
-              onMouseEnter={() => setHover(true)}
-              onMouseLeave={() => setHover(false)}
-            >
-              {profilePic ? (
-                <img src={profilePic} alt="Profile" className="w-full h-full object-cover" />
-              ) : (
-                <FaUserCircle className="w-full h-full text-gray-400" />
-              )}
-              {hover && (
-                <label className="absolute  inset-0 bg-black bg-opacity-50 flex items-center justify-center cursor-pointer">
-                  <FaCamera className="text-white text-lg" />
-                  <input type="file" className="hidden" accept="image/*" onChange={handleImageUpload} />
-                </label>
-              )}
-            </div>
-
-
-            {dropdownOpen && (
-              <div className="absolute top-10 right-10 mt-2 bg-gray-800 p-2 rounded-lg shadow-lg w-32">
-                <button
-                  className="block w-full text-left p-2 hover:bg-gray-700"
-                  onClick={() => {
-                    setDropdownOpen(false); // Dropdown yopiladi
-                    setModalOpen(true); // Modal ochiladi
-                  }}
-                >
-                  Edit profile
-                </button>
-                <NavLink to={"/"}>
-                  <button className="block w-full text-left mt-2 p-2 bg-red-600 rounded-md">
-                    Sign out
-                  </button>
-                </NavLink>
-              </div>
-            )}
-
-
-          </div>
+          </NavLink>
         </div>
+      )}
+    </div>
 
+    <IoMdNotificationsOutline className="w-10 h-10 border border-white rounded-full p-2 cursor-pointer" />
+    <TbMoneybag className="w-10 h-10 border border-white rounded-full p-2 cursor-pointer" />
+  </div>
+</div>
+
+
+        {/* Modal */}
         {modalOpen && (
-          <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-md z-50">
-            <div className="bg-[#292d32] p-10 rounded-lg shadow-lg w-[763px]">
-              <div className="flex items-center justify-between mb-10">
-                <h2 className="text-3xl font-semibold text-white">Profile</h2>
-                <button className="text-3xl" onClick={() => setModalOpen(false)}>
+          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+            <div className="bg-[#292d32] p-6 rounded-lg w-full max-w-3xl">
+              <div className="flex justify-between items-center mb-6">
+                <h2 className="text-2xl">Profile</h2>
+                <button onClick={() => setModalOpen(false)} className="text-2xl">
                   <IoClose />
                 </button>
               </div>
-              <div className="grid grid-cols-2 gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <label>
-                  <h1>Full name</h1>
+                  <p>Full name</p>
                   <input
                     type="text"
+                    className="w-full p-3 bg-gray-700 rounded-md mt-1"
                     placeholder="Full Name"
-                    className="w-full p-3 mb-3 bg-gray-700 rounded-md "
-                    autoComplete="off"
                   />
                 </label>
                 <label>
-                  <h1>Phone</h1>
+                  <p>Phone</p>
                   <input
                     type="number"
+                    className="w-full p-3 bg-gray-700 rounded-md mt-1"
                     placeholder="Number"
-                    className="w-full p-3 mb-3 bg-gray-700 rounded-md"
-                    autoComplete="off"
                   />
                 </label>
-                {/* Password Input */}
                 <label className="relative">
-                  <h1>Password</h1>
+                  <p>Password</p>
                   <input
                     type={showPassword ? "text" : "password"}
+                    className="w-full p-3 pr-10 bg-gray-700 rounded-md mt-1"
                     placeholder="New Password"
-                    className="w-full p-3 pr-10 bg-gray-700 rounded-md"
-                    autoComplete="off"
                   />
                   <button
-                    type="button"
-                    className="absolute inset-y-0 right-3 flex top-6 items-center text-white"
+                    className="absolute top-10 right-3"
                     onClick={() => setShowPassword(!showPassword)}
+                    type="button"
                   >
-                    {showPassword ? <IoEyeOff size={20} /> : <IoEye size={20} />}
+                    {showPassword ? <IoEyeOff /> : <IoEye />}
                   </button>
                 </label>
-                {/* Repeat Password Input */}
                 <label className="relative">
-                  <h1>Repeat password</h1>
+                  <p>Repeat password</p>
                   <input
                     type={showRepeatPassword ? "text" : "password"}
+                    className="w-full p-3 pr-10 bg-gray-700 rounded-md mt-1"
                     placeholder="Confirm Password"
-                    className="w-full p-3 pr-10 bg-gray-700 autofill:bg-gray-700 rounded-md"
-                    autoComplete="off"
                   />
                   <button
-                    type="button"
-                    className="absolute inset-y-0 right-3 top-6 flex items-center text-white"
+                    className="absolute top-10 right-3"
                     onClick={() => setShowRepeatPassword(!showRepeatPassword)}
+                    type="button"
                   >
-                    {showRepeatPassword ? <IoEyeOff size={20} /> : <IoEye size={20} />}
+                    {showRepeatPassword ? <IoEyeOff /> : <IoEye />}
                   </button>
                 </label>
               </div>
-              <div className="flex justify-center mt-8">
-                <button className="w-full py-3 bg-blue-500 rounded-md">Edit Profile</button>
-              </div>
+              <button className="w-full mt-6 py-3 bg-blue-500 rounded-md">Edit Profile</button>
             </div>
           </div>
         )}
 
-        {/* Sahifa tarkibi */}
-        <div className="p-6 ">
+        {/* Main Content */}
+        <div className="p-4">
           {activePage === "orders" && <Orders />}
           {activePage === "requests" && <Request />}
           {activePage === "layout" && <Layout />}
         </div>
 
-        <div className="absolute top-[300px] right-0 z-[1]">
+        <div className="absolute top-[300px] right-0 z-[1] hidden lg:block">
           <img src={Logouser} alt="" />
         </div>
-
       </div>
-
-
-
     </div>
   );
 };

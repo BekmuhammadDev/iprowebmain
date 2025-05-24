@@ -13,12 +13,10 @@ const Request = () => {
       hour: "2-digit", 
       minute: "2-digit", 
       second: "2-digit",
-      hour12: false, // 24 soat formatida chiqishi uchun
+      hour12: false,
     });
   };
-  
 
-  // Statusni o'zgartirish
   const handleStatusChange = (index, newStatus) => {
     const updatedRequests = [...tempRequests];
     updatedRequests[index].status = newStatus;
@@ -26,7 +24,6 @@ const Request = () => {
     setTempRequests(updatedRequests);
   };
 
-  // Cashbackni o'zgartirish
   const handleCashbackChange = (index, newCashback) => {
     const updatedRequests = [...tempRequests];
     updatedRequests[index].cashback = newCashback;
@@ -34,7 +31,6 @@ const Request = () => {
     setTempRequests(updatedRequests);
   };
 
-  // O'zgarishlarni tasdiqlash
   const handleConfirmChanges = (index) => {
     const updatedRequests = [...requests];
     updatedRequests[index] = { ...tempRequests[index] };
@@ -42,7 +38,6 @@ const Request = () => {
     setTempRequests(updatedRequests);
   };
 
-  // Requestni o‘chirish
   const handleDeleteRequest = (index) => {
     const updatedRequests = requests.filter((_, i) => i !== index);
     setRequests(updatedRequests);
@@ -51,32 +46,32 @@ const Request = () => {
 
   return (
     <div className="p-5">
-      <div className=" p-4 rounded-lg flex justify-between">
+      <div className="p-4 rounded-lg flex justify-between items-center">
         <h2 className="text-3xl font-normal">Requests Table</h2>
       </div>
 
-      {/* Table */}
-      <div className="mt-4 bg-[#292d32] relative px-4 rounded-lg z-50 shadow-lg">
+      {/* Responsive table wrapper */}
+      <div className="mt-4 bg-[#292d32] px-4 rounded-lg shadow-lg overflow-x-auto">
         <div className="max-h-[537px] overflow-y-auto">
-          <table className="w-full">
+          <table className="w-full min-w-[700px]">
             <thead className="border-b border-white sticky top-0 bg-[#292d32] z-10">
               <tr>
-                <th className="p-4 text-left">Number request</th>
-                <th className="p-4 text-left">Topic</th>
-                <th className="p-4 text-left">Date</th>
-                <th className="p-4 text-left">Last updated</th>
-                <th className="p-4 text-left">Status</th>
-                <th className="p-4 text-left">Cashback</th>
-                <th className="p-4 text-left">Actions</th>
+                <th className="p-4 text-left whitespace-nowrap">Number request</th>
+                <th className="p-4 text-left whitespace-nowrap">Topic</th>
+                <th className="p-4 text-left whitespace-nowrap">Date</th>
+                <th className="p-4 text-left whitespace-nowrap">Last updated</th>
+                <th className="p-4 text-left whitespace-nowrap">Status</th>
+                <th className="p-4 text-left whitespace-nowrap">Cashback</th>
+                <th className="p-4 text-left whitespace-nowrap">Actions</th>
               </tr>
             </thead>
             <tbody>
               {tempRequests.map((req, index) => (
                 <tr key={index} className="border-b-2 border-gray-600">
-                  <td className="p-4">{req.id}</td>
-                  <td className="p-4">{req.topic}</td>
-                  <td className="p-4">{req.date}</td>
-                  <td className="p-4">{req.updated}</td>
+                  <td className="p-4 whitespace-nowrap">{req.id}</td>
+                  <td className="p-4 whitespace-nowrap">{req.topic}</td>
+                  <td className="p-4 whitespace-nowrap">{req.date}</td>
+                  <td className="p-4 whitespace-nowrap">{req.updated}</td>
                   <td className="p-4">
                     <select
                       value={req.status}
@@ -92,16 +87,15 @@ const Request = () => {
                       <option value="Rejected" className="bg-gray-700 text-red-600">Rejected</option>
                     </select>
                   </td>
-                  <td className="p-4">
+                  <td className="p-4 whitespace-nowrap">
                     <input
                       type="number"
                       value={req.cashback}
                       onChange={(e) => handleCashbackChange(index, e.target.value)}
                       className="p-2 w-20 bg-gray-700 rounded-md"
-                    />
-                    $
+                    />$
                   </td>
-                  <td className="p-4 flex gap-2">
+                  <td className="p-4 flex gap-2 whitespace-nowrap">
                     <button 
                       className="px-2 py-1 bg-green-500 rounded-md text-white"
                       onClick={() => handleConfirmChanges(index)}

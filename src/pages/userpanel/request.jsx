@@ -21,7 +21,7 @@ const Request = () => {
         </h2>
       </div>
 
-      <div className="mt-2 bg-[#292d32] px-4 rounded-lg relative z-50 shadow-lg">
+      <div className="mt-2 bg-[#292d32] px-4 rounded-lg shadow-lg">
         <div className="max-h-[520px] overflow-y-auto">
           <table className="w-full">
             <thead className="border-b border-white sticky top-0 bg-[#292d32] z-10">
