@@ -13,15 +13,15 @@ const Request = () => {
   };
 
   return (
-    <div className="p-14">
-      <div className="mt-6 p-4 rounded-lg flex justify-between">
+    <div className="p-10">
+      <div className="p-4 rounded-lg flex justify-between">
         <h2 className="text-3xl font-normal">Request list</h2>
         <h2 className="text-3xl font-normal">
           Total cashback: ${requests.reduce((acc, req) => acc + req.cashback, 0)}
         </h2>
       </div>
 
-      <div className="mt-4 bg-[#292d32] px-4 rounded-lg relative z-50 shadow-lg">
+      <div className="mt-2 bg-[#292d32] px-4 rounded-lg relative z-50 shadow-lg">
         <div className="max-h-[520px] overflow-y-auto">
           <table className="w-full">
             <thead className="border-b border-white sticky top-0 bg-[#292d32] z-10">

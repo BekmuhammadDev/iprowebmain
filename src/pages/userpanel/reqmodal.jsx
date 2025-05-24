@@ -4,7 +4,7 @@ const RequestModal = ({ order, onClose }) => {
     console.log(order);
     
     return (
-        <div className="absolute top-40  z-50 flex items-center  left-96 justify-center ">
+        <div className="absolute top-20  z-50 flex items-center  left-96 justify-center ">
             <div className=" text-white  p-8 rounded-xl bg-[#323232] w-full h-full animate-fade-in">
 
                 <h2 className="text-gray-600">

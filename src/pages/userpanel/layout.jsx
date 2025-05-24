@@ -51,7 +51,7 @@ const Request = () => {
 
   return (
     <div className="p-5">
-      <div className="mt-6 p-4 rounded-lg flex justify-between">
+      <div className=" p-4 rounded-lg flex justify-between">
         <h2 className="text-3xl font-normal">Requests Table</h2>
       </div>
 

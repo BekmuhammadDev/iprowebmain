@@ -245,7 +245,7 @@ const Header = () => {
                           }}
                           className="block w-full border border-blue-600 text-center font-bold px-5"
                         >
-                          Register
+                          Sign Up
                         </button>
                       </>
                     )}
