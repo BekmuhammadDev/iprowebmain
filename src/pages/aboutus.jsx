@@ -379,7 +379,7 @@ const aboutus = () => {
                     </div>
                 </section>
 
-                <section className="container mx-auto px-4 sm:px-6 lg:px-10 mb-80">
+                <section className="container mx-auto px-4 sm:px-6 lg:px-10 mb-40">
                     {/* Title Section */}
                     <div className="flex flex-col lg:flex-row justify-between items-center text-white mt-40 mb-10 gap-6 text-center lg:text-left">
                         <img

@@ -71,109 +71,168 @@ const vacansy = () => {
 
                             <hr />
 
-                            <div className='flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4' data-aos="fade-up" data-aos-delay="300">
+                  <div className='flex flex-col lg:flex-row items-center lg:items-center px-2 justify-between gap-4' data-aos="fade-up" data-aos-delay="300">
+  
+  {/* Ish vaqti ma'lumotlari - markazga telefon versiyasida */}
+  <div className='flex flex-row sm:flex-col gap-6 mt-5 py-5 items-center sm:items-start'>
+    <div className='flex gap-3 items-center' data-aos="fade-right" data-aos-delay="400">
+      <FaCalendarAlt className='text-white text-xl' />
+      <h2 className='text-white text-xs font-normal'>Monday-Saturday</h2>
+    </div>
+    <div className='flex gap-3 items-center' data-aos="fade-right" data-aos-delay="500">
+      <FaClock className='text-white text-xl' />
+      <h2 className='text-white text-xs font-normal'>09:00-18:00</h2>
+    </div>
+  </div>
 
-                                <div className='flex flex-col sm:flex-row gap-6 mt-5 py-5'>
-                                    <div className='flex gap-3 items-center' data-aos="fade-right" data-aos-delay="400">
-                                        <FaCalendarAlt className='text-white text-xl' />
-                                        <h2 className='text-white text-xs font-normal'>{vacansy.schedule}</h2>
-                                    </div>
-                                    <div className='flex gap-3 items-center' data-aos="fade-right" data-aos-delay="500">
-                                        <FaClock className='text-white text-xl' />
-                                        <h2 className='text-white text-xs font-normal'>{vacansy.time}</h2>
-                                    </div>
-                                </div>
+  {/* Ijtimoiy tarmoqlar - markazga telefon versiyasida */}
+  <div className="flex justify-center lg:justify-start gap-4 mt-3 mb-1 lg:mb-0" data-aos="zoom-in-up" data-aos-delay="600">
+    <FaTelegramPlane className="text-2xl sm:text-3xl text-white cursor-pointer hover:text-blue-500 transition" />
+    <FaInstagram className="text-2xl sm:text-3xl text-white cursor-pointer hover:text-pink-500 transition" />
+    <FaFacebookF className="text-2xl sm:text-3xl text-white cursor-pointer hover:text-blue-600 transition" />
+    <FaYoutube className="text-2xl sm:text-3xl text-white cursor-pointer hover:text-red-500 transition" />
+    <FaWhatsapp className="text-2xl sm:text-3xl text-white cursor-pointer hover:text-green-500 transition" />
+  </div>
 
-                                <div className="flex justify-start gap-4 mt-3" data-aos="zoom-in-up" data-aos-delay="600">
-                                    <FaTelegramPlane className="text-2xl sm:text-3xl text-white cursor-pointer hover:text-blue-500 transition" />
-                                    <FaInstagram className="text-2xl sm:text-3xl text-white cursor-pointer hover:text-pink-500 transition" />
-                                    <FaFacebookF className="text-2xl sm:text-3xl text-white cursor-pointer hover:text-blue-600 transition" />
-                                    <FaYoutube className="text-2xl sm:text-3xl text-white cursor-pointer hover:text-red-500 transition" />
-                                    <FaWhatsapp className="text-2xl sm:text-3xl text-white cursor-pointer hover:text-green-500 transition" />
-                                </div>
+</div>
 
-                            </div>
                         </div>
                     </div>
                 </section>
 
 
-                {showModal && (
-                    <div className="fixed inset-0 bg-black bg-opacity-80 z-50 flex items-center justify-center p-4">
-                        <div className="bg-[#16182B] w-full max-w-4xl rounded-lg p-6 relative">
-                            {/* Close button */}
-                            <button
-                                onClick={() => setShowModal(false)}
-                                className="absolute -top-[550px] right-4 text-3xl text-white"
-                            >
-                                <IoMdClose />
-                            </button>
+            {showModal && (
+  <div className="fixed inset-0 bg-black bg-opacity-80 z-50 flex items-center justify-center p-4">
+    <div className="bg-[#16182B] w-full max-w-4xl rounded-lg p-6 relative max-h-[90vh] overflow-y-auto">
+      {/* Close button */}
+     <button
+  onClick={() => setShowModal(false)}
+  className="relotive right-4 text-3xl text-white hover:text-red-500 transition top-[-550px]"
+  aria-label="Close modal"
+>
+  <IoMdClose />
+</button>
 
-                            {/* Form */}
-                            <form className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                                <div>
-                                    <label htmlFor="fullName" className="block text-xl text-white font-medium mb-1">Full Name</label>
-                                    <input id="fullName" type="text" placeholder="Full Name" className="border p-2 w-full rounded-md" required />
-                                </div>
-                                <div>
-                                    <label htmlFor="phone" className="block text-xl text-white font-medium mb-1">Phone</label>
-                                    <input id="phone" type="text" placeholder="Phone" className="border p-2 w-full rounded-md" required />
-                                </div>
-                                <div>
-                                    <label htmlFor="address" className="block text-xl text-white font-medium mb-1">Address</label>
-                                    <input id="address" type="text" placeholder="Address" className="border p-2 w-full rounded-md" required />
-                                </div>
-                                <div>
-                                    <label htmlFor="workTime" className="block text-xl text-white font-medium mb-1">Work Time</label>
-                                    <input id="workTime" type="text" placeholder="Work Time" className="border p-2 w-full rounded-md" required />
-                                </div>
-                                <div>
-                                    <label htmlFor="vacancy" className="block text-xl text-white font-medium mb-1">Vacancy Type</label>
-                                    <input id="vacancy" type="text" placeholder="Vacancy Type" className="border p-2 w-full rounded-md" defaultValue={vacansy.title} required />
-                                </div>
-                                <div>
-                                    <label htmlFor="level" className="block text-xl text-white font-medium mb-1">Level</label>
-                                    <input id="level" type="text" placeholder="Level" className="border p-2 w-full rounded-md" required />
-                                </div>
-                                <div>
-                                    <label htmlFor="salary" className="block text-xl text-white font-medium mb-1">Salary</label>
-                                    <input id="salary" type="text" placeholder="Salary" className="border p-2 w-full rounded-md" required />
-                                </div>
-                                <div>
-                                    <label htmlFor="portfolio" className="block text-xl text-white font-medium mb-1">Portfolio Link</label>
-                                    <input id="portfolio" type="text" placeholder="Portfolio Link" className="border p-2 w-full rounded-md" required />
-                                </div>
 
-                                {/* CV Upload */}
-                                <div className="col-span-1 sm:col-span-2">
-                                    <label htmlFor="cv" className="block text-xl text-white font-medium mb-2">Upload CV/Resume</label>
-                                    <div className="relative">
-                                        <input
-                                            id="cv"
-                                            type="file"
-                                            className="hidden"
-                                            required
-                                        />
-                                        <label
-                                            htmlFor="cv"
-                                            className="w-full cursor-pointer text-center bg-[#999999] text-white px-6 py-3 flex rounded-md font-semibold transition justify-center gap-3 items-center"
-                                        >
-                                            Upload CV/Resume <FaFileDownload />
-                                        </label>
-                                    </div>
-                                </div>
+      {/* Form */}
+      <form className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div>
+          <label htmlFor="fullName" className="block text-xl text-white font-medium mb-1">Full Name</label>
+          <input
+            id="fullName"
+            type="text"
+            placeholder="Full Name"
+            className="border border-gray-600 p-2 w-full rounded-md bg-[#1E2238] text-white focus:outline-none focus:ring-2 focus:ring-[#0086EE]"
+            required
+          />
+        </div>
+        <div>
+          <label htmlFor="phone" className="block text-xl text-white font-medium mb-1">Phone</label>
+          <input
+            id="phone"
+            type="tel"
+            placeholder="Phone"
+            className="border border-gray-600 p-2 w-full rounded-md bg-[#1E2238] text-white focus:outline-none focus:ring-2 focus:ring-[#0086EE]"
+            required
+          />
+        </div>
+        <div>
+          <label htmlFor="address" className="block text-xl text-white font-medium mb-1">Address</label>
+          <input
+            id="address"
+            type="text"
+            placeholder="Address"
+            className="border border-gray-600 p-2 w-full rounded-md bg-[#1E2238] text-white focus:outline-none focus:ring-2 focus:ring-[#0086EE]"
+            required
+          />
+        </div>
+        <div>
+          <label htmlFor="workTime" className="block text-xl text-white font-medium mb-1">Work Time</label>
+          <input
+            id="workTime"
+            type="text"
+            placeholder="Work Time"
+            className="border border-gray-600 p-2 w-full rounded-md bg-[#1E2238] text-white focus:outline-none focus:ring-2 focus:ring-[#0086EE]"
+            required
+          />
+        </div>
+        <div>
+          <label htmlFor="vacancy" className="block text-xl text-white font-medium mb-1">Vacancy Type</label>
+          <input
+            id="vacancy"
+            type="text"
+            placeholder="Vacancy Type"
+            className="border border-gray-600 p-2 w-full rounded-md bg-[#1E2238] text-white focus:outline-none focus:ring-2 focus:ring-[#0086EE]"
+            defaultValue={vacansy.title}
+            required
+          />
+        </div>
+        <div>
+          <label htmlFor="level" className="block text-xl text-white font-medium mb-1">Level</label>
+          <input
+            id="level"
+            type="text"
+            placeholder="Level"
+            className="border border-gray-600 p-2 w-full rounded-md bg-[#1E2238] text-white focus:outline-none focus:ring-2 focus:ring-[#0086EE]"
+            required
+          />
+        </div>
+        <div>
+          <label htmlFor="salary" className="block text-xl text-white font-medium mb-1">Salary</label>
+          <input
+            id="salary"
+            type="text"
+            placeholder="Salary"
+            className="border border-gray-600 p-2 w-full rounded-md bg-[#1E2238] text-white focus:outline-none focus:ring-2 focus:ring-[#0086EE]"
+            required
+          />
+        </div>
+        <div>
+          <label htmlFor="portfolio" className="block text-xl text-white font-medium mb-1">Portfolio Link</label>
+          <input
+            id="portfolio"
+            type="url"
+            placeholder="Portfolio Link"
+            className="border border-gray-600 p-2 w-full rounded-md bg-[#1E2238] text-white focus:outline-none focus:ring-2 focus:ring-[#0086EE]"
+            required
+          />
+        </div>
 
-                                {/* Submit Button */}
-                                <div className="col-span-1 sm:col-span-2 flex w-full mt-4">
-                                    <button type="submit" className="bg-[#fff] text-[#0086EE] w-full px-6 py-2 rounded-md font-semibold drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]">
-                                        Apply now
-                                    </button>
-                                </div>
-                            </form>
+        {/* CV Upload */}
+        <div className="col-span-1 sm:col-span-2">
+          <label htmlFor="cv" className="block text-xl text-white font-medium mb-2">Upload CV/Resume</label>
+          <div className="relative">
+            <input
+              id="cv"
+              type="file"
+              className="hidden"
+              required
+              accept=".pdf,.doc,.docx"
+            />
+            <label
+              htmlFor="cv"
+              className="w-full cursor-pointer text-center bg-[#999999] text-white px-6 py-3 flex rounded-md font-semibold transition justify-center gap-3 items-center hover:bg-gray-700"
+            >
+              Upload CV/Resume <FaFileDownload />
+            </label>
+          </div>
+        </div>
 
-                        </div>
-                    </div>
-                )}
+        {/* Submit Button */}
+        <div className="col-span-1 sm:col-span-2 flex w-full mt-4">
+          <button
+            type="submit"
+            className="bg-white text-[#0086EE] w-full px-6 py-2 rounded-md font-semibold drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)] hover:bg-[#e6f0ff] transition"
+          >
+            Apply now
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+)}
+
+
 
                 <section className='mt-20' data-aos="fade-up" data-aos-duration="1000">
                     <div className='container mx-auto px-4 sm:px-6 md:px-10 py-10 sm:py-16 md:py-20'>
