@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaUserCircle, FaShoppingCart, FaClipboardList, FaCamera } from "react-icons/fa";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { NavLink } from "react-router-dom";
@@ -12,8 +12,10 @@ import Orders from "./orders";
 import Layout from "./layout";
 import Logouser from "../../assets/icons/userpanellog.svg";
 import { HiMenuAlt3 } from "react-icons/hi";
+import axios from "axios";
 
 const AdminDashboard = () => {
+  const [user,setUser]=useState([])
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
@@ -31,6 +33,24 @@ const AdminDashboard = () => {
     }
   };
 
+  useEffect(() => {
+      const fetchUser = async () => {
+        try {
+          const token = localStorage.getItem("token");
+          if (!token) return;
+  
+          const response = await axios.get("https://ipro.javohir-dev.uz/api/auth/getMe", {
+            headers: { Authorization: `Bearer ${token}` },
+          });
+  
+          setUser(response.data);
+        } catch (error) {
+          console.error("Foydalanuvchini olishda xatolik:", error);
+        }
+      };
+      fetchUser();
+    }, []);
+
   return (
     <div className="flex h-screen text-white">
       {/* Sidebar */}
@@ -42,7 +62,7 @@ const AdminDashboard = () => {
         <NavLink to={"/"}>
           <img src={logo} alt="Logo" className="text-xl font-bold mb-14 mt-10 ml-4" />
         </NavLink>
-        <p className="text-2xl font-semibold mb-4 ml-4">John Doe</p>
+        <p className="text-2xl font-semibold mb-4 ml-4"></p>
         <ul className="ml-4 space-y-2">
           <button
             className={`flex items-center gap-2 p-2 rounded-lg w-full ${
@@ -103,7 +123,7 @@ const AdminDashboard = () => {
         onClick={() => setDropdownOpen(!dropdownOpen)}
       >
         {/* John Doe matni o‘ngga tekislangan */}
-        <span className="block text-right">John Doe</span>
+        <span className="block text-right">{user?.fullName}</span>
         <IoMdArrowDropdown />
       </button>
 
@@ -173,11 +193,11 @@ const AdminDashboard = () => {
                   />
                 </label>
                 <label>
-                  <p>Phone</p>
+                  <p>Username</p>
                   <input
                     type="number"
                     className="w-full p-3 bg-gray-700 rounded-md mt-1"
-                    placeholder="Number"
+                    placeholder="Username"
                   />
                 </label>
                 <label className="relative">

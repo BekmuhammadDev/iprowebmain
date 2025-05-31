@@ -9,6 +9,8 @@ import Footer from '../components/layouts/footer';
 import { useParams } from 'react-router-dom';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import axios from 'axios';
+
 
 const jobData = {
     'motion-designer': { title: "Motion Designer", schedule: "Monday-Saturday", time: "09:00-18:00" },
@@ -23,6 +25,78 @@ const jobData = {
 };
 
 const vacansy = () => {
+    const [formData, setFormData] = useState({
+    fullName: '',
+    phoneNumber: '',
+    workTime: '',
+    level: '',
+    salary: '',
+    portfolioLink: '',
+    resume: null,
+  });
+   const handleChange = (e) => {
+    const { name, value, type, files } = e.target;
+    if (type === 'file') {
+      setFormData({ ...formData, [name]: files[0] });
+    } else {
+      setFormData({ ...formData, [name]: value });
+    }
+  };
+    const handleFileChange = (e) => {
+    setFormData({ ...formData, resume: e.target.files[0] });
+  };
+
+  const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  if (!formData.resume) {
+    alert('Resume fayli tanlanmadi!');
+    return;
+  }
+
+  const resumeFormData = new FormData();
+  resumeFormData.append('file', formData.resume);
+
+  try {
+    const uploadRes = await axios.post(
+      'https://ipro.javohir-dev.uz/api/attachments/upload',
+      resumeFormData,
+      {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      }
+    );
+
+    const resumeId = uploadRes.data; // bu `string` bo'lishi kerak
+    console.log("Resume ID:", resumeId);
+
+    const careerData = {
+  fullName: formData.fullName,
+  phoneNumber: formData.phoneNumber,
+  workTime: formData.workTime,
+  level: formData.level,
+  salary: parseFloat(formData.salary) || 0,
+  portfolioLink: formData.portfolioLink,
+  resume: resumeId // ⚠️ endi `resume` bo'lishi kerak!
+};
+
+
+    console.log("Career data:", careerData);
+
+    const response = await axios.post(
+      'https://ipro.javohir-dev.uz/api/career',
+      careerData
+    );
+
+    console.log(response.data);
+    alert('Arizangiz muvaffaqiyatli yuborildi!');
+  } catch (error) {
+    console.error('Xatolik yuz berdi:', error);
+    alert('Xatolik yuz berdi. Iltimos, qayta urinib ko‘ring.');
+  }
+};
+
 
     const { slug } = useParams();
     const vacansy = jobData[slug];
@@ -115,119 +189,126 @@ const vacansy = () => {
 
 
       {/* Form */}
-      <form className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-        <div>
-          <label htmlFor="fullName" className="block text-xl text-white font-medium mb-1">Full Name</label>
-          <input
-            id="fullName"
-            type="text"
-            placeholder="Full Name"
-            className="border border-gray-600 p-2 w-full rounded-md bg-[#1E2238] text-white focus:outline-none focus:ring-2 focus:ring-[#0086EE]"
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor="phone" className="block text-xl text-white font-medium mb-1">Phone</label>
-          <input
-            id="phone"
-            type="tel"
-            placeholder="Phone"
-            className="border border-gray-600 p-2 w-full rounded-md bg-[#1E2238] text-white focus:outline-none focus:ring-2 focus:ring-[#0086EE]"
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor="address" className="block text-xl text-white font-medium mb-1">Address</label>
-          <input
-            id="address"
-            type="text"
-            placeholder="Address"
-            className="border border-gray-600 p-2 w-full rounded-md bg-[#1E2238] text-white focus:outline-none focus:ring-2 focus:ring-[#0086EE]"
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor="workTime" className="block text-xl text-white font-medium mb-1">Work Time</label>
-          <input
-            id="workTime"
-            type="text"
-            placeholder="Work Time"
-            className="border border-gray-600 p-2 w-full rounded-md bg-[#1E2238] text-white focus:outline-none focus:ring-2 focus:ring-[#0086EE]"
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor="vacancy" className="block text-xl text-white font-medium mb-1">Vacancy Type</label>
-          <input
-            id="vacancy"
-            type="text"
-            placeholder="Vacancy Type"
-            className="border border-gray-600 p-2 w-full rounded-md bg-[#1E2238] text-white focus:outline-none focus:ring-2 focus:ring-[#0086EE]"
-            defaultValue={vacansy.title}
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor="level" className="block text-xl text-white font-medium mb-1">Level</label>
-          <input
-            id="level"
-            type="text"
-            placeholder="Level"
-            className="border border-gray-600 p-2 w-full rounded-md bg-[#1E2238] text-white focus:outline-none focus:ring-2 focus:ring-[#0086EE]"
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor="salary" className="block text-xl text-white font-medium mb-1">Salary</label>
-          <input
-            id="salary"
-            type="text"
-            placeholder="Salary"
-            className="border border-gray-600 p-2 w-full rounded-md bg-[#1E2238] text-white focus:outline-none focus:ring-2 focus:ring-[#0086EE]"
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor="portfolio" className="block text-xl text-white font-medium mb-1">Portfolio Link</label>
-          <input
-            id="portfolio"
-            type="url"
-            placeholder="Portfolio Link"
-            className="border border-gray-600 p-2 w-full rounded-md bg-[#1E2238] text-white focus:outline-none focus:ring-2 focus:ring-[#0086EE]"
-            required
-          />
-        </div>
+       <form onSubmit={handleSubmit} className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+      <div>
+        <label htmlFor="fullName" className="block text-xl text-white font-medium mb-1">Full Name</label>
+        <input
+          id="fullName"
+          name="fullName"
+          type="text"
+          value={formData.fullName}
+          onChange={handleChange}
+          placeholder="Full Name"
+          className="border border-gray-600 p-2 w-full rounded-md bg-[#1E2238] text-white focus:outline-none focus:ring-2 focus:ring-[#0086EE]"
+          required
+        />
+      </div>
 
-        {/* CV Upload */}
-        <div className="col-span-1 sm:col-span-2">
-          <label htmlFor="cv" className="block text-xl text-white font-medium mb-2">Upload CV/Resume</label>
-          <div className="relative">
-            <input
-              id="cv"
-              type="file"
-              className="hidden"
-              required
-              accept=".pdf,.doc,.docx"
-            />
-            <label
-              htmlFor="cv"
-              className="w-full cursor-pointer text-center bg-[#999999] text-white px-6 py-3 flex rounded-md font-semibold transition justify-center gap-3 items-center hover:bg-gray-700"
-            >
-              Upload CV/Resume <FaFileDownload />
-            </label>
-          </div>
-        </div>
+      <div>
+        <label htmlFor="phoneNumber" className="block text-xl text-white font-medium mb-1">Phone</label>
+        <input
+          id="phoneNumber"
+          name="phoneNumber"
+          type="tel"
+          value={formData.phoneNumber}
+          onChange={handleChange}
+          placeholder="Phone"
+          className="border border-gray-600 p-2 w-full rounded-md bg-[#1E2238] text-white focus:outline-none focus:ring-2 focus:ring-[#0086EE]"
+          required
+        />
+      </div>
 
-        {/* Submit Button */}
-        <div className="col-span-1 sm:col-span-2 flex w-full mt-4">
-          <button
-            type="submit"
-            className="bg-white text-[#0086EE] w-full px-6 py-2 rounded-md font-semibold drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)] hover:bg-[#e6f0ff] transition"
+      <div>
+        <label htmlFor="workTime" className="block text-xl text-white font-medium mb-1">Work Time</label>
+        <select
+          id="workTime"
+          name="workTime"
+          value={formData.workTime}
+          onChange={handleChange}
+          className="border border-gray-600 p-2 w-full rounded-md bg-[#1E2238] text-white focus:outline-none focus:ring-2 focus:ring-[#0086EE]"
+          required
+        >
+          <option value="ONLINE">ONLINE</option>
+          <option value="OFFLINE">OFFLINE</option>
+        </select>
+      </div>
+
+      <div>
+        <label htmlFor="level" className="block text-xl text-white font-medium mb-1">Level</label>
+        <select
+          id="level"
+          name="level"
+          value={formData.level}
+          onChange={handleChange}
+          className="border border-gray-600 p-2 w-full rounded-md bg-[#1E2238] text-white focus:outline-none focus:ring-2 focus:ring-[#0086EE]"
+          required
+        >
+          <option value="JUNIOR">JUNIOR</option>
+          <option value="STRONG_JUNIOR">STRONG JUNIOR</option>
+          <option value="MIDDLE">MIDDLE</option>
+          <option value="STRONG_MIDDLE">STRONG MIDDLE</option>
+          <option value="SENIOR">SENIOR</option>
+        </select>
+      </div>
+
+      <div>
+        <label htmlFor="salary" className="block text-xl text-white font-medium mb-1">Salary</label>
+        <input
+          id="salary"
+          name="salary"
+          type="number"
+          value={formData.salary}
+          onChange={handleChange}
+          placeholder="Salary"
+          className="border border-gray-600 p-2 w-full rounded-md bg-[#1E2238] text-white focus:outline-none focus:ring-2 focus:ring-[#0086EE]"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="portfolioLink" className="block text-xl text-white font-medium mb-1">Portfolio Link</label>
+        <input
+          id="portfolioLink"
+          name="portfolioLink"
+          type="url"
+          value={formData.portfolioLink}
+          onChange={handleChange}
+          placeholder="Portfolio Link"
+          className="border border-gray-600 p-2 w-full rounded-md bg-[#1E2238] text-white focus:outline-none focus:ring-2 focus:ring-[#0086EE]"
+          required
+        />
+      </div>
+
+      <div className="col-span-1 sm:col-span-2">
+        <label htmlFor="resume" className="block text-xl text-white font-medium mb-2">Upload CV/Resume</label>
+        <div className="relative">
+          <input
+            id="resume"
+            name="resumeFile"
+            type="file"
+            className="hidden"
+            onChange={handleFileChange}
+            accept=".pdf,.doc,.docx"
+            required
+          />
+          <label
+            htmlFor="resume"
+            className="w-full cursor-pointer text-center bg-[#999999] text-white px-6 py-3 flex rounded-md font-semibold transition justify-center gap-3 items-center hover:bg-gray-700"
           >
-            Apply now
-          </button>
+            Upload CV/Resume <FaFileDownload />
+          </label>
         </div>
-      </form>
+      </div>
+
+      <div className="col-span-1 sm:col-span-2 flex w-full mt-4">
+        <button
+          type="submit"
+          className="bg-white text-[#0086EE] w-full px-6 py-2 rounded-md font-semibold drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)] hover:bg-[#e6f0ff] transition"
+        >
+          Apply now
+        </button>
+      </div>
+    </form>
     </div>
   </div>
 )}
