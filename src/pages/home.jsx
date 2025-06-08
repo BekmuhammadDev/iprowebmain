@@ -108,9 +108,9 @@ const aboutus = () => {
 
             {/* <Primary t={t} handleCardClick={handleCardClick} Video={Video} /> */}
 
-            {/* <Scroller t={t} Video={Video} Logocloud={Logocloud}/> */}
+            <Scroller t={t} Video={Video} Logocloud={Logocloud}/>
 
-            {/* <section className=" overflow-hidden">    
+            <section className=" overflow-hidden ">    
                 <div
                     className=" container mx-auto md:max-w-none 2xl:max-w-none"
                     data-aos="flip-up"
@@ -118,9 +118,9 @@ const aboutus = () => {
                 >
                     <TestimonialSlider />
                 </div>
-            </section> */}
+            </section>
 
-         <section className="bg-[#16182B] overflow-hidden">
+         <section className="bg-[#16182B]  overflow-hidden">
   <div className="container mx-auto px-5 xl:px-0">
     {/* Sarlavha */}
     <h1 className="text-white text-[32px] sm:text-[48px] xl:text-[80px] font-black leading-[1.1] text-center md:text-left drop-shadow-[0_5px_10px_rgba(0,112,244,0.8)]"
@@ -183,7 +183,7 @@ const aboutus = () => {
     </div>
 
     {/* Karusel qismi */}
-    <div className="relative z-20 -mt-14 sm:-mt-16 md:-mt-20">
+    <div className="relative z-2 -mt-14 sm:-mt-16 md:-mt-20">
   <div className="overflow-hidden w-full">
     <div className="flex gap-4 sm:gap-6 animate-scroll whitespace-nowrap hover:[animation-play-state:paused] backdrop-blur-sm bg-white/10 p-2 sm:p-4 rounded-xl w-max min-w-full">
       {[...teamMembers, ...teamMembers, ...teamMembers].map((member, index) => (
@@ -231,7 +231,7 @@ const aboutus = () => {
 
 
   </div>
-</section>
+          </section>
 
 
 
@@ -239,7 +239,7 @@ const aboutus = () => {
 
 
 
-            <section className="text-white px-10 pt-[81px] pb-[74px] overflow-hidden">
+            <section className="text-white   px-10 pt-[81px] pb-[74px] overflow-hidden">
                 <div className="container mx-auto">
                     <h1
                         className="text-[48px] md:text-[100px] uppercase mb-10 md:mb-0 font-black text-center drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]"
