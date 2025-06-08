@@ -127,7 +127,7 @@ const Header = () => {
   <>
     <TestModeBanner />
 
-    <header className={`w-full py-4 fixed top-0 h-20 z-40 text-white flex transition-all duration-300 bg-[#0A0F1F]`}>
+<header className={`w-full py-4 fixed top-0 h-20 z-40 text-white flex transition-all duration-300 backdrop-blur-md bg-[#0A0F1F]/70`}>
       <nav
         data-aos="flip-up"
         data-aos-duration="1200"
@@ -205,8 +205,7 @@ const Header = () => {
               </button>
 
               {openDropdown === "user" && (
-                <div className="absolute top-12 -left-14 w-40 text-white rounded-lg shadow-lg">
-                  <MdArrowDropUp className="absolute -bottom-5 left-10 text-[#16182B] text-[48px]" />
+                <div className="absolute top-12 -left-20 w-40 text-white rounded-lg shadow-lg">
                   <div className="py-5 px-3 bg-[#16182B] w-[140px] rounded-xl">
 
                     {token ? (
