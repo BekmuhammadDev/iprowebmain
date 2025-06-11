@@ -59,6 +59,7 @@ const aboutus = () => {
         AOS.init({ duration: 1000, once: true });
     }, []);
 
+  
     const [openIndex, setOpenIndex] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedIssue, setSelectedIssue] = useState('');
@@ -108,9 +109,9 @@ const aboutus = () => {
 
             {/* <Primary t={t} handleCardClick={handleCardClick} Video={Video} /> */}
 
-            <Scroller t={t} Video={Video} Logocloud={Logocloud}/>
+            {/* <Scroller t={t} Video={Video} Logocloud={Logocloud}/> */}
 
-            <section className=" overflow-hidden ">    
+            {/* <section className=" overflow-hidden ">    
                 <div
                     className=" container mx-auto md:max-w-none 2xl:max-w-none"
                     data-aos="flip-up"
@@ -118,7 +119,7 @@ const aboutus = () => {
                 >
                     <TestimonialSlider />
                 </div>
-            </section>
+            </section> */}
 
          <section className="bg-[#16182B]  overflow-hidden">
   <div className="container mx-auto px-5 xl:px-0">
@@ -235,10 +236,6 @@ const aboutus = () => {
 
 
 
-
-
-
-
             <section className="text-white   px-10 pt-[81px] pb-[74px] overflow-hidden">
                 <div className="container mx-auto">
                     <h1
@@ -279,6 +276,11 @@ const aboutus = () => {
                     </div>
                 </div>
             </section>
+
+
+
+
+            
 
             <section className="pt-10 px-10 md:pt-20 overflow-hidden">
   <div className="relative top-[600px]">

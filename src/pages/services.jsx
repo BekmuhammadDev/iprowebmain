@@ -113,7 +113,7 @@ const Services = () => {
                     {t("services")}
                 </h1>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <div className="grid grid-cols-1 mb-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                     {servicesList.map((service, index) => (
                         <div
                             key={index}
