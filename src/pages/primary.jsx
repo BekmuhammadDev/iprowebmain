@@ -1,257 +1,151 @@
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useLayoutEffect, useRef } from "react";
+"use client";
 
-gsap.registerPlugin(ScrollTrigger);
+import { useEffect, useRef } from "react";
+import * as THREE from "three";
+import { gsap } from "gsap";
+import yeru from "../assets/yerdiusto.jpg"; // Kunduzgi yer rasmi
+import yer from "../assets/yeror.jpg";      // Tungi yer rasmi
 
-const Primary = ({ t, Video }) => {
-  const videoRef = useRef(null);
-  const contentRef = useRef(null);
-  const leftImgRef = useRef(null);
-  const rightImgRef = useRef(null);
-  const topImgRef = useRef(null);
-  const bottomImgRef = useRef(null);
-  const bottomRightImgRef = useRef(null);
-  const containerRef = useRef(null);
+const CreativeEarth = () => {
+  const canvasRef = useRef(null);
+  const textRef = useRef(null);
 
-  useLayoutEffect(() => {
-    let ctx = null;
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color(0x000011);
 
-    const setupAnimation = () => {
-      if (window.innerWidth < 1280) {
-        if (ctx) {
-          ctx.revert();
-          ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-          ctx = null;
+    const camera = new THREE.PerspectiveCamera(
+      60,
+      window.innerWidth / window.innerHeight,
+      0.1,
+      1000
+    );
+    camera.position.z = 7;
+
+    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(window.devicePixelRatio);
+
+    const textureLoader = new THREE.TextureLoader();
+    const dayMap = textureLoader.load(yeru);
+    const nightMap = textureLoader.load(yer);
+
+    const earthMaterial = new THREE.MeshPhongMaterial({
+      map: dayMap,
+      emissiveMap: nightMap,
+      emissive: new THREE.Color(0x111133),
+      emissiveIntensity: 0.4,
+      shininess: 5,
+    });
+
+    const earth = new THREE.Mesh(
+      new THREE.SphereGeometry(2.5, 64, 64),
+      earthMaterial
+    );
+    earth.position.x = 1.2;
+    scene.add(earth);
+
+    const cloudMaterial = new THREE.MeshPhongMaterial({
+      map: textureLoader.load("https://i.imgur.com/JLFp6Ws.png"),
+      transparent: true,
+      opacity: 0.2,
+      depthWrite: false,
+    });
+    const clouds = new THREE.Mesh(new THREE.SphereGeometry(2.53, 64, 64), cloudMaterial);
+    earth.add(clouds);
+
+    const atmosphereMaterial = new THREE.ShaderMaterial({
+      vertexShader: `
+        varying vec3 vNormal;
+        void main() {
+          vNormal = normalize(normalMatrix * normal);
+          gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
         }
-        return;
-      }
+      `,
+      fragmentShader: `
+        varying vec3 vNormal;
+        void main() {
+          float intensity = pow(0.9 - dot(vNormal, vec3(0, 0, 1.0)), 6.0);
+          gl_FragColor = vec4(0.2, 0.5, 1.0, 1.0) * intensity;
+        }
+      `,
+      side: THREE.BackSide,
+      transparent: true,
+      blending: THREE.AdditiveBlending,
+    });
+    const atmosphere = new THREE.Mesh(
+      new THREE.SphereGeometry(2.7, 64, 64),
+      atmosphereMaterial
+    );
+    atmosphere.position.x = 1.2;
+    scene.add(atmosphere);
 
-      if (!ctx) {
-        ctx = gsap.context(() => {
-          const video = videoRef.current;
-          const content = contentRef.current;
-          const leftImg = leftImgRef.current;
-          const rightImg = rightImgRef.current;
-          const topImg = topImgRef.current;
-          const bottomImg = bottomImgRef.current;
-          const bottomRightImg = bottomRightImgRef.current;
-          const container = containerRef.current;
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+    directionalLight.position.set(5, 3, 5);
+    scene.add(directionalLight);
 
-          if (!video || !content || !leftImg || !rightImg || !topImg || !bottomImg || !bottomRightImg || !container) return;
+    const ambientLight = new THREE.AmbientLight(0x222222);
+    scene.add(ambientLight);
 
-          window.scrollTo(0, 0);
+    const starsGeometry = new THREE.BufferGeometry();
+    const starCount = 3000;
+    const starVertices = new Float32Array(starCount * 3);
+    for (let i = 0; i < starCount * 3; i++) {
+      starVertices[i] = (Math.random() - 0.5) * 300;
+    }
+    starsGeometry.setAttribute("position", new THREE.BufferAttribute(starVertices, 3));
+    const starsMaterial = new THREE.PointsMaterial({ color: 0xffffff, size: 0.2 });
+    const stars = new THREE.Points(starsGeometry, starsMaterial);
+    scene.add(stars);
 
-          gsap.set([video, content], { zIndex: 50 });
-          gsap.set([leftImg, rightImg, topImg, bottomImg, bottomRightImg], { opacity: 0 });
-
-          gsap.set(video, {
-            position: "fixed",
-            top: 0,
-            left: 0,
-            width: "100vw",
-            height: "100vh",
-            objectFit: "cover",
-            zIndex: 0,
-          });
-
-          gsap.set(content, {
-            position: "fixed",
-            top: "50%",
-            left: "10%",
-            transform: "translateY(-50%)",
-            width: "35%",
-            opacity: 0,
-            x: -100,
-            zIndex: 60,
-          });
-
-          const setImage = (el, styles) => el && gsap.set(el, styles);
-
-          setImage(leftImg, {
-            x: -50,
-            position: "fixed",
-            top: "50%",
-            left: "calc(65% - 15vw - 10px)",
-            transform: "translateY(-50%)",
-            width: "15vw",
-            zIndex: 20,
-          });
-
-          setImage(rightImg, {
-            x: 50,
-            position: "fixed",
-            top: "50%",
-            left: "calc(58% + 30vw + 10px)",
-            transform: "translateY(-50%)",
-            width: "9vw",
-            zIndex: 20,
-          });
-
-          setImage(topImg, {
-            y: -50,
-            position: "fixed",
-            top: "88px",
-            left: "70%",
-            transform: "translateX(-50%)",
-            width: "15vw",
-            zIndex: 20,
-          });
-
-          setImage(bottomImg, {
-            y: 50,
-            position: "fixed",
-            top: "calc(25% + 25vh + 10px)",
-            left: "60%",
-            transform: "translateX(-50%)",
-            width: "15vw",
-            zIndex: 20,
-          });
-
-          setImage(bottomRightImg, {
-            y: 50,
-            position: "fixed",
-            top: "calc(33% + 25vh + 10px)",
-            left: "90%",
-            transform: "translateX(-50%)",
-            width: "15vw",
-            zIndex: 20,
-          });
-
-          const tl = gsap.timeline({
-            scrollTrigger: {
-              trigger: container,
-              start: "top top",
-              end: "+=1000",
-              scrub: 1,
-              pin: true,
-              invalidateOnRefresh: true,
-              id: "primary-scroll",
-            },
-          });
-
-          // Video balandligini 50vh dan 60vh ga kattaroq qildik
-          tl.to(video, {
-            width: "30vw",
-            height: "60vh", // bu yerda o'zgardi
-            top: "25%",
-            left: "60%",
-            xPercent: -10,
-            yPercent: -10,
-            objectFit: "contain",
-            zIndex: 10,
-            duration: 2,
-          });
-
-          tl.to(content, { opacity: 1, x: 0, duration: 1.5, delay: 1 }, "<");
-          tl.to(leftImg, { opacity: 1, x: 0, duration: 1 }, "<0.2");
-          tl.to(rightImg, { opacity: 1, x: 0, duration: 1 }, "<0.2");
-          tl.to(topImg, { opacity: 1, y: 0, duration: 1 }, "<0.2");
-          tl.to(bottomImg, { opacity: 1, y: 0, duration: 1 }, "<0.2");
-          tl.to(bottomRightImg, { opacity: 1, y: 0, duration: 1 }, "<0.2");
-        }, containerRef);
-      } else {
-        ScrollTrigger.refresh();
-      }
+    const animate = () => {
+      requestAnimationFrame(animate);
+      earth.rotation.y += 0.001;
+      clouds.rotation.y += 0.0015;
+      stars.rotation.y += 0.0001;
+      renderer.render(scene, camera);
     };
+    animate();
 
-    setupAnimation();
+    const handleResize = () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    };
+    window.addEventListener("resize", handleResize);
 
-    window.addEventListener("resize", setupAnimation);
+    gsap.fromTo(
+      textRef.current,
+      { opacity: 0, y: 50 },
+      { opacity: 1, y: 0, duration: 2, ease: "power3.out", delay: 0.5 }
+    );
 
     return () => {
-      window.removeEventListener("resize", setupAnimation);
-      if (ctx) {
-        ctx.revert();
-        ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-      }
+      window.removeEventListener("resize", handleResize);
+      renderer.dispose();
     };
   }, []);
 
   return (
-    <section
-      ref={containerRef}
-      className="relative min-h-screen bg-[#0A0F1F] text-white overflow-hidden"
-    >
-      {/* Video */}
-      <video
-        ref={videoRef}
-        className="pointer-events-none w-full h-auto object-cover z-0 xl:static xl:w-auto xl:h-auto xl:object-contain"
-        autoPlay
-        muted
-        loop
-        playsInline
+    <div className="relative w-full h-[100vh] bg-black overflow-hidden">
+      {/* Canvas — Yer shari */}
+      <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" />
+
+      {/* Matn qismi — Responsiv dizayn */}
+      <div
+        ref={textRef}
+        className="absolute top-1/2 left-4 sm:left-8 md:left-12 -translate-y-1/2 text-white z-10 px-2"
       >
-        <source src={Video} type="video/mp4" />
-      </video>
-
-      {/* Matnli kontent */}
-      <div ref={contentRef} className="relative z-10 p-8 xl:static">
-        <p className="text-xl lg:text-2xl font-medium">{t("premium_web_design")}</p>
-        <h1 className="text-[#0086EE] text-4xl lg:text-6xl font-bold uppercase my-4">
-          {t("brands_growth")}
+        <h1 className="text-xl sm:text-3xl md:text-5xl font-bold mb-3 leading-snug">
+          Pro Earth Experience
         </h1>
-        <p className="text-sm lg:text-xl font-medium mb-6">
-          {t("custom_websites")} <br /> {t("marketing_services")}
+        <p className="text-sm sm:text-base md:text-lg max-w-xs sm:max-w-sm md:max-w-md text-gray-300">
+          3D Yer, atmosfera va yulduzlar bilan — IT kompaniyangiz uchun zamonaviy vizual tajriba!
         </p>
-        <div className="relative w-full max-w-[400px] h-[50px] overflow-hidden border border-blue-500 rounded-lg font-lato">
-          <span className="absolute inset-0 flex items-center justify-center font-bold text-blue-400 hover:text-black text-[20px] pointer-events-none -z-10">
-            {t("speak_expert")}
-          </span>
-          <button
-            type="button"
-            className="w-full h-full flex items-center justify-center font-bold text-[#0086EE] text-[20px] bg-white z-10 border-none hover:text-white transition-colors duration-300 custom-mask-button"
-          >
-            {t("speak_expert")}
-          </button>
-        </div>
       </div>
-
-      {/* Rasmlar faqat xl ekranlar uchun */}
-      <div className="hidden xl:flex flex-wrap gap-4 mt-12 justify-center">
-        <div ref={leftImgRef} className="opacity-0 text-center">
-          <img
-            src="https://picsum.photos/id/1/200/300"
-            alt="Left"
-            className="rounded-lg shadow-xl border-2 border-white/20 w-[100px]"
-          />
-          <p>HR</p>
-        </div>
-        <div ref={rightImgRef} className="opacity-0 text-center">
-          <img
-            src="https://picsum.photos/id/2/200/300"
-            alt="Right"
-            className="rounded-lg shadow-xl border-2 border-white/20 w-[100px]"
-          />
-          <p>Mobile</p>
-        </div>
-        <div ref={topImgRef} className="opacity-0 text-center">
-          <img
-            src="https://picsum.photos/id/3/200/300"
-            alt="Top"
-            className="rounded-lg shadow-xl border-2 border-white/20 w-[100px]"
-          />
-          <p>UI/UX</p>
-        </div>
-        <div ref={bottomImgRef} className="opacity-0 text-center">
-          <img
-            src="https://picsum.photos/id/4/200/300"
-            alt="Bottom"
-            className="rounded-lg shadow-xl border-2 border-white/20 w-[100px]"
-          />
-          <p>Backend</p>
-        </div>
-        <div ref={bottomRightImgRef} className="opacity-0 text-center">
-          <img
-            src="https://picsum.photos/id/5/200/300"
-            alt="Bottom Right"
-            className="rounded-lg shadow-xl border-2 border-white/20 w-[100px]"
-          />
-          <p>Frontend</p>
-        </div>
-      </div>
-    </section>
+    </div>
   );
 };
 
-export default Primary;
+export default CreativeEarth;

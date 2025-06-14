@@ -29,6 +29,7 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import Primary from './primary';
 import Scroller from './scroller';
+import PortfolioSection from './portfolyoSection';
 
 
 gsap.registerPlugin(ScrollTrigger);
@@ -105,13 +106,13 @@ const aboutus = () => {
         
             <Header />
 
-            {/* <ScrollProgressBar /> */}
+            <ScrollProgressBar />
 
-            {/* <Primary t={t} handleCardClick={handleCardClick} Video={Video} /> */}
+            {/* <Primary t={t} handleCardClick={handleCardClick} Video={Video} />
 
-            {/* <Scroller t={t} Video={Video} Logocloud={Logocloud}/> */}
+            <Scroller t={t} Video={Video} Logocloud={Logocloud}/>
 
-            {/* <section className=" overflow-hidden ">    
+            <section className=" overflow-hidden ">    
                 <div
                     className=" container mx-auto md:max-w-none 2xl:max-w-none"
                     data-aos="flip-up"
@@ -123,19 +124,16 @@ const aboutus = () => {
 
          <section className="bg-[#16182B]  overflow-hidden">
   <div className="container mx-auto px-5 xl:px-0">
-    {/* Sarlavha */}
     <h1 className="text-white text-[32px] sm:text-[48px] xl:text-[80px] font-black leading-[1.1] text-center md:text-left drop-shadow-[0_5px_10px_rgba(0,112,244,0.8)]"
         data-aos="fade-down"
         data-aos-duration="1200">
       {t("meetyheteam")}
     </h1>
 
-    {/* Yulduz rasmi */}
     <div className="relative hidden xl:block" data-aos="fade-left" data-aos-duration="1000">
       <img className="absolute right-0 top-0" src={StarsRightImg} alt="" />
     </div>
 
-    {/* Matn + Rasm qismi */}
     <div className="mt-10 flex flex-col md:flex-row items-center gap-10 justify-between"
          data-aos="fade-up"
          data-aos-duration="1200">
@@ -234,54 +232,9 @@ const aboutus = () => {
   </div>
           </section>
 
-
-
-            <section className="text-white   px-10 pt-[81px] pb-[74px] overflow-hidden">
-                <div className="container mx-auto">
-                    <h1
-                        className="text-[48px] md:text-[100px] uppercase mb-10 md:mb-0 font-black text-center drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]"
-                        data-aos="fade-up"
-                        data-aos-duration="1200"
-                    >
-                        {t("portfolio")}
-                    </h1>
-
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 auto-rows-auto grid-flow-row-dense">
-                        {portfolioData.map((item, index) => (
-                            <div
-                                key={item.id}
-                                className={`relative overflow-hidden rounded-lg cursor-pointer shadow-md hover:shadow-[0_0_25px_10px_rgba(0,122,255,0.6)] transition-all duration-300 group ${item.style}`}
-                                data-aos="zoom-in"
-                                data-aos-delay={index * 100}
-                                data-aos-duration="1000"
-                            >
-                                {/* Rasm */}
-                                <img
-                                    src={item.img}
-                                    alt={item.title}
-                                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                                />
-
-                                {/* Sarlavha */}
-                                <div className="absolute bottom-0 left-0 p-3 text-white text-center font-bold">
-                                    {item.title}
-                                </div>
-
-                                {/* Glow Effect */}
-                                <div className="absolute inset-0 transition duration-300 opacity-0 group-hover:opacity-100">
-                                    <div className="absolute inset-0 rounded-lg border-2 shadow-lg border-blue-500 hover:shadow-[0_0_25px_10px_rgba(0,122,255,0.8)]"></div>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-
-
-
+          <PortfolioSection t={t} />
+           
             
-
             <section className="pt-10 px-10 md:pt-20 overflow-hidden">
   <div className="relative top-[600px]">
     <img className="absolute" src={StarsLeftImg} alt="" />
@@ -324,140 +277,147 @@ const aboutus = () => {
       ))}
     </div>
   </div>
-</section>
-
-
-            <section className="md:px-10 pt-[90px] mb-10 overflow-hidden">
-                <div className="relative -z-10 top-[800px]">
-                    <img className="absolute hidden md:flex bottom-0 -right-10" src={StarsRightImg} alt="" />
-                </div>
-                <div className="container mx-auto">
-                    <h1
-                        className="text-5xl text-center md:text-left md:text-[80px] font-black leading-[0.95] mb-10 text-white drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]"
-                        data-aos="fade-up"
-                    >
-                        {t("have_a_question")}
-                    </h1>
-
-                    <div
-                        id="question"
-                        className="flex flex-col lg:flex-row items-start justify-between gap-10 p-4 md:p-5"
-                        data-aos="fade-up"
-                        data-aos-delay="100"
-                    >
-                        {/* Chap tomon – FAQ */}
-                        <div
-                            className=" flex flex-col mt-24 w-full lg:w-1/2"
-                            data-aos="fade-right"
-                            data-aos-delay="200"
-                        >
-                            <div className="w-full max-w-2xl">
-                                {faqs.map((faq, index) => (
-                                    <div key={index} className="mb-3" data-aos="fade-up" data-aos-delay={index * 100}>
-                                        <button
-                                            onClick={() => toggleAccordion(index)}
-                                            className="w-full flex justify-between items-center p-5 bg-[#161b29] text-white font-semibold text-base md:text-lg rounded-lg"
-                                        >
-                                            {t(faq.question)}
-                                            {openIndex === index ? (
-                                                <FaMinus className="text-blue-400" />
-                                            ) : (
-                                                <FaPlus className="text-blue-400" />
-                                            )}
-                                        </button>
-
-                                        <div
-                                            className={`overflow-hidden transition-max-height duration-500 ease-in-out ${openIndex === index ? "max-h-40 p-5 text-white bg-[#1d2536]" : "max-h-0"
-                                                }`}
-                                        >
-                                            {t(faq.answer)}
-
-                                            {index === 0 && openIndex === 0 && (
-                                                <div className="mt-4 flex items-center group relative min-h-[48px]">
-                                                    <button
-                                                        className="bg-white text-blue-500 z-10 px-4 py-2 rounded-lg md:font-semibold drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]"
-                                                        onClick={() => openModal("Texnik muammo")}
-                                                    >
-                                                        {t("technical_issue")}
-                                                    </button>
-
-                                                    <a
-                                                        href="tel:+998999999999"
-                                                        className="absolute left-0 opacity-0 text-base md:-translate-x-10 group-hover:opacity-100 group-hover:translate-x-44 transition-all duration-500 bg-blue-500 hover:bg-black border-blue-500 border font-medium text-white px-2 md:px-4 py-2 top-1 rounded-lg"
-                                                    >
-                                                        +99899 999 99 99
-                                                    </a>
-                                                </div>
-                                            )}
-                                        </div>
-                                    </div>
-                                ))}
-
-                                {/* Modal */}
-                                {isModalOpen && (
-                                    <div className="fixed inset-0 z-50 bg-black bg-opacity-90 flex items-center justify-center">
-                                        <div
-                                            className="bg-[#0b0f19] w-full max-w-2xl p-6 rounded-2xl shadow-lg relative"
-                                            data-aos="zoom-in"
-                                        >
-                                            <button
-                                                onClick={closeModal}
-                                                className="absolute -top-[600px] md:-top-[450px] right-4 text-3xl text-white"
-                                            >
-                                                <IoMdClose />
-                                            </button>
-
-                                            <h2 className="text-xl font-bold text-white mb-4">
-                                                {t("issue")}: <span className="text-red-500">{selectedIssue}!</span>
-                                            </h2>
-
-                                            <div className="block md:flex w-full">
-                                                <div className="max-w-xl md:w-full">
-                                                    <img src={IproIMage} alt="" />
-                                                </div>
-                                                <div className="w-full">
-                                                    <form className="flex flex-col gap-4">
-                                                        <input
-                                                            type="text"
-                                                            placeholder={t("your_name")}
-                                                            className="px-4 py-2 rounded-lg bg-[#161b29] text-white placeholder-gray-400 drop-shadow-[0_5px_5px_rgba(0,112,244,0.8)]"
-                                                        />
-                                                        <input
-                                                            type="tel"
-                                                            placeholder={t("phone_number")}
-                                                            className="px-4 py-2 rounded-lg bg-[#161b29] text-white placeholder-gray-400 drop-shadow-[0_5px_5px_rgba(0,112,244,0.8)]"
-                                                        />
-                                                        <textarea
-                                                            placeholder={t("problem_details")}
-                                                            rows={4}
-                                                            className="px-4 py-2 rounded-lg bg-[#161b29] text-white placeholder-gray-400 resize-none drop-shadow-[0_5px_5px_rgba(0,112,244,0.8)]"
-                                                        ></textarea>
-                                                        <button
-                                                            type="submit"
-                                                            className="bg-[#fff] text-[#0086EE] w-full px-6 py-2 rounded-md font-semibold drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]"
-                                                        >
-                                                            {t("submit")}
-                                                        </button>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                )}
-                            </div>
-                        </div>
-
-                        {/* O'ng tomon – ContactWithMap */}
-                        <div
-                            className="relative md:top-24 flex md:justify-center w-full xl:w-1/2"
-                            data-aos="fade-left"
-                            data-aos-delay="300"
-                        >
-                            <ContactWithMap />
-                        </div>
-                    </div>
-                </div>
             </section>
+
+
+           <section className="relative w-full  pt-[90px] mb-10 overflow-hidden">
+  <div className="relative -z-10 top-[800px]">
+    <img
+      className="absolute hidden md:flex bottom-0 -right-10"
+      src={StarsRightImg}
+      alt=""
+    />
+  </div>
+  <div className="container mx-auto px-4 sm:px-6 md:px-10">
+    <h1
+      className="text-3xl sm:text-5xl md:text-[80px] text-center md:text-left font-black leading-[0.95] mb-10 text-white drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]"
+      data-aos="fade-up"
+    >
+      {t("have_a_question")}
+    </h1>
+
+    <div
+      id="question"
+      className="flex flex-col lg:flex-row items-start justify-between gap-10 p-4 md:p-5"
+      data-aos="fade-up"
+      data-aos-delay="100"
+    >
+      {/* Chap tomon – FAQ */}
+      <div
+        className="flex flex-col mt-10 w-full lg:w-1/2"
+        data-aos="fade-right"
+        data-aos-delay="200"
+      >
+        <div className="w-full">
+          {faqs.map((faq, index) => (
+            <div key={index} className="mb-3" data-aos="fade-up" data-aos-delay={index * 100}>
+              <button
+                onClick={() => toggleAccordion(index)}
+                className="w-full flex justify-between items-center p-5 bg-[#161b29] text-white font-semibold text-base md:text-lg rounded-lg"
+              >
+                {t(faq.question)}
+                {openIndex === index ? (
+                  <FaMinus className="text-blue-400" />
+                ) : (
+                  <FaPlus className="text-blue-400" />
+                )}
+              </button>
+
+              <div
+                className={`overflow-hidden transition-max-height duration-500 ease-in-out ${openIndex === index ? "max-h-40 p-5 text-white bg-[#1d2536]" : "max-h-0"}`}
+              >
+                {t(faq.answer)}
+
+                {index === 0 && openIndex === 0 && (
+                  <div className="mt-4 flex items-center group relative min-h-[48px]">
+                    <button
+                      className="bg-white text-blue-500 z-10 px-4 py-2 rounded-lg md:font-semibold drop-shadow-[0_2px_7px_rgba(0,112,244,0.8)]"
+                      onClick={() => openModal("Texnik muammo")}
+                    >
+                      {t("technical_issue")}
+                    </button>
+
+                    <a
+                      href="tel:+998999999999"
+                      className="absolute left-0 opacity-0 text-base md:-translate-x-10 group-hover:opacity-100 group-hover:translate-x-44 transition-all duration-500 bg-blue-500 hover:bg-black border-blue-500 border font-medium text-white px-2 md:px-4 py-2 top-1 rounded-lg"
+                    >
+                      +99899 999 99 99
+                    </a>
+                  </div>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* O'ng tomon – ContactWithMap */}
+      <div
+        className="relative md:top-10 flex justify-center w-full xl:w-1/2"
+        data-aos="fade-left"
+        data-aos-delay="300"
+      >
+        <ContactWithMap />
+      </div>
+    </div>
+  </div>
+
+  {/* Modal */}
+  {isModalOpen && (
+    <>
+      <style>{`body { overflow: hidden; }`}</style>
+      <div className="fixed inset-0 z-[1000] bg-black/70 backdrop-blur-sm flex items-center justify-center py-10 px-4">
+        <div className="bg-[#0b0f19] w-full max-w-3xl p-8 rounded-3xl shadow-2xl relative z-[1001] pt-12" data-aos="zoom-in">
+          <div className="absolute top-4 right-4">
+            <button
+              onClick={closeModal}
+              className="text-white hover:text-gray-300 text-3xl focus:outline-none"
+            >
+              <IoMdClose />
+            </button>
+          </div>
+
+          <h2 className="text-2xl font-bold text-white mb-6">
+            {t("issue")}: <span className="text-red-500">{selectedIssue}!</span>
+          </h2>
+
+          <div className="flex flex-col md:flex-row gap-6">
+            <div className="md:w-1/2 w-full">
+              <img src={IproIMage} alt="" className="rounded-2xl w-full object-cover" />
+            </div>
+            <div className="md:w-1/2 w-full">
+              <form className="flex flex-col gap-5">
+                <input
+                  type="text"
+                  placeholder={t("your_name")}
+                  className="px-5 py-3 rounded-xl bg-[#161b29] text-white placeholder-gray-400 shadow-inner"
+                />
+                <input
+                  type="tel"
+                  placeholder={t("phone_number")}
+                  className="px-5 py-3 rounded-xl bg-[#161b29] text-white placeholder-gray-400 shadow-inner"
+                />
+                <textarea
+                  placeholder={t("problem_details")}
+                  rows={5}
+                  className="px-5 py-3 rounded-xl bg-[#161b29] text-white placeholder-gray-400 resize-none shadow-inner"
+                ></textarea>
+                <button
+                  type="submit"
+                  className="bg-white text-[#0086EE] w-full px-6 py-3 rounded-xl font-bold shadow-xl hover:bg-gray-200 transition-colors"
+                >
+                  {t("submit")}
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  )}
+          </section>
+
+
             <Footer />
 
         </>

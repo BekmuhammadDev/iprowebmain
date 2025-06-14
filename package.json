@@ -28,6 +28,7 @@
     "react-router-dom": "^7.3.0",
     "react-tsparticles": "^2.12.2",
     "swiper": "^11.2.6",
+    "three": "^0.177.0",
     "tsparticles": "^3.8.1"
   },
   "devDependencies": {
