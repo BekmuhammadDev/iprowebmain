@@ -2,127 +2,159 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
-import { portfolioData } from "../mocks/mock"; // sizdagi portfolio data
+import { portfolioData } from "../mocks/mock";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const PortfolioSection = ({ t }) => {
   const containerRef = useRef(null);
+  const cardsRef = useRef([]);
   const infoRef = useRef(null);
+  const blurWrapperRef = useRef(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      const cards = gsap.utils.toArray(".card");
+      const vw = window.innerWidth;
+      const vh = window.innerHeight;
 
-      // Barcha kartalarni markazga joylashtirib, ko‘rinmas qilib qo‘yamiz
-      gsap.set(cards, {
-        opacity: 0,
-        scale: 1,
-        xPercent: -50,
-        yPercent: -50,
-        left: "50%",
-        top: "50%",
-      });
+      if (vw < 768) return; // Mobil versiyada animatsiyani o'chiramiz
 
-      // 1-kartani pin qilish
-      gsap.to(cards[0], {
+      const scaleX = Math.min(vw * 0.25, 300);
+      const scaleY = Math.min(vh * 0.25, 300);
+
+      const positions = [
+        [0, 0],
+        [scaleX, -scaleY],
+        [-scaleX, scaleY],
+        [scaleX * 0.7, scaleY * 1.2],
+        [-scaleX * 0.9, -scaleY * 1.1],
+        [0, scaleY * 1.3],
+        [scaleX * 1.2, 0],
+        [-scaleX * 1.2, 0],
+        [scaleX * 0.5, -scaleY * 1.4],
+        [-scaleX * 0.5, scaleY * 1.4],
+        [scaleX * 1.1, -scaleY * 1.1],
+        [-scaleX * 1.1, scaleY * 1.1],
+        [0, -scaleY * 1.5],
+      ];
+
+      const tl = gsap.timeline({
         scrollTrigger: {
           trigger: containerRef.current,
           start: "top top",
-          end: `+=${portfolioData.length * 100}%`,
+          end: `+=${portfolioData.length * 700 + 1000}`,
           scrub: true,
           pin: true,
         },
-        opacity: 1,
-        x: 0,
-        y: 0,
-        ease: "power2.out",
       });
 
-      // Qolgan kartalarni aylana bo‘ylab chiqaramiz
-      const radius = 300;
-      const total = portfolioData.length - 1;
-
-      cards.slice(1).forEach((card, i) => {
-        const angle = (i / total) * Math.PI * 2;
-        const x = Math.cos(angle) * radius;
-        const y = Math.sin(angle) * radius;
-
-        gsap.to(card, {
-          scrollTrigger: {
-            trigger: containerRef.current,
-            start: `top+=${(i + 1) * 60}% top`,
-            end: "+=30%",
-            scrub: true,
+      cardsRef.current.forEach((card, i) => {
+        const [x, y] = positions[i % positions.length];
+        tl.to(
+          card,
+          {
+            opacity: 1,
+            scale: 1,
+            x,
+            y,
+            duration: 1,
+            ease: "power2.out",
           },
-          opacity: 1,
-          x,
-          y,
-          ease: "power2.out",
-        });
+          i * 1
+        );
       });
 
-      // Info qismini oxirida ko‘rsatamiz
-      gsap.to(infoRef.current, {
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: `top+=${portfolioData.length * 80}% top`,
-          end: "+=20%",
-          scrub: true,
+      tl.to(
+        blurWrapperRef.current,
+        {
+          filter: "blur(6px)",
+          duration: 1,
+          ease: "power1.out",
         },
-        opacity: 1,
-        y: -50,
-      });
+        `+=0.5`
+      );
+
+      tl.to(
+        infoRef.current,
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1.5,
+          ease: "power2.out",
+        },
+        "-=1"
+      );
     }, containerRef);
 
     return () => ctx.revert();
   }, []);
 
-  const sectionHeight = `${(portfolioData.length + 3) * 100}vh`;
-
   return (
-    <section className={`text-white w-full`} style={{ height: sectionHeight, overflow: "hidden", position: "relative" }}>
-      <div
-        className="sticky top-0 w-full h-screen flex items-center justify-center"
-        ref={containerRef}
-      >
-        {/* PORTFOLIO sarlavhasi */}
-        <h1 className="absolute top-10 left-1/2 -translate-x-1/2 text-[48px] md:text-[100px] uppercase font-black text-center drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)] z-20">
+    <section
+      ref={containerRef}
+      className="relative w-full min-h-screen text-white"
+    >
+      <div className="sticky top-0 h-screen w-full flex flex-col md:flex-row md:items-center md:justify-center overflow-hidden">
+        <h1 className="absolute top-5 md:top-10 left-1/2 -translate-x-1/2 text-[28px] sm:text-[36px] md:text-[64px] xl:text-[80px] uppercase font-black text-center drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)] z-30">
           {t("portfolio")}
         </h1>
 
-        {/* Kartalar joylashadi */}
-        <div className="absolute inset-0">
-          {portfolioData.map((item) => (
+        <div
+          ref={blurWrapperRef}
+          className="absolute inset-0 transition-all duration-500 md:block hidden"
+        >
+          {portfolioData.map((item, index) => (
             <div
               key={item.id}
-              className="card absolute w-[220px] h-[320px] bg-blue-500 rounded-xl overflow-hidden shadow-lg cursor-pointer"
+              ref={(el) => (cardsRef.current[index] = el)}
+              className="card fixed w-[160px] h-[240px] sm:w-[180px] sm:h-[280px] md:w-[200px] md:h-[300px] xl:w-[220px] xl:h-[320px] bg-blue-500 rounded-xl overflow-hidden shadow-2xl cursor-pointer z-10"
+              style={{
+                opacity: 0,
+                transform: "translate(-50%, -50%)",
+                left: "50%",
+                top: "50%",
+              }}
             >
               <img
                 src={item.img}
                 alt={item.title}
                 className="w-full h-full object-cover"
               />
-              <div className="absolute bottom-0 bg-black bg-opacity-50 w-full text-center text-white font-bold p-2">
+              <div className="absolute bottom-0 bg-black bg-opacity-50 w-full text-center text-white font-bold p-2 text-xs sm:text-sm md:text-base">
                 {item.title}
               </div>
             </div>
           ))}
         </div>
 
-        {/* Info bo‘limi */}
+        {/* Mobil versiya uchun oddiy kartalar */}
+        <div className="md:hidden w-full px-4 pt-20 pb-10 space-y-6 overflow-y-auto">
+          {portfolioData.map((item) => (
+            <div
+              key={item.id}
+              className="w-full bg-blue-500 rounded-xl overflow-hidden shadow-xl"
+            >
+              <img
+                src={item.img}
+                alt={item.title}
+                className="w-full h-60 object-cover"
+              />
+              <div className="bg-black bg-opacity-50 w-full text-center text-white font-bold p-3">
+                {item.title}
+              </div>
+            </div>
+          ))}
+        </div>
+
         <div
           ref={infoRef}
-          className="opacity-0 absolute z-10 bottom-20 left-1/2 -translate-x-1/2 text-center"
+          className="absolute bottom-[10%] md:bottom-[20%] left-1/2 -translate-x-1/2 z-50 text-center opacity-0 translate-y-10 transition-all duration-500"
         >
-          <h2 className="text-4xl font-bold mb-4">
-            {t("portfolio_info_title")}
-          </h2>
-          <p className="text-lg mb-6 max-w-xl mx-auto">
-            {t("portfolio_info_description")}
+          <p className="text-sm sm:text-lg md:text-2xl lg:text-3xl font-semibold mb-4 max-w-[90vw]">
+            {t("portfolioInfo") || "All projects displayed successfully!"}
           </p>
-          <button className="bg-blue-500 px-6 py-2 rounded-lg hover:bg-blue-600 transition">
-            {t("learn_more")}
+          <button className="px-4 py-2 sm:px-5 sm:py-2.5 md:px-6 md:py-3 bg-blue-600 hover:bg-blue-700 rounded-full text-white font-bold text-xs sm:text-sm md:text-base shadow-lg transition">
+            {t("seeMore") || "See More"}
           </button>
         </div>
       </div>
