@@ -108,7 +108,7 @@ const aboutus = () => {
 
             <ScrollProgressBar />
 
-            {/* <Primary t={t} handleCardClick={handleCardClick} Video={Video} />
+            <Primary t={t} handleCardClick={handleCardClick} Video={Video} />
 
             <Scroller t={t} Video={Video} Logocloud={Logocloud}/>
 
@@ -120,7 +120,7 @@ const aboutus = () => {
                 >
                     <TestimonialSlider />
                 </div>
-            </section> */}
+            </section>
 
          <section className="bg-[#16182B]  overflow-hidden">
   <div className="container mx-auto px-5 xl:px-0">
@@ -232,6 +232,7 @@ const aboutus = () => {
   </div>
           </section>
 
+
           <PortfolioSection t={t} />
            
             
@@ -242,7 +243,7 @@ const aboutus = () => {
 
   <div className="container mx-auto">
     <h1
-      className="text-white font-black text-5xl text-center md:text-left md:text-[100px] drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]"
+      className="text-white px-4 font-black text-5xl text-center md:text-left md:text-[100px] drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]"
       data-aos="fade-up"
       data-aos-duration="1200"
     >
@@ -250,7 +251,7 @@ const aboutus = () => {
     </h1>
 
     <div
-      className="flex flex-col md:flex-row justify-center items-center gap-4 bg-[#0b0f19] p-10"
+      className="flex flex-col md:flex-row justify-center items-center gap-4  p-10"
       data-aos="fade-up"
       data-aos-delay="200"
     >

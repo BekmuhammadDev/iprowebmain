@@ -26,6 +26,7 @@ const CreativeEarth = () => {
     const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setPixelRatio(window.devicePixelRatio);
+    renderer.outputColorSpace = THREE.SRGBColorSpace;
 
     const textureLoader = new THREE.TextureLoader();
     const dayMap = textureLoader.load(yeru);
@@ -43,7 +44,7 @@ const CreativeEarth = () => {
       new THREE.SphereGeometry(2.5, 64, 64),
       earthMaterial
     );
-    earth.position.x = 1.2;
+    earth.position.x = 0;
     scene.add(earth);
 
     const cloudMaterial = new THREE.MeshPhongMaterial({
@@ -52,7 +53,10 @@ const CreativeEarth = () => {
       opacity: 0.2,
       depthWrite: false,
     });
-    const clouds = new THREE.Mesh(new THREE.SphereGeometry(2.53, 64, 64), cloudMaterial);
+    const clouds = new THREE.Mesh(
+      new THREE.SphereGeometry(2.53, 64, 64),
+      cloudMaterial
+    );
     earth.add(clouds);
 
     const atmosphereMaterial = new THREE.ShaderMaterial({
@@ -74,11 +78,12 @@ const CreativeEarth = () => {
       transparent: true,
       blending: THREE.AdditiveBlending,
     });
+
     const atmosphere = new THREE.Mesh(
       new THREE.SphereGeometry(2.7, 64, 64),
       atmosphereMaterial
     );
-    atmosphere.position.x = 1.2;
+    atmosphere.position.x = 0;
     scene.add(atmosphere);
 
     const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
@@ -88,22 +93,30 @@ const CreativeEarth = () => {
     const ambientLight = new THREE.AmbientLight(0x222222);
     scene.add(ambientLight);
 
+    // ⭐ Yangi — Realroq yulduzlar
     const starsGeometry = new THREE.BufferGeometry();
-    const starCount = 3000;
+    const starCount = 5000;
     const starVertices = new Float32Array(starCount * 3);
     for (let i = 0; i < starCount * 3; i++) {
-      starVertices[i] = (Math.random() - 0.5) * 300;
+      starVertices[i] = (Math.random() - 0.5) * 1000;
     }
     starsGeometry.setAttribute("position", new THREE.BufferAttribute(starVertices, 3));
-    const starsMaterial = new THREE.PointsMaterial({ color: 0xffffff, size: 0.2 });
+    const starsMaterial = new THREE.PointsMaterial({
+      color: 0xffffff,
+      size: 0.7,
+      sizeAttenuation: true,
+      transparent: true,
+      opacity: 0.8,
+    });
     const stars = new THREE.Points(starsGeometry, starsMaterial);
     scene.add(stars);
 
+    // 🌀 Animatsiya
     const animate = () => {
       requestAnimationFrame(animate);
       earth.rotation.y += 0.001;
       clouds.rotation.y += 0.0015;
-      stars.rotation.y += 0.0001;
+      stars.rotation.y += 0.0006; // ⭐ Tezroq aylanish
       renderer.render(scene, camera);
     };
     animate();
@@ -132,18 +145,28 @@ const CreativeEarth = () => {
       {/* Canvas — Yer shari */}
       <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" />
 
-      {/* Matn qismi — Responsiv dizayn */}
+      {/* Matn qismi */}
       <div
-        ref={textRef}
-        className="absolute top-1/2 left-4 sm:left-8 md:left-12 -translate-y-1/2 text-white z-10 px-2"
-      >
-        <h1 className="text-xl sm:text-3xl md:text-5xl font-bold mb-3 leading-snug">
-          Pro Earth Experience
-        </h1>
-        <p className="text-sm sm:text-base md:text-lg max-w-xs sm:max-w-sm md:max-w-md text-gray-300">
-          3D Yer, atmosfera va yulduzlar bilan — IT kompaniyangiz uchun zamonaviy vizual tajriba!
-        </p>
-      </div>
+  ref={textRef}
+  className="absolute top-[60%] left-1/2 -translate-x-1/2 -translate-y-1/2 text-center z-10 px-4"
+>
+  <p className="text-sm sm:text-base md:text-lg text-gray-300 mb-2 uppercase tracking-wide">
+    Premium Web Design Agency
+  </p>
+
+  <h1 className="text-2xl sm:text-4xl md:text-6xl font-extrabold text-blue-500 mb-4 leading-tight">
+    BRANDS GROWTH
+  </h1>
+
+  <p className="text-xs sm:text-sm md:text-base text-gray-300 mb-6">
+    Custom Websites, Mobile Apps, Branding & Digital Marketing, Other Services
+  </p>
+
+  <button className="bg-white text-blue-600 font-semibold px-6 py-3 rounded-md shadow-lg hover:bg-blue-100 transition-all duration-300 text-sm sm:text-base">
+    SPEAK WITH EXPERT
+  </button>
+</div>
+
     </div>
   );
 };
