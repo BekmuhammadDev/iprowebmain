@@ -121,17 +121,7 @@ const login = async () => {
             <div className="flex-grow h-[1px] bg-gray-600" />
           </div>
 
-          <button
-            className="w-full flex items-center justify-center gap-2 bg-white text-black font-semibold p-2 mt-4 rounded drop-shadow-[0_5px_15px_rgba(0,112,244,0.8)] hover:bg-gray-100 transition"
-            onClick={() => (window.location.href = "https://ipro.javohir-dev.uz/oauth2/authorization/google")}
-          >
-            <img
-              src="https://developers.google.com/identity/images/g-logo.png"
-              alt="Google"
-              className="w-5 h-5"
-            />
-            Continue with Google
-          </button>
+          
 
           <p className="text-white text-center mt-2">
             New to iPro?{" "}

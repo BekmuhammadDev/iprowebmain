@@ -10,7 +10,7 @@ const ProjectsPage = () => {
     return (
         <>
             <Header />
-            <main className="mt-20 px-5 xl:px-14 container mx-auto">
+            <main className="mt-20 px-5 xl:px-14 container mx-auto mb-10">
                 <h1 className="text-white text-4xl md:text-6xl font-bold mb-10 text-center capitalize">{category} Projects</h1>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                     {[...Array(8)].map((_, i) => (

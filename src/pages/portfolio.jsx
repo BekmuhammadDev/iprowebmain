@@ -43,7 +43,7 @@ const portfolio = () => {
             <Header />
             <main className='mt-20'>
                 <section>
-                    <div className="absolute right-0 -z-10">
+                    <div className="absolute  right-0 -z-10">
                         <img src={Stars} alt="" />
                     </div>
 
@@ -71,7 +71,7 @@ const portfolio = () => {
                                     <p className="text-[10px] md:text-xs xl:text-base font-medium text-white md:mb-10 mb-0 text-center md:text-left">
                                         {t(project.description)}<br />{t("buttonText")}
                                     </p>
-                                    <button className="relative top-44 md:top-0 rounded-md xl:w-[150px] bg-white text-blue-600 py-2 uppercase text-xs w-full font-bold shadow-lg drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)] hover:bg-slate-300">
+                                    <button onClick={()=>handleNavigate(t(project.title))} className="relative top-44 md:top-0 rounded-md xl:w-[150px] bg-white text-blue-600 py-2 uppercase text-xs w-full font-bold shadow-lg drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)] hover:bg-slate-300">
                                         {t("viewProjects")}
                                     </button>
                                 </div>
@@ -80,7 +80,6 @@ const portfolio = () => {
                                     {[1, 2, 3, 4, 5].map((_, i) => (
                                         <div
                                             key={i}
-                                            onClick={() => handleNavigate(t(project.title))}
                                             data-aos-delay={`${(index + i) * 200}`}
                                             className="relative w-full md:h-[198px] left-20 shadow-lg rounded-[20px] transition-transform duration-300 cursor-pointer hover:translate-x-6 group"
                                         >

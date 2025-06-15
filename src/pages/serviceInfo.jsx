@@ -89,14 +89,22 @@ const SingleService = () => {
             <main className='mt-32 mb-20 px-4 sm:px-6 lg:px-20 container mx-auto'>
                 <div className='flex flex-col-reverse lg:flex-row items-center gap-8 lg:gap-14 relative'>
                     {/* Text */}
-                    <div className="text-center lg:text-left" data-aos="fade-right">
-                        <h1 className='text-white text-4xl sm:text-5xl lg:text-[70px] font-black mb-6 drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]'>
-                            {service.title}
-                        </h1>
-                        <p className="text-gray-300 text-base sm:text-lg max-w-3xl">
-                            {service.description}
-                        </p>
-                    </div>
+                   <div className="text-center lg:text-left" data-aos="fade-right">
+  <h1 className='text-white text-4xl sm:text-5xl lg:text-[70px] font-black mb-6 drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]'>
+    {service.title}
+  </h1>
+  <p className="text-gray-300 text-base sm:text-lg max-w-3xl">
+    {service.description}
+  </p>
+
+  {/* Tugma */}
+  <div className="mt-8">
+    <button className="bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 text-white font-semibold py-3 px-6 rounded-xl shadow-md transition duration-300 ease-in-out">
+        Yuklab olish
+    </button>
+  </div>
+</div>
+
 
                     {/* Image  */}
                     <div className='w-full lg:w-1/2 relative' data-aos="fade-left">
