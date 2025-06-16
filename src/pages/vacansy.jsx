@@ -137,7 +137,7 @@ const vacansy = () => {
                                 <h1 className='text-white text-xl font-semibold'>{vacansy.title}</h1>
                                 <button
                                     onClick={() => setShowModal(true)}
-                                    className='bg-white text-[#0086EE] px-6 hidden md:flex sm:px-9 py-1 text-base font-bold shadow-lg drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]'
+                                    className='bg-white text-[#0086EE] px-6 hidden md:flex sm:px-9 py-1 text-base font-bold shadow-lg drop-shadow-[0_5px_10px_rgba(0,112,244,0.8)]'
                                 >
                                     Apply now
                                 </button>
