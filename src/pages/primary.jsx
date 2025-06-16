@@ -48,7 +48,7 @@ const CreativeEarth = () => {
     scene.add(earth);
 
     const cloudMaterial = new THREE.MeshPhongMaterial({
-      map: textureLoader.load("https://i.imgur.com/JLFp6Ws.png"),
+      map: textureLoader.load(''),
       transparent: true,
       opacity: 0.2,
       depthWrite: false,

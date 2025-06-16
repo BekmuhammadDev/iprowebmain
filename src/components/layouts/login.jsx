@@ -64,14 +64,14 @@ const login = async () => {
 
 
   return (
-    <div className="fixed inset-0 flex items-center h-[100vh] px-5 justify-center bg-black/40 backdrop-blur-sm z-50">
+    <div className="fixed inset-0 flex items-center h-[100vh] px-5 justify-center  backdrop-blur-sm z-50">
    <div className="flex rounded-md justify-between bg-[#16182B] items-center sm:px-20">
     <div className="hidden md:flex">
       <img src={IproRegisterLogo} alt="logo" />
     </div>
     <div className="p-6 rounded-lg w-full sm:w-[400px] relative">
       <button
-        className="absolute -top-14 -right-5 text-white w-8 h-8 flex items-center justify-center rounded-full shadow-lg"
+        className="absolute -top-4 -right-8 text-white w-8 h-8 flex items-center justify-center rounded-full shadow-lg"
         onClick={() => setIsSignInModalOpen(false)}
       >
         <IoMdClose fontSize={28} />

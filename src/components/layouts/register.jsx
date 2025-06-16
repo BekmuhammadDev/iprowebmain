@@ -163,7 +163,7 @@ const Register = ({ IproRegisterLogo, setIsModalOpen, error, isSignInModalOpen, 
 
         <div className="p-6 w-full sm:w-[400px] relative text-white">
           <button
-            className="absolute -top-14 -right-5 w-8 h-8 flex items-center justify-center rounded-full"
+            className="absolute top-2 -right-14 w-8 h-8 flex items-center justify-center rounded-full"
             onClick={() => setIsModalOpen(false)}
           >
             <IoMdClose fontSize={40} />
