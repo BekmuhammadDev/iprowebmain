@@ -31,6 +31,18 @@ export const Worker = () => {
 
         <form className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {[
+             {
+              label: "F.I.O",
+              type: "url",
+              placeholder: "To'liq ism familya",
+              delay: 0.4,
+            },
+            {
+              label: "Tel raqam",
+              type: "number",
+              placeholder: "+9989901234567",
+              delay: 0.5,
+            },
             {
               label: "Yo‘nalish",
               type: "text",

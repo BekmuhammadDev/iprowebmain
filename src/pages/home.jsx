@@ -312,7 +312,6 @@ const aboutus = () => {
           </section>
 
 
-            <Footer />
 
         </>
     );
