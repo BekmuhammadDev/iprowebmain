@@ -147,7 +147,6 @@ const SingleService = () => {
                 </div>
             </main>
 
-            <Footer />
         </>
     );
 };

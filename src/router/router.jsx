@@ -14,6 +14,7 @@ import ProjectPage from "../pages/projectpage";
 import SingleService from "../pages/serviceInfo";
 import NotFound from "../pages/notfound";
 import AuthGuard from "../connection/AuthGuard";
+import Footer from "../components/layouts/footer";
 
 // AuthGuard
 

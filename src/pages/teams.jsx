@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { teamMembers } from '../mocks/mock';
+import { useTranslation } from "react-i18next";
 
-const Teams = ({t,StarsRightImg,CardBg}) => {
+const Teams = ({StarsRightImg,CardBg}) => {
      const [activeIndex, setActiveIndex] = useState(0);
+        const { t } = useTranslation();
     
      useEffect(() => {
             const interval = setInterval(() => {

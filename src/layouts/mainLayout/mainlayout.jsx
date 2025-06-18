@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import Marquee from "../../components/ui/marque";
+import Footer from "../../components/layouts/footer";
 
 const MainLayout = () => {
     // const [loading, setLoading] = useState(true);
@@ -38,6 +39,7 @@ const MainLayout = () => {
                 <Outlet />
             </main>
             <Marquee />
+            <Footer/>
         </div>
     );
 

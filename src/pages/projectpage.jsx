@@ -24,7 +24,6 @@ const ProjectsPage = () => {
                     ))}
                 </div>
             </main>
-            <Footer />
         </>
     );
 };

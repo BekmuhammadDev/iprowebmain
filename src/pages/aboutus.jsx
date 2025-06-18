@@ -477,7 +477,6 @@ const imagesRef = useRef([]);
                 </section>
 
             </main>
-            <Footer />
         </>
     );
 };
