@@ -11,14 +11,15 @@ export const Worker = () => {
   return (
     <section className="relative z-10 bg-gradient-to-br from-[#0A0F1F] via-[#0E1628] to-[#111B30] py-32 px-4">
       <div className="container mx-auto max-w-4xl">
-      <motion.h2
+     <motion.h2
   initial={{ opacity: 0, y: -40 }}
   animate={{ opacity: 1, y: 0 }}
   transition={{ duration: 1 }}
-  className="text-center text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-500 text-[42px] md:text-[64px] font-extrabold leading-[1.2] drop-shadow-[0_5px_30px_rgba(0,112,244,0.8)] mb-12"
+  className="text-center text-white text-[42px] md:text-[64px] font-extrabold leading-[1.2] drop-shadow-[0_5px_30px_rgba(0,112,244,0.8)] mb-12"
 >
   Bizning Jamoamizga Qo‘shiling
 </motion.h2>
+
 
         <motion.p
           initial={{ opacity: 0 }}

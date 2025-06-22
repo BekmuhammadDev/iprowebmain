@@ -1,174 +1,83 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import * as THREE from "three";
-import { gsap } from "gsap";
-import yeru from "../assets/yerdiusto.jpg"; // Kunduzgi yer rasmi
-import yer from "../assets/yeror.jpg";      // Tungi yer rasmi
+import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 
-const CreativeEarth = () => {
-  const canvasRef = useRef(null);
-  const textRef = useRef(null);
+const slides = [
+  {
+    title: "Biz bilan kelajak sari!",
+    description: "Innovatsion texnologiyalar orqali biznesingizni yangi bosqichga olib chiqing.",
+    button: "Bog'lanish",
+  },
+  {
+    title: "Brending va Marketing",
+    description: "Brending, dizayn va raqamli marketingda professional yechimlar.",
+    button: "Xizmatlar",
+  },
+  {
+    title: "Mobil ilovalar yaratamiz",
+    description: "iOS va Android uchun funksional, zamonaviy ilovalar.",
+    button: "Portfolio",
+  },
+  {
+    title: "Websaytlar yaratishda yetakchimiz",
+    description: "Foydalanuvchiga qulay, tezkor va SEO ga mos websaytlar.",
+    button: "Biz haqimizda",
+  },
+];
+
+const HeroSlider = () => {
+  const [current, setCurrent] = useState(0);
 
   useEffect(() => {
-    const canvas = canvasRef.current;
-    const scene = new THREE.Scene();
-    scene.background = new THREE.Color(0x000011);
-
-    const camera = new THREE.PerspectiveCamera(
-      60,
-      window.innerWidth / window.innerHeight,
-      0.1,
-      1000
-    );
-    camera.position.z = 7;
-
-    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setPixelRatio(window.devicePixelRatio);
-    renderer.outputColorSpace = THREE.SRGBColorSpace;
-
-    const textureLoader = new THREE.TextureLoader();
-    const dayMap = textureLoader.load(yeru);
-    const nightMap = textureLoader.load(yer);
-
-    const earthMaterial = new THREE.MeshPhongMaterial({
-      map: dayMap,
-      emissiveMap: nightMap,
-      emissive: new THREE.Color(0x111133),
-      emissiveIntensity: 0.4,
-      shininess: 5,
-    });
-
-    const earth = new THREE.Mesh(
-      new THREE.SphereGeometry(2.5, 64, 64),
-      earthMaterial
-    );
-    earth.position.x = 0;
-    scene.add(earth);
-
-    const cloudMaterial = new THREE.MeshPhongMaterial({
-      map: textureLoader.load(''),
-      transparent: true,
-      opacity: 0.2,
-      depthWrite: false,
-    });
-    const clouds = new THREE.Mesh(
-      new THREE.SphereGeometry(2.53, 64, 64),
-      cloudMaterial
-    );
-    earth.add(clouds);
-
-    const atmosphereMaterial = new THREE.ShaderMaterial({
-      vertexShader: `
-        varying vec3 vNormal;
-        void main() {
-          vNormal = normalize(normalMatrix * normal);
-          gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
-        }
-      `,
-      fragmentShader: `
-        varying vec3 vNormal;
-        void main() {
-          float intensity = pow(0.9 - dot(vNormal, vec3(0, 0, 1.0)), 6.0);
-          gl_FragColor = vec4(0.2, 0.5, 1.0, 1.0) * intensity;
-        }
-      `,
-      side: THREE.BackSide,
-      transparent: true,
-      blending: THREE.AdditiveBlending,
-    });
-
-    const atmosphere = new THREE.Mesh(
-      new THREE.SphereGeometry(2.7, 64, 64),
-      atmosphereMaterial
-    );
-    atmosphere.position.x = 0;
-    scene.add(atmosphere);
-
-    const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
-    directionalLight.position.set(5, 3, 5);
-    scene.add(directionalLight);
-
-    const ambientLight = new THREE.AmbientLight(0x222222);
-    scene.add(ambientLight);
-
-    // ⭐ Yangi — Realroq yulduzlar
-    const starsGeometry = new THREE.BufferGeometry();
-    const starCount = 5000;
-    const starVertices = new Float32Array(starCount * 3);
-    for (let i = 0; i < starCount * 3; i++) {
-      starVertices[i] = (Math.random() - 0.5) * 1000;
-    }
-    starsGeometry.setAttribute("position", new THREE.BufferAttribute(starVertices, 3));
-    const starsMaterial = new THREE.PointsMaterial({
-      color: 0xffffff,
-      size: 0.7,
-      sizeAttenuation: true,
-      transparent: true,
-      opacity: 0.8,
-    });
-    const stars = new THREE.Points(starsGeometry, starsMaterial);
-    scene.add(stars);
-
-    // 🌀 Animatsiya
-    const animate = () => {
-      requestAnimationFrame(animate);
-      earth.rotation.y += 0.001;
-      clouds.rotation.y += 0.0015;
-      stars.rotation.y += 0.0006; // ⭐ Tezroq aylanish
-      renderer.render(scene, camera);
-    };
-    animate();
-
-    const handleResize = () => {
-      camera.aspect = window.innerWidth / window.innerHeight;
-      camera.updateProjectionMatrix();
-      renderer.setSize(window.innerWidth, window.innerHeight);
-    };
-    window.addEventListener("resize", handleResize);
-
-    gsap.fromTo(
-      textRef.current,
-      { opacity: 0, y: 50 },
-      { opacity: 1, y: 0, duration: 2, ease: "power3.out", delay: 0.5 }
-    );
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-      renderer.dispose();
-    };
+    const interval = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % slides.length);
+    }, 5000);
+    return () => clearInterval(interval);
   }, []);
 
   return (
-    <div className="relative w-full h-[100vh] bg-black overflow-hidden">
-      {/* Canvas — Yer shari */}
-      <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" />
-
-      {/* Matn qismi */}
-      <div
-  ref={textRef}
-  className="absolute top-[60%] left-1/2 -translate-x-1/2 -translate-y-1/2 text-center z-10 px-4"
->
-  <p className="text-sm sm:text-base md:text-lg text-gray-300 mb-2 uppercase tracking-wide">
-    Premium Web Design Agency
-  </p>
-
-  <h1 className="text-2xl sm:text-4xl md:text-6xl font-extrabold text-blue-500 mb-4 leading-tight">
-    BRANDS GROWTH
-  </h1>
-
-  <p className="text-xs sm:text-sm md:text-base text-gray-300 mb-6">
-    Custom Websites, Mobile Apps, Branding & Digital Marketing, Other Services
-  </p>
-
-  <button className="bg-white text-blue-600 font-semibold px-6 py-3 rounded-md shadow-lg hover:bg-blue-100 transition-all duration-300 text-sm sm:text-base">
-    SPEAK WITH EXPERT
-  </button>
-</div>
-
+    <div className="relative w-full h-screen overflow-hidden bg-gradient-to-br from-[#0A0F1F] via-[#0E1628] to-[#111B30]">
+      {slides.map((slide, index) => (
+        <motion.div
+          key={index}
+          initial={{ opacity: 0, scale: 1.05 }}
+          animate={{ opacity: current === index ? 1 : 0, scale: current === index ? 1 : 1.03 }}
+          transition={{ duration: 1.2 }}
+          className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ${
+            current === index ? "z-10" : "z-0"
+          }`}
+        >
+          <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white px-4 bg-black/30 backdrop-blur-sm">
+            <motion.h2
+              initial={{ y: 40, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.3 }}
+              className="text-4xl sm:text-6xl md:text-7xl font-extrabold mb-4 text-white drop-shadow-[0_5px_30px_rgba(0,112,244,0.8)]"
+            >
+              {slide.title}
+            </motion.h2>
+            <motion.p
+              initial={{ y: 30, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.5 }}
+              className="text-base sm:text-lg md:text-xl max-w-2xl text-gray-300 mb-6"
+            >
+              {slide.description}
+            </motion.p>
+            <motion.button
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.8 }}
+              className="px-8 py-3 text-sm sm:text-base font-bold bg-gradient-to-r from-blue-600 to-cyan-500 text-white rounded-full shadow-[0_0_25px_5px_rgba(0,122,255,0.5)] hover:shadow-[0_0_35px_10px_rgba(0,122,255,0.7)] hover:scale-105 transition-all duration-300"
+            >
+              {slide.button}
+            </motion.button>
+          </div>
+        </motion.div>
+      ))}
     </div>
   );
 };
 
-export default CreativeEarth;
+export default HeroSlider;

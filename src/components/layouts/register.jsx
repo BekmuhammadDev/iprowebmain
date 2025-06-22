@@ -8,7 +8,7 @@ import { auth, provider } from '../../connection/firebase';
 
 const Register = ({ IproRegisterLogo, setIsModalOpen, error, isSignInModalOpen, setIsSignInModalOpen }) => {
   const navigate = useNavigate();
-  const [form, setForm] = useState({ fullName: '', username: '', password: '' });  // confirmPassword olib tashlandi
+  const [form, setForm] = useState({ fullName: '', username: '', password: '' });
   const [formErrors, setFormErrors] = useState({});
   const [passwordValidations, setPasswordValidations] = useState({});
   const [showPassword, setShowPassword] = useState(false);
@@ -44,7 +44,6 @@ const Register = ({ IproRegisterLogo, setIsModalOpen, error, isSignInModalOpen, 
   const register = async (isGoogle = false) => {
     if (!validateForm(isGoogle)) return;
     if (!isPasswordValid()) return alert("Parol talablariga javob bermaydi");
-    // Parolni tasdiqlash tekshiruvi olib tashlandi
 
     const payload = {
       fullName: isGoogle ? googleUser.fullName : form.fullName.trim(),
@@ -65,7 +64,7 @@ const Register = ({ IproRegisterLogo, setIsModalOpen, error, isSignInModalOpen, 
       }
     } catch (err) {
       console.error("Xatolik:", err);
-      alert("Bunday Email avval royxatdan otgan");
+      alert("Bunday Email avval ro'yxatdan o'tgan");
     } finally {
       setLoading(false);
     }
@@ -103,7 +102,7 @@ const Register = ({ IproRegisterLogo, setIsModalOpen, error, isSignInModalOpen, 
       {!isGoogle && (
         <>
           <input
-            className="w-full px-5 h-[49px] my-2 border rounded bg-gray-800 border-[#0086EE] text-white"
+            className="w-full px-5 h-[49px] my-2 border rounded bg-[#1F2335] border-[#00A3FF] text-white placeholder-gray-400 outline-none focus:ring-2 focus:ring-[#00A3FF]"
             placeholder="Full name"
             name="fullName"
             value={form.fullName}
@@ -112,7 +111,7 @@ const Register = ({ IproRegisterLogo, setIsModalOpen, error, isSignInModalOpen, 
           {formErrors.fullName && <p className="text-red-500 text-sm">{formErrors.fullName}</p>}
 
           <input
-            className="w-full px-5 h-[49px] my-2 border rounded bg-gray-800 border-[#0086EE] text-white"
+            className="w-full px-5 h-[49px] my-2 border rounded bg-[#1F2335] border-[#00A3FF] text-white placeholder-gray-400 outline-none focus:ring-2 focus:ring-[#00A3FF]"
             placeholder="Username"
             name="username"
             value={form.username}
@@ -124,7 +123,7 @@ const Register = ({ IproRegisterLogo, setIsModalOpen, error, isSignInModalOpen, 
 
       <div className="relative my-2">
         <input
-          className="w-full px-5 h-[49px] border rounded bg-gray-800 border-[#0086EE] text-white pr-10"
+          className="w-full px-5 h-[49px] border rounded bg-[#1F2335] border-[#00A3FF] text-white pr-10 placeholder-gray-400 outline-none focus:ring-2 focus:ring-[#00A3FF]"
           type={showPassword ? 'text' : 'password'}
           name="password"
           placeholder="Password"
@@ -133,19 +132,17 @@ const Register = ({ IproRegisterLogo, setIsModalOpen, error, isSignInModalOpen, 
         />
         <button
           type="button"
-          className="absolute top-[10%] right-4 text-gray-400"
+          className="absolute top-[10%] right-4 text-gray-300"
           onClick={() => setShowPassword(!showPassword)}
         >
           {showPassword ? <AiOutlineEyeInvisible size={24} /> : <AiOutlineEye size={24} />}
         </button>
       </div>
 
-      {/* Confirm password input olib tashlandi */}
-
       <PasswordValidationList />
 
       <button
-        className="w-full bg-white text-blue-600 font-semibold py-2 mt-4 rounded disabled:opacity-50"
+        className="w-full bg-gradient-to-r from-[#00C6FB] to-[#0086EE] text-white font-semibold py-2 mt-4 rounded hover:opacity-90 transition-all duration-200 disabled:opacity-50"
         onClick={() => register(isGoogle)}
         disabled={loading}
       >
@@ -156,14 +153,14 @@ const Register = ({ IproRegisterLogo, setIsModalOpen, error, isSignInModalOpen, 
 
   return (
     <div className="fixed inset-0 flex items-center h-screen px-5 justify-center bg-black bg-opacity-50 z-50">
-      <div className="flex rounded-md bg-[#16182B] sm:px-20 items-center">
+      <div className="flex rounded-md bg-[#191C2F] sm:px-20 items-center">
         <div className="hidden md:flex">
           <img src={IproRegisterLogo} alt="Register Logo" />
         </div>
 
         <div className="p-6 w-full sm:w-[400px] relative text-white">
           <button
-            className="absolute top-2 -right-14 w-8 h-8 flex items-center justify-center rounded-full"
+            className="absolute top-2 -right-14 w-8 h-8 flex items-center justify-center rounded-full text-gray-400 hover:text-red-500"
             onClick={() => setIsModalOpen(false)}
           >
             <IoMdClose fontSize={40} />
