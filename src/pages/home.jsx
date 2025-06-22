@@ -18,6 +18,7 @@ import { IoMdClose } from "react-icons/io";
 import IproIMage from "../assets/images/iproLogoRegister.png"
 import { NavLink } from 'react-router-dom';
 import { FaQuestion } from "react-icons/fa";
+import { motion } from "framer-motion";
 
 import ContactWithMap from '../components/ui/contactwithmap';
 import Header from '../components/layouts/header';
@@ -129,50 +130,50 @@ const aboutus = () => {
           {/* <PortfolioSection t={t} /> */}
            
             
-            <section className="pt-10 px-10 md:pt-20 overflow-hidden">
-  <div className="relative top-[600px]">
-    <img className="absolute" src={StarsLeftImg} alt="" />
+           <section className="pt-10 px-6 md:pt-20 overflow-hidden bg-gradient-to-b from-[#0a0a23] to-[#121232]">
+  <div className="relative">
+    <img
+      className="absolute top-[500px] left-0 w-[200px] opacity-50 animate-pulse"
+      src={StarsLeftImg}
+      alt=""
+    />
   </div>
 
-  <div className="container mx-auto">
-    <h1
-      className="text-white px-4 font-black text-5xl text-center md:text-left md:text-[100px] drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]"
-      data-aos="fade-up"
-      data-aos-duration="1200"
+  <div className="container mx-auto mb-10 max-w-[1300px]">
+    <motion.h1
+      className="text-white px-4 font-black text-5xl text-center md:text-left md:text-[80px] leading-tight drop-shadow-[0_5px_30px_rgba(0,112,244,0.9)]"
+      initial={{ opacity: 0, y: 60 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 1.2 }}
     >
       {t("services")}
-    </h1>
+    </motion.h1>
 
-    <div
-      className="flex flex-col md:flex-row justify-center items-center gap-4  p-10"
-      data-aos="fade-up"
-      data-aos-delay="200"
-    >
+    <div className="flex flex-col md:flex-row justify-center items-center gap-6 mt-12 px-2">
       {portfolioData.map((item, index) => (
-        <div
+        <motion.div
           key={item.id}
-          className="relative flex flex-col h-[105px] md:h-[300px] w-full md:flex-[0.2] overflow-hidden rounded-lg cursor-pointer transition-all duration-700 ease-in-out group hover:flex-[0.8] md:hover:h-[300px] sm:hover:h-auto"
-          data-aos="zoom-in"
-          data-aos-delay={index * 100}
-          data-aos-duration="1000"
+          className="relative flex flex-col h-[120px] md:h-[320px] w-full md:flex-[0.25] overflow-hidden rounded-2xl cursor-pointer group hover:flex-[0.9] hover:z-20 transition-all duration-700 ease-in-out shadow-2xl hover:shadow-blue-500/50"
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ delay: index * 0.2, duration: 0.8, type: "spring" }}
         >
           {/* Rasm */}
           <img
             src={item.img}
             alt={item.title}
-            className="w-full h-full object-cover transition-transform duration-700 ease-in-out group-hover:scale-[1.02]"
+            className="w-full h-full object-cover transition-transform duration-700 ease-in-out group-hover:scale-105"
           />
 
-          {/* Overlay Effekti */}
-          <div className="absolute inset-0 flex flex-col items-center justify-end bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out p-5">
-            <p className="text-white text-lg font-bold">{item.title}</p>
+          {/* Overlay */}
+          <div className="absolute inset-0 flex flex-col items-center justify-end bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out p-5">
+            <p className="text-white text-lg font-bold text-center drop-shadow-lg">{item.title}</p>
           </div>
-        </div>
+        </motion.div>
       ))}
     </div>
   </div>
-            </section>
-
+</section>
 
            <section className="relative w-full  pt-[90px] mb-10 overflow-hidden">
   <div className="relative -z-10 top-[800px]">
