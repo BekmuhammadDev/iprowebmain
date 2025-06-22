@@ -213,6 +213,16 @@ i18n
           <span style="color: #ffc700; display: block; margin-bottom: 15px;">Toshkentda yangi ofis,</span>
           <span style="display: block;">ochilishi</span>
         `,
+        jointeam:"Bizning Jamoamizga Qo‘shiling",
+        searchworker:"Biz o‘z ishining ustasi bo‘lgan, mas'uliyatli va ijodiy fikrlaydigan yangi a’zolarni qidirmoqdamiz!",
+        fio:"F.I.O",
+        fioples:"To‘liq ism familya",
+        tel:"Tel raqam",
+        yunalish:"Yo‘nalish",
+        daraja:"Daraja",
+        url:"Portfolio URL",
+        narx:"Narx",
+        yuborish:"Yuborish"
         },
       },
       en: {
@@ -420,6 +430,16 @@ i18n
           <span style="color: #ffc700; display: block; margin-bottom: 15px;">New office in Tashkent,</span>
           <span style="display: block;">opening</span>
         `,
+        jointeam:"Join Our Team",
+        searchworker: "We are looking for new members who are masters of their craft, responsible, and think creatively!",
+        fio:"Full Name",
+        fioples:"Full first and last name",
+        tel:"Phone number",
+        yunalish:"Direction",
+        daraja:"Level",
+        url:"Portfolio URL / Link",
+        narx:"Price (UZS)",
+        yuborish:"Send"
         },
       },
       ru: {
@@ -628,11 +648,21 @@ i18n
           <span style="color: #ffc700; display: block; margin-bottom: 15px;">Новый офис в Ташкенте,</span>
           <span style="display: block;">открытие</span>
         `,
+        jointeam:"Присоединяйтесь к нашей команде",
+        searchworker: " Мы ищем новых участников, которые являются мастерами своего дела, ответственны и мыслят творчески!",
+        fio:" Ф.И.О",
+        fioples:"Полное имя и фамилия",
+        tel:"Номер телефона",
+        yunalish:"Направление",
+        daraja:"Уровень",
+        url:" Ссылка на портфолио",
+        narx:"Цена (сум)",
+        yuborish:"Отправить"
         },
       },
     },
-    lng: 'en', // default language
-    fallbackLng: 'en',
+    lng: 'uz', // default language
+    fallbackLng: 'uz',
     interpolation: {
       escapeValue: false,
     },

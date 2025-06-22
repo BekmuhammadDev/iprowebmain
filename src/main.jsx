@@ -1,11 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { RouterProvider } from "react-router-dom";
-import router from "./router/router"; // router.jsx ni import qilish
-import "./index.css"; // Agar styling bo‘lsa
+import AppRouter from "./App"; // endi `router` emas, `AppRouter` import qilinadi
+import "./index.css"; // Styling bo‘lsa
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <AppRouter /> {/* RouterProvider emas */}
   </React.StrictMode>
-);  
+);

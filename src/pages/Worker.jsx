@@ -2,8 +2,10 @@ import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import Aos from "aos";
 import "aos/dist/aos.css";
+import { useTranslation } from "react-i18next";
 
 export const Worker = () => {
+   const { t } = useTranslation();
   useEffect(() => {
     Aos.init({ once: true });
   }, []);
@@ -17,7 +19,7 @@ export const Worker = () => {
   transition={{ duration: 1 }}
   className="text-center text-white text-[42px] md:text-[64px] font-extrabold leading-[1.2] drop-shadow-[0_5px_30px_rgba(0,112,244,0.8)] mb-12"
 >
-  Bizning Jamoamizga Qo‘shiling
+ { t('jointeam')}
 </motion.h2>
 
 
@@ -27,43 +29,43 @@ export const Worker = () => {
           transition={{ delay: 0.3, duration: 1 }}
           className="text-center text-gray-300 text-lg mb-10 max-w-2xl mx-auto"
         >
-          Biz o‘z ishining ustasi bo‘lgan, mas'uliyatli va ijodiy fikrlaydigan yangi a’zolarni qidirmoqdamiz!
+        { t('searchworker')}
         </motion.p>
 
         <form className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {[
              {
-              label: "F.I.O",
-              type: "url",
-              placeholder: "To'liq ism familya",
+              label: `${t("fio")}`,
+              type: "text",
+              placeholder: `${t("fioples")}`,
               delay: 0.4,
             },
             {
-              label: "Tel raqam",
+              label: `${t("tel")}`,
               type: "number",
               placeholder: "+9989901234567",
               delay: 0.5,
             },
             {
-              label: "Yo‘nalish",
+              label: `${t("yunalish")}`,
               type: "text",
               placeholder: "Frontend, Backend, Design...",
               delay: 0.2,
             },
             {
-              label: "Daraja",
+              label: `${t("daraja")}`,
               type: "select",
               options: ["Junior", "Middle", "Senior"],
               delay: 0.3,
             },
             {
-              label: "Portfolio URL",
+              label: `${t("url")}`,
               type: "url",
               placeholder: "https://portfolio.com",
               delay: 0.4,
             },
             {
-              label: "Narx (so‘m)",
+              label: `${t("narx")}`,
               type: "number",
               placeholder: "1000000",
               delay: 0.5,
@@ -104,7 +106,7 @@ export const Worker = () => {
           className="mt-12 flex justify-center"
         >
           <button className="px-10 py-3 text-lg font-bold bg-gradient-to-r from-blue-600 to-cyan-500 text-white rounded-lg shadow-[0_0_25px_5px_rgba(0,122,255,0.5)] hover:shadow-[0_0_35px_10px_rgba(0,122,255,0.7)] hover:scale-105 transition-all duration-300">
-            Yuborish
+            {t('yuborish')}
           </button>
         </motion.div>
       </div>
