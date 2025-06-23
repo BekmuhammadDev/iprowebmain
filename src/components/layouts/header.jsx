@@ -291,96 +291,96 @@ const Header = () => {
 
       {/* Fullscreen Mobile Menu */}
       <div
-        className={`fixed w-full sm:w-96 sm:right-0 bg-[#0d1128] text-white h-full z-50 transition-transform duration-300 ${
-          menuOpen ? "translate-x-0" : "translate-x-full"
-        }`}
+  className={`fixed top-0 left-0 w-full h-screen bg-[#0d1128] text-white z-50 transition-transform duration-300 ${
+    menuOpen ? "translate-x-0" : "translate-x-full"
+  }`}
+>
+  {/* Header: Close + Profile */}
+  <div className="flex items-center justify-between px-6 py-4 border-b border-gray-600">
+    <div className="flex items-center gap-4">
+      <img
+        src={profileicon}
+        alt="Profile"
+        className="w-[70px] h-[70px] rounded-full border-2 border-gray-500"
+      />
+      {token && (
+        <h2 className="text-lg font-bold">
+          Hi, {truncateName(user?.fullName || "")}
+        </h2>
+      )}
+    </div>
+    <button onClick={() => setMenuOpen(false)} className="text-3xl">
+      <IoMdClose />
+    </button>
+  </div>
+
+  {/* Navigation Links */}
+  <ul className="flex flex-col gap-6 text-xl font-semibold px-6 pt-4 overflow-y-auto h-[calc(100%-110px)]">
+    {[
+      { name: "", path: "/" },
+      { name: t("about"), path: "/aboutus" },
+      { name: t("team"), path: "/team" },
+      { name: t("portfolio"), path: "/portfolio" },
+      { name: t("services"), path: "/services" },
+      { name: t("careers"), path: "/careers" },
+    ].map((item, index) => (
+      <NavLink
+        key={index}
+        to={item.path}
+        onClick={() => setMenuOpen(false)}
+        className="text-white hover:text-blue-400 transition"
       >
-        <div className="p-6 flex justify-between items-start">
-          <div className="flex flex-col items-center text-center">
-            <img
-              src={profileicon}
-              alt="Profile"
-              className="w-[110px] h-[110px] rounded-full border-2 border-gray-500"
-            />
-            {token && (
-              <h2 className="text-lg font-bold mt-4">
-                Hi, {truncateName(user?.fullName || "")}
-              </h2>
-            )}
-          </div>
-          <button
-            onClick={() => setMenuOpen(false)}
-            className="text-white text-3xl"
-          >
-            <IoMdClose />
-          </button>
-        </div>
+        {item.name}
+      </NavLink>
+    ))}
 
-        {/* Mobile Nav Links */}
-        <ul className="flex flex-col mt-4 px-6 gap-6 text-xl font-semibold">
-          {[ 
-            { name: "", path: "/" },
-            { name: t("about"), path: "/aboutus" },
-            { name: t("team"), path: "/team" },
-            { name: t("portfolio"), path: "/portfolio" },
-            { name: t("services"), path: "/services" },
-            { name: t("careers"), path: "/careers" },
-          ].map((item, index) => (
-            <NavLink
-              key={index}
-              to={item.path}
-              onClick={() => setMenuOpen(false)}
-              className="block text-white"
-            >
-              {item.name}
-            </NavLink>
-          ))}
+    {token && (
+      <>
+        <NavLink
+          to="/user"
+          onClick={() => setMenuOpen(false)}
+          className="text-white hover:text-blue-400 transition"
+        >
+          My Profile
+        </NavLink>
+        <button
+          onClick={() => {
+            handleSignOut();
+            setMenuOpen(false);
+          }}
+          className="text-red-500 font-semibold hover:underline"
+        >
+          Sign Out
+        </button>
+      </>
+    )}
 
-          {token && (
-            <>
-              <NavLink
-                to="/user"
-                onClick={() => setMenuOpen(false)}
-                className="block text-white"
-              >
-                My Profile
-              </NavLink>
-              <button
-                onClick={() => {
-                  handleSignOut();
-                  setMenuOpen(false);
-                }}
-                className="text-red-500 font-semibold"
-              >
-                Sign Out
-              </button>
-            </>
-          )}
+    {!token && (
+      <>
+        <button
+          onClick={() => {
+            setIsSignInModalOpen(true);
+            setMenuOpen(false);
+          }}
+          className="w-full mb-3 text-center bg-white text-blue-600 font-bold border-b-2 px-5 py-2 rounded-md hover:bg-blue-100 transition"
+        >
+          Sign In
+        </button>
+        <button
+          onClick={() => {
+            setIsModalOpen(true);
+            setMenuOpen(false);
+          }}
+          className="w-full border border-blue-600 text-center font-bold px-5 py-2 rounded-md text-white hover:bg-blue-600 transition"
+        >
+          Sign Up
+        </button>
+      </>
+    )}
+  </ul>
+</div>
 
-          {!token && (
-            <>
-              <button
-                onClick={() => {
-                  setIsSignInModalOpen(true);
-                  setMenuOpen(false);
-                }}
-                className="block w-full mb-3 text-center bg-white text-blue-600 font-bold border-b-2 px-5"
-              >
-                Sign In
-              </button>
-              <button
-                onClick={() => {
-                  setIsModalOpen(true);
-                  setMenuOpen(false);
-                }}
-                className="block w-full border border-blue-600 text-center font-bold px-5"
-              >
-                Register
-              </button>
-            </>
-          )}
-        </ul>
-      </div>
+
     </header>
   </>
 );
