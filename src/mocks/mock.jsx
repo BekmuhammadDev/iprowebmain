@@ -94,43 +94,7 @@ export const portfolioData = [
   },
 ];
 // ////////////////////////////
-export const faqs = [
-  {
-    question: 'technical_issue_details',
-    answer:
-      'technical_issue_details',
-  },
-  {
-    question: 'project_duration',
-    answer:
-      'project_duration_details',
-  },
-  {
-    question: "refund_policy",
-    answer:
-      'refund_policy_details',
-  },
-  {
-    question: "refund_policy",
-    answer:
-      'refund_policy_details',
-  },
-  {
-    question: 'project_duration',
-    answer:
-      'project_duration_details',
-  },
-  {
-    question: "refund_policy",
-    answer:
-      'refund_policy_details',
-  },
-  {
-    question: "refund_policy",
-    answer:
-      'refund_policy_details',
-  },
-];
+
 // ///////////////////////////
 export const requests = [
   {

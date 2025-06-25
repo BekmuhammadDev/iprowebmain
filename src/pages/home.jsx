@@ -1,6 +1,5 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { FaPlus, FaMinus } from 'react-icons/fa';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Video from '../assets/video/ipro.mp4';
@@ -11,16 +10,12 @@ import TestimonialSlider from '../components/ui/scrollcardworkers';
 import CardBg from '../assets/images/cardbg.png';
 import { teamMembers } from '../mocks/mock';
 import { portfolioData } from '../mocks/mock';
-import { faqs } from '../mocks/mock';
 import StarsRightImg from "../assets/images/starsright.png"
 import StarsLeftImg from "../assets/images/starsleft.png"
-import { IoMdClose } from "react-icons/io";
 import IproIMage from "../assets/images/iproLogoRegister.png"
 import { NavLink } from 'react-router-dom';
 import { FaQuestion } from "react-icons/fa";
 import { motion } from "framer-motion";
-
-import ContactWithMap from '../components/ui/contactwithmap';
 import Header from '../components/layouts/header';
 import Footer from '../components/layouts/footer';
 import ScrollProgressBar from '../components/progressLine/progressline';
@@ -32,6 +27,8 @@ import Primary from './primary';
 import Scroller from './scroller';
 import PortfolioSection from './portfolyoSection';
 import Teams from './teams';
+import Faq from './Faq'
+
 
 
 gsap.registerPlugin(ScrollTrigger);
@@ -173,147 +170,8 @@ const aboutus = () => {
       ))}
     </div>
   </div>
-</section>
-
-           <section className="relative w-full  pt-[90px] mb-10 overflow-hidden">
-  <div className="relative -z-10 top-[800px]">
-    <img
-      className="absolute hidden md:flex bottom-0 -right-10"
-      src={StarsRightImg}
-      alt=""
-    />
-  </div>
-  <div className="container mx-auto px-4 sm:px-6 md:px-10">
-    <h1
-      className="text-3xl sm:text-5xl md:text-[80px] text-center md:text-left font-black leading-[0.95] mb-10 text-white drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]"
-      data-aos="fade-up"
-    >
-      {t("have_a_question")}
-    </h1>
-
-    <div
-      id="question"
-      className="flex flex-col lg:flex-row items-start justify-between gap-10 p-4 md:p-5"
-      data-aos="fade-up"
-      data-aos-delay="100"
-    >
-      {/* Chap tomon – FAQ */}
-      <div
-        className="flex flex-col mt-10 w-full lg:w-1/2"
-        data-aos="fade-right"
-        data-aos-delay="200"
-      >
-        <div className="w-full">
-          {faqs.map((faq, index) => (
-            <div key={index} className="mb-3" data-aos="fade-up" data-aos-delay={index * 100}>
-              <button
-                onClick={() => toggleAccordion(index)}
-                className="w-full flex justify-between items-center p-5 bg-[#161b29] text-white font-semibold text-base md:text-lg rounded-lg"
-              >
-                {t(faq.question)}
-                {openIndex === index ? (
-                  <FaMinus className="text-blue-400" />
-                ) : (
-                  <FaPlus className="text-blue-400" />
-                )}
-              </button>
-
-              <div
-                className={`overflow-hidden transition-max-height duration-500 ease-in-out ${openIndex === index ? "max-h-40 p-5 text-white bg-[#1d2536]" : "max-h-0"}`}
-              >
-                {t(faq.answer)}
-
-                {index === 0 && openIndex === 0 && (
-                  <div className="mt-4 flex items-center group relative min-h-[48px]">
-                    <button
-                      className="bg-white text-blue-500 z-10 px-4 py-2 rounded-lg md:font-semibold drop-shadow-[0_2px_7px_rgba(0,112,244,0.8)]"
-                      onClick={() => openModal("Texnik muammo")}
-                    >
-                      {t("technical_issue")}
-                    </button>
-
-                    <a
-                      href="tel:+998999999999"
-                      className="absolute left-0 opacity-0 text-base md:-translate-x-10 group-hover:opacity-100 group-hover:translate-x-44 transition-all duration-500 bg-blue-500 hover:bg-black border-blue-500 border font-medium text-white px-2 md:px-4 py-2 top-1 rounded-lg"
-                    >
-                      +99899 999 99 99
-                    </a>
-                  </div>
-                )}
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* O'ng tomon – ContactWithMap */}
-      <div
-        className="relative md:top-10 flex justify-center w-full xl:w-1/2"
-        data-aos="fade-left"
-        data-aos-delay="300"
-      >
-        <ContactWithMap />
-      </div>
-    </div>
-  </div>
-
-  {/* Modal */}
-  {isModalOpen && (
-    <>
-      <style>{`body { overflow: hidden; }`}</style>
-      <div className="fixed inset-0 z-[1000] bg-black/70 backdrop-blur-sm flex items-center justify-center py-10 px-4">
-        <div className="bg-[#0b0f19] w-full max-w-3xl p-8 rounded-3xl shadow-2xl relative z-[1001] pt-12" data-aos="zoom-in">
-          <div className="absolute top-4 right-4">
-            <button
-              onClick={closeModal}
-              className="text-white hover:text-gray-300 text-3xl focus:outline-none"
-            >
-              <IoMdClose />
-            </button>
-          </div>
-
-          <h2 className="text-2xl font-bold text-white mb-6">
-            {t("issue")}: <span className="text-red-500">{selectedIssue}!</span>
-          </h2>
-
-          <div className="flex flex-col md:flex-row gap-6">
-            <div className="md:w-1/2 w-full">
-              <img src={IproIMage} alt="" className="rounded-2xl w-full object-cover" />
-            </div>
-            <div className="md:w-1/2 w-full">
-              <form className="flex flex-col gap-5">
-                <input
-                  type="text"
-                  placeholder={t("your_name")}
-                  className="px-5 py-3 rounded-xl bg-[#161b29] text-white placeholder-gray-400 shadow-inner"
-                />
-                <input
-                  type="tel"
-                  placeholder={t("phone_number")}
-                  className="px-5 py-3 rounded-xl bg-[#161b29] text-white placeholder-gray-400 shadow-inner"
-                />
-                <textarea
-                  placeholder={t("problem_details")}
-                  rows={5}
-                  className="px-5 py-3 rounded-xl bg-[#161b29] text-white placeholder-gray-400 resize-none shadow-inner"
-                ></textarea>
-                <button
-                  type="submit"
-                  className="bg-white text-[#0086EE] w-full px-6 py-3 rounded-xl font-bold shadow-xl hover:bg-gray-200 transition-colors"
-                >
-                  {t("submit")}
-                </button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </>
-  )}
-          </section>
-
-
-
+           </section>
+           <Faq t={t} StarsRightImg={StarsRightImg} toggleAccordion={toggleAccordion} openIndex={toggleAccordion} openModal={openModal} isModalOpen={isModalOpen} closeModal={closeModal} selectedIssue={selectedIssue} IproIMage={IproIMage}/>
         </>
     );
 };
