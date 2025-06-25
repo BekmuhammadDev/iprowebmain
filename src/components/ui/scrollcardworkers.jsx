@@ -82,6 +82,12 @@ export default function TestimonialSlider() {
   }, []);
 
   return (
+     <section className=" overflow-hidden ">    
+                <div
+                    className=" container mx-auto md:max-w-none 2xl:max-w-none"
+                    data-aos="flip-up"
+                    data-aos-duration="1200"
+                >
     <div className="relative bg-gradient-to-b from-[#0A0F1F] via-[#101935] to-[#0A0F1F] py-24 px-4 md:px-28">
       {/* Dekorativ yulduzlar */}
       <img className="absolute top-0 right-0 w-32 opacity-20 animate-pulse" src={StarsRight} alt="stars" />
@@ -118,5 +124,7 @@ export default function TestimonialSlider() {
         ))}
       </div>
     </div>
+    </div>
+    </section>
   );
 }

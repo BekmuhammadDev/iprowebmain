@@ -49,50 +49,7 @@ export const teamMembers = [
 
 ];
 // /////////////////////////////
-export const portfolioData = [
-  {
-    id: 1,
-    img: 'https://picsum.photos/200/300?random=1',
-    title: 'China House',
-    style: 'col-span-2 h-[243px]',
-  },
-  {
-    id: 2,
-    img: 'https://picsum.photos/200/300?random=2',
-    title: 'China House',
-    style: ' md:h-[243px] h-[198px]',
-  },
-  {
-    id: 3,
-    img: 'https://picsum.photos/200/300?random=3',
-    title: 'China House',
-    style: ' md:h-[488px] h-[198px]',
-  },
-  {
-    id: 4,
-    img: 'https://picsum.photos/200/300?random=4',
-    title: 'China House',
-    style: 'col-span-2 md:h-[500px] h-[243px]',
-  },
-  {
-    id: 5,
-    img: 'https://picsum.photos/200/300?random=5',
-    title: 'China House',
-    style: 'h-[258px]',
-  },
-  {
-    id: 6,
-    img: 'https://picsum.photos/200/300?random=6',
-    title: 'China House',
-    style: 'h-[258px]',
-  },
-  {
-    id: 7,
-    img: 'https://picsum.photos/200/300?random=7',
-    title: 'China House',
-    style: 'h-[258px] hidden md:flex',
-  },
-];
+
 // ////////////////////////////
 
 // ///////////////////////////
