@@ -75,11 +75,11 @@ const portfolio = () => {
                                     </button>
                                 </div>
 
-                                <div className="flex items-center gap-0 overflow-hidden md:-space-x-20 mt-8 md:mt-0">
+                                <div className="grid grid-cols-1 sm:grid-cols-2 md:flex md:gap-0 md:-space-x-20 mt-8 md:mt-0 w-full md:w-auto gap-4 md:overflow-visible relative z-0">
                                     {[1, 2, 3, 4, 5].map((_, i) => (
                                         <div
                                             key={i}
-                                            className="relative w-full md:h-[200px] h-24 shadow-xl rounded-2xl transition-transform duration-300 cursor-pointer hover:scale-105 group"
+                                            className="relative h-36 sm:h-40 md:h-[200px] w-full shadow-xl rounded-2xl transition-transform duration-500 cursor-pointer group hover:z-20 hover:scale-[1.1]"
                                             data-aos-delay={`${(index + i) * 150}`}
                                         >
                                             <img
@@ -91,6 +91,10 @@ const portfolio = () => {
                                         </div>
                                     ))}
                                 </div>
+
+
+
+
                             </div>
                         ))}
 
