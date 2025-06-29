@@ -47,6 +47,7 @@ export const teamMembers = [
     hoverImg: 'https://picsum.photos/200/300?random=2&grayscale',
   },
 
+
 ];
 // /////////////////////////////
 

@@ -82,11 +82,14 @@ export const Worker = () => {
                 {field.label}
               </label>
               {field.type === "select" ? (
-                <select className="w-full bg-[#11152A] border border-blue-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
-                  {field.options.map((opt) => (
-                    <option key={opt}>{opt}</option>
-                  ))}
-                </select>
+                  <select
+                      className="w-full appearance-none bg-[#11152A] border border-blue-700 rounded-lg px-4 py-[14px] text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  >
+                      {field.options.map((opt) => (
+                          <option key={opt}>{opt}</option>
+                      ))}
+                  </select>
+
               ) : (
                 <input
                   type={field.type}

@@ -40,7 +40,7 @@ const Career = () => {
       <main className="bg-gradient-to-br from-[#0A0F1F] via-[#0E1628] to-[#111B30] text-white min-h-screen pt-28 sm:pt-36">
 
         <section className="relative z-10 py-10 px-4 sm:px-8 md:px-10">
-          <div className="container mx-auto">
+          <div className="container mx-auto px-5 xl:px-0">
             <motion.h1
               initial={{ opacity: 0, y: -50 }}
               animate={{ opacity: 1, y: 0 }}

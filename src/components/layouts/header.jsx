@@ -298,11 +298,7 @@ const Header = () => {
   {/* Header: Close + Profile */}
   <div className="flex items-center justify-between px-6 py-4 border-b border-gray-600">
     <div className="flex items-center gap-4">
-      <img
-        src={profileicon}
-        alt="Profile"
-        className="w-[70px] h-[70px] rounded-full border-2 border-gray-500"
-      />
+      
       {token && (
         <h2 className="text-lg font-bold">
           Hi, {truncateName(user?.fullName || "")}

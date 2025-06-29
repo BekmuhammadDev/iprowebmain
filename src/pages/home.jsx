@@ -56,9 +56,7 @@ const AboutUs = () => {
       <Scroller t={t} Video={Video} Logocloud={Logocloud} />
       <TestimonialSlider />
       <Teams t={t} StarsRightImg={StarsRightImg} CardBg={CardBg} />
-
       {/* Portfolio Cards */}
-
       <PrimaryService StarsLeftImg={StarsLeftImg} t={t}/>
 
       <Faq
