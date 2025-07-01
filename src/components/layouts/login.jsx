@@ -61,16 +61,16 @@ const Login = ({
   };
 
   return (
-    <div className="fixed inset-0 flex items-center h-[100vh] px-5 justify-center backdrop-blur-sm z-50">
-      <div className="flex rounded-md justify-between bg-[#191C2F] items-center sm:px-20">
+    <div className="fixed inset-0 flex items-center h-screen px-1 justify-center bg-black bg-opacity-50 z-50">
+      <div className="w-full max-w-3xl m-2 bg-[#0D111C] rounded-lg flex flex-col md:flex-row relative overflow-hidden">
         <div className="hidden md:flex">
           <img src={IproRegisterLogo} alt="logo" />
         </div>
 
-        <div className="p-6 rounded-lg w-full sm:w-[400px] relative text-white">
+        <div className="p-6 w-full sm:w-[400px] relative text-white">
           <button
-            className="absolute -top-4 -right-8 text-gray-400 w-8 h-8 flex items-center justify-center rounded-full shadow-lg hover:text-red-500"
-            onClick={() => setIsSignInModalOpen(false)}
+              className="absolute top-4 right-4 text-gray-400 w-8 h-8 flex items-center justify-center rounded-full shadow-lg hover:text-red-500"
+              onClick={() => setIsSignInModalOpen(false)}
           >
             <IoMdClose fontSize={28} />
           </button>
