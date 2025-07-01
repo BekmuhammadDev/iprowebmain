@@ -9,8 +9,8 @@ const Footer = () => {
   const { t } = useTranslation();
 
   return (
-      <footer className="bg-gradient-to-t mb-5  from-[#0A0F1F] via-[#0E1628] to-[#111B30] text-white pt-16 pb-10 px-4">
-        <div className="w-full max-w-[1400px] flex justify-between mx-auto grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
+      <footer className="bg-gradient-to-t mb-5 from-[#0A0F1F] via-[#0E1628] to-[#111B30] text-white pt-16 pb-10 px-4">
+        <div className="w-full max-w-[1400px] mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
 
           {/* Logo & Description */}
           <div className="space-y-4 text-center sm:text-left">
@@ -47,7 +47,7 @@ const Footer = () => {
           </div>
 
           {/* Contact Info */}
-          <div className="text-center sm:text-left">
+          <div className="text-center ml-16 sm:text-left">
             <h3 className="text-xl font-bold mb-4 text-blue-400 border-b border-blue-600 inline-block pb-1">
               {t("contact")}
             </h3>
@@ -59,11 +59,11 @@ const Footer = () => {
           </div>
 
           {/* Social Media */}
-          <div className="text-center sm:text-left">
+          <div className="text-center ml-16 sm:text-left">
             <h3 className="text-xl font-bold mb-4 text-blue-400 border-b border-blue-600 inline-block pb-1">
               {t("follow_us")}
             </h3>
-            <div className="flex justify-center sm:justify-start gap-4 mt-4">
+            <div className="flex justify-center sm:justify-start gap-4 mt-4 flex-wrap">
               <Link to="http://t.me/iPRO_group" className="hover:scale-110 transition">
                 <FaTelegramPlane className="text-2xl text-blue-400 hover:text-blue-500" />
               </Link>
@@ -78,8 +78,10 @@ const Footer = () => {
               </Link>
             </div>
           </div>
+
         </div>
       </footer>
+
   );
 };
 
