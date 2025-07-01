@@ -58,15 +58,17 @@ const Career = () => {
             >
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 w-full">
                 {jobListings.slice(0, visibleJobs).map((job, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 40 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: index * 0.15 }}
-                    viewport={{ once: true }}
-                    onClick={() => handleClick(job.slug)}
-                    className="bg-blue-400/10 backdrop-blur-lg border border-blue-500/20 text-white p-6 rounded-2xl shadow-md transition-all duration-300 cursor-pointer group hover:scale-105 hover:-translate-y-1 hover:bg-blue-500/20 hover:ring-2 hover:ring-blue-400/60"
-                  >
+                    <motion.div
+                        key={index}
+                        initial={{ opacity: 0, y: 40 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        whileHover={{ scale: 1.05 }} // <-- BU YERDA HOVER EFFEKTI
+                        transition={{ duration: 0.1, delay: index * 0.15 }}
+                        viewport={{ once: true }}
+                        onClick={() => handleClick(job.slug)}
+                        className="bg-blue-400/10 backdrop-blur-lg border border-blue-500/20 text-white p-6 rounded-2xl shadow-md transition-all duration-300 cursor-pointer group hover:-translate-y-1 hover:bg-blue-500/20 hover:ring-2 hover:ring-blue-400/60"
+                    >
+
                     <h2 className="text-xl font-semibold group-hover:text-blue-300 transition mb-2">
                       {t(job.title)}
                     </h2>
