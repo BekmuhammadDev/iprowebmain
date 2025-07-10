@@ -62,12 +62,12 @@ const Login = ({
 
   return (
     <div className="fixed inset-0 flex items-center h-screen px-1 justify-center bg-black bg-opacity-50 z-50">
-      <div className="w-full max-w-3xl m-2 bg-[#0D111C] rounded-lg flex flex-col md:flex-row relative overflow-hidden">
+      <div className="w-full max-w-5xl m-2 bg-[#0D111C] rounded-lg flex flex-col md:flex-row relative overflow-hidden">
         <div className="hidden md:flex">
           <img src={IproRegisterLogo} alt="logo" />
         </div>
 
-        <div className="p-6 w-full sm:w-[400px] relative text-white">
+        <div className="p-6 mx-12  w-full sm:w-[400px] relative text-white">
           <button
               className="absolute top-4 right-4 text-gray-400 w-8 h-8 flex items-center justify-center rounded-full shadow-lg hover:text-red-500"
               onClick={() => setIsSignInModalOpen(false)}
