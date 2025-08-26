@@ -259,7 +259,6 @@ const Header = () => {
                                 )}
                             </div>
 
-                            {/* Modal Sign In */}
                             {isSignInModalOpen && (
                                 <Login
                                     IproRegisterLogo={IproRegisterLogo}
@@ -271,7 +270,6 @@ const Header = () => {
                                 />
                             )}
 
-                            {/* Modal Register */}
                             {isModalOpen && (
                                 <Register
                                     IproRegisterLogo={IproRegisterLogo}
@@ -284,7 +282,6 @@ const Header = () => {
 
                         </div>
 
-                        {/* Mobile Menu Button */}
                         <button
                             onClick={() => setMenuOpen(!menuOpen)}
                             className="mt-[-5px] lg:hidden text-white text-3xl"
@@ -294,13 +291,11 @@ const Header = () => {
                     </div>
                 </nav>
 
-                {/* Fullscreen Mobile Menu */}
                 <div
                     className={`fixed top-0 left-0 w-full h-screen bg-[#0d1128] text-white z-50 transition-transform duration-300 ${
                         menuOpen ? "translate-x-0" : "translate-x-full"
                     }`}
                 >
-                    {/* Header: Close + Profile */}
                     <div className="flex items-center justify-between px-6 py-4 border-b border-gray-600">
                         <div className="flex items-center gap-4">
 
@@ -315,7 +310,6 @@ const Header = () => {
                         </button>
                     </div>
 
-                    {/* Navigation Links */}
                     <ul className="flex flex-col gap-6 text-xl font-semibold px-6 pt-4 overflow-y-auto h-[calc(100%-110px)]">
                         {[
                             {name: "", path: "/"},

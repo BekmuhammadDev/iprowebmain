@@ -1,16 +1,15 @@
 import React, { useEffect } from 'react';
-import KranPortfolio from "../assets/images/kranPortfolio.png"
+import KranPortfolio from "../assets/images/kranPortfolio.png";
 import Header from '../components/layouts/header';
-import Footer from '../components/layouts/footer';
-import Stars from "../assets/images/stars.png"
-import LefftStars from "../assets/images/starsleft.png"
+import Stars from "../assets/images/stars.png";
+import LefftStars from "../assets/images/starsleft.png";
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from "react-i18next";
 import "../i18";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
-const portfolio = () => {
+const Portfolio = () => {
     const { t } = useTranslation();
 
     const projectsData = [
@@ -45,7 +44,7 @@ const portfolio = () => {
                         <img src={Stars} alt="" className="opacity-40" />
                     </div>
 
-                    <div className="container mx-auto mb-44 px-5 xl:px-14">
+                    <div className="container mx-auto mb-10 px-5 xl:px-14">
                         <h1
                             data-aos="fade-up"
                             className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 md:text-[96px] text-[40px] font-black ml-5 mb-10 text-center md:text-left drop-shadow-[0_5px_20px_rgba(0,112,244,0.8)]"
@@ -58,8 +57,9 @@ const portfolio = () => {
                                 key={index}
                                 data-aos="fade-up"
                                 data-aos-delay={`${index * 250}`}
-                                className="flex items-center justify-between mb-14 flex-col md:flex-row overflow-hidden rounded-2xl py-12 md:py-6 bg-gradient-to-r from-[#1f2235] to-[#16182B] shadow-2xl md:px-10 hover:scale-[1.02] transition-all duration-500 group"
+                                className="flex items-center justify-between mb-10 flex-col md:flex-row overflow-hidden rounded-2xl py-12 md:py-6 bg-gradient-to-r from-[#1f2235] to-[#16182B] shadow-2xl md:px-10 transition-all duration-500"
                             >
+                                {/* Matn qismi */}
                                 <div className="relative z-10">
                                     <h1 className="text-2xl md:text-4xl font-extrabold text-white mb-4 text-center md:text-left">
                                         {t(project.title)}
@@ -75,26 +75,31 @@ const portfolio = () => {
                                     </button>
                                 </div>
 
+                                {/* Rasmlar qismi */}
                                 <div className="grid grid-cols-1 sm:grid-cols-2 md:flex md:gap-0 md:-space-x-20 mt-8 md:mt-0 w-full md:w-auto gap-4 md:overflow-visible relative z-0">
                                     {[1, 2, 3, 4, 5].map((_, i) => (
                                         <div
                                             key={i}
-                                            className="relative h-36 sm:h-40 md:h-[200px] w-full shadow-xl rounded-2xl transition-transform duration-500 cursor-pointer group hover:z-20 hover:scale-[1.1]"
+                                            className="relative h-36 sm:h-40 md:h-[200px] w-full shadow-xl rounded-2xl
+                                                       transition-transform duration-500 cursor-pointer
+                                                       hover:z-20 hover:scale-[1.1] group"
                                             data-aos-delay={`${(index + i) * 150}`}
                                         >
+                                            {/* Rasm */}
                                             <img
                                                 src={KranPortfolio}
                                                 className="h-full w-full object-cover rounded-2xl"
                                                 alt={`${t(project.title)} ${i}`}
                                             />
-                                            <div className="absolute inset-0 bg-black bg-opacity-40 group-hover:bg-opacity-0 transition-all duration-300 rounded-2xl"></div>
+                                            {/* Overlay */}
+                                            <div
+                                                className="absolute inset-0 bg-black bg-opacity-40
+                                                           transition-all duration-300 rounded-2xl
+                                                           group-hover:bg-opacity-0"
+                                            ></div>
                                         </div>
                                     ))}
                                 </div>
-
-
-
-
                             </div>
                         ))}
 
@@ -108,4 +113,4 @@ const portfolio = () => {
     );
 };
 
-export default portfolio;
+export default Portfolio;

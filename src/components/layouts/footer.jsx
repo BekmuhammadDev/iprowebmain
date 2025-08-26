@@ -12,7 +12,6 @@ const Footer = () => {
         <footer className="bg-gradient-to-t mb-5 from-[#0A0F1F] via-[#0E1628] to-[#111B30] text-white pt-16 pb-10 px-4">
             <div className="w-full max-w-[1400px] mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
 
-                {/* Logo & Description */}
                 <div className="space-y-4 text-center sm:text-left">
                     <img src={Logo} alt="iPro Logo" className="w-44 mx-auto sm:mx-0"/>
                     <p className="text-sm text-gray-400 leading-relaxed max-w-xs mx-auto sm:mx-0">
@@ -21,9 +20,8 @@ const Footer = () => {
                     <p className="text-xs text-gray-500">© 2020-2025 «iPro». All rights reserved.</p>
                 </div>
 
-                {/* Quick Links */}
                 <div className="text-center sm:text-left">
-                    <h3 className="text-xl font-bold mb-4 text-blue-400 border-b border-blue-600 inline-block pb-1">
+                    <h3 className="text-xl font-bold mb-4 text-blue-400 inline-block pb-1">
                         {t("links")}
                     </h3>
                     <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 mt-4 sm:mt-6">
@@ -46,9 +44,8 @@ const Footer = () => {
                     </ul>
                 </div>
 
-                {/* Contact Info */}
                 <div className="text-center ml-16 sm:text-left ">
-                    <h3 className="text-xl font-bold mb-4 text-blue-400 border-b border-blue-600 inline-block pb-1">
+                    <h3 className="text-xl font-bold mb-4 text-blue-400  inline-block pb-1">
                         {t("contact")}
                     </h3>
                     <ul className="text-gray-300 space-y-2 text-sm mt-4">
@@ -58,9 +55,8 @@ const Footer = () => {
                     </ul>
                 </div>
 
-                {/* Social Media */}
                 <div className="text-center ml-16 sm:text-left ">
-                    <h3 className="text-xl font-bold mb-4 text-blue-400 border-b border-blue-600 inline-block pb-1">
+                    <h3 className="text-xl font-bold mb-4 text-blue-400 inline-block pb-1">
                         {t("follow_us")}
                     </h3>
                     <div className="flex justify-center sm:justify-start gap-4 mt-4 flex-wrap">
@@ -78,7 +74,6 @@ const Footer = () => {
                         </Link>
                     </div>
                 </div>
-
             </div>
         </footer>
 

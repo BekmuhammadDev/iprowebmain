@@ -44,12 +44,11 @@ const Teams = ({ StarsRightImg, CardBg }) => {
             {t("meetyheteam")}
           </h1>
 
-
           <div className="absolute right-0 top-0 hidden xl:block" data-aos="fade-left">
             <img src={StarsRightImg} alt="decor" className="w-[250px] opacity-50" />
           </div>
 
-          <div className="mt-10  flex flex-col md:flex-row gap-10 items-center md:items-start justify-between">
+          <div className="mt-10 flex flex-col md:flex-row gap-10 items-center md:items-start justify-between">
             <div className="w-full md:w-1/2 space-y-5 px-4 sm:px-10 md:px-0 mt-6">
               <h3 className="text-white text-sm sm:text-lg md:text-xl uppercase text-center md:text-left font-semibold tracking-widest">
                 {t(activeMember.role)}
@@ -100,7 +99,7 @@ const Teams = ({ StarsRightImg, CardBg }) => {
 
           {/* Carousel Thumbnails */}
           <div
-              className="relative z-10 -mt-14 sm:-mt-16 md:-mt-20"
+              className="relative z-10 -mt-14 sm:-mt-16 md:-mt-20 group"
               onMouseEnter={pauseScroll}
               onMouseLeave={resumeScroll}
           >
@@ -112,18 +111,14 @@ const Teams = ({ StarsRightImg, CardBg }) => {
                 {[...teamMembers, ...teamMembers, ...teamMembers].map((member, idx) => (
                     <div
                         key={idx}
-                        className="relative w-32 sm:w-40 md:w-48 h-48 sm:h-60 md:h-72 rounded-xl overflow-hidden bg-[#0a0f1f] shadow-lg cursor-pointer group shrink-0 ring-1 ring-white/10 hover:ring-blue-500"
+                        className="relative w-32 sm:w-40 md:w-48 h-48 sm:h-60 md:h-72 rounded-xl overflow-hidden bg-[#0a0f1f] shadow-lg cursor-pointer shrink-0 ring-1 ring-white/10 hover:ring-blue-500"
                         onClick={() => handleMemberClick(member, idx)}
                     >
+                      {/* faqat bitta rasm, hover effekti yo‘q */}
                       <img
                           src={member.img}
                           alt={member.name}
-                          className="absolute inset-0 w-full h-full object-cover transition-opacity duration-300 opacity-100 group-hover:opacity-0"
-                      />
-                      <img
-                          src={member.hoverImg}
-                          alt={member.name}
-                          className="absolute inset-0 w-full h-full object-cover transition-opacity duration-300 opacity-0 group-hover:opacity-100"
+                          className="absolute inset-0 w-full h-full object-cover"
                       />
                       <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-2 text-white text-xs sm:text-sm md:text-base text-center font-bold z-10">
                         {member.name}
@@ -147,6 +142,10 @@ const Teams = ({ StarsRightImg, CardBg }) => {
               .animate-scroll {
                 animation: scroll 45s linear infinite;
               }
+            }
+            /* Hoverda faqat scroll animatsiya to‘xtaydi */
+            .group:hover .animate-scroll {
+              animation-play-state: paused;
             }
           `}
           </style>

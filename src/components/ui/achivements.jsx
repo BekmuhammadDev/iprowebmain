@@ -3,10 +3,7 @@ import { useEffect, useState, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import "../../i18";
 
-
-
 const Achievements = () => {
-
     const { t } = useTranslation();
 
     const achievementsList = [
@@ -24,7 +21,9 @@ const Achievements = () => {
             (entries) => {
                 entries.forEach((entry) => {
                     if (entry.isIntersecting) {
-                        setInView(true);
+                        setInView(true);   // ekranda bo‘lsa → boshlaydi
+                    } else {
+                        setInView(false);  // ekrandan chiqsa → to‘xtaydi
                     }
                 });
             },
@@ -53,10 +52,19 @@ const Achievements = () => {
                         )}
                         <div className="text-center">
                             <h2 className="text-4xl sm:text-5xl font-bold">
-                                {inView && (
-                                    <CountUp start={0} end={achievement.value} duration={3} separator="," />
+                                {inView ? (
+                                    <CountUp
+                                        start={0}
+                                        end={achievement.value}
+                                        duration={3}
+                                        separator=","
+                                    />
+                                ) : (
+                                    0
                                 )}
-                                {achievement.postfix && <span className="ml-1">{achievement.postfix}</span>}
+                                {achievement.postfix && (
+                                    <span className="ml-1">{achievement.postfix}</span>
+                                )}
                             </h2>
                             <p className="text-xl sm:text-2xl text-gray-300 font-semibold">
                                 {achievement.metric}
