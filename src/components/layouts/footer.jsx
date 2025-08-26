@@ -21,7 +21,7 @@ const Footer = () => {
                 </div>
 
                 <div className="text-center sm:text-left">
-                    <h3 className="text-xl font-bold mb-4 text-blue-400 inline-block pb-1">
+                    <h3 className="text-xl font-bold mb-4 text-blue-100 inline-block pb-1">
                         {t("links")}
                     </h3>
                     <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 mt-4 sm:mt-6">
@@ -45,7 +45,7 @@ const Footer = () => {
                 </div>
 
                 <div className="text-center ml-16 sm:text-left ">
-                    <h3 className="text-xl font-bold mb-4 text-blue-400  inline-block pb-1">
+                    <h3 className="text-xl font-bold mb-4 text-blue-100  inline-block pb-1">
                         {t("contact")}
                     </h3>
                     <ul className="text-gray-300 space-y-2 text-sm mt-4">
@@ -56,21 +56,21 @@ const Footer = () => {
                 </div>
 
                 <div className="text-center ml-16 sm:text-left ">
-                    <h3 className="text-xl font-bold mb-4 text-blue-400 inline-block pb-1">
+                    <h3 className="text-xl font-bold mb-4 text-blue-100 inline-block pb-1">
                         {t("follow_us")}
                     </h3>
                     <div className="flex justify-center sm:justify-start gap-4 mt-4 flex-wrap">
                         <Link to="http://t.me/iPRO_group" className="hover:scale-110 transition">
-                            <FaTelegramPlane className="text-2xl text-blue-400 hover:text-blue-500"/>
+                            <FaTelegramPlane className="text-2xl text-blue-100 hover:text-blue-500"/>
                         </Link>
                         <Link to="https://www.instagram.com/iprogroupuz/#" className="hover:scale-110 transition">
-                            <FaInstagram className="text-2xl text-pink-400 hover:text-pink-500"/>
+                            <FaInstagram className="text-2xl text-pink-100 hover:text-pink-500"/>
                         </Link>
                         <Link to="https://www.facebook.com/share/16EFV1KTV8/" className="hover:scale-110 transition">
-                            <FaFacebookF className="text-2xl text-blue-500 hover:text-blue-600"/>
+                            <FaFacebookF className="text-2xl text-blue-100 hover:text-blue-600"/>
                         </Link>
                         <Link to="https://www.youtube.com/@iprouz" className="hover:scale-110 transition">
-                            <FaYoutube className="text-2xl text-red-500 hover:text-red-600"/>
+                            <FaYoutube className="text-2xl text-red-100 hover:text-red-600"/>
                         </Link>
                     </div>
                 </div>

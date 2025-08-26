@@ -5,11 +5,7 @@ import {FaBell, FaBriefcase, FaTasks, FaListAlt, FaUser, FaShoppingBag, FaSignOu
 import {IoClose, IoPersonOutline, IoHome} from "react-icons/io5";
 import {CgMenuRightAlt} from "react-icons/cg";
 import {MdArrowDropUp, MdLanguage} from "react-icons/md";
-import {AiOutlineEye, AiOutlineEyeInvisible} from "react-icons/ai";
-import {FcGoogle} from "react-icons/fc";
-import {GrGroup} from "react-icons/gr";
 import IproRegisterLogo from "../../assets/images/iproLogoRegister.png";
-import profileicon from "../../assets/images/profileicon.png";
 import {IoMdClose} from "react-icons/io";
 import LangDropdown from "../langdropdown/langdropdown";
 import {useTranslation} from "react-i18next";
@@ -210,8 +206,8 @@ const Header = () => {
                                 </button>
 
                                 {openDropdown === "user" && (
-                                    <div className="absolute top-12 -left-20 w-40 text-white rounded-lg shadow-lg">
-                                        <div className="py-5 px-3 bg-[#16182B] w-[140px] rounded-xl">
+                                    <div className="absolute top-12 -right-9 w-40 text-white rounded-lg shadow-lg">
+                                        <div className="py-5 px-2 bg-[#16182B] w-[160px] rounded-xl">
 
                                             {token ? (
                                                 <div className="relative">
@@ -238,18 +234,18 @@ const Header = () => {
                                                             setOpenDropdown(null);
                                                             setIsSignInModalOpen(true);
                                                         }}
-                                                        className="block w-full mb-3 text-center bg-white text-blue-600 font-bold border-b-2 px-5"
+                                                        className="block w-full py-0.5 mb-3 text-center rounded-sm bg-white text-blue-600 font-bold border-b-2 px-5"
                                                     >
-                                                        Sign In
+                                                        {t('in')}
                                                     </button>
                                                     <button
                                                         onClick={() => {
                                                             setOpenDropdown(null);
                                                             setIsModalOpen(true);
                                                         }}
-                                                        className="block w-full border border-blue-600 text-center font-bold px-5"
+                                                        className="block w-full border py-0.5 border-blue-600 rounded-sm text-center font-bold px-2"
                                                     >
-                                                        Sign Up
+                                                        {t('up')}
                                                     </button>
                                                 </>
                                             )}

@@ -163,8 +163,8 @@ const Faq = ({t, StarsRightImg, IproIMage}) => {
                             </div>
 
                             {/* Title */}
-                            <h2 className="text-xl sm:text-2xl font-bold text-white mb-6">
-                                {t("issue")}: <span className="text-red-500">{selectedIssue}!</span>
+                            <h2 className="text-xl text-center sm:text-2xl font-bold text-white mb-8">
+                                <span className="text-red-50">{t("issue")}</span>
                             </h2>
 
                             {/* Content */}

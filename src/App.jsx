@@ -14,44 +14,35 @@ import NotFound from "./pages/notfound";
 import ProjectInfo from './pages/ProjectInfo'
 import AuthGuard from "./connection/AuthGuard";
 import MainLayout from "./layouts/mainLayout/mainlayout";
-import SplashScreen from "./components/ui/SplashScren.jsx";
-import {useState} from "react";
 
 function AppRouter() {
-    const [loading, setLoading] = useState(true);
 
     return (
-        <>
-            {loading ? (
-                <SplashScreen onFinish={() => setLoading(false)} />
-            ) : (
-                <BrowserRouter>
-                    <Routes>
-                        <Route path="/" element={<MainLayout/>}>
-                            <Route index element={<Home/>}/>
-                            <Route path="aboutus" element={<AboutUs/>}/>
-                            <Route path="team" element={<Team/>}/>
-                            <Route path="portfolio" element={<Portfolio/>}/>
-                            <Route path="projects/:category" element={<ProjectPage/>}/>
-                            <Route path="service/:slug" element={<SingleService/>}/>
-                            <Route path="services" element={<Services/>}/>
-                            <Route path="careers" element={<Careers/>}/>
-                            <Route path="project/:id" element={<ProjectInfo/>}/>
-                            <Route
-                                path="user"
-                                element={
-                                    <AuthGuard>
-                                        <UserProfile/>
-                                    </AuthGuard>
-                                }
-                            />
-                            <Route path="vacansy/:slug" element={<Vacansy/>}/>
-                            <Route path="*" element={<NotFound/>}/>
-                        </Route>
-                    </Routes>
-                </BrowserRouter>
-            )}
-        </>
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<MainLayout/>}>
+                    <Route index element={<Home/>}/>
+                    <Route path="aboutus" element={<AboutUs/>}/>
+                    <Route path="team" element={<Team/>}/>
+                    <Route path="portfolio" element={<Portfolio/>}/>
+                    <Route path="projects/:category" element={<ProjectPage/>}/>
+                    <Route path="service/:slug" element={<SingleService/>}/>
+                    <Route path="services" element={<Services/>}/>
+                    <Route path="careers" element={<Careers/>}/>
+                    <Route path="project/:id" element={<ProjectInfo/>}/>
+                    <Route
+                        path="user"
+                        element={
+                            <AuthGuard>
+                                <UserProfile/>
+                            </AuthGuard>
+                        }
+                    />
+                    <Route path="vacansy/:slug" element={<Vacansy/>}/>
+                    <Route path="*" element={<NotFound/>}/>
+                </Route>
+            </Routes>
+        </BrowserRouter>
     );
 }
 
