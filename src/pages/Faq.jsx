@@ -174,7 +174,7 @@ const Faq = ({t, StarsRightImg, IproIMage}) => {
                                     <img
                                         src={IproIMage}
                                         alt=""
-                                        className="rounded-2xl w-full h-full object-cover max-h-64 sm:max-h-full"
+                                        className="rounded-2xl w-full h-[300px] md:h-[400px] lg:h-[420px] object-cover"
                                     />
                                 </div>
 
@@ -205,6 +205,8 @@ const Faq = ({t, StarsRightImg, IproIMage}) => {
                                     </form>
                                 </div>
                             </div>
+                            <p className={'text-center text-l text-white'}>Lorem ipsum dolor sit amet, consec</p>
+
                         </div>
                     </div>
                 </>

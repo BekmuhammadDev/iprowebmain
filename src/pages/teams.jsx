@@ -9,29 +9,33 @@ const Teams = ({ StarsRightImg, CardBg }) => {
   const scrollRef = useRef(null);
   const intervalRef = useRef(null);
 
-  const handleMemberClick = (member, index) => {
-    setActiveIndex(index % teamMembers.length);
-    setActiveMember(member);
+  const startAutoRotate = () => {
+    if (intervalRef.current) return; // oldin boshlangan bo‘lsa, qayta boshlamaslik
+    intervalRef.current = setInterval(() => {
+      setActiveIndex(prev => {
+        const nextIndex = (prev + 1) % teamMembers.length;
+        setActiveMember(teamMembers[nextIndex]);
+        return nextIndex;
+      });
+    }, 3000);
   };
 
-  // Auto-rotate every 3s
-  useEffect(() => {
-    intervalRef.current = setInterval(() => {
-      const nextIndex = (activeIndex + 1) % teamMembers.length;
-      setActiveIndex(nextIndex);
-      setActiveMember(teamMembers[nextIndex]);
-    }, 3000);
-    return () => clearInterval(intervalRef.current);
-  }, [activeIndex]);
+  const stopAutoRotate = () => {
+    clearInterval(intervalRef.current);
+    intervalRef.current = null;
+  };
 
-  // Pause on hover
-  const pauseScroll = () => clearInterval(intervalRef.current);
-  const resumeScroll = () => {
-    intervalRef.current = setInterval(() => {
-      const nextIndex = (activeIndex + 1) % teamMembers.length;
-      setActiveIndex(nextIndex);
-      setActiveMember(teamMembers[nextIndex]);
-    }, 3000);
+  // Boshlanishida autoplay yoqilsin
+  useEffect(() => {
+    startAutoRotate();
+    return () => stopAutoRotate();
+  }, []);
+
+  const handleMemberHover = (member, index) => {
+    // Hover paytida autoplay to‘xtasin
+    stopAutoRotate();
+    setActiveIndex(index % teamMembers.length);
+    setActiveMember(member);
   };
 
   return (
@@ -49,6 +53,7 @@ const Teams = ({ StarsRightImg, CardBg }) => {
           </div>
 
           <div className="mt-10 flex flex-col md:flex-row gap-10 items-center md:items-start justify-between">
+            {/* LEFT CONTENT */}
             <div className="w-full md:w-1/2 space-y-5 px-4 sm:px-10 md:px-0 mt-6">
               <h3 className="text-white text-sm sm:text-lg md:text-xl uppercase text-center md:text-left font-semibold tracking-widest">
                 {t(activeMember.role)}
@@ -79,6 +84,7 @@ const Teams = ({ StarsRightImg, CardBg }) => {
               </div>
             </div>
 
+            {/* RIGHT BIG CARD */}
             <div className="w-full md:w-1/2 flex justify-center md:justify-end px-4 sm:px-10 md:px-0 mt-10 md:mt-0">
               <div className="relative w-[260px] sm:w-[350px] md:w-[450px] lg:w-[500px] h-[300px] sm:h-[400px] md:h-[500px] overflow-hidden rounded-3xl shadow-2xl bg-gradient-to-tr from-[#101426] via-[#0f0f1a] to-[#1d2236] ring-1 ring-blue-600/20">
                 <img
@@ -100,8 +106,8 @@ const Teams = ({ StarsRightImg, CardBg }) => {
           {/* Carousel Thumbnails */}
           <div
               className="relative z-10 -mt-14 sm:-mt-16 md:-mt-20 group"
-              onMouseEnter={pauseScroll}
-              onMouseLeave={resumeScroll}
+              onMouseEnter={stopAutoRotate}
+              onMouseLeave={startAutoRotate}
           >
             <div className="overflow-hidden w-full">
               <div
@@ -111,10 +117,10 @@ const Teams = ({ StarsRightImg, CardBg }) => {
                 {[...teamMembers, ...teamMembers, ...teamMembers].map((member, idx) => (
                     <div
                         key={idx}
-                        className="relative w-32 sm:w-40 md:w-48 h-48 sm:h-60 md:h-72 rounded-xl overflow-hidden bg-[#0a0f1f] shadow-lg cursor-pointer shrink-0 ring-1 ring-white/10 hover:ring-blue-500"
-                        onClick={() => handleMemberClick(member, idx)}
+                        className={`relative w-32 sm:w-40 md:w-48 h-48 sm:h-60 md:h-72 rounded-xl overflow-hidden bg-[#0a0f1f] shadow-lg cursor-pointer shrink-0 ring-1 ring-white/10 
+                    ${activeIndex === (idx % teamMembers.length) ? "ring-blue-500 scale-105" : "hover:ring-blue-500 hover:scale-105 transition"}`}
+                        onMouseEnter={() => handleMemberHover(member, idx)}
                     >
-                      {/* faqat bitta rasm, hover effekti yo‘q */}
                       <img
                           src={member.img}
                           alt={member.name}
@@ -131,23 +137,22 @@ const Teams = ({ StarsRightImg, CardBg }) => {
 
           <style>
             {`
-            @keyframes scroll {
-              0% { transform: translateX(0); }
-              100% { transform: translateX(-33.333%); }
-            }
+          @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-33.333%); }
+          }
+          .animate-scroll {
+            animation: scroll 30s linear infinite;
+          }
+          @media (max-width: 640px) {
             .animate-scroll {
-              animation: scroll 30s linear infinite;
+              animation: scroll 45s linear infinite;
             }
-            @media (max-width: 640px) {
-              .animate-scroll {
-                animation: scroll 45s linear infinite;
-              }
-            }
-            /* Hoverda faqat scroll animatsiya to‘xtaydi */
-            .group:hover .animate-scroll {
-              animation-play-state: paused;
-            }
-          `}
+          }
+          .group:hover .animate-scroll {
+            animation-play-state: paused;
+          }
+        `}
           </style>
         </div>
       </section>

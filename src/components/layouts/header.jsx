@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {NavLink, useNavigate} from "react-router-dom";
 import Logo from "../../assets/icons/Logo.svg";
-import {FaBell, FaBriefcase, FaTasks, FaListAlt, FaUser, FaShoppingBag, FaSignOutAlt} from "react-icons/fa";
+import {FaBell} from "react-icons/fa";
 import {IoClose, IoPersonOutline, IoHome} from "react-icons/io5";
 import {CgMenuRightAlt} from "react-icons/cg";
 import {MdArrowDropUp, MdLanguage} from "react-icons/md";
@@ -206,8 +206,8 @@ const Header = () => {
                                 </button>
 
                                 {openDropdown === "user" && (
-                                    <div className="absolute top-12 -right-9 w-40 text-white rounded-lg shadow-lg">
-                                        <div className="py-5 px-2 bg-[#16182B] w-[160px] rounded-xl">
+                                    <div className="absolute top-12 -right-1 w-40 text-white rounded-lg shadow-lg">
+                                        <div className="py-5 px-2 bg-[#16182B] w-[190px] rounded-xl">
 
                                             {token ? (
                                                 <div className="relative">

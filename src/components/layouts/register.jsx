@@ -152,7 +152,7 @@ const Register = ({ IproRegisterLogo, setIsModalOpen, error, isSignInModalOpen, 
   );
 
   return (
-    <div className="fixed inset-0 flex items-center h-screen px-5 justify-center bg-black bg-opacity-50 z-50">
+    <div className="fixed inset-0 flex items-center h-screen px-5 justify-center bg-black bg-opacity-50  backdrop-blur-2xl z-50">
       <div className="flex rounded-md bg-[#191C2F] sm:px-20 items-center">
         <div className="hidden md:flex">
           <img src={IproRegisterLogo} alt="Register Logo" />

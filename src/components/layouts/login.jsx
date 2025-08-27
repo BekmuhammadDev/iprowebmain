@@ -61,80 +61,81 @@ const Login = ({
   };
 
   return (
-    <div className="fixed inset-0 flex items-center h-screen px-1 justify-center bg-black bg-opacity-50 z-50">
-      <div className="w-full max-w-5xl m-2 bg-[#0D111C] rounded-lg flex flex-col md:flex-row relative overflow-hidden">
-        <div className="hidden md:flex">
-          <img src={IproRegisterLogo} alt="logo" />
-        </div>
+      <div
+          className="fixed inset-0 flex items-center justify-center h-screen px-2 bg-black bg-opacity-50 backdrop-blur-2xl z-50">
+        <div
+            className="w-full max-w-[95%] sm:max-w-[500px] md:max-w-4xl bg-[#0D111C] rounded-lg py-8 flex flex-col md:flex-row relative overflow-hidden">
 
-        <div className="p-6 mx-12  w-full sm:w-[400px] relative text-white">
-          <button
-              className="absolute top-4 right-4 text-gray-400 w-8 h-8 flex items-center justify-center rounded-full shadow-lg hover:text-red-500"
-              onClick={() => setIsSignInModalOpen(false)}
-          >
-            <IoMdClose fontSize={28} />
-          </button>
+          {/* Logo faqat md va undan kattaroqda ko‘rinadi */}
+          <div className="hidden md:flex flex-shrink-0">
+            <img src={IproRegisterLogo} alt="logo" className="max-h-[400px] object-contain"/>
+          </div>
 
-          <h2 className="text-[40px] font-bold text-center mb-2">Sign In</h2>
-
-          <input
-            className="w-full px-5 h-[49px] my-4 border rounded bg-[#1F2335] border-[#00A3FF] text-white placeholder-gray-400 outline-none focus:ring-2 focus:ring-[#00A3FF]"
-            placeholder="Email"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-          {usernameError && <p className="text-red-500 mt-[-13px]">{usernameError}</p>}
-
-          <div className="relative">
-            <input
-              className="w-full px-5 h-[49px] my-2 border rounded bg-[#1F2335] border-[#00A3FF] text-white pr-10 placeholder-gray-400 outline-none focus:ring-2 focus:ring-[#00A3FF]"
-              type={showPassword ? "text" : "password"}
-              placeholder="Parol"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            {passwordError && <p className="text-red-500 mt-[-5px]">{passwordError}</p>}
+          {/* Form qismi */}
+          <div className="p-6 sm:px-8 md:px-12 w-full relative text-white">
             <button
-              type="button"
-              className="absolute top-[10%] right-4 text-gray-300"
-              onClick={() => setShowPassword(!showPassword)}
+                className="absolute -top-4 right-4 text-gray-400 w-8 h-8 flex items-center justify-center rounded-full shadow-lg hover:text-red-500"
+                onClick={() => setIsSignInModalOpen(false)}
             >
-              {showPassword ? <AiOutlineEyeInvisible size={24} /> : <AiOutlineEye size={24} />}
+              <IoMdClose fontSize={28}/>
             </button>
-          </div>
 
-          {/* <div className="text-right text-sm text-blue-400 cursor-pointer mb-4 hover:underline">
-            Forgot password?
-          </div> */}
+            <h2 className="text-[32px] md:text-[40px] font-bold text-center mb-4">Sign In</h2>
 
-          <button
-            className="w-full mt-4 bg-gradient-to-r from-[#00C6FB] to-[#0086EE] text-white font-semibold py-2 rounded hover:opacity-90 transition-all duration-200"
-            onClick={login}
-          >
-            CONTINUE
-          </button>
+            <input
+                className="w-full px-5 h-[49px] my-3 border rounded bg-[#1F2335] border-[#00A3FF] text-white placeholder-gray-400 outline-none focus:ring-2 focus:ring-[#00A3FF]"
+                placeholder="Email"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+            />
+            {usernameError && <p className="text-red-500 -mt-2 mb-2">{usernameError}</p>}
 
-          <div className="flex items-center gap-2 my-4">
-            <div className="flex-grow h-[1px] bg-gray-600" />
-            <span className="text-white text-sm">Or, continue with</span>
-            <div className="flex-grow h-[1px] bg-gray-600" />
-          </div>
+            <div className="relative">
+              <input
+                  className="w-full px-5 h-[49px] my-2 border rounded bg-[#1F2335] border-[#00A3FF] text-white pr-10 placeholder-gray-400 outline-none focus:ring-2 focus:ring-[#00A3FF]"
+                  type={showPassword ? "text" : "password"}
+                  placeholder="Parol"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+              />
+              {passwordError && <p className="text-red-500 -mt-1 mb-2">{passwordError}</p>}
+              <button
+                  type="button"
+                  className="absolute top-1/2 -translate-y-1/2 right-4 text-gray-300"
+                  onClick={() => setShowPassword(!showPassword)}
+              >
+                {showPassword ? <AiOutlineEyeInvisible size={22}/> : <AiOutlineEye size={22}/>}
+              </button>
+            </div>
 
-          <p className="text-white text-center mt-2">
-            New to iPro?{" "}
-            <span
-              className="text-blue-400 cursor-pointer hover:underline"
-              onClick={() => {
-                setIsSignInModalOpen(false);
-                setIsModalOpen(true);
-              }}
+            <button
+                className="w-full mt-5 bg-gradient-to-r from-[#00C6FB] to-[#0086EE] text-white font-semibold py-2 rounded hover:opacity-90 transition-all duration-200"
+                onClick={login}
             >
-              Create an account
-            </span>
-          </p>
+              CONTINUE
+            </button>
+
+            <div className="flex items-center gap-2 my-5">
+              <div className="flex-grow h-[1px] bg-gray-600"/>
+              <span className="text-white text-sm">Or, continue with</span>
+              <div className="flex-grow h-[1px] bg-gray-600"/>
+            </div>
+
+            <p className="text-white text-center mt-2">
+              New to iPro?{" "}
+              <span
+                  className="text-blue-400 cursor-pointer hover:underline"
+                  onClick={() => {
+                    setIsSignInModalOpen(false);
+                    setIsModalOpen(true);
+                  }}
+              >
+          Create an account
+        </span>
+            </p>
+          </div>
         </div>
       </div>
-    </div>
   );
 };
 
