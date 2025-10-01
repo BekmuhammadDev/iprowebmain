@@ -13,7 +13,7 @@ import "../../i18";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import Login from './login';
-import Register from './register';
+// import Register from './register';
 import TestModeBanner from "../ui/testmodebanner";
 import axios from 'axios';
 
@@ -266,15 +266,15 @@ const Header = () => {
                                 />
                             )}
 
-                            {isModalOpen && (
-                                <Register
-                                    IproRegisterLogo={IproRegisterLogo}
-                                    setIsModalOpen={setIsModalOpen}
-                                    error={error}
-                                    isSignInModalOpen={isSignInModalOpen}
-                                    setIsSignInModalOpen={setIsSignInModalOpen}
-                                />
-                            )}
+                            {/*{isModalOpen && (*/}
+                            {/*    <Register*/}
+                            {/*        IproRegisterLogo={IproRegisterLogo}*/}
+                            {/*        setIsModalOpen={setIsModalOpen}*/}
+                            {/*        error={error}*/}
+                            {/*        isSignInModalOpen={isSignInModalOpen}*/}
+                            {/*        setIsSignInModalOpen={setIsSignInModalOpen}*/}
+                            {/*    />*/}
+                            {/*)}*/}
 
                         </div>
 

@@ -21,7 +21,7 @@ function AppRouter() {
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<MainLayout/>}>
-                    <Route index element={<Home/>}/>
+                x    <Route index element={<Home/>}/>
                     <Route path="aboutus" element={<AboutUs/>}/>
                     <Route path="team" element={<Team/>}/>
                     <Route path="portfolio" element={<Portfolio/>}/>
