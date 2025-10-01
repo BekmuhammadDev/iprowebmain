@@ -1,1 +1,1 @@
-export const BASE_URL ="https://ipro.javohir-dev.uz/api"
+export const BASE_URL ="http://localhost:2025/api/v1"

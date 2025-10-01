@@ -29,14 +29,14 @@ export const StepperCircles = ({ currentStep = 1 }) => {
                 {isCompleted ? "✓" : stepNumber}
               </div>
               <div>
-                <p className="font-medium text-sm sm:text-base">{step.title}</p>
-                <p className="text-xs sm:text-sm text-gray-500">{step.description}</p>
+                <p className="font-medium text-sm sm:text-base text-white">{step.title}</p>
+                <p className="text-xs sm:text-sm text-gray-300">{step.description}</p>
               </div>
             </div>
             {index < steps.length - 1 && (
               <div
                 className={`h-6 sm:h-8 border-l-2 ml-3 ${
-                  currentStep > stepNumber ? "border-blue-600" : "border-gray-300"
+                  currentStep > stepNumber ? "border-blue-400" : "border-gray-400"
                 }`}
               />
             )}

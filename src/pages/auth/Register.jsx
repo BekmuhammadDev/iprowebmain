@@ -70,30 +70,35 @@ const Register = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  // Submit
+  // Submit - ASOSIY TUZATISH
   const handleSubmit = () => {
     if (currentStep === 1) {
-      if (validateStep1()) setCurrentStep(2);
+      const isValid = validateStep1();
+      if (isValid) {
+        setCurrentStep(2);
+      }
     } else if (currentStep === 2) {
-      if (validateStep2()) setCurrentStep(3);
+      const isValid = validateStep2();
+      if (isValid) {
+        setCurrentStep(3);
+      }
     } else if (currentStep === 3) {
       alert("Muvaffaqiyatli ro'yxatdan o'tdingiz!");
     }
   };
 
-  // Telefon input
+  // Telefon input - TUZATILGAN
   const handlePhoneFocus = () => {
     if (!formData.phone || formData.phone === "") {
       setFormData((prev) => ({ ...prev, phone: "+998" }));
-      setTimeout(() => {
-        if (phoneRef.current) {
-          const len = phoneRef.current.value.length;
-          phoneRef.current.setSelectionRange(len, len);
-          phoneRef.current.focus();
-        }
-      }, 0);
+      // setTimeout ni olib tashladim, bu muammo chiqarardi
+      if (phoneRef.current) {
+        const len = phoneRef.current.value.length;
+        phoneRef.current.setSelectionRange(len, len);
+      }
     }
   };
+
   const handlePhoneBlur = () => {
     if (formData.phone === "+998") {
       setFormData((prev) => ({ ...prev, phone: "" }));
@@ -134,7 +139,7 @@ const Register = () => {
               </p>
             </div>
 
-            {/* Step 1 */}
+            {/* Step 1 - KEY QO'SHILDI */}
             {currentStep === 1 && (
               <div key="step1">
                 <div className="flex flex-col sm:flex-row gap-3">
@@ -205,7 +210,7 @@ const Register = () => {
               </div>
             )}
 
-            {/* Step 2 */}
+            {/* Step 2 - KEY QO'SHILDI */}
             {currentStep === 2 && (
               <div key="step2" className="mt-4 space-y-3">
                 <input
@@ -221,7 +226,7 @@ const Register = () => {
               </div>
             )}
 
-            {/* Step 3 */}
+            {/* Step 3 - KEY QO'SHILDI */}
             {currentStep === 3 && (
               <div key="step3" className="text-center mt-6">
                 <p className="text-blue-600 font-semibold text-lg">
@@ -251,7 +256,7 @@ const Register = () => {
         </div>
       </div>
 
-      {/* O‘ng panel */}
+      {/* O'ng panel */}
       <div
         className="hidden lg:flex lg:flex-[2.5] p-8 text-white flex-col justify-center items-center"
         style={{

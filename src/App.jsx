@@ -17,7 +17,7 @@ import MainLayout from "./layouts/mainLayout/mainlayout";
 
 // ✅ yangi qo‘shilganlar
 import Register from "./pages/auth/register";
-import Login from "./pages/auth/login"
+import Login from "./pages/auth/login";
 import RecoveryPassword from "./pages/auth/RecoveryPassword";
 
 function AppRouter() {
@@ -27,8 +27,9 @@ function AppRouter() {
         {/* Auth sahifalar */}
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        <Route path="recoveryPassword" element={<RecoveryPassword/>}/>
+        <Route path="/recoveryPassword" element={<RecoveryPassword />} />
 
+        {/* Main sahifalar */}
         <Route path="/" element={<MainLayout />}>
           <Route index element={<Home />} />
           <Route path="aboutus" element={<AboutUs />} />
